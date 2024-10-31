@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDM_PAYROLL_SYSTEM", "CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM.vbproj", "{17EBDA4A-9355-4D3D-A859-E1DAE9E8084B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17EBDA4A-9355-4D3D-A859-E1DAE9E8084B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EBDA4A-9355-4D3D-A859-E1DAE9E8084B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EBDA4A-9355-4D3D-A859-E1DAE9E8084B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EBDA4A-9355-4D3D-A859-E1DAE9E8084B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA601F30-3D39-4953-B424-0CE4E4D1A455}
+	EndGlobalSection
+EndGlobal
