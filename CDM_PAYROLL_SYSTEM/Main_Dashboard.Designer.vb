@@ -112,9 +112,9 @@ Partial Class Main_Dashboard
         Label2.Location = New Point(19, 18)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(231, 22)
+        Label2.Size = New Size(191, 22)
         Label2.TabIndex = 20
-        Label2.Text = "PAYROLL DASHBOARD"
+        Label2.Text = "MAIN DASHBOARD"
         ' 
         ' GroupBox4
         ' 
@@ -223,7 +223,7 @@ Partial Class Main_Dashboard
         Panel2.Location = New Point(1, 2)
         Panel2.Margin = New Padding(4, 3, 4, 3)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(254, 722)
+        Panel2.Size = New Size(254, 654)
         Panel2.TabIndex = 27
         ' 
         ' TableLayoutPanel1
@@ -243,7 +243,7 @@ Partial Class Main_Dashboard
         TableLayoutPanel1.Controls.Add(Label6, 1, 4)
         TableLayoutPanel1.Controls.Add(Label8, 1, 1)
         TableLayoutPanel1.Controls.Add(Label7, 1, 3)
-        TableLayoutPanel1.Location = New Point(6, 225)
+        TableLayoutPanel1.Location = New Point(8, 204)
         TableLayoutPanel1.Margin = New Padding(0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 6
@@ -516,30 +516,30 @@ Partial Class Main_Dashboard
         Panel5.Controls.Add(Button2)
         Panel5.Controls.Add(Button1)
         Panel5.Controls.Add(Label15)
-        Panel5.Location = New Point(262, 285)
+        Panel5.Location = New Point(266, 285)
         Panel5.Margin = New Padding(4, 3, 4, 3)
         Panel5.Name = "Panel5"
-        Panel5.Size = New Size(571, 439)
+        Panel5.Size = New Size(571, 371)
         Panel5.TabIndex = 29
         ' 
         ' Button5
         ' 
         Button5.Font = New Font("Roboto", 9F)
-        Button5.Location = New Point(43, 348)
+        Button5.Location = New Point(43, 291)
         Button5.Margin = New Padding(4, 3, 4, 3)
         Button5.Name = "Button5"
-        Button5.Size = New Size(474, 55)
+        Button5.Size = New Size(474, 45)
         Button5.TabIndex = 32
-        Button5.Text = "BIOMETRIC ATTENDANCE"
+        Button5.Text = "CAMERA MONITORING"
         Button5.UseVisualStyleBackColor = True
         ' 
         ' Button4
         ' 
         Button4.Font = New Font("Roboto", 9F)
-        Button4.Location = New Point(43, 279)
+        Button4.Location = New Point(43, 230)
         Button4.Margin = New Padding(4, 3, 4, 3)
         Button4.Name = "Button4"
-        Button4.Size = New Size(474, 55)
+        Button4.Size = New Size(474, 45)
         Button4.TabIndex = 31
         Button4.Text = "ACCOUNT"
         Button4.UseVisualStyleBackColor = True
@@ -547,10 +547,10 @@ Partial Class Main_Dashboard
         ' Button3
         ' 
         Button3.Font = New Font("Roboto", 9F)
-        Button3.Location = New Point(43, 210)
+        Button3.Location = New Point(43, 171)
         Button3.Margin = New Padding(4, 3, 4, 3)
         Button3.Name = "Button3"
-        Button3.Size = New Size(474, 55)
+        Button3.Size = New Size(474, 45)
         Button3.TabIndex = 30
         Button3.Text = "MANAGE EMPLOYEES"
         Button3.UseVisualStyleBackColor = True
@@ -558,10 +558,10 @@ Partial Class Main_Dashboard
         ' Button2
         ' 
         Button2.Font = New Font("Roboto", 9F)
-        Button2.Location = New Point(43, 141)
+        Button2.Location = New Point(43, 112)
         Button2.Margin = New Padding(4, 3, 4, 3)
         Button2.Name = "Button2"
-        Button2.Size = New Size(474, 55)
+        Button2.Size = New Size(474, 45)
         Button2.TabIndex = 29
         Button2.Text = "GENERATE REPORTS"
         Button2.UseVisualStyleBackColor = True
@@ -571,10 +571,10 @@ Partial Class Main_Dashboard
         Button1.BackColor = SystemColors.MenuText
         Button1.Font = New Font("Roboto", 9F)
         Button1.ForeColor = SystemColors.ButtonHighlight
-        Button1.Location = New Point(43, 72)
+        Button1.Location = New Point(43, 56)
         Button1.Margin = New Padding(4, 3, 4, 3)
         Button1.Name = "Button1"
-        Button1.Size = New Size(474, 55)
+        Button1.Size = New Size(474, 45)
         Button1.TabIndex = 28
         Button1.Text = "RUN PAYROLL"
         Button1.UseVisualStyleBackColor = False
@@ -601,10 +601,10 @@ Partial Class Main_Dashboard
         Panel6.Controls.Add(Label19)
         Panel6.Controls.Add(Label18)
         Panel6.Controls.Add(Label13)
-        Panel6.Location = New Point(4, 188)
+        Panel6.Location = New Point(4, 159)
         Panel6.Margin = New Padding(4, 3, 4, 3)
         Panel6.Name = "Panel6"
-        Panel6.Size = New Size(486, 251)
+        Panel6.Size = New Size(486, 212)
         Panel6.TabIndex = 30
         ' 
         ' Label21
@@ -614,7 +614,7 @@ Partial Class Main_Dashboard
         Label21.BackColor = Color.Transparent
         Label21.Cursor = Cursors.Hand
         Label21.Font = New Font("Arial", 11.25F, FontStyle.Italic)
-        Label21.Location = New Point(26, 182)
+        Label21.Location = New Point(31, 163)
         Label21.Margin = New Padding(4, 0, 4, 0)
         Label21.Name = "Label21"
         Label21.Size = New Size(124, 17)
@@ -628,7 +628,7 @@ Partial Class Main_Dashboard
         Label22.BackColor = Color.Transparent
         Label22.Cursor = Cursors.Hand
         Label22.Font = New Font("Arial", 11.25F, FontStyle.Italic)
-        Label22.Location = New Point(26, 148)
+        Label22.Location = New Point(31, 129)
         Label22.Margin = New Padding(4, 0, 4, 0)
         Label22.Name = "Label22"
         Label22.Size = New Size(143, 17)
@@ -642,7 +642,7 @@ Partial Class Main_Dashboard
         Label19.BackColor = Color.Transparent
         Label19.Cursor = Cursors.Hand
         Label19.Font = New Font("Arial", 11.25F, FontStyle.Italic)
-        Label19.Location = New Point(26, 108)
+        Label19.Location = New Point(31, 89)
         Label19.Margin = New Padding(4, 0, 4, 0)
         Label19.Name = "Label19"
         Label19.Size = New Size(257, 17)
@@ -656,7 +656,7 @@ Partial Class Main_Dashboard
         Label18.BackColor = Color.Transparent
         Label18.Cursor = Cursors.Hand
         Label18.Font = New Font("Arial", 11.25F, FontStyle.Italic)
-        Label18.Location = New Point(26, 67)
+        Label18.Location = New Point(31, 48)
         Label18.Margin = New Padding(4, 0, 4, 0)
         Label18.Name = "Label18"
         Label18.Size = New Size(162, 17)
@@ -671,7 +671,7 @@ Partial Class Main_Dashboard
         Label13.Cursor = Cursors.Hand
         Label13.Font = New Font("Arial", 12F, FontStyle.Bold Or FontStyle.Italic)
         Label13.ForeColor = Color.Maroon
-        Label13.Location = New Point(26, 27)
+        Label13.Location = New Point(31, 21)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
         Label13.Size = New Size(133, 18)
@@ -689,7 +689,7 @@ Partial Class Main_Dashboard
         Panel7.Location = New Point(4, 3)
         Panel7.Margin = New Padding(4, 3, 4, 3)
         Panel7.Name = "Panel7"
-        Panel7.Size = New Size(486, 179)
+        Panel7.Size = New Size(486, 150)
         Panel7.TabIndex = 31
         ' 
         ' PictureBox12
@@ -697,7 +697,7 @@ Partial Class Main_Dashboard
         PictureBox12.Anchor = AnchorStyles.Left
         PictureBox12.Cursor = Cursors.Hand
         PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), Image)
-        PictureBox12.Location = New Point(231, 35)
+        PictureBox12.Location = New Point(297, 19)
         PictureBox12.Margin = New Padding(4, 3, 4, 3)
         PictureBox12.Name = "PictureBox12"
         PictureBox12.Size = New Size(110, 109)
@@ -712,7 +712,7 @@ Partial Class Main_Dashboard
         Label17.BackColor = Color.Transparent
         Label17.Cursor = Cursors.Hand
         Label17.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label17.Location = New Point(48, 112)
+        Label17.Location = New Point(95, 98)
         Label17.Margin = New Padding(4, 0, 4, 0)
         Label17.Name = "Label17"
         Label17.Size = New Size(103, 14)
@@ -727,7 +727,7 @@ Partial Class Main_Dashboard
         Label16.Cursor = Cursors.Hand
         Label16.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label16.ForeColor = Color.DarkRed
-        Label16.Location = New Point(37, 75)
+        Label16.Location = New Point(84, 61)
         Label16.Margin = New Padding(4, 0, 4, 0)
         Label16.Name = "Label16"
         Label16.Size = New Size(136, 22)
@@ -741,7 +741,7 @@ Partial Class Main_Dashboard
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
         Label14.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
-        Label14.Location = New Point(37, 40)
+        Label14.Location = New Point(84, 26)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
         Label14.Size = New Size(126, 23)
@@ -757,7 +757,7 @@ Partial Class Main_Dashboard
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel2.Controls.Add(Panel1, 0, 0)
         TableLayoutPanel2.Controls.Add(Panel4, 1, 0)
-        TableLayoutPanel2.Location = New Point(258, 72)
+        TableLayoutPanel2.Location = New Point(263, 72)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
@@ -772,12 +772,12 @@ Partial Class Main_Dashboard
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 66.66894F))
         TableLayoutPanel3.Controls.Add(Panel6, 0, 1)
         TableLayoutPanel3.Controls.Add(Panel7, 0, 0)
-        TableLayoutPanel3.Location = New Point(840, 282)
+        TableLayoutPanel3.Location = New Point(844, 282)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 2
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 41.8604622F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 58.139534F))
-        TableLayoutPanel3.Size = New Size(494, 442)
+        TableLayoutPanel3.Size = New Size(494, 374)
         TableLayoutPanel3.TabIndex = 22
         ' 
         ' Main_Dashboard
@@ -787,7 +787,7 @@ Partial Class Main_Dashboard
         BackColor = Color.SeaGreen
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(1350, 729)
+        ClientSize = New Size(1350, 661)
         Controls.Add(Panel5)
         Controls.Add(TableLayoutPanel3)
         Controls.Add(TableLayoutPanel2)

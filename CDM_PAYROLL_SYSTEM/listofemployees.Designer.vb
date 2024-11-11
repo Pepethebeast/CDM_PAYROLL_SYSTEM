@@ -24,6 +24,7 @@ Partial Class List_of_Employees
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(List_of_Employees))
         GroupBox4 = New GroupBox()
+        TableLayoutPanel2 = New TableLayoutPanel()
         PictureBox11 = New PictureBox()
         PictureBox12 = New PictureBox()
         Label23 = New Label()
@@ -50,6 +51,7 @@ Partial Class List_of_Employees
         IconButton4 = New FontAwesome.Sharp.IconButton()
         IconButton5 = New FontAwesome.Sharp.IconButton()
         GroupBox4.SuspendLayout()
+        TableLayoutPanel2.SuspendLayout()
         CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox12, ComponentModel.ISupportInitialize).BeginInit()
         CType(DGVUserData, ComponentModel.ISupportInitialize).BeginInit()
@@ -61,9 +63,9 @@ Partial Class List_of_Employees
         ' 
         ' GroupBox4
         ' 
+        GroupBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         GroupBox4.BackColor = Color.DarkSeaGreen
-        GroupBox4.Controls.Add(PictureBox11)
-        GroupBox4.Controls.Add(PictureBox12)
+        GroupBox4.Controls.Add(TableLayoutPanel2)
         GroupBox4.Controls.Add(Label23)
         GroupBox4.Location = New Point(262, 6)
         GroupBox4.Margin = New Padding(4, 3, 4, 3)
@@ -73,26 +75,44 @@ Partial Class List_of_Employees
         GroupBox4.TabIndex = 24
         GroupBox4.TabStop = False
         ' 
+        ' TableLayoutPanel2
+        ' 
+        TableLayoutPanel2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        TableLayoutPanel2.BackColor = Color.DarkSeaGreen
+        TableLayoutPanel2.ColumnCount = 2
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.Controls.Add(PictureBox11, 0, 0)
+        TableLayoutPanel2.Controls.Add(PictureBox12, 1, 0)
+        TableLayoutPanel2.Location = New Point(916, 0)
+        TableLayoutPanel2.Name = "TableLayoutPanel2"
+        TableLayoutPanel2.RowCount = 1
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.Size = New Size(170, 72)
+        TableLayoutPanel2.TabIndex = 29
+        ' 
         ' PictureBox11
         ' 
+        PictureBox11.Anchor = AnchorStyles.None
         PictureBox11.BackColor = Color.Transparent
         PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
-        PictureBox11.Location = New Point(943, 6)
+        PictureBox11.Location = New Point(4, 3)
         PictureBox11.Margin = New Padding(4, 3, 4, 3)
         PictureBox11.Name = "PictureBox11"
-        PictureBox11.Size = New Size(77, 60)
+        PictureBox11.Size = New Size(77, 66)
         PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox11.TabIndex = 28
         PictureBox11.TabStop = False
         ' 
         ' PictureBox12
         ' 
+        PictureBox12.Anchor = AnchorStyles.None
         PictureBox12.BackColor = Color.Transparent
         PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), Image)
-        PictureBox12.Location = New Point(1019, 6)
+        PictureBox12.Location = New Point(89, 3)
         PictureBox12.Margin = New Padding(4, 3, 4, 3)
         PictureBox12.Name = "PictureBox12"
-        PictureBox12.Size = New Size(66, 60)
+        PictureBox12.Size = New Size(77, 66)
         PictureBox12.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox12.TabIndex = 27
         PictureBox12.TabStop = False
@@ -111,6 +131,7 @@ Partial Class List_of_Employees
         ' 
         ' DGVUserData
         ' 
+        DGVUserData.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DGVUserData.BackgroundColor = Color.White
         DGVUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DGVUserData.Location = New Point(262, 129)
@@ -343,6 +364,7 @@ Partial Class List_of_Employees
         ' 
         ' FlowLayoutPanel1
         ' 
+        FlowLayoutPanel1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         FlowLayoutPanel1.BackColor = Color.Transparent
         FlowLayoutPanel1.Controls.Add(IconButton1)
         FlowLayoutPanel1.Controls.Add(IconButton2)
@@ -358,30 +380,27 @@ Partial Class List_of_Employees
         ' IconButton1
         ' 
         IconButton1.BackColor = Color.White
-        IconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton1.IconChar = FontAwesome.Sharp.IconChar.SortAmountUpAlt
+        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
         IconButton1.IconColor = Color.Black
+        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton1.IconSize = 20
         IconButton1.Location = New Point(332, 3)
         IconButton1.Name = "IconButton1"
-        IconButton1.Rotation = 0R
         IconButton1.Size = New Size(75, 41)
         IconButton1.TabIndex = 0
-        IconButton1.Text = "↩"
         IconButton1.UseVisualStyleBackColor = False
         ' 
         ' IconButton2
         ' 
         IconButton2.BackColor = Color.White
-        IconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         IconButton2.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton2.IconColor = Color.Black
+        IconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton2.IconSize = 16
         IconButton2.Location = New Point(251, 3)
         IconButton2.Name = "IconButton2"
-        IconButton2.Rotation = 0R
         IconButton2.Size = New Size(75, 41)
         IconButton2.TabIndex = 1
         IconButton2.Text = "🔄"
@@ -390,14 +409,13 @@ Partial Class List_of_Employees
         ' IconButton3
         ' 
         IconButton3.BackColor = Color.White
-        IconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         IconButton3.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton3.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton3.IconColor = Color.Black
+        IconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton3.IconSize = 16
         IconButton3.Location = New Point(170, 3)
         IconButton3.Name = "IconButton3"
-        IconButton3.Rotation = 0R
         IconButton3.Size = New Size(75, 41)
         IconButton3.TabIndex = 2
         IconButton3.Text = "🗑️"
@@ -406,14 +424,13 @@ Partial Class List_of_Employees
         ' IconButton4
         ' 
         IconButton4.BackColor = Color.White
-        IconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         IconButton4.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton4.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton4.IconColor = Color.Black
+        IconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton4.IconSize = 16
         IconButton4.Location = New Point(89, 3)
         IconButton4.Name = "IconButton4"
-        IconButton4.Rotation = 0R
         IconButton4.Size = New Size(75, 41)
         IconButton4.TabIndex = 3
         IconButton4.Text = "📝"
@@ -422,14 +439,13 @@ Partial Class List_of_Employees
         ' IconButton5
         ' 
         IconButton5.BackColor = Color.White
-        IconButton5.Flip = FontAwesome.Sharp.FlipOrientation.Normal
         IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton5.IconColor = Color.Black
+        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton5.IconSize = 16
         IconButton5.Location = New Point(8, 3)
         IconButton5.Name = "IconButton5"
-        IconButton5.Rotation = 0R
         IconButton5.Size = New Size(75, 41)
         IconButton5.TabIndex = 4
         IconButton5.Text = "🔍"
@@ -453,6 +469,7 @@ Partial Class List_of_Employees
         Text = "List_of_Employees"
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
+        TableLayoutPanel2.ResumeLayout(False)
         CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox12, ComponentModel.ISupportInitialize).EndInit()
         CType(DGVUserData, ComponentModel.ISupportInitialize).EndInit()
@@ -490,4 +507,5 @@ Partial Class List_of_Employees
     Friend WithEvents IconButton3 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton4 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton5 As FontAwesome.Sharp.IconButton
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
 End Class

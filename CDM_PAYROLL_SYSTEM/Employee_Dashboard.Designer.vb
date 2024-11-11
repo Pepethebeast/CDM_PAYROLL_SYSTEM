@@ -77,7 +77,7 @@ Partial Class Employee_Dashboard
         TableLayoutPanel1.Controls.Add(Label6, 1, 4)
         TableLayoutPanel1.Controls.Add(Label2, 1, 1)
         TableLayoutPanel1.Controls.Add(Label7, 1, 3)
-        TableLayoutPanel1.Location = New Point(6, 225)
+        TableLayoutPanel1.Location = New Point(6, 202)
         TableLayoutPanel1.Margin = New Padding(0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 6
@@ -394,7 +394,7 @@ Partial Class Employee_Dashboard
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel2.Controls.Add(PictureBox4, 0, 0)
         TableLayoutPanel2.Controls.Add(Label4, 0, 1)
-        TableLayoutPanel2.Location = New Point(421, 166)
+        TableLayoutPanel2.Location = New Point(430, 136)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 2
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
@@ -409,7 +409,7 @@ Partial Class Employee_Dashboard
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel3.Controls.Add(PictureBox9, 0, 0)
         TableLayoutPanel3.Controls.Add(Label8, 0, 1)
-        TableLayoutPanel3.Location = New Point(839, 169)
+        TableLayoutPanel3.Location = New Point(848, 139)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 2
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
@@ -423,7 +423,7 @@ Partial Class Employee_Dashboard
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(1350, 729)
+        ClientSize = New Size(1350, 661)
         Controls.Add(TableLayoutPanel3)
         Controls.Add(TableLayoutPanel2)
         Controls.Add(GroupBox4)

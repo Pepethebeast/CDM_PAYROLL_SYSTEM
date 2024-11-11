@@ -37,7 +37,7 @@ Partial Class Splash
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Century Gothic", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.Black
-        Label1.Location = New Point(13, 41)
+        Label1.Location = New Point(13, 30)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(300, 21)
@@ -47,7 +47,7 @@ Partial Class Splash
         ' MyProgress
         ' 
         MyProgress.ForeColor = Color.Red
-        MyProgress.Location = New Point(77, 225)
+        MyProgress.Location = New Point(77, 220)
         MyProgress.Margin = New Padding(4, 3, 4, 3)
         MyProgress.Name = "MyProgress"
         MyProgress.Size = New Size(163, 25)
@@ -60,10 +60,10 @@ Partial Class Splash
         ' 
         ' PictureBox4
         ' 
-        PictureBox4.BackColor = Color.White
+        PictureBox4.BackColor = Color.Transparent
         PictureBox4.BackgroundImage = CType(resources.GetObject("PictureBox4.BackgroundImage"), Image)
         PictureBox4.BackgroundImageLayout = ImageLayout.Zoom
-        PictureBox4.Location = New Point(77, 81)
+        PictureBox4.Location = New Point(77, 70)
         PictureBox4.Margin = New Padding(4, 3, 4, 3)
         PictureBox4.Name = "PictureBox4"
         PictureBox4.Size = New Size(163, 125)
@@ -77,7 +77,7 @@ Partial Class Splash
         BackColor = Color.ForestGreen
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(320, 279)
+        ClientSize = New Size(320, 275)
         Controls.Add(PictureBox4)
         Controls.Add(MyProgress)
         Controls.Add(Label1)

@@ -13,6 +13,7 @@ Imports System.Text
 Imports System.Security.Cryptography
 
 Public Class add_employee
+
     Dim IMG_FileNameInput As String
     Public connect As New FirebaseConfig() With
         {
@@ -22,12 +23,13 @@ Public Class add_employee
 
     Private client As IFirebaseClient
 
-    Public Property EmailReceivedText
-    Public Property UserUID As String
-    Public Property Pass123 As String
+    Public Property received_email
+    Public Property user_uid As String
+    Public Property add_employee_id As String
+    Public Property received_name As String
     Private Sub add_employee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        email.Text = EmailReceivedText
-        Dim User_UID = UserUID
+        TextBox1.Text = received_name
+        TextBox2.Text = received_email
         Try
             client = New FireSharp.FirebaseClient(connect)
 
@@ -36,6 +38,7 @@ Public Class add_employee
         End Try
 
     End Sub
+
 
     Public Function ImageToBase64(image As Image) As String
         Using ms As New MemoryStream()
@@ -77,28 +80,12 @@ Public Class add_employee
         payroll.Show()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        Close()
         Employee_Dashboard.ShowDialog()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Fname.Text = Nothing Then
-            MessageBox.Show("Name field is empty." & vbCrLf & "Please fill in the textbox field  to continue")
-            Return
-        End If
-        If Mname.Text = Nothing Then
-            MessageBox.Show("Name field is empty." & vbCrLf & "Please fill in the textbox field  to continue")
-            Return
-        End If
-        If Lname.Text = Nothing Then
-            MessageBox.Show("Name field is empty." & vbCrLf & "Please fill in the textbox field  to continue")
-            Return
-        End If
-        If CivilStatus.Text = Nothing Then
-            MessageBox.Show("Name field is empty." & vbCrLf & "Please fill in the textbox field  to continue")
-            Return
-        End If
         If Contact.Text = Nothing Then
             MessageBox.Show("Contact field is empty." & vbCrLf & "Please fill in the textbox field  to continue")
             Return
@@ -135,48 +122,36 @@ Public Class add_employee
 
         Try
 
-            Dim r = New Random
-            Dim num As Integer
-            num = r.Next(1, 9999999)
-            Dim IDresults = Strings.Right("000000" & num.ToString, 7)
-            Dim check_ID = client.Get("Employee/ID: " + IDresults)
-
-
+            Dim check_ID = client.Get("usersTbl/Employee_ID " + add_employee_id)
             If check_ID.Body <> "null" Then
                 MessageBox.Show("The same ID is found, please try again to generate new ID...", "Error")
 
             Else
 
-                Dim newsuffix = Suffix.Text
-                Dim namer = Fname.Text & " " & Mname.Text.Substring(0, 1) & "." & " " & Lname.Text & " " & newsuffix
                 Dim dob = DateOfBirth.Text
                 Dim age = GetAge(dob)
-                Dim newID = IDresults
                 Dim ImgData = ImageToBase64(PictureBox4.Image)
                 Dim PD As New PersonalData With
            {
-           .Employee_ID = newID,
-           .Name = namer,
-           .CivilStatus = CivilStatus.Text,
-           .Age = age,
-           .DateOfBirth = DateOfBirth.Text,
-           .Password = Pass123,
-           .Contact = Contact.Text,
-           .Email_Address = email.Text,
-           .Position = Position.Text,
-           .DateHired = DateHired.Text,
-           .Department = Department.Text,
-           .Designation = Designation.Text,
-           .Description = Description.Text,
-           .NoofUnits = NoUnits.Text,
-           .Image = ImgData
+           .name = TextBox1.Text,
+           .employeeID = add_employee_id,
+           .age = age,
+           .date_of_birth = dob,
+           .contact = Contact.Text,
+           .email = TextBox2.Text,
+           .position = Position.Text,
+           .date_hired = DateHired.Text,
+           .department = Department.Text,
+           .designation = Designation.Text,
+           .description = Description.Text,
+           .no_of_units = NoUnits.Text,
+           .image = ImgData
            }
 
-                Dim save = client.Set("employeeDataTbl/" + UserUID, PD)
+                Dim save = client.Set("EmployeeDataTbl/" & user_uid, PD)
                 MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Me.Hide()
-                register_rfid.Show()
+                Me.Close()
 
             End If
 
@@ -200,7 +175,7 @@ Public Class add_employee
 
     Private Sub Label5_Click(sender As Object, e As EventArgs)
         Close()
-        timeinout.Show()
+        RFID_Based_Attendance.Show()
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs)
@@ -210,7 +185,7 @@ Public Class add_employee
 
 
 
-    Private Sub Suffix_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Suffix.SelectedIndexChanged
+    Private Sub Suffix_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -225,4 +200,56 @@ Public Class add_employee
             End If
         End Using
     End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Me.Close()
+    End Sub
+
+    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+
+    End Sub
+
+    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+
+    End Sub
+
+    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
+
+    End Sub
+
+    'Private Async Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    '    Dim result = MessageBox.Show("Do you want to cancel the account creation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+    '    If result = DialogResult.Yes Then
+    '        Try
+    '            ' Delete the user's data from Firebase Realtime Database
+    '            Dim deleteResponse As FirebaseResponse = client.Delete($"usersTbl/{UserUID}")
+    '            If deleteResponse.StatusCode = Net.HttpStatusCode.OK Then
+    '                ' Now, delete the user from Firebase Authentication
+    '                Dim authSecret = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs" ' Your Firebase Auth Secret
+    '                Dim userId = UserUID ' User ID of the user to delete
+    '                Dim firebaseAuthUrl = $"https://identitytoolkit.googleapis.com/v1/accounts:delete?key={authSecret}"
+
+    '                Using httpClient As New HttpClient()
+    '                    Dim jsonContent = $"{{""idToken"": ""{userId}""}}"
+    '                    Dim content = New StringContent(jsonContent, Encoding.UTF8, "application/json")
+    '                    Dim response = Await httpClient.PostAsync(firebaseAuthUrl, content) ' Await is valid now
+
+    '                    If response.IsSuccessStatusCode Then
+    '                        MessageBox.Show("Account Creation successfully cancelled and user information deleted!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '                    Else
+    '                        MessageBox.Show("Failed to delete user from Firebase Authentication.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '                    End If
+    '                End Using
+    '            Else
+    '                MessageBox.Show("Failed to delete user information: " & deleteResponse.Body, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '            End If
+    '        Catch ex As Exception
+    '            MessageBox.Show("Error occurred while deleting user information: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        End Try
+
+    '        Me.Close()
+    '        Employee_Dashboard.Show()
+    '    End If
+    'End Sub
 End Class

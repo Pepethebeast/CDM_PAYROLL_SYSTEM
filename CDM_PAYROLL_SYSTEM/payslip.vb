@@ -16,7 +16,7 @@
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         Me.Close()
-        timeinout.Show()
+        RFID_Based_Attendance.Show()
     End Sub
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint

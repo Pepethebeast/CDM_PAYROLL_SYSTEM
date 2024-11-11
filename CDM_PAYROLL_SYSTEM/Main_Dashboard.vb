@@ -35,14 +35,14 @@
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        former = timeinout
+        former = RFID_Based_Attendance
         Me.Close()
         former.Show()
 
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        former = biometrics
+        former = FaceRecognitionForm
         former.Show()
 
     End Sub

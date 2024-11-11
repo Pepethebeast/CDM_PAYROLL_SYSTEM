@@ -26,12 +26,13 @@ Partial Class register_rfid
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(register_rfid))
         PictureBox1 = New PictureBox()
         Label1 = New Label()
-        Button4 = New Button()
         Label2 = New Label()
         Label3 = New Label()
         ProgressBar1 = New ProgressBar()
         Timer1 = New Timer(components)
+        TableLayoutPanel1 = New TableLayoutPanel()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        TableLayoutPanel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -56,28 +57,19 @@ Partial Class register_rfid
         Label1.TabIndex = 1
         Label1.Text = "REGISTER RFID"
         ' 
-        ' Button4
-        ' 
-        Button4.BackColor = Color.DarkSeaGreen
-        Button4.Location = New Point(103, 368)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(110, 39)
-        Button4.TabIndex = 3
-        Button4.Text = "DONE"
-        Button4.UseVisualStyleBackColor = False
-        Button4.Visible = False
-        ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
+        Label2.Dock = DockStyle.Fill
         Label2.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.Maroon
-        Label2.Location = New Point(61, 294)
+        Label2.Location = New Point(3, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(199, 23)
+        Label2.Size = New Size(269, 61)
         Label2.TabIndex = 4
         Label2.Text = "Please Scan your RFID"
+        Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Label3
         ' 
@@ -92,11 +84,30 @@ Partial Class register_rfid
         ' 
         ' ProgressBar1
         ' 
+        ProgressBar1.Anchor = AnchorStyles.None
         ProgressBar1.BackColor = Color.White
-        ProgressBar1.Location = New Point(72, 330)
+        ProgressBar1.Location = New Point(52, 81)
         ProgressBar1.Name = "ProgressBar1"
         ProgressBar1.Size = New Size(171, 23)
         ProgressBar1.TabIndex = 6
+        ' 
+        ' Timer1
+        ' 
+        ' 
+        ' TableLayoutPanel1
+        ' 
+        TableLayoutPanel1.BackColor = Color.Transparent
+        TableLayoutPanel1.ColumnCount = 1
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel1.Controls.Add(ProgressBar1, 0, 1)
+        TableLayoutPanel1.Controls.Add(Label2, 0, 0)
+        TableLayoutPanel1.Location = New Point(25, 273)
+        TableLayoutPanel1.Name = "TableLayoutPanel1"
+        TableLayoutPanel1.RowCount = 2
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 33.3333321F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 33.3333321F))
+        TableLayoutPanel1.Size = New Size(275, 124)
+        TableLayoutPanel1.TabIndex = 7
         ' 
         ' register_rfid
         ' 
@@ -105,10 +116,8 @@ Partial Class register_rfid
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(322, 452)
-        Controls.Add(ProgressBar1)
+        Controls.Add(TableLayoutPanel1)
         Controls.Add(Label3)
-        Controls.Add(Label2)
-        Controls.Add(Button4)
         Controls.Add(Label1)
         Controls.Add(PictureBox1)
         FormBorderStyle = FormBorderStyle.None
@@ -116,15 +125,17 @@ Partial Class register_rfid
         StartPosition = FormStartPosition.CenterScreen
         Text = "register_rfid"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        TableLayoutPanel1.ResumeLayout(False)
+        TableLayoutPanel1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button4 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
 End Class
