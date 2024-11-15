@@ -48,6 +48,10 @@ Partial Class Employee_Dashboard
         PictureBox13 = New PictureBox()
         TableLayoutPanel2 = New TableLayoutPanel()
         TableLayoutPanel3 = New TableLayoutPanel()
+        TableLayoutPanel4 = New TableLayoutPanel()
+        TableLayoutPanel5 = New TableLayoutPanel()
+        PictureBox1 = New PictureBox()
+        Label3 = New Label()
         TableLayoutPanel1.SuspendLayout()
         GroupBox4.SuspendLayout()
         CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
@@ -58,6 +62,9 @@ Partial Class Employee_Dashboard
         CType(PictureBox13, ComponentModel.ISupportInitialize).BeginInit()
         TableLayoutPanel2.SuspendLayout()
         TableLayoutPanel3.SuspendLayout()
+        TableLayoutPanel4.SuspendLayout()
+        TableLayoutPanel5.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TableLayoutPanel1
@@ -265,7 +272,7 @@ Partial Class Employee_Dashboard
         GroupBox4.Controls.Add(PictureBox11)
         GroupBox4.Controls.Add(Label42)
         GroupBox4.Controls.Add(PictureBox12)
-        GroupBox4.Location = New Point(262, 4)
+        GroupBox4.Location = New Point(262, 1)
         GroupBox4.Margin = New Padding(4, 3, 4, 3)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(4, 3, 4, 3)
@@ -321,7 +328,7 @@ Partial Class Employee_Dashboard
         PictureBox9.Location = New Point(4, 3)
         PictureBox9.Margin = New Padding(4, 3, 4, 3)
         PictureBox9.Name = "PictureBox9"
-        PictureBox9.Size = New Size(309, 347)
+        PictureBox9.Size = New Size(287, 334)
         PictureBox9.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox9.TabIndex = 15
         PictureBox9.TabStop = False
@@ -332,7 +339,7 @@ Partial Class Employee_Dashboard
         Label8.AutoSize = True
         Label8.Cursor = Cursors.Hand
         Label8.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label8.Location = New Point(69, 372)
+        Label8.Location = New Point(58, 358)
         Label8.Margin = New Padding(4, 0, 4, 0)
         Label8.Name = "Label8"
         Label8.Size = New Size(178, 24)
@@ -346,7 +353,7 @@ Partial Class Employee_Dashboard
         PictureBox4.Location = New Point(4, 3)
         PictureBox4.Margin = New Padding(4, 3, 4, 3)
         PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(309, 347)
+        PictureBox4.Size = New Size(287, 334)
         PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox4.TabIndex = 10
         PictureBox4.TabStop = False
@@ -357,7 +364,7 @@ Partial Class Employee_Dashboard
         Label4.AutoSize = True
         Label4.Cursor = Cursors.Hand
         Label4.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label4.Location = New Point(45, 372)
+        Label4.Location = New Point(34, 358)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
         Label4.Size = New Size(227, 24)
@@ -394,12 +401,13 @@ Partial Class Employee_Dashboard
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel2.Controls.Add(PictureBox4, 0, 0)
         TableLayoutPanel2.Controls.Add(Label4, 0, 1)
-        TableLayoutPanel2.Location = New Point(430, 136)
+        TableLayoutPanel2.Dock = DockStyle.Fill
+        TableLayoutPanel2.Location = New Point(3, 3)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 2
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
-        TableLayoutPanel2.Size = New Size(317, 416)
+        TableLayoutPanel2.Size = New Size(295, 400)
         TableLayoutPanel2.TabIndex = 28
         ' 
         ' TableLayoutPanel3
@@ -409,13 +417,74 @@ Partial Class Employee_Dashboard
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel3.Controls.Add(PictureBox9, 0, 0)
         TableLayoutPanel3.Controls.Add(Label8, 0, 1)
-        TableLayoutPanel3.Location = New Point(848, 139)
+        TableLayoutPanel3.Dock = DockStyle.Fill
+        TableLayoutPanel3.Location = New Point(304, 3)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 2
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
-        TableLayoutPanel3.Size = New Size(317, 416)
+        TableLayoutPanel3.Size = New Size(295, 400)
         TableLayoutPanel3.TabIndex = 29
+        ' 
+        ' TableLayoutPanel4
+        ' 
+        TableLayoutPanel4.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        TableLayoutPanel4.ColumnCount = 3
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3333321F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3333321F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3333321F))
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel5, 2, 0)
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel2, 0, 0)
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel3, 1, 0)
+        TableLayoutPanel4.Location = New Point(341, 143)
+        TableLayoutPanel4.Name = "TableLayoutPanel4"
+        TableLayoutPanel4.RowCount = 1
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TableLayoutPanel4.Size = New Size(906, 406)
+        TableLayoutPanel4.TabIndex = 30
+        ' 
+        ' TableLayoutPanel5
+        ' 
+        TableLayoutPanel5.BackColor = Color.DarkSeaGreen
+        TableLayoutPanel5.ColumnCount = 1
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel5.Controls.Add(PictureBox1, 0, 0)
+        TableLayoutPanel5.Controls.Add(Label3, 0, 1)
+        TableLayoutPanel5.Dock = DockStyle.Fill
+        TableLayoutPanel5.Location = New Point(605, 3)
+        TableLayoutPanel5.Name = "TableLayoutPanel5"
+        TableLayoutPanel5.RowCount = 2
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
+        TableLayoutPanel5.Size = New Size(298, 400)
+        TableLayoutPanel5.TabIndex = 30
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackColor = SystemColors.Window
+        PictureBox1.Cursor = Cursors.Hand
+        PictureBox1.Dock = DockStyle.Fill
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(4, 3)
+        PictureBox1.Margin = New Padding(4, 3, 4, 3)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(290, 334)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 15
+        PictureBox1.TabStop = False
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Cursor = Cursors.Hand
+        Label3.Font = New Font("Arial Rounded MT Bold", 15.75F)
+        Label3.Location = New Point(16, 358)
+        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(265, 24)
+        Label3.TabIndex = 12
+        Label3.Text = "EMPLOYEE SCHEDULER"
         ' 
         ' Employee_Dashboard
         ' 
@@ -424,8 +493,7 @@ Partial Class Employee_Dashboard
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1350, 661)
-        Controls.Add(TableLayoutPanel3)
-        Controls.Add(TableLayoutPanel2)
+        Controls.Add(TableLayoutPanel4)
         Controls.Add(GroupBox4)
         Controls.Add(Panel1)
         Margin = New Padding(4, 3, 4, 3)
@@ -446,6 +514,10 @@ Partial Class Employee_Dashboard
         TableLayoutPanel2.PerformLayout()
         TableLayoutPanel3.ResumeLayout(False)
         TableLayoutPanel3.PerformLayout()
+        TableLayoutPanel4.ResumeLayout(False)
+        TableLayoutPanel5.ResumeLayout(False)
+        TableLayoutPanel5.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
 
     End Sub
@@ -474,4 +546,8 @@ Partial Class Employee_Dashboard
     Friend WithEvents Label29 As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
+    Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label3 As Label
 End Class

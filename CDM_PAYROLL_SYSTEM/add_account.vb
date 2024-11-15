@@ -62,7 +62,19 @@ Public Class add_account
         End Try
 
     End Sub
-
+    Private Sub add_account_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' Show a confirmation dialog (optional)
+        ' Only show the exit confirmation if isExiting is set to True
+        If Not IsExiting Then
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.No Then
+                e.Cancel = True
+            Else
+                IsExiting = True ' Set the flag to prevent further prompts
+                Application.Exit() ' Exit the entire application
+            End If
+        End If
+    End Sub
     Private Async Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If String.IsNullOrWhiteSpace(nametextbox.Text) OrElse
        String.IsNullOrWhiteSpace(emailtextbox.Text) OrElse
@@ -218,7 +230,7 @@ Public Class add_account
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        Me.Close()
+        Me.Hide()
         Employee_Dashboard.Show()
     End Sub
 End Class

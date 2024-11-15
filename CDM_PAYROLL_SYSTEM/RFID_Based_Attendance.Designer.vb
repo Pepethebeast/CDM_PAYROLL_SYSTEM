@@ -528,7 +528,7 @@ Partial Class RFID_Based_Attendance
         ' 
         ' TableLayoutPanel2
         ' 
-        TableLayoutPanel2.BackColor = Color.DarkSeaGreen
+        TableLayoutPanel2.BackColor = Color.White
         TableLayoutPanel2.ColumnCount = 2
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 35F))
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 65F))
@@ -718,6 +718,7 @@ Partial Class RFID_Based_Attendance
         Controls.Add(DGVUserData)
         Controls.Add(GroupBox4)
         Controls.Add(Panel2)
+        DoubleBuffered = True
         Name = "RFID_Based_Attendance"
         StartPosition = FormStartPosition.CenterScreen
         Text = "RFID_Based_Attendance"

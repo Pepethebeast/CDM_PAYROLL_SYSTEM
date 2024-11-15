@@ -23,920 +23,1028 @@ Partial Class payslip
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(payslip))
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.Label40 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.PictureBox11 = New System.Windows.Forms.PictureBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.Panel8.SuspendLayout()
-        Me.Panel7.SuspendLayout()
-        Me.Panel6.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        Me.Panel4.SuspendLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel3.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
-        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'Panel8
-        '
-        Me.Panel8.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel8.Controls.Add(Me.Button2)
-        Me.Panel8.Controls.Add(Me.Button1)
-        Me.Panel8.Controls.Add(Me.Label32)
-        Me.Panel8.Controls.Add(Me.Label31)
-        Me.Panel8.Controls.Add(Me.Label38)
-        Me.Panel8.Controls.Add(Me.Label39)
-        Me.Panel8.Location = New System.Drawing.Point(564, 518)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(777, 196)
-        Me.Panel8.TabIndex = 39
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(629, 91)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(106, 19)
-        Me.Button2.TabIndex = 47
-        Me.Button2.Text = "Send to email"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(555, 91)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(68, 19)
-        Me.Button1.TabIndex = 46
-        Me.Button1.Text = "Download"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.BackColor = System.Drawing.Color.Transparent
-        Me.Label32.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label32.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label32.Location = New System.Drawing.Point(142, 92)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(204, 19)
-        Me.Label32.TabIndex = 45
-        Me.Label32.Text = "June_EmployeeID1234.pdf"
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.BackColor = System.Drawing.Color.Transparent
-        Me.Label31.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label31.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label31.Location = New System.Drawing.Point(28, 92)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(114, 19)
-        Me.Label31.TabIndex = 40
-        Me.Label31.Text = "Month of June:"
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.BackColor = System.Drawing.Color.Transparent
-        Me.Label38.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label38.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label38.Location = New System.Drawing.Point(28, 58)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(224, 16)
-        Me.Label38.TabIndex = 30
-        Me.Label38.Text = "Download your latest and past payslip"
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.BackColor = System.Drawing.Color.Transparent
-        Me.Label39.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label39.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(27, 29)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(178, 23)
-        Me.Label39.TabIndex = 28
-        Me.Label39.Text = "Download Payslip"
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel7.Controls.Add(Me.Label24)
-        Me.Panel7.Controls.Add(Me.Label30)
-        Me.Panel7.Controls.Add(Me.Label25)
-        Me.Panel7.Controls.Add(Me.Label26)
-        Me.Panel7.Controls.Add(Me.Label27)
-        Me.Panel7.Controls.Add(Me.Label28)
-        Me.Panel7.Controls.Add(Me.Label29)
-        Me.Panel7.Controls.Add(Me.Label23)
-        Me.Panel7.Controls.Add(Me.Label22)
-        Me.Panel7.Location = New System.Drawing.Point(564, 229)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(774, 283)
-        Me.Panel7.TabIndex = 38
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.BackColor = System.Drawing.Color.Transparent
-        Me.Label24.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label24.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label24.Location = New System.Drawing.Point(383, 173)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(197, 18)
-        Me.Label24.TabIndex = 45
-        Me.Label24.Text = "Total Base Salary: ₱30,000"
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.BackColor = System.Drawing.Color.Transparent
-        Me.Label30.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label30.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label30.Location = New System.Drawing.Point(29, 213)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(127, 18)
-        Me.Label30.TabIndex = 44
-        Me.Label30.Text = "Overload Units: 6"
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.BackColor = System.Drawing.Color.Transparent
-        Me.Label25.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label25.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label25.Location = New System.Drawing.Point(383, 132)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(142, 18)
-        Me.Label25.TabIndex = 42
-        Me.Label25.Text = "Rate per unit: ₱100"
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.BackColor = System.Drawing.Color.Transparent
-        Me.Label26.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label26.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label26.Location = New System.Drawing.Point(383, 92)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(144, 18)
-        Me.Label26.TabIndex = 41
-        Me.Label26.Text = "Total no. of units: 30"
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.BackColor = System.Drawing.Color.Transparent
-        Me.Label27.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label27.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label27.Location = New System.Drawing.Point(29, 173)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(114, 18)
-        Me.Label27.TabIndex = 40
-        Me.Label27.Text = "No. of Units: 24"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.BackColor = System.Drawing.Color.Transparent
-        Me.Label28.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label28.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label28.Location = New System.Drawing.Point(29, 92)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(230, 18)
-        Me.Label28.TabIndex = 39
-        Me.Label28.Text = "Designation: Licensed Instructor"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.BackColor = System.Drawing.Color.Transparent
-        Me.Label29.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label29.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label29.Location = New System.Drawing.Point(29, 132)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(135, 18)
-        Me.Label29.TabIndex = 38
-        Me.Label29.Text = "Position: Instructor"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.BackColor = System.Drawing.Color.Transparent
-        Me.Label23.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label23.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label23.Location = New System.Drawing.Point(28, 58)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(259, 16)
-        Me.Label23.TabIndex = 30
-        Me.Label23.Text = "Breakdown of your earnings and deductions"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.BackColor = System.Drawing.Color.Transparent
-        Me.Label22.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label22.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(27, 29)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(161, 23)
-        Me.Label22.TabIndex = 28
-        Me.Label22.Text = "Pay Distribution"
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel6.Controls.Add(Me.Label19)
-        Me.Panel6.Controls.Add(Me.Label21)
-        Me.Panel6.Location = New System.Drawing.Point(1084, 78)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(254, 145)
-        Me.Panel6.TabIndex = 37
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.BackColor = System.Drawing.Color.Transparent
-        Me.Label19.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label19.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.DarkRed
-        Me.Label19.Location = New System.Drawing.Point(64, 80)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(121, 22)
-        Me.Label19.TabIndex = 28
-        Me.Label19.Text = "₱104,143.00"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.BackColor = System.Drawing.Color.Transparent
-        Me.Label21.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label21.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(74, 35)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(96, 23)
-        Me.Label21.TabIndex = 27
-        Me.Label21.Text = "Total Pay"
-        '
-        'Panel5
-        '
-        Me.Panel5.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel5.Controls.Add(Me.Label17)
-        Me.Panel5.Controls.Add(Me.Label18)
-        Me.Panel5.Location = New System.Drawing.Point(824, 78)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(254, 145)
-        Me.Panel5.TabIndex = 36
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.BackColor = System.Drawing.Color.Transparent
-        Me.Label17.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.DarkRed
-        Me.Label17.Location = New System.Drawing.Point(64, 80)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(121, 22)
-        Me.Label17.TabIndex = 28
-        Me.Label17.Text = "₱104,143.00"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.BackColor = System.Drawing.Color.Transparent
-        Me.Label18.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label18.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(64, 35)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(117, 23)
-        Me.Label18.TabIndex = 27
-        Me.Label18.Text = "Deductions"
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel4.Controls.Add(Me.Label41)
-        Me.Panel4.Controls.Add(Me.Label40)
-        Me.Panel4.Controls.Add(Me.Label37)
-        Me.Panel4.Controls.Add(Me.Label36)
-        Me.Panel4.Controls.Add(Me.Label35)
-        Me.Panel4.Controls.Add(Me.Label34)
-        Me.Panel4.Controls.Add(Me.Label33)
-        Me.Panel4.Controls.Add(Me.Label16)
-        Me.Panel4.Controls.Add(Me.Label12)
-        Me.Panel4.Controls.Add(Me.Label15)
-        Me.Panel4.Controls.Add(Me.Label14)
-        Me.Panel4.Controls.Add(Me.Label13)
-        Me.Panel4.Controls.Add(Me.Label11)
-        Me.Panel4.Controls.Add(Me.Label10)
-        Me.Panel4.Controls.Add(Me.Label7)
-        Me.Panel4.Controls.Add(Me.PictureBox9)
-        Me.Panel4.Location = New System.Drawing.Point(304, 75)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(254, 639)
-        Me.Panel4.TabIndex = 35
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.BackColor = System.Drawing.Color.Transparent
-        Me.Label41.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label41.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label41.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label41.Location = New System.Drawing.Point(127, 434)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(93, 18)
-        Me.Label41.TabIndex = 43
-        Me.Label41.Text = "Alden Nayre"
-        '
-        'Label40
-        '
-        Me.Label40.AutoSize = True
-        Me.Label40.BackColor = System.Drawing.Color.Transparent
-        Me.Label40.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label40.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label40.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label40.Location = New System.Drawing.Point(121, 478)
-        Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(93, 18)
-        Me.Label40.TabIndex = 42
-        Me.Label40.Text = "Alden Nayre"
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.BackColor = System.Drawing.Color.Transparent
-        Me.Label37.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label37.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label37.Location = New System.Drawing.Point(129, 390)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(93, 18)
-        Me.Label37.TabIndex = 41
-        Me.Label37.Text = "Alden Nayre"
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.BackColor = System.Drawing.Color.Transparent
-        Me.Label36.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label36.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label36.Location = New System.Drawing.Point(126, 341)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(93, 18)
-        Me.Label36.TabIndex = 40
-        Me.Label36.Text = "Alden Nayre"
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.BackColor = System.Drawing.Color.Transparent
-        Me.Label35.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label35.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label35.Location = New System.Drawing.Point(117, 301)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(93, 18)
-        Me.Label35.TabIndex = 39
-        Me.Label35.Text = "Alden Nayre"
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.BackColor = System.Drawing.Color.Transparent
-        Me.Label34.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label34.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label34.Location = New System.Drawing.Point(63, 260)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(26, 18)
-        Me.Label34.TabIndex = 38
-        Me.Label34.Text = "16"
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.BackColor = System.Drawing.Color.Transparent
-        Me.Label33.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label33.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label33.Location = New System.Drawing.Point(97, 221)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(93, 18)
-        Me.Label33.TabIndex = 37
-        Me.Label33.Text = "Alden Nayre"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.BackColor = System.Drawing.Color.Transparent
-        Me.Label16.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label16.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label16.Location = New System.Drawing.Point(17, 478)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(92, 18)
-        Me.Label16.TabIndex = 36
-        Me.Label16.Text = "Date Hired:"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label12.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label12.Location = New System.Drawing.Point(17, 434)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(101, 18)
-        Me.Label12.TabIndex = 35
-        Me.Label12.Text = "Department:"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.BackColor = System.Drawing.Color.Transparent
-        Me.Label15.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label15.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label15.Location = New System.Drawing.Point(17, 390)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(104, 18)
-        Me.Label15.TabIndex = 34
-        Me.Label15.Text = "Designation:"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.BackColor = System.Drawing.Color.Transparent
-        Me.Label14.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label14.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label14.Location = New System.Drawing.Point(18, 341)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(102, 18)
-        Me.Label14.TabIndex = 33
-        Me.Label14.Text = "No. of Units:"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label13.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label13.Location = New System.Drawing.Point(16, 260)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(43, 18)
-        Me.Label13.TabIndex = 32
-        Me.Label13.Text = "Age:"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label11.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label11.Location = New System.Drawing.Point(17, 301)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(80, 18)
-        Me.Label11.TabIndex = 30
-        Me.Label11.Text = "Position: "
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label10.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label10.Location = New System.Drawing.Point(16, 221)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(57, 18)
-        Me.Label10.TabIndex = 29
-        Me.Label10.Text = "Name:"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label7.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(16, 183)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(174, 23)
-        Me.Label7.TabIndex = 28
-        Me.Label7.Text = "Employee Details"
-        '
-        'PictureBox9
-        '
-        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
-        Me.PictureBox9.Location = New System.Drawing.Point(3, 3)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(248, 165)
-        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox9.TabIndex = 0
-        Me.PictureBox9.TabStop = False
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.Window
-        Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Controls.Add(Me.Label9)
-        Me.Panel3.Location = New System.Drawing.Point(564, 78)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(254, 145)
-        Me.Panel3.TabIndex = 34
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label8.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.DarkRed
-        Me.Label8.Location = New System.Drawing.Point(64, 80)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(121, 22)
-        Me.Label8.TabIndex = 28
-        Me.Label8.Text = "₱104,143.00"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label9.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(64, 35)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(127, 23)
-        Me.Label9.TabIndex = 27
-        Me.Label9.Text = "Basic Salary"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Location = New System.Drawing.Point(0, 1)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(288, 1039)
-        Me.Panel1.TabIndex = 40
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.White
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(5, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(280, 151)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 18
-        Me.PictureBox1.TabStop = False
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.Label20)
-        Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.PictureBox5)
-        Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Controls.Add(Me.PictureBox8)
-        Me.Panel2.Controls.Add(Me.PictureBox7)
-        Me.Panel2.Controls.Add(Me.PictureBox6)
-        Me.Panel2.Controls.Add(Me.PictureBox3)
-        Me.Panel2.Controls.Add(Me.PictureBox2)
-        Me.Panel2.Location = New System.Drawing.Point(5, 175)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(280, 574)
-        Me.Panel2.TabIndex = 4
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label20.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(97, 428)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(84, 23)
-        Me.Label20.TabIndex = 17
-        Me.Label20.Text = "Reports"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label3.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(97, 186)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(77, 23)
-        Me.Label3.TabIndex = 16
-        Me.Label3.Text = "Payroll"
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(16, 170)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 15
-        Me.PictureBox5.TabStop = False
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label6.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(97, 347)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(88, 23)
-        Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Account"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label5.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(97, 263)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(141, 23)
-        Me.Label5.TabIndex = 12
-        Me.Label5.Text = "Time Records"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label2.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(97, 107)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(104, 23)
-        Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Employee"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label1.Font = New System.Drawing.Font("Arial", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(97, 36)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 23)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Menu"
-        '
-        'PictureBox8
-        '
-        Me.PictureBox8.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
-        Me.PictureBox8.Location = New System.Drawing.Point(16, 417)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox8.TabIndex = 7
-        Me.PictureBox8.TabStop = False
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
-        Me.PictureBox7.Location = New System.Drawing.Point(16, 333)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox7.TabIndex = 6
-        Me.PictureBox7.TabStop = False
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(16, 251)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 5
-        Me.PictureBox6.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(16, 94)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 2
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(16, 19)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(50, 50)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 1
-        Me.PictureBox2.TabStop = False
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.GroupBox4.Controls.Add(Me.PictureBox11)
-        Me.GroupBox4.Controls.Add(Me.Label4)
-        Me.GroupBox4.Controls.Add(Me.PictureBox4)
-        Me.GroupBox4.Location = New System.Drawing.Point(294, 1)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1055, 67)
-        Me.GroupBox4.TabIndex = 41
-        Me.GroupBox4.TabStop = False
-        '
-        'PictureBox11
-        '
-        Me.PictureBox11.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), System.Drawing.Image)
-        Me.PictureBox11.Location = New System.Drawing.Point(920, 0)
-        Me.PictureBox11.Name = "PictureBox11"
-        Me.PictureBox11.Size = New System.Drawing.Size(70, 64)
-        Me.PictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox11.TabIndex = 21
-        Me.PictureBox11.TabStop = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Label4.Font = New System.Drawing.Font("Arial Rounded MT Bold", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(19, 16)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(258, 22)
-        Me.Label4.TabIndex = 20
-        Me.Label4.Text = "Employee Payroll Overview"
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(985, 0)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(70, 64)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox4.TabIndex = 19
-        Me.PictureBox4.TabStop = False
-        '
-        'payslip
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(1350, 729)
-        Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel8)
-        Me.Controls.Add(Me.Panel7)
-        Me.Controls.Add(Me.Panel6)
-        Me.Controls.Add(Me.Panel5)
-        Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Panel3)
-        Me.Name = "payslip"
-        Me.Text = "payslip"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
-        Me.Panel4.PerformLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Panel8 = New Panel()
+        TableLayoutPanel8 = New TableLayoutPanel()
+        Button5 = New Button()
+        Button2 = New Button()
+        Label5 = New Label()
+        Button1 = New Button()
+        Label3 = New Label()
+        Label2 = New Label()
+        TableLayoutPanel7 = New TableLayoutPanel()
+        Button4 = New Button()
+        Button3 = New Button()
+        Panel7 = New Panel()
+        TableLayoutPanel6 = New TableLayoutPanel()
+        TextBox6 = New TextBox()
+        TextBox5 = New TextBox()
+        Label1 = New Label()
+        Label43 = New Label()
+        TableLayoutPanel1 = New TableLayoutPanel()
+        TextBox4 = New TextBox()
+        TextBox3 = New TextBox()
+        TextBox2 = New TextBox()
+        Label28 = New Label()
+        Label26 = New Label()
+        TextBox1 = New TextBox()
+        Label24 = New Label()
+        Label25 = New Label()
+        Label23 = New Label()
+        Label22 = New Label()
+        Panel6 = New Panel()
+        TableLayoutPanel5 = New TableLayoutPanel()
+        Label19 = New Label()
+        Label21 = New Label()
+        Panel5 = New Panel()
+        TableLayoutPanel4 = New TableLayoutPanel()
+        Label17 = New Label()
+        Label18 = New Label()
+        Panel4 = New Panel()
+        TableLayoutPanel2 = New TableLayoutPanel()
+        Label40 = New Label()
+        Label41 = New Label()
+        Label10 = New Label()
+        Label13 = New Label()
+        Label37 = New Label()
+        Label11 = New Label()
+        Label36 = New Label()
+        Label14 = New Label()
+        Label35 = New Label()
+        Label15 = New Label()
+        Label34 = New Label()
+        Label12 = New Label()
+        Label33 = New Label()
+        Label16 = New Label()
+        Label7 = New Label()
+        PictureBox9 = New PictureBox()
+        Panel3 = New Panel()
+        TableLayoutPanel3 = New TableLayoutPanel()
+        Label8 = New Label()
+        Label9 = New Label()
+        GroupBox4 = New GroupBox()
+        PictureBox11 = New PictureBox()
+        Label4 = New Label()
+        PictureBox4 = New PictureBox()
+        printDoc = New Printing.PrintDocument()
+        PrintPreviewDialog1 = New PrintPreviewDialog()
+        Panel8.SuspendLayout()
+        TableLayoutPanel8.SuspendLayout()
+        TableLayoutPanel7.SuspendLayout()
+        Panel7.SuspendLayout()
+        TableLayoutPanel6.SuspendLayout()
+        TableLayoutPanel1.SuspendLayout()
+        Panel6.SuspendLayout()
+        TableLayoutPanel5.SuspendLayout()
+        Panel5.SuspendLayout()
+        TableLayoutPanel4.SuspendLayout()
+        Panel4.SuspendLayout()
+        TableLayoutPanel2.SuspendLayout()
+        CType(PictureBox9, ComponentModel.ISupportInitialize).BeginInit()
+        Panel3.SuspendLayout()
+        TableLayoutPanel3.SuspendLayout()
+        GroupBox4.SuspendLayout()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' Panel8
+        ' 
+        Panel8.BackColor = SystemColors.Window
+        Panel8.BorderStyle = BorderStyle.FixedSingle
+        Panel8.Controls.Add(TableLayoutPanel8)
+        Panel8.Controls.Add(Label2)
+        Panel8.Location = New Point(306, 509)
+        Panel8.Margin = New Padding(4, 3, 4, 3)
+        Panel8.Name = "Panel8"
+        Panel8.Size = New Size(849, 145)
+        Panel8.TabIndex = 39
+        ' 
+        ' TableLayoutPanel8
+        ' 
+        TableLayoutPanel8.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        TableLayoutPanel8.ColumnCount = 5
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15.789546F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 36.8420753F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15.7894611F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15.7894611F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15.7894611F))
+        TableLayoutPanel8.Controls.Add(Button5, 4, 0)
+        TableLayoutPanel8.Controls.Add(Button2, 3, 0)
+        TableLayoutPanel8.Controls.Add(Label5, 1, 0)
+        TableLayoutPanel8.Controls.Add(Button1, 2, 0)
+        TableLayoutPanel8.Controls.Add(Label3, 0, 0)
+        TableLayoutPanel8.Location = New Point(33, 52)
+        TableLayoutPanel8.Name = "TableLayoutPanel8"
+        TableLayoutPanel8.RowCount = 1
+        TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TableLayoutPanel8.Size = New Size(730, 56)
+        TableLayoutPanel8.TabIndex = 51
+        ' 
+        ' Button5
+        ' 
+        Button5.Anchor = AnchorStyles.None
+        Button5.BackColor = Color.DarkSeaGreen
+        Button5.Location = New Point(618, 13)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(105, 29)
+        Button5.TabIndex = 50
+        Button5.Text = "SEND TO EMAIL"
+        Button5.UseVisualStyleBackColor = False
+        ' 
+        ' Button2
+        ' 
+        Button2.Anchor = AnchorStyles.None
+        Button2.BackColor = Color.DarkSeaGreen
+        Button2.Location = New Point(502, 13)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(105, 29)
+        Button2.TabIndex = 48
+        Button2.Text = "DOWNLOAD"
+        Button2.UseVisualStyleBackColor = False
+        ' 
+        ' Label5
+        ' 
+        Label5.Anchor = AnchorStyles.None
+        Label5.AutoSize = True
+        Label5.BackColor = Color.Transparent
+        Label5.Cursor = Cursors.Hand
+        Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = SystemColors.ActiveCaptionText
+        Label5.Location = New Point(169, 19)
+        Label5.Margin = New Padding(4, 0, 4, 0)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(160, 18)
+        Label5.TabIndex = 39
+        Label5.Text = "November 1-15, 2024"
+        ' 
+        ' Button1
+        ' 
+        Button1.Anchor = AnchorStyles.None
+        Button1.BackColor = Color.DarkSeaGreen
+        Button1.Location = New Point(387, 13)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(105, 29)
+        Button1.TabIndex = 49
+        Button1.Text = "VIEW"
+        Button1.UseVisualStyleBackColor = False
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.BackColor = Color.Transparent
+        Label3.Cursor = Cursors.Hand
+        Label3.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = SystemColors.ActiveCaptionText
+        Label3.Location = New Point(35, 19)
+        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(46, 18)
+        Label3.TabIndex = 38
+        Label3.Text = "Date:"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Cursor = Cursors.Hand
+        Label2.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(33, 17)
+        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(80, 23)
+        Label2.TabIndex = 29
+        Label2.Text = "Payslip"
+        ' 
+        ' TableLayoutPanel7
+        ' 
+        TableLayoutPanel7.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        TableLayoutPanel7.ColumnCount = 2
+        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25.0006237F))
+        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 25.0006275F))
+        TableLayoutPanel7.Controls.Add(Button4, 0, 0)
+        TableLayoutPanel7.Controls.Add(Button3, 1, 0)
+        TableLayoutPanel7.Location = New Point(496, 194)
+        TableLayoutPanel7.Name = "TableLayoutPanel7"
+        TableLayoutPanel7.RowCount = 1
+        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TableLayoutPanel7.Size = New Size(267, 50)
+        TableLayoutPanel7.TabIndex = 50
+        ' 
+        ' Button4
+        ' 
+        Button4.BackColor = Color.DarkSeaGreen
+        Button4.Dock = DockStyle.Fill
+        Button4.Location = New Point(4, 4)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(125, 42)
+        Button4.TabIndex = 49
+        Button4.Text = "Calculate"
+        Button4.UseVisualStyleBackColor = False
+        ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.DarkSeaGreen
+        Button3.Dock = DockStyle.Fill
+        Button3.Location = New Point(136, 4)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(127, 42)
+        Button3.TabIndex = 48
+        Button3.Text = "EDIT"
+        Button3.UseVisualStyleBackColor = False
+        ' 
+        ' Panel7
+        ' 
+        Panel7.BackColor = SystemColors.Window
+        Panel7.BorderStyle = BorderStyle.FixedSingle
+        Panel7.Controls.Add(TableLayoutPanel7)
+        Panel7.Controls.Add(TableLayoutPanel6)
+        Panel7.Controls.Add(TableLayoutPanel1)
+        Panel7.Controls.Add(Label23)
+        Panel7.Controls.Add(Label22)
+        Panel7.Location = New Point(306, 216)
+        Panel7.Margin = New Padding(4, 3, 4, 3)
+        Panel7.Name = "Panel7"
+        Panel7.Size = New Size(849, 287)
+        Panel7.TabIndex = 38
+        ' 
+        ' TableLayoutPanel6
+        ' 
+        TableLayoutPanel6.ColumnCount = 2
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
+        TableLayoutPanel6.Controls.Add(TextBox6, 1, 1)
+        TableLayoutPanel6.Controls.Add(TextBox5, 1, 0)
+        TableLayoutPanel6.Controls.Add(Label1, 0, 1)
+        TableLayoutPanel6.Controls.Add(Label43, 0, 0)
+        TableLayoutPanel6.Location = New Point(441, 86)
+        TableLayoutPanel6.Name = "TableLayoutPanel6"
+        TableLayoutPanel6.RowCount = 2
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel6.Size = New Size(374, 102)
+        TableLayoutPanel6.TabIndex = 47
+        ' 
+        ' TextBox6
+        ' 
+        TextBox6.Anchor = AnchorStyles.None
+        TextBox6.Enabled = False
+        TextBox6.Location = New Point(152, 65)
+        TextBox6.Name = "TextBox6"
+        TextBox6.Size = New Size(219, 23)
+        TextBox6.TabIndex = 57
+        ' 
+        ' TextBox5
+        ' 
+        TextBox5.Anchor = AnchorStyles.None
+        TextBox5.Enabled = False
+        TextBox5.Location = New Point(152, 14)
+        TextBox5.Name = "TextBox5"
+        TextBox5.Size = New Size(219, 23)
+        TextBox5.TabIndex = 56
+        ' 
+        ' Label1
+        ' 
+        Label1.Anchor = AnchorStyles.None
+        Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
+        Label1.Cursor = Cursors.Hand
+        Label1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = SystemColors.ActiveCaptionText
+        Label1.Location = New Point(23, 67)
+        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(102, 18)
+        Label1.TabIndex = 55
+        Label1.Text = "Net Earnings:"
+        ' 
+        ' Label43
+        ' 
+        Label43.Anchor = AnchorStyles.None
+        Label43.AutoSize = True
+        Label43.BackColor = Color.Transparent
+        Label43.Cursor = Cursors.Hand
+        Label43.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label43.ForeColor = SystemColors.ActiveCaptionText
+        Label43.Location = New Point(33, 16)
+        Label43.Margin = New Padding(4, 0, 4, 0)
+        Label43.Name = "Label43"
+        Label43.Size = New Size(83, 18)
+        Label43.TabIndex = 53
+        Label43.Text = "Deduction:"
+        ' 
+        ' TableLayoutPanel1
+        ' 
+        TableLayoutPanel1.ColumnCount = 2
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
+        TableLayoutPanel1.Controls.Add(TextBox4, 1, 3)
+        TableLayoutPanel1.Controls.Add(TextBox3, 1, 2)
+        TableLayoutPanel1.Controls.Add(TextBox2, 1, 1)
+        TableLayoutPanel1.Controls.Add(Label28, 0, 0)
+        TableLayoutPanel1.Controls.Add(Label26, 0, 2)
+        TableLayoutPanel1.Controls.Add(TextBox1, 1, 0)
+        TableLayoutPanel1.Controls.Add(Label24, 0, 3)
+        TableLayoutPanel1.Controls.Add(Label25, 0, 1)
+        TableLayoutPanel1.Location = New Point(33, 86)
+        TableLayoutPanel1.Name = "TableLayoutPanel1"
+        TableLayoutPanel1.RowCount = 4
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.Size = New Size(399, 158)
+        TableLayoutPanel1.TabIndex = 46
+        ' 
+        ' TextBox4
+        ' 
+        TextBox4.Anchor = AnchorStyles.None
+        TextBox4.Enabled = False
+        TextBox4.Location = New Point(162, 126)
+        TextBox4.Name = "TextBox4"
+        TextBox4.Size = New Size(234, 23)
+        TextBox4.TabIndex = 49
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.Anchor = AnchorStyles.None
+        TextBox3.Enabled = False
+        TextBox3.Location = New Point(162, 86)
+        TextBox3.Name = "TextBox3"
+        TextBox3.Size = New Size(234, 23)
+        TextBox3.TabIndex = 48
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Anchor = AnchorStyles.None
+        TextBox2.Enabled = False
+        TextBox2.Location = New Point(162, 47)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(234, 23)
+        TextBox2.TabIndex = 47
+        ' 
+        ' Label28
+        ' 
+        Label28.Anchor = AnchorStyles.None
+        Label28.AutoSize = True
+        Label28.BackColor = Color.Transparent
+        Label28.Cursor = Cursors.Hand
+        Label28.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label28.ForeColor = SystemColors.ActiveCaptionText
+        Label28.Location = New Point(34, 10)
+        Label28.Margin = New Padding(4, 0, 4, 0)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(91, 18)
+        Label28.TabIndex = 39
+        Label28.Text = "Work hours:"
+        ' 
+        ' Label26
+        ' 
+        Label26.Anchor = AnchorStyles.None
+        Label26.AutoSize = True
+        Label26.BackColor = Color.Transparent
+        Label26.Cursor = Cursors.Hand
+        Label26.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label26.ForeColor = SystemColors.ActiveCaptionText
+        Label26.Location = New Point(20, 88)
+        Label26.Margin = New Padding(4, 0, 4, 0)
+        Label26.Name = "Label26"
+        Label26.Size = New Size(118, 18)
+        Label26.TabIndex = 47
+        Label26.Text = "Total no. of units"
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Anchor = AnchorStyles.None
+        TextBox1.Enabled = False
+        TextBox1.Location = New Point(162, 8)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(234, 23)
+        TextBox1.TabIndex = 46
+        ' 
+        ' Label24
+        ' 
+        Label24.Anchor = AnchorStyles.None
+        Label24.AutoSize = True
+        Label24.BackColor = Color.Transparent
+        Label24.Cursor = Cursors.Hand
+        Label24.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label24.ForeColor = SystemColors.ActiveCaptionText
+        Label24.Location = New Point(31, 128)
+        Label24.Margin = New Padding(4, 0, 4, 0)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(97, 18)
+        Label24.TabIndex = 49
+        Label24.Text = "Base Salary:"
+        ' 
+        ' Label25
+        ' 
+        Label25.Anchor = AnchorStyles.None
+        Label25.AutoSize = True
+        Label25.BackColor = Color.Transparent
+        Label25.Cursor = Cursors.Hand
+        Label25.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label25.ForeColor = SystemColors.ActiveCaptionText
+        Label25.Location = New Point(31, 49)
+        Label25.Margin = New Padding(4, 0, 4, 0)
+        Label25.Name = "Label25"
+        Label25.Size = New Size(96, 18)
+        Label25.TabIndex = 45
+        Label25.Text = "Rate per unit"
+        ' 
+        ' Label23
+        ' 
+        Label23.AutoSize = True
+        Label23.BackColor = Color.Transparent
+        Label23.Cursor = Cursors.Hand
+        Label23.Font = New Font("Arial", 9.75F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label23.ForeColor = Color.Maroon
+        Label23.Location = New Point(33, 52)
+        Label23.Margin = New Padding(4, 0, 4, 0)
+        Label23.Name = "Label23"
+        Label23.Size = New Size(259, 16)
+        Label23.TabIndex = 30
+        Label23.Text = "Breakdown of your earnings and deductions"
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.BackColor = Color.Transparent
+        Label22.Cursor = Cursors.Hand
+        Label22.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label22.Location = New Point(31, 18)
+        Label22.Margin = New Padding(4, 0, 4, 0)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(161, 23)
+        Label22.TabIndex = 28
+        Label22.Text = "Pay Distribution"
+        ' 
+        ' Panel6
+        ' 
+        Panel6.BackColor = SystemColors.Window
+        Panel6.BorderStyle = BorderStyle.FixedSingle
+        Panel6.Controls.Add(TableLayoutPanel5)
+        Panel6.Location = New Point(892, 71)
+        Panel6.Margin = New Padding(4, 3, 4, 3)
+        Panel6.Name = "Panel6"
+        Panel6.Size = New Size(263, 139)
+        Panel6.TabIndex = 37
+        ' 
+        ' TableLayoutPanel5
+        ' 
+        TableLayoutPanel5.Anchor = AnchorStyles.None
+        TableLayoutPanel5.ColumnCount = 1
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel5.Controls.Add(Label19, 0, 1)
+        TableLayoutPanel5.Controls.Add(Label21, 0, 0)
+        TableLayoutPanel5.Location = New Point(28, 17)
+        TableLayoutPanel5.Name = "TableLayoutPanel5"
+        TableLayoutPanel5.RowCount = 2
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel5.Size = New Size(200, 100)
+        TableLayoutPanel5.TabIndex = 43
+        ' 
+        ' Label19
+        ' 
+        Label19.Anchor = AnchorStyles.None
+        Label19.AutoSize = True
+        Label19.BackColor = Color.Transparent
+        Label19.Cursor = Cursors.Hand
+        Label19.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label19.ForeColor = Color.DarkRed
+        Label19.Location = New Point(39, 64)
+        Label19.Margin = New Padding(4, 0, 4, 0)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(121, 22)
+        Label19.TabIndex = 28
+        Label19.Text = "₱104,143.00"
+        ' 
+        ' Label21
+        ' 
+        Label21.Anchor = AnchorStyles.None
+        Label21.AutoSize = True
+        Label21.BackColor = Color.Transparent
+        Label21.Cursor = Cursors.Hand
+        Label21.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label21.Location = New Point(52, 13)
+        Label21.Margin = New Padding(4, 0, 4, 0)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(96, 23)
+        Label21.TabIndex = 27
+        Label21.Text = "Total Pay"
+        ' 
+        ' Panel5
+        ' 
+        Panel5.BackColor = SystemColors.Window
+        Panel5.BorderStyle = BorderStyle.FixedSingle
+        Panel5.Controls.Add(TableLayoutPanel4)
+        Panel5.Location = New Point(610, 71)
+        Panel5.Margin = New Padding(4, 3, 4, 3)
+        Panel5.Name = "Panel5"
+        Panel5.Size = New Size(274, 139)
+        Panel5.TabIndex = 36
+        ' 
+        ' TableLayoutPanel4
+        ' 
+        TableLayoutPanel4.Anchor = AnchorStyles.None
+        TableLayoutPanel4.ColumnCount = 1
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel4.Controls.Add(Label17, 0, 1)
+        TableLayoutPanel4.Controls.Add(Label18, 0, 0)
+        TableLayoutPanel4.Location = New Point(38, 17)
+        TableLayoutPanel4.Name = "TableLayoutPanel4"
+        TableLayoutPanel4.RowCount = 2
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel4.Size = New Size(200, 100)
+        TableLayoutPanel4.TabIndex = 30
+        ' 
+        ' Label17
+        ' 
+        Label17.Anchor = AnchorStyles.None
+        Label17.AutoSize = True
+        Label17.BackColor = Color.Transparent
+        Label17.Cursor = Cursors.Hand
+        Label17.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label17.ForeColor = Color.DarkRed
+        Label17.Location = New Point(39, 64)
+        Label17.Margin = New Padding(4, 0, 4, 0)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(121, 22)
+        Label17.TabIndex = 28
+        Label17.Text = "₱104,143.00"
+        ' 
+        ' Label18
+        ' 
+        Label18.Anchor = AnchorStyles.None
+        Label18.AutoSize = True
+        Label18.BackColor = Color.Transparent
+        Label18.Cursor = Cursors.Hand
+        Label18.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label18.Location = New Point(41, 13)
+        Label18.Margin = New Padding(4, 0, 4, 0)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(117, 23)
+        Label18.TabIndex = 27
+        Label18.Text = "Deductions"
+        ' 
+        ' Panel4
+        ' 
+        Panel4.BackColor = Color.White
+        Panel4.BorderStyle = BorderStyle.FixedSingle
+        Panel4.Controls.Add(TableLayoutPanel2)
+        Panel4.Controls.Add(Label7)
+        Panel4.Controls.Add(PictureBox9)
+        Panel4.Location = New Point(3, 68)
+        Panel4.Margin = New Padding(4, 3, 4, 3)
+        Panel4.Name = "Panel4"
+        Panel4.Size = New Size(295, 586)
+        Panel4.TabIndex = 35
+        ' 
+        ' TableLayoutPanel2
+        ' 
+        TableLayoutPanel2.BackColor = Color.White
+        TableLayoutPanel2.ColumnCount = 2
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.Controls.Add(Label40, 1, 6)
+        TableLayoutPanel2.Controls.Add(Label41, 1, 5)
+        TableLayoutPanel2.Controls.Add(Label10, 0, 0)
+        TableLayoutPanel2.Controls.Add(Label13, 0, 1)
+        TableLayoutPanel2.Controls.Add(Label37, 1, 4)
+        TableLayoutPanel2.Controls.Add(Label11, 0, 2)
+        TableLayoutPanel2.Controls.Add(Label36, 1, 3)
+        TableLayoutPanel2.Controls.Add(Label14, 0, 3)
+        TableLayoutPanel2.Controls.Add(Label35, 1, 2)
+        TableLayoutPanel2.Controls.Add(Label15, 0, 4)
+        TableLayoutPanel2.Controls.Add(Label34, 1, 1)
+        TableLayoutPanel2.Controls.Add(Label12, 0, 5)
+        TableLayoutPanel2.Controls.Add(Label33, 1, 0)
+        TableLayoutPanel2.Controls.Add(Label16, 0, 6)
+        TableLayoutPanel2.Location = New Point(5, 194)
+        TableLayoutPanel2.Name = "TableLayoutPanel2"
+        TableLayoutPanel2.RowCount = 7
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel2.Size = New Size(287, 374)
+        TableLayoutPanel2.TabIndex = 46
+        ' 
+        ' Label40
+        ' 
+        Label40.Anchor = AnchorStyles.None
+        Label40.AutoSize = True
+        Label40.BackColor = Color.Transparent
+        Label40.Cursor = Cursors.Hand
+        Label40.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label40.ForeColor = SystemColors.ActiveCaptionText
+        Label40.Location = New Point(168, 337)
+        Label40.Margin = New Padding(4, 0, 4, 0)
+        Label40.Name = "Label40"
+        Label40.Size = New Size(93, 18)
+        Label40.TabIndex = 42
+        Label40.Text = "Alden Nayre"
+        ' 
+        ' Label41
+        ' 
+        Label41.Anchor = AnchorStyles.None
+        Label41.AutoSize = True
+        Label41.BackColor = Color.Transparent
+        Label41.Cursor = Cursors.Hand
+        Label41.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label41.ForeColor = SystemColors.ActiveCaptionText
+        Label41.Location = New Point(168, 282)
+        Label41.Margin = New Padding(4, 0, 4, 0)
+        Label41.Name = "Label41"
+        Label41.Size = New Size(93, 18)
+        Label41.TabIndex = 43
+        Label41.Text = "Alden Nayre"
+        ' 
+        ' Label10
+        ' 
+        Label10.Anchor = AnchorStyles.None
+        Label10.AutoSize = True
+        Label10.BackColor = Color.Transparent
+        Label10.Cursor = Cursors.Hand
+        Label10.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label10.ForeColor = SystemColors.ActiveCaptionText
+        Label10.Location = New Point(16, 17)
+        Label10.Margin = New Padding(4, 0, 4, 0)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(111, 19)
+        Label10.TabIndex = 29
+        Label10.Text = "Employee ID:"
+        ' 
+        ' Label13
+        ' 
+        Label13.Anchor = AnchorStyles.None
+        Label13.AutoSize = True
+        Label13.BackColor = Color.Transparent
+        Label13.Cursor = Cursors.Hand
+        Label13.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label13.ForeColor = SystemColors.ActiveCaptionText
+        Label13.Location = New Point(42, 70)
+        Label13.Margin = New Padding(4, 0, 4, 0)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(59, 19)
+        Label13.TabIndex = 32
+        Label13.Text = "Name:"
+        ' 
+        ' Label37
+        ' 
+        Label37.Anchor = AnchorStyles.None
+        Label37.AutoSize = True
+        Label37.BackColor = Color.Transparent
+        Label37.Cursor = Cursors.Hand
+        Label37.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label37.ForeColor = SystemColors.ActiveCaptionText
+        Label37.Location = New Point(168, 229)
+        Label37.Margin = New Padding(4, 0, 4, 0)
+        Label37.Name = "Label37"
+        Label37.Size = New Size(93, 18)
+        Label37.TabIndex = 41
+        Label37.Text = "Alden Nayre"
+        ' 
+        ' Label11
+        ' 
+        Label11.Anchor = AnchorStyles.None
+        Label11.AutoSize = True
+        Label11.BackColor = Color.Transparent
+        Label11.Cursor = Cursors.Hand
+        Label11.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label11.ForeColor = SystemColors.ActiveCaptionText
+        Label11.Location = New Point(30, 123)
+        Label11.Margin = New Padding(4, 0, 4, 0)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(82, 19)
+        Label11.TabIndex = 30
+        Label11.Text = "Position: "
+        ' 
+        ' Label36
+        ' 
+        Label36.Anchor = AnchorStyles.None
+        Label36.AutoSize = True
+        Label36.BackColor = Color.Transparent
+        Label36.Cursor = Cursors.Hand
+        Label36.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label36.ForeColor = SystemColors.ActiveCaptionText
+        Label36.Location = New Point(168, 176)
+        Label36.Margin = New Padding(4, 0, 4, 0)
+        Label36.Name = "Label36"
+        Label36.Size = New Size(93, 18)
+        Label36.TabIndex = 40
+        Label36.Text = "Alden Nayre"
+        ' 
+        ' Label14
+        ' 
+        Label14.Anchor = AnchorStyles.None
+        Label14.AutoSize = True
+        Label14.BackColor = Color.Transparent
+        Label14.Cursor = Cursors.Hand
+        Label14.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label14.ForeColor = SystemColors.ActiveCaptionText
+        Label14.Location = New Point(19, 176)
+        Label14.Margin = New Padding(4, 0, 4, 0)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(104, 19)
+        Label14.TabIndex = 33
+        Label14.Text = "No. of Units:"
+        ' 
+        ' Label35
+        ' 
+        Label35.Anchor = AnchorStyles.None
+        Label35.AutoSize = True
+        Label35.BackColor = Color.Transparent
+        Label35.Cursor = Cursors.Hand
+        Label35.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label35.ForeColor = SystemColors.ActiveCaptionText
+        Label35.Location = New Point(168, 123)
+        Label35.Margin = New Padding(4, 0, 4, 0)
+        Label35.Name = "Label35"
+        Label35.Size = New Size(93, 18)
+        Label35.TabIndex = 39
+        Label35.Text = "Alden Nayre"
+        ' 
+        ' Label15
+        ' 
+        Label15.Anchor = AnchorStyles.None
+        Label15.AutoSize = True
+        Label15.BackColor = Color.Transparent
+        Label15.Cursor = Cursors.Hand
+        Label15.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label15.ForeColor = SystemColors.ActiveCaptionText
+        Label15.Location = New Point(18, 229)
+        Label15.Margin = New Padding(4, 0, 4, 0)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(107, 19)
+        Label15.TabIndex = 34
+        Label15.Text = "Designation:"
+        ' 
+        ' Label34
+        ' 
+        Label34.Anchor = AnchorStyles.None
+        Label34.AutoSize = True
+        Label34.BackColor = Color.Transparent
+        Label34.Cursor = Cursors.Hand
+        Label34.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label34.ForeColor = SystemColors.ActiveCaptionText
+        Label34.Location = New Point(202, 70)
+        Label34.Margin = New Padding(4, 0, 4, 0)
+        Label34.Name = "Label34"
+        Label34.Size = New Size(26, 18)
+        Label34.TabIndex = 38
+        Label34.Text = "16"
+        ' 
+        ' Label12
+        ' 
+        Label12.Anchor = AnchorStyles.None
+        Label12.AutoSize = True
+        Label12.BackColor = Color.Transparent
+        Label12.Cursor = Cursors.Hand
+        Label12.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label12.ForeColor = SystemColors.ActiveCaptionText
+        Label12.Location = New Point(20, 282)
+        Label12.Margin = New Padding(4, 0, 4, 0)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(103, 19)
+        Label12.TabIndex = 35
+        Label12.Text = "Description:"
+        ' 
+        ' Label33
+        ' 
+        Label33.Anchor = AnchorStyles.None
+        Label33.AutoSize = True
+        Label33.BackColor = Color.Transparent
+        Label33.Cursor = Cursors.Hand
+        Label33.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label33.ForeColor = SystemColors.ActiveCaptionText
+        Label33.Location = New Point(168, 17)
+        Label33.Margin = New Padding(4, 0, 4, 0)
+        Label33.Name = "Label33"
+        Label33.Size = New Size(93, 18)
+        Label33.TabIndex = 37
+        Label33.Text = "Alden Nayre"
+        ' 
+        ' Label16
+        ' 
+        Label16.Anchor = AnchorStyles.None
+        Label16.AutoSize = True
+        Label16.BackColor = Color.Transparent
+        Label16.Cursor = Cursors.Hand
+        Label16.Font = New Font("Arial", 12F, FontStyle.Bold)
+        Label16.ForeColor = SystemColors.ActiveCaptionText
+        Label16.Location = New Point(24, 336)
+        Label16.Margin = New Padding(4, 0, 4, 0)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(95, 19)
+        Label16.TabIndex = 36
+        Label16.Text = "Date Hired:"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.BackColor = Color.Transparent
+        Label7.Cursor = Cursors.Hand
+        Label7.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(55, 167)
+        Label7.Margin = New Padding(4, 0, 4, 0)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(174, 23)
+        Label7.TabIndex = 28
+        Label7.Text = "Employee Details"
+        ' 
+        ' PictureBox9
+        ' 
+        PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), Image)
+        PictureBox9.Location = New Point(2, 3)
+        PictureBox9.Margin = New Padding(4, 3, 4, 3)
+        PictureBox9.Name = "PictureBox9"
+        PictureBox9.Size = New Size(290, 152)
+        PictureBox9.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox9.TabIndex = 0
+        PictureBox9.TabStop = False
+        ' 
+        ' Panel3
+        ' 
+        Panel3.BackColor = SystemColors.Window
+        Panel3.BorderStyle = BorderStyle.FixedSingle
+        Panel3.Controls.Add(TableLayoutPanel3)
+        Panel3.Location = New Point(306, 71)
+        Panel3.Margin = New Padding(4, 3, 4, 3)
+        Panel3.Name = "Panel3"
+        Panel3.Size = New Size(296, 139)
+        Panel3.TabIndex = 34
+        ' 
+        ' TableLayoutPanel3
+        ' 
+        TableLayoutPanel3.Anchor = AnchorStyles.None
+        TableLayoutPanel3.ColumnCount = 1
+        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel3.Controls.Add(Label8, 0, 1)
+        TableLayoutPanel3.Controls.Add(Label9, 0, 0)
+        TableLayoutPanel3.Location = New Point(52, 17)
+        TableLayoutPanel3.Name = "TableLayoutPanel3"
+        TableLayoutPanel3.RowCount = 2
+        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel3.Size = New Size(200, 100)
+        TableLayoutPanel3.TabIndex = 29
+        ' 
+        ' Label8
+        ' 
+        Label8.Anchor = AnchorStyles.None
+        Label8.AutoSize = True
+        Label8.BackColor = Color.Transparent
+        Label8.Cursor = Cursors.Hand
+        Label8.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label8.ForeColor = Color.DarkRed
+        Label8.Location = New Point(39, 64)
+        Label8.Margin = New Padding(4, 0, 4, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(121, 22)
+        Label8.TabIndex = 28
+        Label8.Text = "₱104,143.00"
+        ' 
+        ' Label9
+        ' 
+        Label9.Anchor = AnchorStyles.None
+        Label9.AutoSize = True
+        Label9.BackColor = Color.Transparent
+        Label9.Cursor = Cursors.Hand
+        Label9.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label9.Location = New Point(36, 13)
+        Label9.Margin = New Padding(4, 0, 4, 0)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(127, 23)
+        Label9.TabIndex = 27
+        Label9.Text = "Basic Salary"
+        ' 
+        ' GroupBox4
+        ' 
+        GroupBox4.BackColor = Color.DarkSeaGreen
+        GroupBox4.Controls.Add(PictureBox11)
+        GroupBox4.Controls.Add(Label4)
+        GroupBox4.Controls.Add(PictureBox4)
+        GroupBox4.Location = New Point(3, 0)
+        GroupBox4.Margin = New Padding(4, 3, 4, 3)
+        GroupBox4.Name = "GroupBox4"
+        GroupBox4.Padding = New Padding(4, 3, 4, 3)
+        GroupBox4.Size = New Size(1163, 62)
+        GroupBox4.TabIndex = 41
+        GroupBox4.TabStop = False
+        ' 
+        ' PictureBox11
+        ' 
+        PictureBox11.BackColor = Color.Transparent
+        PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
+        PictureBox11.Location = New Point(1029, 3)
+        PictureBox11.Margin = New Padding(4, 3, 4, 3)
+        PictureBox11.Name = "PictureBox11"
+        PictureBox11.Size = New Size(68, 59)
+        PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox11.TabIndex = 21
+        PictureBox11.TabStop = False
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.BackColor = Color.Transparent
+        Label4.Cursor = Cursors.Hand
+        Label4.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Location = New Point(19, 19)
+        Label4.Margin = New Padding(4, 0, 4, 0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(258, 22)
+        Label4.TabIndex = 20
+        Label4.Text = "Employee Payroll Overview"
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.BackColor = Color.Transparent
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(1094, 3)
+        PictureBox4.Margin = New Padding(4, 3, 4, 3)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(69, 59)
+        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox4.TabIndex = 19
+        PictureBox4.TabStop = False
+        ' 
+        ' printDoc
+        ' 
+        ' 
+        ' PrintPreviewDialog1
+        ' 
+        PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
+        PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
+        PrintPreviewDialog1.ClientSize = New Size(400, 300)
+        PrintPreviewDialog1.Enabled = True
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
+        PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        PrintPreviewDialog1.Visible = False
+        ' 
+        ' payslip
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        ClientSize = New Size(1166, 661)
+        Controls.Add(GroupBox4)
+        Controls.Add(Panel8)
+        Controls.Add(Panel3)
+        Controls.Add(Panel7)
+        Controls.Add(Panel6)
+        Controls.Add(Panel5)
+        Controls.Add(Panel4)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
+        Margin = New Padding(4, 3, 4, 3)
+        Name = "payslip"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "payslip"
+        Panel8.ResumeLayout(False)
+        Panel8.PerformLayout()
+        TableLayoutPanel8.ResumeLayout(False)
+        TableLayoutPanel8.PerformLayout()
+        TableLayoutPanel7.ResumeLayout(False)
+        Panel7.ResumeLayout(False)
+        Panel7.PerformLayout()
+        TableLayoutPanel6.ResumeLayout(False)
+        TableLayoutPanel6.PerformLayout()
+        TableLayoutPanel1.ResumeLayout(False)
+        TableLayoutPanel1.PerformLayout()
+        Panel6.ResumeLayout(False)
+        TableLayoutPanel5.ResumeLayout(False)
+        TableLayoutPanel5.PerformLayout()
+        Panel5.ResumeLayout(False)
+        TableLayoutPanel4.ResumeLayout(False)
+        TableLayoutPanel4.PerformLayout()
+        Panel4.ResumeLayout(False)
+        Panel4.PerformLayout()
+        TableLayoutPanel2.ResumeLayout(False)
+        TableLayoutPanel2.PerformLayout()
+        CType(PictureBox9, ComponentModel.ISupportInitialize).EndInit()
+        Panel3.ResumeLayout(False)
+        TableLayoutPanel3.ResumeLayout(False)
+        TableLayoutPanel3.PerformLayout()
+        GroupBox4.ResumeLayout(False)
+        GroupBox4.PerformLayout()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Panel8 As Panel
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label31 As Label
-    Friend WithEvents Label38 As Label
-    Friend WithEvents Label39 As Label
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Label24 As Label
-    Friend WithEvents Label30 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
-    Friend WithEvents Label29 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Panel6 As Panel
@@ -965,23 +1073,34 @@ Partial Class payslip
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label20 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents PictureBox5 As PictureBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents PictureBox6 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents PictureBox11 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Label43 As Label
+    Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
+    Friend WithEvents Label1 As Label
+    Friend WithEvents printDoc As Drawing.Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
+    Friend WithEvents Button3 As Button
+    Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
+    Friend WithEvents Button4 As Button
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button5 As Button
 End Class

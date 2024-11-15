@@ -77,7 +77,6 @@ Public Class List_of_Employees
             column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
         Next
     End Sub
-
     Private Sub List_of_Employees_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVUserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         Try
@@ -91,7 +90,19 @@ Public Class List_of_Employees
         DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
     End Sub
-
+    Private Sub listofemployees_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' Show a confirmation dialog (optional)
+        ' Only show the exit confirmation if isExiting is set to True
+        If Not IsExiting Then
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.No Then
+                e.Cancel = True
+            Else
+                IsExiting = True ' Set the flag to prevent further prompts
+                Application.Exit() ' Exit the entire application
+            End If
+        End If
+    End Sub
     Private Sub ApplyDataGridViewStyling()
         ' Set header style
         DGVUserData.EnableHeadersVisualStyles = False
@@ -131,7 +142,7 @@ Public Class List_of_Employees
 
         ' Ensure all rows are set to the new height
         For Each row As DataGridViewRow In DGVUserData.Rows
-            row.Height = 70
+            row.Height = 50
         Next
 
         ' Refresh the DataGridView to apply changes
@@ -203,35 +214,35 @@ Public Class List_of_Employees
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        Me.Close()
+        Me.Hide()
         Main_Dashboard.Show()
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-        Me.Close()
+        Me.Hide()
         Employee_Dashboard.Show()
     End Sub
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-        Me.Close()
+        Me.Hide()
         payroll.Show()
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        Me.Close()
+        Me.Hide()
         RFID_Based_Attendance.Show()
 
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-        Me.Close()
+        Me.Hide()
         acc.Show()
     End Sub
 
 
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
-        Me.Close()
+        Me.Hide()
         Employee_Dashboard.Show()
     End Sub
 

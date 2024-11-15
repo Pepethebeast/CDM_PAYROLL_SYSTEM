@@ -3,14 +3,11 @@
 
     Private Sub Splash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        connectionTimer.Interval = 5000 ' Check every 5 seconds
-        connectionTimer.Start()
-
         Timer1.Start()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        MyProgress.Increment(2)
+        MyProgress.Increment(5)
 
         If MyProgress.Value >= 100 Then
             Timer1.Stop() ' Stop the progress timer

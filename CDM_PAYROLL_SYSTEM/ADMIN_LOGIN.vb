@@ -7,7 +7,7 @@ Public Class ADMIN_LOGIN
     Private Const ApiKey As String = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"
     Private Const AdminUID As String = "bGosQ0qr21OVzucmywytS5eMxDy2" ' The admin UID
 
-    Private Async Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Dim email = TextBox1.Text
         'Dim password = TextBox2.Text
 
@@ -39,9 +39,9 @@ Public Class ADMIN_LOGIN
 
         '                ' Check if the UID matches the admin UID
         '                If uid = AdminUID Then
-        MessageBox.Show($"ADMIN LOG IN SUCCESS!", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Me.Close()
-                            Main_Dashboard.Show()
+        'MessageBox.Show($"ADMIN LOG IN SUCCESS!", "Login Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Me.Hide()
+        Main_Dashboard.Show()
         '                Else
         '                    MessageBox.Show("ACCESS DENIED: ONLY ADMIN CAN LOG IN", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         '                End If
@@ -73,12 +73,18 @@ Public Class ADMIN_LOGIN
     Private Sub TableLayoutPanel2_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
-
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If CheckBox1.Checked Then
-            TextBox2.PasswordChar = ""
-        Else
-            TextBox2.PasswordChar = "*"
+    Private Sub ADMIN_LOGIN_Closing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' Show a confirmation dialog (optional)
+        ' Only show the exit confirmation if isExiting is set to True
+        If Not isExiting Then
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.No Then
+                e.Cancel = True
+            Else
+                isExiting = True ' Set the flag to prevent further prompts
+                Application.Exit() ' Exit the entire application
+            End If
         End If
     End Sub
+
 End Class

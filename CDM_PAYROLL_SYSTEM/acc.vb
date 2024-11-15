@@ -25,7 +25,19 @@ Public Class acc
         DGVuserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
     End Sub
-
+    Private Sub acc_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ' Show a confirmation dialog (optional)
+        ' Only show the exit confirmation if isExiting is set to True
+        If Not IsExiting Then
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.No Then
+                e.Cancel = True
+            Else
+                IsExiting = True ' Set the flag to prevent further prompts
+                Application.Exit() ' Exit the entire application
+            End If
+        End If
+    End Sub
     ' load users from firebase into datagridview
 
     Public Async Function GetAllUserUIDs() As Task(Of List(Of String))
@@ -127,7 +139,7 @@ Public Class acc
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "rfidTag", .HeaderText = "RFID Tag", .Name = "rfidTag"})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Info", .Name = "editButton", .Text = "View", .UseColumnTextForButtonValue = True})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "RFID", .Name = "rfid_register.dgv", .Text = "Register", .UseColumnTextForButtonValue = True})
-            DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Face ID", .Name = "faceid_register.dgv", .Text = "Register", .UseColumnTextForButtonValue = True})
+
 
             ' Set DataGridView styles
             DGVuserData.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64)
@@ -145,22 +157,22 @@ Public Class acc
 
     ' event handlers
     Private Sub label1_click(sender As Object, e As EventArgs) Handles Label1.Click
-        Me.Close()
+        Me.Hide()
         Main_Dashboard.Show()
     End Sub
 
     Private Sub label2_click(sender As Object, e As EventArgs) Handles Label2.Click
         Employee_Dashboard.Show()
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub label5_click(sender As Object, e As EventArgs) Handles Label5.Click
-        Me.Close()
+        Me.Hide()
         payroll.Show()
     End Sub
 
     Private Sub iconbutton1_click(sender As Object, e As EventArgs) Handles IconButton1.Click
-        Me.Close()
+        Me.Hide()
         Main_Dashboard.Show()
     End Sub
 
@@ -198,7 +210,7 @@ Public Class acc
     End Sub
 
     Private Sub DGVuserData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVuserData.CellContentClick
-        If e.RowIndex >= 0 AndAlso (e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("faceid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("editButton").Index) Then
+        If e.RowIndex >= 0 AndAlso (e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("editButton").Index) Then
             ' Retrieve the data from the clicked row
             Dim uid As String = DGVuserData.Rows(e.RowIndex).Cells("UID").Value.ToString()
             Dim selectedRow As DataGridViewRow = DGVuserData.Rows(e.RowIndex)
@@ -208,8 +220,6 @@ Public Class acc
                 Dim rfidForm As New register_rfid()
                 rfidForm.UserUID = uid ' Set the UID property
                 rfidForm.Show()
-            ElseIf e.ColumnIndex = DGVuserData.Columns("faceid_register.dgv").Index Then
-                ' Face ID Register button clicked
 
             ElseIf e.ColumnIndex = DGVuserData.Columns("editButton").Index Then
 
@@ -260,7 +270,7 @@ Public Class acc
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
         RFID_Based_Attendance.Show()
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter

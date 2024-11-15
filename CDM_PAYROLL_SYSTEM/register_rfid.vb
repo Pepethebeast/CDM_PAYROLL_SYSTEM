@@ -19,10 +19,18 @@ Public Class register_rfid
     ' Form Load - Firebase setup and serial port
     Private Sub register_rfid_load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            ' Check if COM3 is available
+            If Not IsComPortAvailable("COM3") Then
+                MessageBox.Show("Error: Device not found.", "Port Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.Close() ' Close the form if COM3 is not found
+                Exit Sub
+            End If
+
+            ' Initialize Firebase connection
             Dim config As New FirebaseConfig() With {
-                .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",
-                .BasePath = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/"
-            }
+            .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",
+            .BasePath = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/"
+        }
             client = New FireSharp.FirebaseClient(config)
             Debug.WriteLine("Firebase client initialized successfully")
 
@@ -36,12 +44,24 @@ Public Class register_rfid
                 serialPort.Open()
                 Debug.WriteLine("Serial port opened successfully")
             End If
+
         Catch ex As Exception
             Debug.WriteLine("Error in form load: " & ex.Message)
             MessageBox.Show("Error initializing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
+    Private Function IsComPortAvailable(portName As String) As Boolean
+        Try
+            ' Try to open the port
+            Using sp As New IO.Ports.SerialPort(portName)
+                sp.Open()
+                sp.Close()
+            End Using
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
     ' Data received from serial port
     Private Sub serialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles serialPort.DataReceived
         Try
@@ -170,7 +190,7 @@ Public Class register_rfid
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        Me.Close()
+        Me.Hide()
     End Sub
 End Class
 

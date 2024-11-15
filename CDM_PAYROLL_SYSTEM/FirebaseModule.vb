@@ -6,7 +6,7 @@ Imports Newtonsoft.Json
 Imports Firebase.Auth
 Module FirebaseModule
     Private client As IFirebaseClient
-
+    Public IsExiting As Boolean = False
     ' Configuration for FireSharp (Realtime Database)
     Private ReadOnly FirebaseConfig As New FirebaseConfig With {
         .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",

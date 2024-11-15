@@ -399,7 +399,7 @@ Partial Class add_account
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(851, 552)
         Controls.Add(TableLayoutPanel1)
-        FormBorderStyle = FormBorderStyle.FixedToolWindow
+        FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(4, 3, 4, 3)
         Name = "add_account"
         StartPosition = FormStartPosition.CenterScreen
