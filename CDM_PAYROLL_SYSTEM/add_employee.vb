@@ -217,6 +217,59 @@ Public Class add_employee
 
     End Sub
 
+    Private Sub Description_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Position_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Position.SelectedIndexChanged
+        If Position.Text = "Instructor (Full-Time)" OrElse Position.Text = "Instructor (Part-Time)" Then
+            Description.Text = ""
+        Else
+            Description.Text = "ETL"
+        End If
+    End Sub
+
+    Private Sub NoUnits_TextChanged(sender As Object, e As EventArgs) Handles NoUnits.TextChanged
+
+        If NoUnits.Text Is Nothing Then
+            Description.Text = ""
+        ElseIf Description.Text = "ETL" Then
+            Try
+                ' Parse the text in NoUnits and ensure it is an integer
+                Dim noUnitsValue As Integer = Integer.Parse(NoUnits.Text)
+
+                ' Check if the Description is "ETL"
+                If Description.Text = "ETL" Then
+                    ' Limit the value of NoUnits to a maximum of 12
+                    If noUnitsValue > 12 Then
+                        MessageBox.Show("The maximum value allowed for ETL is 12.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        NoUnits.Text = "12" ' Reset the value to 12
+                    End If
+                End If
+
+            Catch ex As Exception
+
+            End Try
+        Else
+            Try
+                If Integer.Parse(NoUnits.Text) > 24 AndAlso Position.Text = "Instructor (Full-Time)" Then
+                    Description.Text = "OL"
+                ElseIf Integer.Parse(NoUnits.Text) > 24 AndAlso Position.Text = "Instructor (Part-Time)" Then
+                    Description.Text = "OL"
+                Else
+                    Description.Text = ""
+                End If
+            Catch ex As Exception
+
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub Department_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Department.SelectedIndexChanged
+
+    End Sub
+
     'Private Async Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
     '    Dim result = MessageBox.Show("Do you want to cancel the account creation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 

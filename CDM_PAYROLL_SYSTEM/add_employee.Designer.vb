@@ -30,12 +30,12 @@ Partial Class add_employee
         Label8 = New Label()
         GroupBox3 = New GroupBox()
         TableLayoutPanel2 = New TableLayoutPanel()
+        Description = New Label()
+        Designation = New ComboBox()
+        Position = New ComboBox()
         Label25 = New Label()
-        Position = New TextBox()
         Label28 = New Label()
-        Designation = New TextBox()
         Label24 = New Label()
-        Description = New TextBox()
         NoUnits = New TextBox()
         Department = New ComboBox()
         Label27 = New Label()
@@ -153,12 +153,12 @@ Partial Class add_employee
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30F))
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30F))
-        TableLayoutPanel2.Controls.Add(Label25, 0, 0)
-        TableLayoutPanel2.Controls.Add(Position, 1, 0)
-        TableLayoutPanel2.Controls.Add(Label28, 2, 0)
-        TableLayoutPanel2.Controls.Add(Designation, 3, 0)
-        TableLayoutPanel2.Controls.Add(Label24, 0, 1)
         TableLayoutPanel2.Controls.Add(Description, 3, 1)
+        TableLayoutPanel2.Controls.Add(Designation, 3, 0)
+        TableLayoutPanel2.Controls.Add(Position, 1, 0)
+        TableLayoutPanel2.Controls.Add(Label25, 0, 0)
+        TableLayoutPanel2.Controls.Add(Label28, 2, 0)
+        TableLayoutPanel2.Controls.Add(Label24, 0, 1)
         TableLayoutPanel2.Controls.Add(NoUnits, 3, 2)
         TableLayoutPanel2.Controls.Add(Department, 1, 2)
         TableLayoutPanel2.Controls.Add(Label27, 2, 2)
@@ -174,6 +174,40 @@ Partial Class add_employee
         TableLayoutPanel2.Size = New Size(762, 163)
         TableLayoutPanel2.TabIndex = 50
         ' 
+        ' Description
+        ' 
+        Description.Anchor = AnchorStyles.None
+        Description.AutoSize = True
+        Description.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Description.Location = New Point(647, 71)
+        Description.Margin = New Padding(4, 0, 4, 0)
+        Description.Name = "Description"
+        Description.Size = New Size(0, 19)
+        Description.TabIndex = 45
+        Description.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' Designation
+        ' 
+        Designation.Anchor = AnchorStyles.None
+        Designation.FormattingEnabled = True
+        Designation.Items.AddRange(New Object() {"Instructor non-Licensed", "Instructor Licensed", "Assistant Professor I", "Assistant Professor II", "Professor"})
+        Designation.Location = New Point(556, 15)
+        Designation.Margin = New Padding(4, 3, 4, 3)
+        Designation.Name = "Designation"
+        Designation.Size = New Size(182, 27)
+        Designation.TabIndex = 44
+        ' 
+        ' Position
+        ' 
+        Position.Anchor = AnchorStyles.None
+        Position.FormattingEnabled = True
+        Position.Items.AddRange(New Object() {"Instructor (Full-Time)", "Instructor (Part-Time)", "Head", "Assistant Head", "Admin"})
+        Position.Location = New Point(175, 15)
+        Position.Margin = New Padding(4, 3, 4, 3)
+        Position.Name = "Position"
+        Position.Size = New Size(182, 27)
+        Position.TabIndex = 42
+        ' 
         ' Label25
         ' 
         Label25.Anchor = AnchorStyles.None
@@ -186,15 +220,6 @@ Partial Class add_employee
         Label25.TabIndex = 23
         Label25.Text = "Position"
         Label25.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' Position
-        ' 
-        Position.Anchor = AnchorStyles.None
-        Position.Location = New Point(175, 13)
-        Position.Margin = New Padding(4, 3, 4, 3)
-        Position.Name = "Position"
-        Position.Size = New Size(182, 27)
-        Position.TabIndex = 4
         ' 
         ' Label28
         ' 
@@ -209,15 +234,6 @@ Partial Class add_employee
         Label28.Text = "Designation"
         Label28.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' Designation
-        ' 
-        Designation.Anchor = AnchorStyles.None
-        Designation.Location = New Point(555, 13)
-        Designation.Margin = New Padding(4, 3, 4, 3)
-        Designation.Name = "Designation"
-        Designation.Size = New Size(184, 27)
-        Designation.TabIndex = 7
-        ' 
         ' Label24
         ' 
         Label24.Anchor = AnchorStyles.None
@@ -230,15 +246,6 @@ Partial Class add_employee
         Label24.TabIndex = 25
         Label24.Text = "Date Hired"
         Label24.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' Description
-        ' 
-        Description.Anchor = AnchorStyles.None
-        Description.Location = New Point(555, 67)
-        Description.Margin = New Padding(4, 3, 4, 3)
-        Description.Name = "Description"
-        Description.Size = New Size(184, 27)
-        Description.TabIndex = 8
         ' 
         ' NoUnits
         ' 
@@ -433,10 +440,10 @@ Partial Class add_employee
         Button1.BackColor = Color.Gold
         Button1.Font = New Font("Roboto", 9F)
         Button1.ForeColor = SystemColors.ControlText
-        Button1.Location = New Point(50, 494)
+        Button1.Location = New Point(225, 490)
         Button1.Margin = New Padding(4, 3, 4, 3)
         Button1.Name = "Button1"
-        Button1.Size = New Size(128, 41)
+        Button1.Size = New Size(182, 41)
         Button1.TabIndex = 35
         Button1.Text = "SAVE INFO"
         Button1.UseVisualStyleBackColor = False
@@ -541,10 +548,8 @@ Partial Class add_employee
     Friend WithEvents Button1 As Button
     Friend WithEvents NoUnits As TextBox
     Friend WithEvents Label27 As Label
-    Friend WithEvents Designation As TextBox
     Friend WithEvents Label28 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents Position As TextBox
     Friend WithEvents Label25 As Label
     Friend WithEvents DateOfBirth As DateTimePicker
     Friend WithEvents Label19 As Label
@@ -552,7 +557,6 @@ Partial Class add_employee
     Friend WithEvents Label18 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Department As ComboBox
-    Friend WithEvents Description As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Label7 As Label
@@ -569,4 +573,7 @@ Partial Class add_employee
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Position As ComboBox
+    Friend WithEvents Designation As ComboBox
+    Friend WithEvents Description As Label
 End Class

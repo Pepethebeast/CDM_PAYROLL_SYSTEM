@@ -63,10 +63,12 @@ Partial Class Splash
         PictureBox4.BackColor = Color.Transparent
         PictureBox4.BackgroundImage = CType(resources.GetObject("PictureBox4.BackgroundImage"), Image)
         PictureBox4.BackgroundImageLayout = ImageLayout.Zoom
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
         PictureBox4.Location = New Point(77, 70)
         PictureBox4.Margin = New Padding(4, 3, 4, 3)
         PictureBox4.Name = "PictureBox4"
         PictureBox4.Size = New Size(163, 125)
+        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox4.TabIndex = 133
         PictureBox4.TabStop = False
         ' 

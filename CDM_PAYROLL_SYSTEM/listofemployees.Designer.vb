@@ -50,6 +50,7 @@ Partial Class List_of_Employees
         IconButton3 = New FontAwesome.Sharp.IconButton()
         IconButton4 = New FontAwesome.Sharp.IconButton()
         IconButton5 = New FontAwesome.Sharp.IconButton()
+        TextBox1 = New TextBox()
         GroupBox4.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
         CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
@@ -67,11 +68,11 @@ Partial Class List_of_Employees
         GroupBox4.BackColor = Color.DarkSeaGreen
         GroupBox4.Controls.Add(TableLayoutPanel2)
         GroupBox4.Controls.Add(Label23)
-        GroupBox4.Location = New Point(262, 6)
+        GroupBox4.Location = New Point(258, 3)
         GroupBox4.Margin = New Padding(4, 3, 4, 3)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(4, 3, 4, 3)
-        GroupBox4.Size = New Size(1086, 72)
+        GroupBox4.Size = New Size(1090, 72)
         GroupBox4.TabIndex = 24
         GroupBox4.TabStop = False
         ' 
@@ -84,11 +85,11 @@ Partial Class List_of_Employees
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel2.Controls.Add(PictureBox11, 0, 0)
         TableLayoutPanel2.Controls.Add(PictureBox12, 1, 0)
-        TableLayoutPanel2.Location = New Point(916, 0)
+        TableLayoutPanel2.Location = New Point(959, 0)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel2.Size = New Size(170, 72)
+        TableLayoutPanel2.Size = New Size(131, 72)
         TableLayoutPanel2.TabIndex = 29
         ' 
         ' PictureBox11
@@ -99,7 +100,7 @@ Partial Class List_of_Employees
         PictureBox11.Location = New Point(4, 3)
         PictureBox11.Margin = New Padding(4, 3, 4, 3)
         PictureBox11.Name = "PictureBox11"
-        PictureBox11.Size = New Size(77, 66)
+        PictureBox11.Size = New Size(57, 66)
         PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox11.TabIndex = 28
         PictureBox11.TabStop = False
@@ -109,10 +110,10 @@ Partial Class List_of_Employees
         PictureBox12.Anchor = AnchorStyles.None
         PictureBox12.BackColor = Color.Transparent
         PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), Image)
-        PictureBox12.Location = New Point(89, 3)
+        PictureBox12.Location = New Point(69, 3)
         PictureBox12.Margin = New Padding(4, 3, 4, 3)
         PictureBox12.Name = "PictureBox12"
-        PictureBox12.Size = New Size(77, 66)
+        PictureBox12.Size = New Size(58, 66)
         PictureBox12.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox12.TabIndex = 27
         PictureBox12.TabStop = False
@@ -371,21 +372,22 @@ Partial Class List_of_Employees
         FlowLayoutPanel1.Controls.Add(IconButton3)
         FlowLayoutPanel1.Controls.Add(IconButton4)
         FlowLayoutPanel1.Controls.Add(IconButton5)
+        FlowLayoutPanel1.Controls.Add(TextBox1)
         FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
-        FlowLayoutPanel1.Location = New Point(934, 79)
+        FlowLayoutPanel1.Location = New Point(603, 79)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(410, 44)
+        FlowLayoutPanel1.Size = New Size(741, 44)
         FlowLayoutPanel1.TabIndex = 33
         ' 
         ' IconButton1
         ' 
-        IconButton1.BackColor = Color.White
+        IconButton1.BackColor = Color.DarkSeaGreen
         IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
         IconButton1.IconColor = Color.Black
         IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton1.IconSize = 20
-        IconButton1.Location = New Point(332, 3)
+        IconButton1.Location = New Point(663, 3)
         IconButton1.Name = "IconButton1"
         IconButton1.Size = New Size(75, 41)
         IconButton1.TabIndex = 0
@@ -393,13 +395,13 @@ Partial Class List_of_Employees
         ' 
         ' IconButton2
         ' 
-        IconButton2.BackColor = Color.White
+        IconButton2.BackColor = Color.DarkSeaGreen
         IconButton2.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton2.IconColor = Color.Black
         IconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton2.IconSize = 16
-        IconButton2.Location = New Point(251, 3)
+        IconButton2.Location = New Point(582, 3)
         IconButton2.Name = "IconButton2"
         IconButton2.Size = New Size(75, 41)
         IconButton2.TabIndex = 1
@@ -408,13 +410,13 @@ Partial Class List_of_Employees
         ' 
         ' IconButton3
         ' 
-        IconButton3.BackColor = Color.White
+        IconButton3.BackColor = Color.DarkSeaGreen
         IconButton3.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton3.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton3.IconColor = Color.Black
         IconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton3.IconSize = 16
-        IconButton3.Location = New Point(170, 3)
+        IconButton3.Location = New Point(501, 3)
         IconButton3.Name = "IconButton3"
         IconButton3.Size = New Size(75, 41)
         IconButton3.TabIndex = 2
@@ -423,13 +425,13 @@ Partial Class List_of_Employees
         ' 
         ' IconButton4
         ' 
-        IconButton4.BackColor = Color.White
+        IconButton4.BackColor = Color.DarkSeaGreen
         IconButton4.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton4.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton4.IconColor = Color.Black
         IconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton4.IconSize = 16
-        IconButton4.Location = New Point(89, 3)
+        IconButton4.Location = New Point(420, 3)
         IconButton4.Name = "IconButton4"
         IconButton4.Size = New Size(75, 41)
         IconButton4.TabIndex = 3
@@ -438,18 +440,26 @@ Partial Class List_of_Employees
         ' 
         ' IconButton5
         ' 
-        IconButton5.BackColor = Color.White
+        IconButton5.BackColor = Color.DarkSeaGreen
         IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
         IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton5.IconColor = Color.Black
         IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
         IconButton5.IconSize = 16
-        IconButton5.Location = New Point(8, 3)
+        IconButton5.Location = New Point(339, 3)
         IconButton5.Name = "IconButton5"
         IconButton5.Size = New Size(75, 41)
         IconButton5.TabIndex = 4
         IconButton5.Text = "🔍"
         IconButton5.UseVisualStyleBackColor = False
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Anchor = AnchorStyles.None
+        TextBox1.Location = New Point(27, 12)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(306, 23)
+        TextBox1.TabIndex = 36
         ' 
         ' List_of_Employees
         ' 
@@ -478,6 +488,7 @@ Partial Class List_of_Employees
         TableLayoutPanel1.ResumeLayout(False)
         TableLayoutPanel1.PerformLayout()
         FlowLayoutPanel1.ResumeLayout(False)
+        FlowLayoutPanel1.PerformLayout()
         ResumeLayout(False)
 
     End Sub
@@ -508,4 +519,5 @@ Partial Class List_of_Employees
     Friend WithEvents IconButton4 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton5 As FontAwesome.Sharp.IconButton
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents TextBox1 As TextBox
 End Class

@@ -407,7 +407,7 @@ Public Class RFID_Based_Attendance
     End Sub
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-        payroll.Show()
+        payroll_dashboard.Show()
         Me.Hide()
     End Sub
 

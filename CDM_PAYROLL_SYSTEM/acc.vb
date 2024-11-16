@@ -168,7 +168,7 @@ Public Class acc
 
     Private Sub label5_click(sender As Object, e As EventArgs) Handles Label5.Click
         Me.Hide()
-        payroll.Show()
+        payroll_dashboard.Show()
     End Sub
 
     Private Sub iconbutton1_click(sender As Object, e As EventArgs) Handles IconButton1.Click

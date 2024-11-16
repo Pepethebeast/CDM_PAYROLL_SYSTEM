@@ -52,7 +52,7 @@ Partial Class payroll
         Label3 = New Label()
         TextBox1 = New TextBox()
         IconButton5 = New FontAwesome.Sharp.IconButton()
-
+        IconButton1 = New FontAwesome.Sharp.IconButton()
         DataGridView1 = New DataGridView()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -63,7 +63,6 @@ Partial Class payroll
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox4.SuspendLayout()
         FlowLayoutPanel1.SuspendLayout()
-
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -198,7 +197,7 @@ Partial Class payroll
         Label20.Anchor = AnchorStyles.None
         Label20.AutoSize = True
         Label20.Cursor = Cursors.Hand
-        Label20.Font = New Font("Roboto", 12F)
+        Label20.Font = New Font("Roboto", 12.0F)
         Label20.Location = New Point(125, 388)
         Label20.Margin = New Padding(0)
         Label20.Name = "Label20"
@@ -212,7 +211,7 @@ Partial Class payroll
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Cursor = Cursors.Hand
-        Label5.Font = New Font("Roboto", 12F)
+        Label5.Font = New Font("Roboto", 12.0F)
         Label5.Location = New Point(127, 170)
         Label5.Margin = New Padding(0)
         Label5.Name = "Label5"
@@ -226,7 +225,7 @@ Partial Class payroll
         Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Cursor = Cursors.Hand
-        Label9.Font = New Font("Roboto", 12F)
+        Label9.Font = New Font("Roboto", 12.0F)
         Label9.Location = New Point(132, 26)
         Label9.Margin = New Padding(0)
         Label9.Name = "Label9"
@@ -240,7 +239,7 @@ Partial Class payroll
         Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Cursor = Cursors.Hand
-        Label6.Font = New Font("Roboto", 12F)
+        Label6.Font = New Font("Roboto", 12.0F)
         Label6.Location = New Point(123, 314)
         Label6.Margin = New Padding(0)
         Label6.Name = "Label6"
@@ -254,7 +253,7 @@ Partial Class payroll
         Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Roboto", 12F)
+        Label8.Font = New Font("Roboto", 12.0F)
         Label8.Location = New Point(117, 98)
         Label8.Margin = New Padding(0)
         Label8.Name = "Label8"
@@ -268,7 +267,7 @@ Partial Class payroll
         Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Cursor = Cursors.Hand
-        Label7.Font = New Font("Roboto", 12F)
+        Label7.Font = New Font("Roboto", 12.0F)
         Label7.Location = New Point(103, 242)
         Label7.Margin = New Padding(0)
         Label7.Name = "Label7"
@@ -381,7 +380,7 @@ Partial Class payroll
         FlowLayoutPanel1.Controls.Add(Label3)
         FlowLayoutPanel1.Controls.Add(TextBox1)
         FlowLayoutPanel1.Controls.Add(IconButton5)
-
+        FlowLayoutPanel1.Controls.Add(IconButton1)
         FlowLayoutPanel1.Controls.Add(DataGridView1)
         FlowLayoutPanel1.Location = New Point(261, 73)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
@@ -392,7 +391,7 @@ Partial Class payroll
         ' 
         Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
-        Label1.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Roboto", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(3, 14)
         Label1.Name = "Label1"
         Label1.Size = New Size(89, 19)
@@ -433,7 +432,7 @@ Partial Class payroll
         ' 
         Label3.Anchor = AnchorStyles.None
         Label3.AutoSize = True
-        Label3.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Roboto", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(442, 14)
         Label3.Name = "Label3"
         Label3.Size = New Size(135, 19)
@@ -452,7 +451,7 @@ Partial Class payroll
         ' 
         IconButton5.Anchor = AnchorStyles.None
         IconButton5.BackColor = Color.DarkSeaGreen
-        IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
+        IconButton5.Font = New Font("Arial Rounded MT Bold", 18.0F)
         IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
         IconButton5.IconColor = Color.Black
         IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
@@ -462,12 +461,27 @@ Partial Class payroll
         IconButton5.Size = New Size(75, 41)
         IconButton5.TabIndex = 32
         IconButton5.Text = "🔍"
-        IconButton5.UseVisualStyleBackColor = False ' 
+        IconButton5.UseVisualStyleBackColor = False
+        ' 
+        ' IconButton1
+        ' 
+        IconButton1.BackColor = Color.DarkSeaGreen
+        IconButton1.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
+        IconButton1.IconColor = Color.Black
+        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton1.IconSize = 20
+        IconButton1.Location = New Point(1001, 3)
+        IconButton1.Margin = New Padding(130, 3, 3, 3)
+        IconButton1.Name = "IconButton1"
+        IconButton1.Size = New Size(75, 41)
+        IconButton1.TabIndex = 32
+        IconButton1.UseVisualStyleBackColor = False
         ' 
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(3, 56)
+        DataGridView1.Location = New Point(3, 50)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowTemplate.Height = 25
         DataGridView1.Size = New Size(1085, 520)
@@ -475,7 +489,7 @@ Partial Class payroll
         ' 
         ' payroll
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         AutoValidate = AutoValidate.EnablePreventFocusChange
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
@@ -534,4 +548,5 @@ Partial Class payroll
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents IconButton5 As FontAwesome.Sharp.IconButton
     Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
 End Class

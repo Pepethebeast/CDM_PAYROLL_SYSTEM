@@ -45,7 +45,7 @@
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         Me.Hide()
-        payroll.Show()
+        payroll_dashboard.Show()
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click

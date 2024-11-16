@@ -12,7 +12,7 @@ Public Class payroll
         ' Show a confirmation dialog (optional)
         ' Only show the exit confirmation if isExiting is set to True
         If Not IsExiting Then
-            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
             If result = DialogResult.No Then
                 e.Cancel = True
             Else
@@ -98,7 +98,7 @@ Public Class payroll
         DataGridView1.ColumnHeadersHeight = 30 ' Increase header height
 
         ' Set row style
-        DataGridView1.RowTemplate.Height = 50 ' Set row height to 70 pixels
+        DataGridView1.RowTemplate.Height = 40 ' Set row height to 70 pixels
         DataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         ' Set border style and color
@@ -114,7 +114,6 @@ Public Class payroll
 
         ' Alternating row colors for better readability
 
-
         ' Apply styling to all columns
         For Each column As DataGridViewColumn In DataGridView1.Columns
             column.DefaultCellStyle.Font = New Font("Arial", 10)
@@ -125,10 +124,6 @@ Public Class payroll
             DataGridView1.Columns("image").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End If
 
-        ' Ensure all rows are set to the new height
-        For Each row As DataGridViewRow In DataGridView1.Rows
-            row.Height = 30
-        Next
 
         ' Refresh the DataGridView to apply changes
         DataGridView1.Refresh()
@@ -145,17 +140,14 @@ Public Class payroll
     End Sub
 
     Private Sub UpdatePeriodComboBox()
-        ' Check if the ComboBox2.SelectedItem is a valid year
         Dim selectedYear As Integer
         If ComboBox2.SelectedItem Is Nothing OrElse Not Integer.TryParse(ComboBox2.SelectedItem.ToString(), selectedYear) Then
-
             Return
         End If
 
         ' Get selected month
         Dim selectedMonth As Integer = ComboBox1.SelectedIndex + 1 ' ComboBox1 indexes months from 0 to 11, so we add 1
         If selectedMonth < 1 Or selectedMonth > 12 Then
-
             Return
         End If
 
@@ -166,15 +158,16 @@ Public Class payroll
         ' Clear ComboBox3 and add the period items
         ComboBox3.Items.Clear()
         ComboBox3.Items.Add($"{monthName} 1-15") ' Always add the 1-15 period
-
-        ' Add the second period if the month has more than 15 days
         If daysInMonth > 15 Then
-            ComboBox3.Items.Add($"{monthName} 16-{daysInMonth}")
+            ComboBox3.Items.Add($"{monthName} 16-{daysInMonth}") ' Add the second period
         End If
 
-        ' Optionally, set the default selected period
-        If ComboBox3.Items.Count > 0 Then
-            ComboBox3.SelectedIndex = 0
+        ' Automatically set the selected item based on the current day
+        Dim currentDay As Integer = DateTime.Now.Day
+        If currentDay > 16 Then
+            ComboBox3.SelectedIndex = ComboBox3.Items.IndexOf($"{monthName} 16-{daysInMonth}")
+        Else
+            ComboBox3.SelectedIndex = ComboBox3.Items.IndexOf($"{monthName} 1-15")
         End If
     End Sub
 
@@ -238,7 +231,7 @@ Public Class payroll
                 Dim add_employee_info As New payslip
                 add_employee_info.date_hired = date_hired
                 add_employee_info.no_ofUnits = no_of_units
-                add_employee_info.position = position
+                add_employee_info.position123 = position
                 add_employee_info.description = description
                 add_employee_info.designation = designation
                 add_employee_info.received_name = name_received
@@ -247,12 +240,14 @@ Public Class payroll
                 add_employee_info.user_uid = selectedUID
                 add_employee_info.SetImage(PictureBox1.Image)
                 add_employee_info.Show()
+                Me.Hide()
             End If
 
 
         End If
     End Sub
 
+    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
 
-
+    End Sub
 End Class

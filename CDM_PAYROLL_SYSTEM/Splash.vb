@@ -11,8 +11,6 @@
 
         If MyProgress.Value >= 100 Then
             Timer1.Stop() ' Stop the progress timer
-            Me.Hide()
-            ADMIN_LOGIN.Show()
         End If
     End Sub
 

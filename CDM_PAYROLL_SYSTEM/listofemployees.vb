@@ -242,12 +242,12 @@ Public Class List_of_Employees
 
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
-        Me.Hide()
-        Employee_Dashboard.Show()
+        Hide
+        Employee_Dashboard.Show
     End Sub
 
     Private Sub IconButton2_Click(sender As Object, e As EventArgs) Handles IconButton2.Click
-        LoadEmployeeData()
+        LoadEmployeeData
         DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
     End Sub
 
@@ -292,7 +292,7 @@ Public Class List_of_Employees
         End Try
     End Sub
     Private Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
-        Dim columnName As String = "EmployeeID" ' Replace with the actual column name to delete
+        Dim columnName = "EmployeeID" ' Replace with the actual column name to delete
         If DGVUserData.Columns.Contains(columnName) Then
             ' Delete column from DataGridView
 

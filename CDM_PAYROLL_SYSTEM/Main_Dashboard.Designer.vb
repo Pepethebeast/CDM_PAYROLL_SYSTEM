@@ -878,7 +878,7 @@ Partial Class Main_Dashboard
         Margin = New Padding(4, 3, 4, 3)
         Name = "Main_Dashboard"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Main_Dashboard"
+        Text = "`"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()

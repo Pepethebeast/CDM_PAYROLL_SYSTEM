@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Employee_Dashboard
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class payroll_dashboard
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,10 @@ Partial Class Employee_Dashboard
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Employee_Dashboard))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(payroll_dashboard))
+        Panel1 = New Panel()
         TableLayoutPanel1 = New TableLayoutPanel()
         Label31 = New Label()
         Label30 = New Label()
@@ -36,31 +37,48 @@ Partial Class Employee_Dashboard
         Label6 = New Label()
         Label2 = New Label()
         Label7 = New Label()
+        PictureBox13 = New PictureBox()
         GroupBox4 = New GroupBox()
+        TableLayoutPanel2 = New TableLayoutPanel()
+        PictureBox12 = New PictureBox()
         PictureBox11 = New PictureBox()
         Label42 = New Label()
-        PictureBox12 = New PictureBox()
-        PictureBox9 = New PictureBox()
+        TableLayoutPanel5 = New TableLayoutPanel()
+        PictureBox2 = New PictureBox()
         Label8 = New Label()
-        PictureBox4 = New PictureBox()
-        Label4 = New Label()
-        Panel1 = New Panel()
-        PictureBox13 = New PictureBox()
-        TableLayoutPanel2 = New TableLayoutPanel()
-        TableLayoutPanel3 = New TableLayoutPanel()
+        PictureBox1 = New PictureBox()
+        Label3 = New Label()
+        TableLayoutPanel6 = New TableLayoutPanel()
         TableLayoutPanel4 = New TableLayoutPanel()
-        TableLayoutPanel1.SuspendLayout()
-        GroupBox4.SuspendLayout()
-        CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox12, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox9, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        TableLayoutPanel3 = New TableLayoutPanel()
+        Label4 = New Label()
+        PictureBox3 = New PictureBox()
         Panel1.SuspendLayout()
+        TableLayoutPanel1.SuspendLayout()
         CType(PictureBox13, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox4.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
-        TableLayoutPanel3.SuspendLayout()
+        CType(PictureBox12, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
+        TableLayoutPanel5.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        TableLayoutPanel6.SuspendLayout()
         TableLayoutPanel4.SuspendLayout()
+        TableLayoutPanel3.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BackColor = Color.White
+        Panel1.Controls.Add(TableLayoutPanel1)
+        Panel1.Controls.Add(PictureBox13)
+        Panel1.Location = New Point(0, 1)
+        Panel1.Margin = New Padding(4, 3, 4, 3)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(258, 1199)
+        Panel1.TabIndex = 2
         ' 
         ' TableLayoutPanel1
         ' 
@@ -260,123 +278,6 @@ Partial Class Employee_Dashboard
         Label7.Text = "Time Records"
         Label7.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' GroupBox4
-        ' 
-        GroupBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        GroupBox4.BackColor = Color.DarkSeaGreen
-        GroupBox4.Controls.Add(PictureBox11)
-        GroupBox4.Controls.Add(Label42)
-        GroupBox4.Controls.Add(PictureBox12)
-        GroupBox4.Location = New Point(262, 1)
-        GroupBox4.Margin = New Padding(4, 3, 4, 3)
-        GroupBox4.Name = "GroupBox4"
-        GroupBox4.Padding = New Padding(4, 3, 4, 3)
-        GroupBox4.Size = New Size(1089, 64)
-        GroupBox4.TabIndex = 27
-        GroupBox4.TabStop = False
-        ' 
-        ' PictureBox11
-        ' 
-        PictureBox11.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        PictureBox11.BackColor = Color.Transparent
-        PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
-        PictureBox11.Location = New Point(952, 0)
-        PictureBox11.Margin = New Padding(4, 3, 4, 3)
-        PictureBox11.Name = "PictureBox11"
-        PictureBox11.Size = New Size(68, 61)
-        PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox11.TabIndex = 21
-        PictureBox11.TabStop = False
-        ' 
-        ' Label42
-        ' 
-        Label42.AutoSize = True
-        Label42.BackColor = Color.Transparent
-        Label42.Cursor = Cursors.Hand
-        Label42.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label42.Location = New Point(23, 18)
-        Label42.Margin = New Padding(4, 0, 4, 0)
-        Label42.Name = "Label42"
-        Label42.Size = New Size(205, 22)
-        Label42.TabIndex = 20
-        Label42.Text = "Employee Dashboard"
-        ' 
-        ' PictureBox12
-        ' 
-        PictureBox12.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        PictureBox12.BackColor = Color.Transparent
-        PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), Image)
-        PictureBox12.Location = New Point(1019, 0)
-        PictureBox12.Margin = New Padding(4, 3, 4, 3)
-        PictureBox12.Name = "PictureBox12"
-        PictureBox12.Size = New Size(68, 61)
-        PictureBox12.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox12.TabIndex = 19
-        PictureBox12.TabStop = False
-        ' 
-        ' PictureBox9
-        ' 
-        PictureBox9.BackColor = SystemColors.Window
-        PictureBox9.Cursor = Cursors.Hand
-        PictureBox9.Dock = DockStyle.Fill
-        PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), Image)
-        PictureBox9.Location = New Point(4, 3)
-        PictureBox9.Margin = New Padding(4, 3, 4, 3)
-        PictureBox9.Name = "PictureBox9"
-        PictureBox9.Size = New Size(330, 347)
-        PictureBox9.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox9.TabIndex = 15
-        PictureBox9.TabStop = False
-        ' 
-        ' Label8
-        ' 
-        Label8.Anchor = AnchorStyles.None
-        Label8.AutoSize = True
-        Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label8.Location = New Point(80, 372)
-        Label8.Margin = New Padding(4, 0, 4, 0)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(178, 24)
-        Label8.TabIndex = 12
-        Label8.Text = "ADD EMPLOYEE"
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Dock = DockStyle.Fill
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(4, 3)
-        PictureBox4.Margin = New Padding(4, 3, 4, 3)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(329, 347)
-        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox4.TabIndex = 10
-        PictureBox4.TabStop = False
-        ' 
-        ' Label4
-        ' 
-        Label4.Anchor = AnchorStyles.None
-        Label4.AutoSize = True
-        Label4.Cursor = Cursors.Hand
-        Label4.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label4.Location = New Point(55, 372)
-        Label4.Margin = New Padding(4, 0, 4, 0)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(227, 24)
-        Label4.TabIndex = 9
-        Label4.Text = "LIST OF EMPLOYEES"
-        ' 
-        ' Panel1
-        ' 
-        Panel1.BackColor = Color.White
-        Panel1.Controls.Add(TableLayoutPanel1)
-        Panel1.Controls.Add(PictureBox13)
-        Panel1.Location = New Point(0, 1)
-        Panel1.Margin = New Padding(4, 3, 4, 3)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(258, 1199)
-        Panel1.TabIndex = 1
-        ' 
         ' PictureBox13
         ' 
         PictureBox13.BackColor = Color.White
@@ -389,109 +290,287 @@ Partial Class Employee_Dashboard
         PictureBox13.TabIndex = 18
         PictureBox13.TabStop = False
         ' 
+        ' GroupBox4
+        ' 
+        GroupBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        GroupBox4.BackColor = Color.DarkSeaGreen
+        GroupBox4.Controls.Add(TableLayoutPanel2)
+        GroupBox4.Controls.Add(Label42)
+        GroupBox4.Location = New Point(259, 2)
+        GroupBox4.Margin = New Padding(4, 3, 4, 3)
+        GroupBox4.Name = "GroupBox4"
+        GroupBox4.Padding = New Padding(4, 3, 4, 3)
+        GroupBox4.Size = New Size(1089, 64)
+        GroupBox4.TabIndex = 28
+        GroupBox4.TabStop = False
+        ' 
         ' TableLayoutPanel2
         ' 
-        TableLayoutPanel2.BackColor = Color.DarkSeaGreen
-        TableLayoutPanel2.ColumnCount = 1
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
-        TableLayoutPanel2.Controls.Add(PictureBox4, 0, 0)
-        TableLayoutPanel2.Controls.Add(Label4, 0, 1)
-        TableLayoutPanel2.Dock = DockStyle.Fill
-        TableLayoutPanel2.Location = New Point(3, 3)
+        TableLayoutPanel2.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        TableLayoutPanel2.ColumnCount = 2
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.Controls.Add(PictureBox12, 0, 0)
+        TableLayoutPanel2.Controls.Add(PictureBox11, 1, 0)
+        TableLayoutPanel2.Location = New Point(947, 0)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
-        TableLayoutPanel2.RowCount = 2
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
-        TableLayoutPanel2.Size = New Size(337, 416)
-        TableLayoutPanel2.TabIndex = 28
+        TableLayoutPanel2.RowCount = 1
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel2.Size = New Size(142, 64)
+        TableLayoutPanel2.TabIndex = 29
+        ' 
+        ' PictureBox12
+        ' 
+        PictureBox12.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        PictureBox12.BackColor = Color.Transparent
+        PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), Image)
+        PictureBox12.Location = New Point(4, 3)
+        PictureBox12.Margin = New Padding(4, 3, 4, 3)
+        PictureBox12.Name = "PictureBox12"
+        PictureBox12.Size = New Size(63, 58)
+        PictureBox12.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox12.TabIndex = 19
+        PictureBox12.TabStop = False
+        ' 
+        ' PictureBox11
+        ' 
+        PictureBox11.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        PictureBox11.BackColor = Color.Transparent
+        PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
+        PictureBox11.Location = New Point(75, 3)
+        PictureBox11.Margin = New Padding(4, 3, 4, 3)
+        PictureBox11.Name = "PictureBox11"
+        PictureBox11.Size = New Size(63, 58)
+        PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox11.TabIndex = 21
+        PictureBox11.TabStop = False
+        ' 
+        ' Label42
+        ' 
+        Label42.AutoSize = True
+        Label42.BackColor = Color.Transparent
+        Label42.Cursor = Cursors.Hand
+        Label42.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label42.Location = New Point(24, 18)
+        Label42.Margin = New Padding(4, 0, 4, 0)
+        Label42.Name = "Label42"
+        Label42.Size = New Size(178, 22)
+        Label42.TabIndex = 20
+        Label42.Text = "Payroll Dashboard"
+        ' 
+        ' TableLayoutPanel5
+        ' 
+        TableLayoutPanel5.BackColor = Color.DarkSeaGreen
+        TableLayoutPanel5.ColumnCount = 1
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel5.Controls.Add(PictureBox2, 0, 0)
+        TableLayoutPanel5.Controls.Add(Label8, 0, 1)
+        TableLayoutPanel5.Dock = DockStyle.Fill
+        TableLayoutPanel5.Location = New Point(3, 3)
+        TableLayoutPanel5.Name = "TableLayoutPanel5"
+        TableLayoutPanel5.RowCount = 2
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
+        TableLayoutPanel5.Size = New Size(303, 393)
+        TableLayoutPanel5.TabIndex = 30
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.BackColor = SystemColors.Window
+        PictureBox2.BackgroundImageLayout = ImageLayout.Stretch
+        PictureBox2.Cursor = Cursors.Hand
+        PictureBox2.Dock = DockStyle.Fill
+        PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
+        PictureBox2.Location = New Point(4, 3)
+        PictureBox2.Margin = New Padding(4, 3, 4, 3)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(295, 328)
+        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox2.TabIndex = 16
+        PictureBox2.TabStop = False
+        ' 
+        ' Label8
+        ' 
+        Label8.Anchor = AnchorStyles.None
+        Label8.AutoSize = True
+        Label8.Cursor = Cursors.Hand
+        Label8.Font = New Font("Arial Rounded MT Bold", 15.75F)
+        Label8.Location = New Point(70, 351)
+        Label8.Margin = New Padding(4, 0, 4, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(162, 24)
+        Label8.TabIndex = 12
+        Label8.Text = "RUN PAYROLL"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackColor = SystemColors.Window
+        PictureBox1.BackgroundImageLayout = ImageLayout.Stretch
+        PictureBox1.Cursor = Cursors.Hand
+        PictureBox1.Dock = DockStyle.Fill
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(4, 3)
+        PictureBox1.Margin = New Padding(4, 3, 4, 3)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(295, 328)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 15
+        PictureBox1.TabStop = False
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Cursor = Cursors.Hand
+        Label3.Font = New Font("Arial Rounded MT Bold", 15.75F)
+        Label3.Location = New Point(19, 351)
+        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(265, 24)
+        Label3.TabIndex = 12
+        Label3.Text = "EMPLOYEE SCHEDULER"
+        ' 
+        ' TableLayoutPanel6
+        ' 
+        TableLayoutPanel6.BackColor = Color.DarkSeaGreen
+        TableLayoutPanel6.ColumnCount = 1
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel6.Controls.Add(Label3, 0, 1)
+        TableLayoutPanel6.Controls.Add(PictureBox1, 0, 0)
+        TableLayoutPanel6.Dock = DockStyle.Fill
+        TableLayoutPanel6.Location = New Point(312, 3)
+        TableLayoutPanel6.Name = "TableLayoutPanel6"
+        TableLayoutPanel6.RowCount = 2
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
+        TableLayoutPanel6.Size = New Size(303, 393)
+        TableLayoutPanel6.TabIndex = 29
+        ' 
+        ' TableLayoutPanel4
+        ' 
+        TableLayoutPanel4.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        TableLayoutPanel4.ColumnCount = 3
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3344421F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.334446F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3311157F))
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel3, 2, 0)
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel6, 1, 0)
+        TableLayoutPanel4.Controls.Add(TableLayoutPanel5, 0, 0)
+        TableLayoutPanel4.Location = New Point(335, 159)
+        TableLayoutPanel4.Name = "TableLayoutPanel4"
+        TableLayoutPanel4.RowCount = 1
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
+        TableLayoutPanel4.Size = New Size(927, 399)
+        TableLayoutPanel4.TabIndex = 31
         ' 
         ' TableLayoutPanel3
         ' 
         TableLayoutPanel3.BackColor = Color.DarkSeaGreen
         TableLayoutPanel3.ColumnCount = 1
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
-        TableLayoutPanel3.Controls.Add(PictureBox9, 0, 0)
-        TableLayoutPanel3.Controls.Add(Label8, 0, 1)
+        TableLayoutPanel3.Controls.Add(Label4, 0, 1)
+        TableLayoutPanel3.Controls.Add(PictureBox3, 0, 0)
         TableLayoutPanel3.Dock = DockStyle.Fill
-        TableLayoutPanel3.Location = New Point(346, 3)
+        TableLayoutPanel3.Location = New Point(621, 3)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 2
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 85F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 15F))
-        TableLayoutPanel3.Size = New Size(338, 416)
-        TableLayoutPanel3.TabIndex = 29
+        TableLayoutPanel3.Size = New Size(303, 393)
+        TableLayoutPanel3.TabIndex = 31
         ' 
-        ' TableLayoutPanel4
+        ' Label4
         ' 
-        TableLayoutPanel4.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        TableLayoutPanel4.ColumnCount = 2
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3333321F))
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.3333321F))
-        TableLayoutPanel4.Controls.Add(TableLayoutPanel2, 0, 0)
-        TableLayoutPanel4.Controls.Add(TableLayoutPanel3, 1, 0)
-        TableLayoutPanel4.Location = New Point(448, 127)
-        TableLayoutPanel4.Name = "TableLayoutPanel4"
-        TableLayoutPanel4.RowCount = 1
-        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        TableLayoutPanel4.Size = New Size(687, 422)
-        TableLayoutPanel4.TabIndex = 30
+        Label4.Anchor = AnchorStyles.None
+        Label4.AutoSize = True
+        Label4.Cursor = Cursors.Hand
+        Label4.Font = New Font("Arial Rounded MT Bold", 15.75F)
+        Label4.Location = New Point(101, 351)
+        Label4.Margin = New Padding(4, 0, 4, 0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(100, 24)
+        Label4.TabIndex = 12
+        Label4.Text = "PAYSLIP"
         ' 
-        ' Employee_Dashboard
+        ' PictureBox3
+        ' 
+        PictureBox3.BackColor = SystemColors.Window
+        PictureBox3.BackgroundImageLayout = ImageLayout.Stretch
+        PictureBox3.Cursor = Cursors.Hand
+        PictureBox3.Dock = DockStyle.Fill
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(4, 3)
+        PictureBox3.Margin = New Padding(4, 3, 4, 3)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(295, 328)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 15
+        PictureBox3.TabStop = False
+        ' 
+        ' payroll_dashboard
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.White
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1350, 661)
         Controls.Add(TableLayoutPanel4)
         Controls.Add(GroupBox4)
         Controls.Add(Panel1)
-        Margin = New Padding(4, 3, 4, 3)
-        Name = "Employee_Dashboard"
+        Name = "payroll_dashboard"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Employee_Dashboard"
+        Text = "payroll_dashboard"
+        Panel1.ResumeLayout(False)
         TableLayoutPanel1.ResumeLayout(False)
         TableLayoutPanel1.PerformLayout()
+        CType(PictureBox13, ComponentModel.ISupportInitialize).EndInit()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
-        CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox12, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox9, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
-        CType(PictureBox13, ComponentModel.ISupportInitialize).EndInit()
         TableLayoutPanel2.ResumeLayout(False)
-        TableLayoutPanel2.PerformLayout()
+        CType(PictureBox12, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
+        TableLayoutPanel5.ResumeLayout(False)
+        TableLayoutPanel5.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        TableLayoutPanel6.ResumeLayout(False)
+        TableLayoutPanel6.PerformLayout()
+        TableLayoutPanel4.ResumeLayout(False)
         TableLayoutPanel3.ResumeLayout(False)
         TableLayoutPanel3.PerformLayout()
-        TableLayoutPanel4.ResumeLayout(False)
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-
     End Sub
-    Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents PictureBox11 As PictureBox
-    Friend WithEvents Label42 As Label
-    Friend WithEvents PictureBox12 As PictureBox
-    Friend WithEvents PictureBox9 As PictureBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents Label4 As Label
+
+    Friend WithEvents Panel1 As Panel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label23 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox13 As PictureBox
+    Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
-    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Label30 As Label
-    Friend WithEvents Label31 As Label
+    Friend WithEvents PictureBox12 As PictureBox
+    Friend WithEvents PictureBox11 As PictureBox
+    Friend WithEvents Label42 As Label
+    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Friend WithEvents Label8 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TableLayoutPanel6 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents PictureBox3 As PictureBox
 End Class
