@@ -75,7 +75,6 @@ Public Class payroll
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "designation", .HeaderText = "Designation", .Name = "designation"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "description", .HeaderText = "Description", .Name = "description"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "no_of_units", .HeaderText = "No. of Units", .Name = "no_of_units"})
-            DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "pay status", .HeaderText = "Payment Status", .Name = "pay_status"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "date_hired", .HeaderText = "Date Hired", .Name = "Date_hired", .Visible = False})
             DataGridView1.Columns.Add(New DataGridViewImageColumn With {.DataPropertyName = "image", .HeaderText = "Image", .Name = "image", .Visible = False})
             DataGridView1.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Payroll", .Name = "payroll", .Text = "Process", .UseColumnTextForButtonValue = True})
@@ -224,6 +223,7 @@ Public Class payroll
             Dim position As String = selectedRow.Cells("position").Value.ToString()
             Dim no_of_units As String = selectedRow.Cells("no_of_units").Value.ToString()
             Dim date_hired As String = selectedRow.Cells("date_hired").Value.ToString()
+            Dim pay_period = ComboBox3.Text + ComboBox2.Text
 
             If selectedRow.Cells("image").Value IsNot Nothing Then
                 Dim base64String As String = selectedRow.Cells("image").Value.ToString()
@@ -238,6 +238,8 @@ Public Class payroll
                 add_employee_info.add_employee_id = userData
                 add_employee_info.received_email = email_received
                 add_employee_info.user_uid = selectedUID
+                add_employee_info.get_pey_period_hehe = pay_period
+
                 add_employee_info.SetImage(PictureBox1.Image)
                 add_employee_info.Show()
                 Me.Hide()

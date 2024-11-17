@@ -48,4 +48,13 @@ Public Class PersonalData
         Public Property time_out_stamp As String
         Public Property TotalPayPeriod As String
     End Class
+    Public Class Payslip
+        Public Property PayPeriod As String
+        Public Property PayOutPeriod As String
+        Public Property PayslipID As String
+        Public Property TotalDeduction As String
+        Public Property TotalHours As String
+        Public Property TotalSalary As String
+        Public Property TotalYear As String
+    End Class
 End Class

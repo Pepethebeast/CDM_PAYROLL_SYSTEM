@@ -27,8 +27,11 @@ Partial Class payslip
         Button4 = New Button()
         Button3 = New Button()
         Panel7 = New Panel()
+        Button2 = New Button()
         Button1 = New Button()
         TableLayoutPanel6 = New TableLayoutPanel()
+        TextBox1 = New TextBox()
+        Label28 = New Label()
         Label24 = New Label()
         TextBox6 = New TextBox()
         Label36 = New Label()
@@ -46,6 +49,7 @@ Partial Class payslip
         TextBox4 = New TextBox()
         Label23 = New Label()
         Label22 = New Label()
+        ProgressBar1 = New ProgressBar()
         Panel4 = New Panel()
         TableLayoutPanel5 = New TableLayoutPanel()
         Label7 = New Label()
@@ -142,6 +146,7 @@ Partial Class payslip
         ' 
         Panel7.BackColor = SystemColors.Window
         Panel7.BorderStyle = BorderStyle.FixedSingle
+        Panel7.Controls.Add(Button2)
         Panel7.Controls.Add(Button1)
         Panel7.Controls.Add(TableLayoutPanel7)
         Panel7.Controls.Add(TableLayoutPanel6)
@@ -154,10 +159,22 @@ Partial Class payslip
         Panel7.Size = New Size(849, 352)
         Panel7.TabIndex = 38
         ' 
+        ' Button2
+        ' 
+        Button2.BackColor = Color.Gray
+        Button2.Enabled = False
+        Button2.Location = New Point(522, 293)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(267, 42)
+        Button2.TabIndex = 52
+        Button2.Text = "SAVE"
+        Button2.UseVisualStyleBackColor = False
+        ' 
         ' Button1
         ' 
-        Button1.BackColor = Color.DarkSeaGreen
-        Button1.Location = New Point(522, 261)
+        Button1.BackColor = Color.Gray
+        Button1.Enabled = False
+        Button1.Location = New Point(522, 248)
         Button1.Name = "Button1"
         Button1.Size = New Size(267, 42)
         Button1.TabIndex = 51
@@ -169,17 +186,45 @@ Partial Class payslip
         TableLayoutPanel6.ColumnCount = 2
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel6.Controls.Add(TextBox1, 1, 2)
+        TableLayoutPanel6.Controls.Add(Label28, 0, 2)
         TableLayoutPanel6.Controls.Add(Label24, 0, 0)
         TableLayoutPanel6.Controls.Add(TextBox6, 1, 0)
         TableLayoutPanel6.Controls.Add(Label36, 0, 1)
         TableLayoutPanel6.Controls.Add(TextBox8, 1, 1)
         TableLayoutPanel6.Location = New Point(451, 73)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
-        TableLayoutPanel6.RowCount = 2
-        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0006237F))
-        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0006237F))
-        TableLayoutPanel6.Size = New Size(374, 104)
+        TableLayoutPanel6.RowCount = 3
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 33.33361F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 33.33361F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 33.3327827F))
+        TableLayoutPanel6.Size = New Size(374, 119)
         TableLayoutPanel6.TabIndex = 47
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Anchor = AnchorStyles.None
+        TextBox1.Location = New Point(152, 87)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(219, 23)
+        TextBox1.TabIndex = 60
+        TextBox1.Text = "0"
+        TextBox1.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' Label28
+        ' 
+        Label28.Anchor = AnchorStyles.None
+        Label28.AutoSize = True
+        Label28.BackColor = Color.Transparent
+        Label28.Cursor = Cursors.Hand
+        Label28.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label28.ForeColor = SystemColors.ActiveCaptionText
+        Label28.Location = New Point(23, 89)
+        Label28.Margin = New Padding(4, 0, 4, 0)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(102, 18)
+        Label28.TabIndex = 59
+        Label28.Text = "Net Earnings:"
         ' 
         ' Label24
         ' 
@@ -189,7 +234,7 @@ Partial Class payslip
         Label24.Cursor = Cursors.Hand
         Label24.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label24.ForeColor = SystemColors.ActiveCaptionText
-        Label24.Location = New Point(26, 17)
+        Label24.Location = New Point(26, 10)
         Label24.Margin = New Padding(4, 0, 4, 0)
         Label24.Name = "Label24"
         Label24.Size = New Size(97, 18)
@@ -199,10 +244,11 @@ Partial Class payslip
         ' TextBox6
         ' 
         TextBox6.Anchor = AnchorStyles.None
-        TextBox6.Location = New Point(152, 14)
+        TextBox6.Location = New Point(152, 8)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(219, 23)
         TextBox6.TabIndex = 57
+        TextBox6.Text = "0"
         TextBox6.TextAlign = HorizontalAlignment.Center
         ' 
         ' Label36
@@ -213,7 +259,7 @@ Partial Class payslip
         Label36.Cursor = Cursors.Hand
         Label36.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label36.ForeColor = SystemColors.ActiveCaptionText
-        Label36.Location = New Point(33, 69)
+        Label36.Location = New Point(33, 49)
         Label36.Margin = New Padding(4, 0, 4, 0)
         Label36.Name = "Label36"
         Label36.Size = New Size(83, 18)
@@ -223,10 +269,11 @@ Partial Class payslip
         ' TextBox8
         ' 
         TextBox8.Anchor = AnchorStyles.None
-        TextBox8.Location = New Point(152, 66)
+        TextBox8.Location = New Point(152, 47)
         TextBox8.Name = "TextBox8"
         TextBox8.Size = New Size(219, 23)
         TextBox8.TabIndex = 58
+        TextBox8.Text = "0"
         TextBox8.TextAlign = HorizontalAlignment.Center
         ' 
         ' TableLayoutPanel1
@@ -402,6 +449,14 @@ Partial Class payslip
         Label22.TabIndex = 28
         Label22.Text = "Earnings Calculation"
         ' 
+        ' ProgressBar1
+        ' 
+        ProgressBar1.Location = New Point(430, 0)
+        ProgressBar1.Name = "ProgressBar1"
+        ProgressBar1.Size = New Size(267, 40)
+        ProgressBar1.TabIndex = 53
+        ProgressBar1.Visible = False
+        ' 
         ' Panel4
         ' 
         Panel4.BackColor = Color.White
@@ -457,8 +512,8 @@ Partial Class payslip
         ' 
         TableLayoutPanel2.BackColor = Color.White
         TableLayoutPanel2.ColumnCount = 2
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
         TableLayoutPanel2.Controls.Add(position_to_textbox, 1, 2)
         TableLayoutPanel2.Controls.Add(Label29, 0, 2)
         TableLayoutPanel2.Controls.Add(Label40, 1, 6)
@@ -492,12 +547,12 @@ Partial Class payslip
         position_to_textbox.AutoSize = True
         position_to_textbox.BackColor = Color.Transparent
         position_to_textbox.Cursor = Cursors.Hand
-        position_to_textbox.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        position_to_textbox.Font = New Font("Arial", 11.25F)
         position_to_textbox.ForeColor = SystemColors.ActiveCaptionText
-        position_to_textbox.Location = New Point(180, 88)
+        position_to_textbox.Location = New Point(168, 89)
         position_to_textbox.Margin = New Padding(4, 0, 4, 0)
         position_to_textbox.Name = "position_to_textbox"
-        position_to_textbox.Size = New Size(69, 18)
+        position_to_textbox.Size = New Size(64, 17)
         position_to_textbox.TabIndex = 45
         position_to_textbox.Text = "Position:"
         ' 
@@ -507,12 +562,12 @@ Partial Class payslip
         Label29.AutoSize = True
         Label29.BackColor = Color.Transparent
         Label29.Cursor = Cursors.Hand
-        Label29.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label29.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label29.ForeColor = SystemColors.ActiveCaptionText
-        Label29.Location = New Point(32, 88)
+        Label29.Location = New Point(22, 88)
         Label29.Margin = New Padding(4, 0, 4, 0)
         Label29.Name = "Label29"
-        Label29.Size = New Size(78, 19)
+        Label29.Size = New Size(70, 18)
         Label29.TabIndex = 44
         Label29.Text = "Position:"
         ' 
@@ -522,12 +577,12 @@ Partial Class payslip
         Label40.AutoSize = True
         Label40.BackColor = Color.Transparent
         Label40.Cursor = Cursors.Hand
-        Label40.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label40.Font = New Font("Arial", 11.25F)
         Label40.ForeColor = SystemColors.ActiveCaptionText
-        Label40.Location = New Point(168, 246)
+        Label40.Location = New Point(157, 247)
         Label40.Margin = New Padding(4, 0, 4, 0)
         Label40.Name = "Label40"
-        Label40.Size = New Size(93, 18)
+        Label40.Size = New Size(86, 17)
         Label40.TabIndex = 42
         Label40.Text = "Alden Nayre"
         ' 
@@ -537,12 +592,12 @@ Partial Class payslip
         Label41.AutoSize = True
         Label41.BackColor = Color.Transparent
         Label41.Cursor = Cursors.Hand
-        Label41.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label41.Font = New Font("Arial", 11.25F)
         Label41.ForeColor = SystemColors.ActiveCaptionText
-        Label41.Location = New Point(168, 205)
+        Label41.Location = New Point(157, 206)
         Label41.Margin = New Padding(4, 0, 4, 0)
         Label41.Name = "Label41"
-        Label41.Size = New Size(93, 18)
+        Label41.Size = New Size(86, 17)
         Label41.TabIndex = 43
         Label41.Text = "Alden Nayre"
         ' 
@@ -552,12 +607,12 @@ Partial Class payslip
         Label10.AutoSize = True
         Label10.BackColor = Color.Transparent
         Label10.Cursor = Cursors.Hand
-        Label10.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label10.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label10.ForeColor = SystemColors.ActiveCaptionText
-        Label10.Location = New Point(16, 10)
+        Label10.Location = New Point(7, 10)
         Label10.Margin = New Padding(4, 0, 4, 0)
         Label10.Name = "Label10"
-        Label10.Size = New Size(111, 19)
+        Label10.Size = New Size(100, 18)
         Label10.TabIndex = 29
         Label10.Text = "Employee ID:"
         ' 
@@ -567,12 +622,12 @@ Partial Class payslip
         Label13.AutoSize = True
         Label13.BackColor = Color.Transparent
         Label13.Cursor = Cursors.Hand
-        Label13.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label13.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label13.ForeColor = SystemColors.ActiveCaptionText
-        Label13.Location = New Point(42, 49)
+        Label13.Location = New Point(31, 49)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
-        Label13.Size = New Size(59, 19)
+        Label13.Size = New Size(52, 18)
         Label13.TabIndex = 32
         Label13.Text = "Name:"
         ' 
@@ -582,12 +637,12 @@ Partial Class payslip
         designation_to_textbox.AutoSize = True
         designation_to_textbox.BackColor = Color.Transparent
         designation_to_textbox.Cursor = Cursors.Hand
-        designation_to_textbox.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        designation_to_textbox.Font = New Font("Arial", 11.25F)
         designation_to_textbox.ForeColor = SystemColors.ActiveCaptionText
-        designation_to_textbox.Location = New Point(168, 166)
+        designation_to_textbox.Location = New Point(157, 167)
         designation_to_textbox.Margin = New Padding(4, 0, 4, 0)
         designation_to_textbox.Name = "designation_to_textbox"
-        designation_to_textbox.Size = New Size(93, 18)
+        designation_to_textbox.Size = New Size(86, 17)
         designation_to_textbox.TabIndex = 41
         designation_to_textbox.Text = "Alden Nayre"
         ' 
@@ -597,12 +652,12 @@ Partial Class payslip
         noUnits.AutoSize = True
         noUnits.BackColor = Color.Transparent
         noUnits.Cursor = Cursors.Hand
-        noUnits.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        noUnits.Font = New Font("Arial", 11.25F)
         noUnits.ForeColor = SystemColors.ActiveCaptionText
-        noUnits.Location = New Point(168, 127)
+        noUnits.Location = New Point(157, 128)
         noUnits.Margin = New Padding(4, 0, 4, 0)
         noUnits.Name = "noUnits"
-        noUnits.Size = New Size(93, 18)
+        noUnits.Size = New Size(86, 17)
         noUnits.TabIndex = 40
         noUnits.Text = "Alden Nayre"
         ' 
@@ -612,12 +667,12 @@ Partial Class payslip
         Label14.AutoSize = True
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
-        Label14.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label14.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label14.ForeColor = SystemColors.ActiveCaptionText
-        Label14.Location = New Point(19, 127)
+        Label14.Location = New Point(9, 127)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
-        Label14.Size = New Size(104, 19)
+        Label14.Size = New Size(95, 18)
         Label14.TabIndex = 33
         Label14.Text = "No. of Units:"
         ' 
@@ -627,12 +682,12 @@ Partial Class payslip
         Label15.AutoSize = True
         Label15.BackColor = Color.Transparent
         Label15.Cursor = Cursors.Hand
-        Label15.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label15.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label15.ForeColor = SystemColors.ActiveCaptionText
-        Label15.Location = New Point(18, 166)
+        Label15.Location = New Point(8, 166)
         Label15.Margin = New Padding(4, 0, 4, 0)
         Label15.Name = "Label15"
-        Label15.Size = New Size(107, 19)
+        Label15.Size = New Size(97, 18)
         Label15.TabIndex = 34
         Label15.Text = "Designation:"
         ' 
@@ -642,12 +697,12 @@ Partial Class payslip
         Label34.AutoSize = True
         Label34.BackColor = Color.Transparent
         Label34.Cursor = Cursors.Hand
-        Label34.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label34.Font = New Font("Arial", 11.25F)
         Label34.ForeColor = SystemColors.ActiveCaptionText
-        Label34.Location = New Point(202, 49)
+        Label34.Location = New Point(188, 50)
         Label34.Margin = New Padding(4, 0, 4, 0)
         Label34.Name = "Label34"
-        Label34.Size = New Size(26, 18)
+        Label34.Size = New Size(24, 17)
         Label34.TabIndex = 38
         Label34.Text = "16"
         ' 
@@ -657,12 +712,12 @@ Partial Class payslip
         Label12.AutoSize = True
         Label12.BackColor = Color.Transparent
         Label12.Cursor = Cursors.Hand
-        Label12.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label12.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label12.ForeColor = SystemColors.ActiveCaptionText
-        Label12.Location = New Point(20, 205)
+        Label12.Location = New Point(10, 205)
         Label12.Margin = New Padding(4, 0, 4, 0)
         Label12.Name = "Label12"
-        Label12.Size = New Size(103, 19)
+        Label12.Size = New Size(94, 18)
         Label12.TabIndex = 35
         Label12.Text = "Description:"
         ' 
@@ -672,12 +727,12 @@ Partial Class payslip
         Label33.AutoSize = True
         Label33.BackColor = Color.Transparent
         Label33.Cursor = Cursors.Hand
-        Label33.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label33.Font = New Font("Arial", 11.25F)
         Label33.ForeColor = SystemColors.ActiveCaptionText
-        Label33.Location = New Point(168, 10)
+        Label33.Location = New Point(157, 11)
         Label33.Margin = New Padding(4, 0, 4, 0)
         Label33.Name = "Label33"
-        Label33.Size = New Size(93, 18)
+        Label33.Size = New Size(86, 17)
         Label33.TabIndex = 37
         Label33.Text = "Alden Nayre"
         ' 
@@ -687,12 +742,12 @@ Partial Class payslip
         Label16.AutoSize = True
         Label16.BackColor = Color.Transparent
         Label16.Cursor = Cursors.Hand
-        Label16.Font = New Font("Arial", 12.0F, FontStyle.Bold)
+        Label16.Font = New Font("Arial", 11.25F, FontStyle.Bold)
         Label16.ForeColor = SystemColors.ActiveCaptionText
-        Label16.Location = New Point(24, 246)
+        Label16.Location = New Point(13, 246)
         Label16.Margin = New Padding(4, 0, 4, 0)
         Label16.Name = "Label16"
-        Label16.Size = New Size(95, 19)
+        Label16.Size = New Size(88, 18)
         Label16.TabIndex = 36
         Label16.Text = "Date Hired:"
         ' 
@@ -763,6 +818,7 @@ Partial Class payslip
         ' Panel1
         ' 
         Panel1.BackColor = Color.White
+        Panel1.Controls.Add(ProgressBar1)
         Panel1.Controls.Add(TableLayoutPanel4)
         Panel1.Controls.Add(TableLayoutPanel3)
         Panel1.Controls.Add(Label3)
@@ -1008,7 +1064,7 @@ Partial Class payslip
         ' 
         ' payslip
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Stretch
@@ -1104,6 +1160,11 @@ Partial Class payslip
     Friend WithEvents Label18 As Label
     Friend WithEvents Label17 As Label
     Friend WithEvents Label11 As Label
+    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label28 As Label
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents Label1 As Label
     Friend WithEvents Label5 As Label
@@ -1111,6 +1172,5 @@ Partial Class payslip
     Friend WithEvents Label20 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label27 As Label
-    Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

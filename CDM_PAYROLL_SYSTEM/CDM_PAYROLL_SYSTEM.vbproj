@@ -44,6 +44,7 @@
     <PackageReference Include="FirebaseAuth" Version="2.0.6" />
     <PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="FireSharp.Serialization.JsonNet" Version="1.1.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
@@ -55,6 +56,7 @@
     <PackageReference Include="Microsoft.WinForms.Designer.SDK" Version="1.6.0" />
     <PackageReference Include="MyFirebaseAuth" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PdfSharp" Version="6.1.1" />
     <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="SerialPortStream" Version="2.4.2" />
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />

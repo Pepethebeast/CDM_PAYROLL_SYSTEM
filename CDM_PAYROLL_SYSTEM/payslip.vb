@@ -1,4 +1,15 @@
 ﻿Imports System.Drawing.Printing
+Imports FireSharp.Interfaces
+Imports FireSharp.Response
+Imports Newtonsoft.Json
+Imports Org.BouncyCastle.Math.EC.Custom
+Imports System.IO
+Imports Firebase.Storage
+Imports FireSharp.Config
+Imports PdfSharp.Drawing
+Imports PdfSharp.Pdf
+
+
 
 Public Class payslip
     Public Property received_email As String
@@ -17,104 +28,7 @@ Public Class payslip
     Public Sub SetImage(image As Image)
         PictureBox9.Image = image
     End Sub
-    Public Class Program
-        Public Shared Sub Main()
-            ' Create instance of PayrollCalculator
-            Dim payroll As New PayrollCalculator()
 
-            ' Sample data
-            Dim ratePerUnit As Decimal = 260 ' Instructor non-Licensed
-            Dim tlPerUnit As Integer = 24
-            Dim fixedRate As Decimal = 650 ' Example for Head Staff
-            Dim hoursMissed As Decimal = 1.5 ' Hours missed
-            Dim minutesMissed As Integer = 45 ' Minutes missed
-
-            ' Calculations
-            Dim perDay As Decimal = payroll.CalculatePerDay(ratePerUnit, tlPerUnit)
-            Dim perHour As Decimal = payroll.CalculatePerHour(ratePerUnit, tlPerUnit)
-            Dim perMinute As Decimal = payroll.CalculatePerMinute(perHour)
-
-            Dim deduction As Decimal = payroll.CalculateDeduction(fixedRate, hoursMissed)
-            Dim minuteDeduction As Decimal = payroll.CalculateMinuteDeduction(fixedRate, minutesMissed)
-
-            Dim totalDeduction As Decimal = deduction + minuteDeduction
-            Dim totalSalary As Decimal = payroll.CalculateTotalSalary(fixedRate, totalDeduction)
-
-            ' Output results
-            Console.WriteLine($"Rate Per Day: {perDay:C2}")
-            Console.WriteLine($"Rate Per Hour: {perHour:C2}")
-            Console.WriteLine($"Rate Per Minute: {perMinute:C2}")
-            Console.WriteLine($"Deduction for Missed Hours: {deduction:C2}")
-            Console.WriteLine($"Deduction for Missed Minutes: {minuteDeduction:C2}")
-            Console.WriteLine($"Total Deduction: {totalDeduction:C2}")
-            Console.WriteLine($"Total Salary After Deductions: {totalSalary:C2}")
-
-            ' OL and ETL Example Calculations
-            Dim totalUnits As Integer = 12
-            Dim olRatePerDay As Decimal = payroll.CalculateOLRatePerDay(ratePerUnit, totalUnits)
-            Dim olRatePerHour As Decimal = payroll.CalculateOLRatePerHour(ratePerUnit, totalUnits)
-            Dim etlRatePerDay As Decimal = payroll.CalculateETLRatePerDay(ratePerUnit, totalUnits)
-            Dim etlTotalSalary As Decimal = payroll.CalculateETLTotalSalary(etlRatePerDay, fixedRate, totalDeduction)
-
-            Console.WriteLine($"OL Rate Per Day: {olRatePerDay:C2}")
-            Console.WriteLine($"OL Rate Per Hour: {olRatePerHour:C2}")
-            Console.WriteLine($"ETL Rate Per Day: {etlRatePerDay:C2}")
-            Console.WriteLine($"ETL Total Salary: {etlTotalSalary:C2}")
-        End Sub
-    End Class
-    Public Class PayrollCalculator
-        ' Calculate per day rate
-        Public Function CalculatePerDay(ratePerUnit As Decimal, tlPerUnit As Integer) As Decimal
-            Return ((ratePerUnit * tlPerUnit * 4) / 24) / 7
-        End Function
-
-        ' Calculate per hour rate
-        Public Function CalculatePerHour(ratePerUnit As Decimal, tlPerUnit As Integer) As Decimal
-            Return (ratePerUnit * tlPerUnit) / 40
-        End Function
-
-        ' Calculate per minute rate
-        Public Function CalculatePerMinute(ratePerHour As Decimal) As Decimal
-            Return ratePerHour / 60
-        End Function
-
-        ' Calculate deduction for missed hours
-        Public Function CalculateDeduction(fixedRate As Decimal, hoursMissed As Decimal) As Decimal
-            Dim perHourRate As Decimal = fixedRate / 8 ' Assume 8 work hours per day
-            Return hoursMissed * perHourRate
-        End Function
-
-        ' Calculate deduction for missed minutes
-        Public Function CalculateMinuteDeduction(fixedRate As Decimal, minutesMissed As Integer) As Decimal
-            Dim perMinuteRate As Decimal = fixedRate / (8 * 60) ' 8 hours, 60 minutes per hour
-            Return minutesMissed * perMinuteRate
-        End Function
-
-        ' Calculate total salary after deductions
-        Public Function CalculateTotalSalary(fixedRate As Decimal, totalDeduction As Decimal) As Decimal
-            Return fixedRate - totalDeduction
-        End Function
-
-        ' Calculate OL rate per day
-        Public Function CalculateOLRatePerDay(ratePerUnit As Decimal, totalUnits As Integer) As Decimal
-            Return ((ratePerUnit * totalUnits * 4) / 24) / 7
-        End Function
-
-        ' Calculate OL rate per hour
-        Public Function CalculateOLRatePerHour(ratePerUnit As Decimal, totalUnits As Integer) As Decimal
-            Return (ratePerUnit * totalUnits) / 40
-        End Function
-
-        ' Calculate ETL rate per day
-        Public Function CalculateETLRatePerDay(ratePerUnit As Decimal, totalUnits As Integer) As Decimal
-            Return ((ratePerUnit * totalUnits * 4) / 24) / 7
-        End Function
-
-        ' Calculate total salary for ETL
-        Public Function CalculateETLTotalSalary(etlRatePerDay As Decimal, fixedRate As Decimal, deduction As Decimal) As Decimal
-            Return etlRatePerDay + (fixedRate - deduction)
-        End Function
-    End Class
     Private Sub payroll_dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ' Show a confirmation dialog (optional)
         ' Only show the exit confirmation if isExiting is set to True
@@ -128,6 +42,7 @@ Public Class payslip
             End If
         End If
     End Sub
+
     Private Sub payslip_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If TextBox1.Text = Nothing OrElse TextBox2.Text = Nothing OrElse TextBox3.Text = Nothing OrElse TextBox4.Text = Nothing Then
         '    Button4.Enabled = False
@@ -166,6 +81,17 @@ Public Class payslip
         End If
 
     End Sub
+    Private Async Function UploadPdfToFirebase(filePath As String, fileName As String) As Task(Of String)
+        Try
+            Dim storage = New FirebaseStorage("gs://cdm-payroll-system.appspot.com")
+            Dim fileStream As FileStream = New FileStream(filePath, FileMode.Open)
+            Dim uploadTask = Await storage.Child("payslips").Child(fileName).PutAsync(fileStream)
+            Return Await storage.Child("payslips").Child(fileName).GetDownloadUrlAsync()
+        Catch ex As Exception
+            MessageBox.Show($"Error uploading PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
+        End Try
+    End Function
     Private Sub PrintDoc_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles printDoc.PrintPage
         Dim logo As Image = Image.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\images\logo.jpg")
         Dim logo2 As Image = Image.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\images\bayan_logo.jpg")
@@ -230,7 +156,7 @@ Public Class payslip
         startY += lineHeight ' Adding some space after the title
 
         ' Second text: "Payslip for the Period..."
-        Dim payslipText As String = "Payslip for the Period October 20, 2024 - November 2, 2024 (Pay-out: November 8, 2024)"
+        Dim payslipText As String = "Payslip for the Period October 20, 2024 - November 2, 2024 (Pay-out: " + DateTime.Now + ")"
         e.Graphics.DrawString(payslipText, fontsmall, brush, (e.PageBounds.Width - e.Graphics.MeasureString(payslipText, fontContent).Width) / 1.8, startY)
 
         ' Measure the size of the "Payslip" text to calculate the line position
@@ -396,7 +322,7 @@ Public Class payslip
             String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
             String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
             String.IsNullOrWhiteSpace(TextBox7.Text) Then
-            MessageBox.Show("Please enter value in the textboxes!")
+            MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             Dim rateperunit As Integer = Integer.Parse(TextBox2.Text)
             Dim totalunits_calc As Integer = Integer.Parse(TextBox3.Text)
@@ -412,15 +338,12 @@ Public Class payslip
             Label17.Text = "₱" & perhour_calc.ToString("N2")
             Label18.Text = "₱" & permin_calc.ToString("N2")
             TextBox6.Text = "₱" & every15days.ToString("N2")
+            Button2.Enabled = True
+            Button1.Enabled = True
+            Button2.BackColor = Color.DarkSeaGreen
+            Button1.BackColor = Color.DarkSeaGreen
+
         End If
-        'Dim unlicensed As String
-        'Dim licensed As String
-        'Dim head As String
-        'Dim admin As String
-        'Dim assistant_head As String
-        'Dim assistant_profI As String
-        'Dim assistant_profII As String
-        'Dim Professor As String
 
     End Sub
 
@@ -441,10 +364,129 @@ Public Class payslip
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim customSize As New PaperSize("CustomSize", 600, 1100) ' Width and height in hundredths of an inch
-        printDoc.DefaultPageSettings.PaperSize = customSize
-        PrintPreviewDialog1.Document = printDoc
-        printDoc.DefaultPageSettings.Landscape = True
-        PrintPreviewDialog1.ShowDialog()
+        If Label11.Text = "-" OrElse
+            Label17.Text = "-" OrElse
+            Label18.Text = "-" OrElse
+            String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox7.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox8.Text) Then
+            MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            Dim customSize As New PaperSize("CustomSize", 600, 1100) ' Width and height in hundredths of an inch
+            printDoc.DefaultPageSettings.PaperSize = customSize
+            PrintPreviewDialog1.Document = printDoc
+            printDoc.DefaultPageSettings.Landscape = True
+            PrintPreviewDialog1.ShowDialog()
+        End If
+
     End Sub
+    Public Property get_pey_period_hehe As String
+    Public Property no As String
+    Public Property agaga As String
+    Public Property pogiako As String
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
+        ' Validate the input fields to ensure they are not empty or whitespace
+        If String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox7.Text) Then
+            MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            ' Assuming get_pey_period_hehe contains the pay period string, e.g., "November 16-30 2024"
+            Dim get_pey_period_hehe As String = "November 16-30 2024" ' Replace with your actual value
+
+            ' Split the get_pey_period_hehe string into parts
+            Dim parts As String() = get_pey_period_hehe.Split(" "c)
+
+            If parts.Length = 3 Then
+                ' Extract month, day range, and year from the split string
+                Dim monthName As String = parts(0) ' "November"
+                Dim daysRange As String = parts(1) ' "16-30"
+                Dim year As Integer = Integer.Parse(parts(2)) ' "2024"
+
+                ' Get the numeric month from the month name (e.g., "November" -> 11)
+                Dim month As Integer = DateTime.ParseExact(monthName, "MMMM", Globalization.CultureInfo.InvariantCulture).Month
+
+                ' Extract the start and end days from the day range
+                Dim dayParts As String() = daysRange.Split("-"c)
+                If dayParts.Length = 2 Then
+                    Dim startDay As Integer = Integer.Parse(dayParts(0)) ' 16
+                    Dim endDay As Integer = Integer.Parse(dayParts(1)) ' 30
+
+                    ' Generate the start and end dates in the desired format (yyyy-MM-dd)
+                    Dim startDate As New DateTime(year, month, startDay)
+                    Dim endDate As New DateTime(year, month, endDay)
+
+                    ' Now, generate the mapping of unique IDs to dates
+                    Dim payPeriod As New Dictionary(Of String, String)()
+
+                    ' Loop through the date range using a While loop (since DateTime doesn't support direct For loop)
+                    Dim currentDate As DateTime = startDate
+                    While currentDate <= endDate
+                        Dim uniqueId As String = New Random().Next(1000000, 9999999).ToString() ' Generate a random 7-digit unique ID
+                        payPeriod(uniqueId) = currentDate.ToString("yyyy-MM-dd")
+                        currentDate = currentDate.AddDays(1) ' Increment the date by one day
+                    End While
+
+                    Dim PD As New PersonalData.Payslip With {
+                        .PayslipID = numericGuid123,
+                        .TotalDeduction = TextBox8.Text,
+                        .TotalHours = TextBox4.Text,
+                        .TotalSalary = TextBox1.Text,
+                        .TotalYear = "1",
+                    .PayOutPeriod = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            }
+                    ' Now save the result to Firebase
+
+                    Dim script_for_payslip = "Your payslip for " + get_pey_period_hehe + " is now available"
+                    Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
+                    ' Save the PayslipID under the user_uid
+                    Dim savePayslipID = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
+                    Dim payoutperiod = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutPeriod)
+
+                    ' Save the other payroll data under the user_uid
+                    Dim saveTotalDeduction = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)
+                    Dim saveTotalHours = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalHours/total_hours", PD.TotalHours)
+                    Dim saveTotalSalary = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalSalary/total_salary", PD.TotalSalary)
+                    Dim saveTotalYear = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalYear/total_year", PD.TotalYear)
+
+                    Dim save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/id", numericGuid)
+                    save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/message", script_for_payslip)
+                    save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/title", "Payslip")
+
+                    MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Invalid day range format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("Invalid pay period format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+
+    End Sub
+
+    ' Helper function to generate a unique ID
+    Dim numericGuid123 As String = New String(Guid.NewGuid().ToString("N").Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 9)
+
+    ' Helper function to generate the JSON string from the pay period dictionary
+    Private Function GenerateJsonString(payPeriod As Dictionary(Of String, String)) As String
+        Dim jsonOutput As String = "{"
+        For Each kvp In payPeriod
+            jsonOutput &= String.Format("""{0}"": ""{1}"", ", kvp.Key, kvp.Value)
+        Next
+        ' Remove the last comma and add closing brace
+        jsonOutput = jsonOutput.TrimEnd(New Char() {","c}) & "}"
+        Return jsonOutput
+    End Function
+
+
 End Class
