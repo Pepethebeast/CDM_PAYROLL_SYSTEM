@@ -443,7 +443,7 @@ Public Class payslip
                         .TotalHours = TextBox4.Text,
                         .TotalSalary = TextBox1.Text,
                         .TotalYear = "1",
-                    .PayOutPeriod = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                    .PayOutDate = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
             }
                     ' Now save the result to Firebase
 
@@ -451,7 +451,8 @@ Public Class payslip
                     Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                     ' Save the PayslipID under the user_uid
                     Dim savePayslipID = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
-                    Dim payoutperiod = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutPeriod)
+                    Dim payoutperiod = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutDate)
+                    Dim payslipreports = client.Set("ReportTbl/payslip/" & numericGuid, "Sucessfully payslip distribution to employee id:" + add_employee_id)
 
                     ' Save the other payroll data under the user_uid
                     Dim saveTotalDeduction = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)

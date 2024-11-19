@@ -6,6 +6,10 @@ Imports System.ComponentModel
 Imports System.IO
 Imports System.Net
 Imports System.Text.Encodings.Web
+Imports Firebase.Database
+Imports CDM_PAYROLL_SYSTEM.PersonalData
+Imports FirebaseAdmin.Auth
+Imports System.Windows.Controls
 
 Public Class List_of_Employees
     Private FirebaseURL As String = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/" ' Your Firebase Realtime Database URL
@@ -20,15 +24,13 @@ Public Class List_of_Employees
     Private Const RowHeight As Integer = 60 ' Increased row height
     Private Const FontSize As Single = 8.0F ' Increased font size
     Private previousRowIndex As Integer = -1
-    Public Function Base64ToImage(base64String As String) As Image
+    Public Function Base64ToImage(base64String As String) As System.Drawing.Image
         ' Convert Base64 String to byte[]  
         Dim imageBytes As Byte() = Convert.FromBase64String(base64String)
-        Dim ms As New MemoryStream(imageBytes, 0, imageBytes.Length)
-
-        ' Convert byte[] to Image  
-        ms.Write(imageBytes, 0, imageBytes.Length)
-        Dim image__1 As Image = System.Drawing.Image.FromStream(ms, True)
-        Return image__1
+        Using ms As New MemoryStream(imageBytes, 0, imageBytes.Length)
+            ' Convert byte[] to Image  
+            Return System.Drawing.Image.FromStream(ms, True)
+        End Using
     End Function
 
     Dim former As New Form
@@ -36,21 +38,44 @@ Public Class List_of_Employees
     Dim clearDGVCol As Boolean = True
     Private dtTableGrd As DataTable
 
-    Sub LoadEmployeeData()
+    Sub LoadEmployeeData(Optional keyword As String = "")
         Try
+            ' Retrieve data from Firebase
             Dim SRRecord = client.Get("EmployeeDataTbl/")
             Dim employees As Dictionary(Of String, PersonalData) = JsonConvert.DeserializeObject(Of Dictionary(Of String, PersonalData))(SRRecord.Body)
 
             If employees Is Nothing OrElse employees.Count = 0 Then
-                MessageBox.Show("No data found! add new employee", "NO DATA SHOWED", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("No data found! Add new employee.", "NO DATA SHOWED", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
 
-            Dim employeeList As List(Of PersonalData) = employees.Values.Where(Function(emp) Not String.IsNullOrEmpty(emp.employeeID)).ToList()
+            ' Assign UID to each employee
+            For Each kvp As KeyValuePair(Of String, PersonalData) In employees
+                kvp.Value.UID = kvp.Key
+            Next
+
+            ' Filter the employee list based on the keyword
+            Dim employeeList As List(Of PersonalData) = employees.Values _
+            .Where(Function(emp) Not String.IsNullOrEmpty(emp.employeeID) AndAlso
+                                 (String.IsNullOrEmpty(keyword) OrElse
+                                  emp.employeeID.Contains(keyword, StringComparison.OrdinalIgnoreCase) OrElse
+                                  emp.name.Contains(keyword, StringComparison.OrdinalIgnoreCase) OrElse
+                                  emp.email.Contains(keyword, StringComparison.OrdinalIgnoreCase))) _
+            .ToList()
+
+            ' Display a message if no data matches the search criteria
+            If employeeList.Count = 0 Then
+                MessageBox.Show("No matching records found!", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                DGVUserData.DataSource = Nothing
+                Return
+            End If
+
+            ' Reset DataGridView and add columns
             DGVUserData.DataSource = Nothing
             DGVUserData.Columns.Clear()
             DGVUserData.AutoGenerateColumns = False
 
+            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "UID", .HeaderText = "UID", .Name = "UID", .Visible = False})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "EmployeeID", .HeaderText = "Employee ID", .Name = "EmployeeID"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "name", .HeaderText = "Name", .Name = "name"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "age", .HeaderText = "Age", .Name = "age"})
@@ -63,6 +88,7 @@ Public Class List_of_Employees
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "no_of_units", .HeaderText = "No. of Units", .Name = "no_of_units"})
             DGVUserData.Columns.Add(New DataGridViewImageColumn With {.DataPropertyName = "image", .HeaderText = "Image", .Name = "image", .ImageLayout = DataGridViewImageCellLayout.Stretch})
 
+            ' Bind the filtered list to the DataGridView
             DGVUserData.DataSource = employeeList
             DGVUserData.AllowUserToAddRows = False
 
@@ -77,7 +103,9 @@ Public Class List_of_Employees
             column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
         Next
     End Sub
+
     Private Sub List_of_Employees_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         DGVUserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         Try
             client = New FireSharp.FirebaseClient(connect)
@@ -149,7 +177,6 @@ Public Class List_of_Employees
         DGVUserData.Refresh()
 
     End Sub
-
     Private Sub DGVUserData_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGVUserData.CellFormatting
         If e.ColumnIndex < 0 OrElse e.RowIndex < 0 Then Return
 
@@ -175,7 +202,7 @@ Public Class List_of_Employees
                     If imageBytes.Length > 0 Then
                         Using ms As New MemoryStream(imageBytes)
                             ' Validate that the data is actually an image
-                            Using originalImage As Image = Image.FromStream(ms)
+                            Using originalImage As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
                                 ' Get the cell size
                                 Dim cellSize As Size = CType(sender, DataGridView).GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True).Size
 
@@ -209,6 +236,7 @@ Public Class List_of_Employees
         End If
     End Sub
 
+
     Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
 
     End Sub
@@ -236,72 +264,132 @@ Public Class List_of_Employees
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
         Me.Hide()
-        acc.Show()
+        Employee_Dashboard.Show()
     End Sub
 
 
 
     Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
-        Hide
-        Employee_Dashboard.Show
+        Hide()
+        Employee_Dashboard.Show()
     End Sub
 
     Private Sub IconButton2_Click(sender As Object, e As EventArgs) Handles IconButton2.Click
-        LoadEmployeeData
+        LoadEmployeeData()
         DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
     End Sub
 
-
-
-    ' Method to delete data from Firebase
-    Public Async Function DeleteDataAsync(ByVal path As String) As Task(Of Boolean)
-        Using client As New HttpClient()
-            Try
-                ' Construct the full URL with the path to the data and the auth token if needed
-                Dim url As String = $"{FirebaseURL}{path}.json?auth={AuthToken}"
-
-                ' Perform DELETE request
-                Dim response As HttpResponseMessage = Await client.DeleteAsync(url)
-
-                ' Check if the request was successful
-                If response.IsSuccessStatusCode Then
-                    Console.WriteLine("Data deleted successfully.")
-                    Return True
-                Else
-                    Console.WriteLine($"Failed to delete data. Status code: {response.StatusCode}")
-                    Return False
-                End If
-            Catch ex As Exception
-                Console.WriteLine($"An error occurred: {ex.Message}")
-                Return False
-            End Try
-        End Using
-    End Function
-
-    Private Async Sub DeleteColumnFromFirebase(ByVal attributeName As String)
-        Try
-            Dim path As String = $"EmployeeDataTbl/{attributeName}"
-            Dim result = Await client.DeleteAsync(path)
-            If result.StatusCode = HttpStatusCode.OK Then
-                MessageBox.Show("Data deleted from Firebase successfully.", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Failed to delete data from Firebase.", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As Exception
-            MessageBox.Show($"Error deleting data from Firebase: {ex.Message}", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
     Private Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
-        Dim columnName = "EmployeeID" ' Replace with the actual column name to delete
-        If DGVUserData.Columns.Contains(columnName) Then
-            ' Delete column from DataGridView
+
+        If DGVUserData.SelectedRows.Count = 1 Then
+            ' Ask for confirmation before deleting
+            Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this row?", "Delete Row", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                ' Get the selected row
+                Dim selectedRow As DataGridViewRow = DGVUserData.SelectedRows(0)
+                Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
+
+                ' Delete the data from Firebase
 
 
-            ' Delete data from Firebase (replace with actual attribute name if necessary)
-            DeleteColumnFromFirebase(columnName)
+                ' Delete the data from Firebase (based on UID)
+                client.Delete("EmployeeDataTbl/" & selectedUID)
+
+                ' Optionally, show a success message
+                MessageBox.Show("Record deleted from Firebase successfully!")
+            End If
         Else
-            MessageBox.Show("The specified column does not exist.", "Column Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Please select a row to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 
+    Private Sub DGVUserData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVUserData.CellContentClick
+
+    End Sub
+
+    Dim selectedRowData As List(Of String)
+    Private Sub IconButton4_Click(sender As Object, e As EventArgs) Handles IconButton4.Click
+
+        If DGVUserData.SelectedRows.Count > 0 Then
+            ' Debugging step to confirm row selection
+
+            ' Retrieve the data from the selected row
+            Dim selectedRow As DataGridViewRow = DGVUserData.SelectedRows(0)
+            Dim name_received As String = selectedRow.Cells("Name").Value.ToString()
+            Dim userData As String = selectedRow.Cells("EmployeeID").Value.ToString()
+            Dim email_received As String = selectedRow.Cells("email").Value.ToString()
+            Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
+
+            ' Check if there is an image
+            If selectedRow.Cells("image").Value IsNot Nothing Then
+                Dim base64String As String = selectedRow.Cells("image").Value.ToString()
+                Dim image_for_emp As System.Drawing.Image = Base64ToImage(base64String)
+
+                ' Create an instance of the add_employee form
+                Dim add_employee_info As New add_employee()
+
+                ' Pass the data to the add_employee form
+                add_employee_info.received_name = name_received
+                add_employee_info.add_employee_id = userData
+                add_employee_info.received_email = email_received
+                add_employee_info.user_uid = selectedUID
+
+                ' Set the image to PictureBox4 in the add_employee form
+                add_employee_info.PictureBox4.Image = image_for_emp
+
+                ' Show the add_employee form
+                add_employee_info.Show()
+            End If
+        Else
+            MessageBox.Show("Please select a row first.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub IconButton5_Click(sender As Object, e As EventArgs) Handles IconButton5.Click
+        Dim keyword As String = TextBox1.Text.Trim()
+        LoadEmployeeData(keyword)
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        ' Check if data is already loaded
+        If DGVUserData.DataSource Is Nothing Then Return
+
+        ' Get the search text and remove leading/trailing spaces
+        Dim searchText As String = TextBox1.Text.Trim().ToLower()
+
+        ' Cast the DataSource back to a list of PersonalData
+        Dim employeeList As List(Of PersonalData) = TryCast(DGVUserData.DataSource, List(Of PersonalData))
+        If employeeList Is Nothing Then Return
+
+        ' Check if searchText is empty
+        If String.IsNullOrEmpty(searchText) Then
+            ' If empty, show all records
+            DGVUserData.DataSource = Nothing
+            DGVUserData.DataSource = employeeList
+        Else
+            ' If not empty, filter the data based on search text
+            Dim filteredList = employeeList.Where(Function(emp) _
+            emp.employeeID.ToLower().Contains(searchText) OrElse
+            emp.name.ToLower().Contains(searchText) OrElse
+            emp.position.ToLower().Contains(searchText)
+        ).ToList()
+
+            ' Update the DataGridView with the filtered list
+            DGVUserData.DataSource = Nothing
+            DGVUserData.DataSource = filteredList
+        End If
+    End Sub
+    Private Sub HighlightMatches(searchText As String)
+        For Each row As DataGridViewRow In DGVUserData.Rows
+            For Each cell As DataGridViewCell In row.Cells
+                If cell.Value IsNot Nothing AndAlso cell.Value.ToString().ToLower().Contains(searchText.ToLower()) Then
+                    cell.Style.BackColor = Color.Yellow
+                Else
+                    cell.Style.BackColor = Color.White
+                End If
+            Next
+        Next
+    End Sub
 End Class

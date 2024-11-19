@@ -40,16 +40,17 @@ Partial Class add_account
         CheckBox2 = New CheckBox()
         CheckBox3 = New CheckBox()
         passwordtextbox = New TextBox()
-        Label3 = New Label()
         emailtextbox = New TextBox()
-        Label2 = New Label()
         Label10 = New Label()
         nametextbox = New TextBox()
         TextBox1 = New TextBox()
+        Label3 = New Label()
+        Label2 = New Label()
         PictureBox2 = New PictureBox()
         Label9 = New Label()
         PictureBox1 = New PictureBox()
         Timer1 = New Timer(components)
+        Label8 = New Label()
         TableLayoutPanel1.SuspendLayout()
         Panel1.SuspendLayout()
         TableLayoutPanel4.SuspendLayout()
@@ -61,16 +62,16 @@ Partial Class add_account
         ' TableLayoutPanel1
         ' 
         TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
         TableLayoutPanel1.Controls.Add(Panel1, 1, 0)
         TableLayoutPanel1.Controls.Add(PictureBox1, 0, 0)
         TableLayoutPanel1.Dock = DockStyle.Fill
         TableLayoutPanel1.Location = New Point(0, 0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 20.0F))
         TableLayoutPanel1.Size = New Size(851, 552)
         TableLayoutPanel1.TabIndex = 2
         ' 
@@ -79,6 +80,7 @@ Partial Class add_account
         Panel1.BackColor = Color.DarkSeaGreen
         Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
         Panel1.BackgroundImageLayout = ImageLayout.Stretch
+        Panel1.Controls.Add(Label8)
         Panel1.Controls.Add(TableLayoutPanel4)
         Panel1.Controls.Add(Label6)
         Panel1.Controls.Add(Button2)
@@ -97,12 +99,12 @@ Partial Class add_account
         ' 
         TableLayoutPanel4.BackColor = Color.Transparent
         TableLayoutPanel4.ColumnCount = 1
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
         TableLayoutPanel4.Controls.Add(Label1, 0, 0)
         TableLayoutPanel4.Location = New Point(110, 153)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 1
-        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
         TableLayoutPanel4.Size = New Size(193, 27)
         TableLayoutPanel4.TabIndex = 11
         ' 
@@ -111,7 +113,7 @@ Partial Class add_account
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Dock = DockStyle.Fill
-        Label1.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Roboto Medium", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.InfoText
         Label1.Location = New Point(3, 0)
         Label1.Name = "Label1"
@@ -126,7 +128,7 @@ Partial Class add_account
         Label6.BackColor = Color.Transparent
         Label6.Font = New Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.ForeColor = Color.Maroon
-        Label6.Location = New Point(47, 404)
+        Label6.Location = New Point(47, 402)
         Label6.Name = "Label6"
         Label6.Size = New Size(91, 12)
         Label6.TabIndex = 9
@@ -161,9 +163,9 @@ Partial Class add_account
         ' 
         TableLayoutPanel2.BackColor = Color.Transparent
         TableLayoutPanel2.ColumnCount = 3
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 35F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 35.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 15.0F))
         TableLayoutPanel2.Controls.Add(Label14, 0, 2)
         TableLayoutPanel2.Controls.Add(employee_id_textbox, 1, 0)
         TableLayoutPanel2.Controls.Add(Label5, 0, 0)
@@ -172,13 +174,13 @@ Partial Class add_account
         TableLayoutPanel2.Controls.Add(CheckBox2, 2, 5)
         TableLayoutPanel2.Controls.Add(CheckBox3, 2, 4)
         TableLayoutPanel2.Controls.Add(passwordtextbox, 1, 4)
-        TableLayoutPanel2.Controls.Add(Label3, 0, 4)
         TableLayoutPanel2.Controls.Add(emailtextbox, 1, 3)
-        TableLayoutPanel2.Controls.Add(Label2, 0, 3)
         TableLayoutPanel2.Controls.Add(Label10, 0, 1)
         TableLayoutPanel2.Controls.Add(nametextbox, 1, 1)
         TableLayoutPanel2.Controls.Add(TextBox1, 1, 2)
-        TableLayoutPanel2.Location = New Point(3, 198)
+        TableLayoutPanel2.Controls.Add(Label3, 0, 4)
+        TableLayoutPanel2.Controls.Add(Label2, 0, 3)
+        TableLayoutPanel2.Location = New Point(3, 199)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 6
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 16.666666F))
@@ -287,19 +289,6 @@ Partial Class add_account
         passwordtextbox.Size = New Size(180, 23)
         passwordtextbox.TabIndex = 4
         ' 
-        ' Label3
-        ' 
-        Label3.Anchor = AnchorStyles.None
-        Label3.AutoSize = True
-        Label3.Font = New Font("Roboto", 11.25F)
-        Label3.ForeColor = SystemColors.InfoText
-        Label3.Location = New Point(32, 184)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(78, 18)
-        Label3.TabIndex = 4
-        Label3.Text = "Password:"
-        Label3.TextAlign = ContentAlignment.MiddleCenter
-        ' 
         ' emailtextbox
         ' 
         emailtextbox.Anchor = AnchorStyles.None
@@ -307,19 +296,6 @@ Partial Class add_account
         emailtextbox.Name = "emailtextbox"
         emailtextbox.Size = New Size(180, 23)
         emailtextbox.TabIndex = 3
-        ' 
-        ' Label2
-        ' 
-        Label2.Anchor = AnchorStyles.None
-        Label2.AutoSize = True
-        Label2.Font = New Font("Roboto", 11.25F)
-        Label2.ForeColor = SystemColors.InfoText
-        Label2.Location = New Point(17, 141)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(109, 18)
-        Label2.TabIndex = 3
-        Label2.Text = "Email Address:"
-        Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Label10
         ' 
@@ -350,6 +326,32 @@ Partial Class add_account
         TextBox1.Size = New Size(180, 23)
         TextBox1.TabIndex = 2
         ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Font = New Font("Roboto", 11.25F)
+        Label3.ForeColor = SystemColors.InfoText
+        Label3.Location = New Point(32, 184)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(78, 18)
+        Label3.TabIndex = 4
+        Label3.Text = "Password:"
+        Label3.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.None
+        Label2.AutoSize = True
+        Label2.Font = New Font("Roboto", 11.25F)
+        Label2.ForeColor = SystemColors.InfoText
+        Label2.Location = New Point(17, 141)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(109, 18)
+        Label2.TabIndex = 3
+        Label2.Text = "Email Address:"
+        Label2.TextAlign = ContentAlignment.MiddleCenter
+        ' 
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.Transparent
@@ -365,13 +367,14 @@ Partial Class add_account
         ' 
         Label9.AutoSize = True
         Label9.BackColor = Color.Transparent
+        Label9.CausesValidation = False
         Label9.Font = New Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label9.ForeColor = Color.Maroon
-        Label9.Location = New Point(50, 362)
+        Label9.Location = New Point(61, 356)
         Label9.Name = "Label9"
-        Label9.Size = New Size(67, 12)
+        Label9.Size = New Size(250, 12)
         Label9.TabIndex = 6
-        Label9.Text = "Email error"
+        Label9.Text = "12222222222222222222222222222222222"
         Label9.Visible = False
         ' 
         ' PictureBox1
@@ -391,9 +394,22 @@ Partial Class add_account
         ' 
         Timer1.Interval = 30000
         ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.BackColor = Color.Transparent
+        Label8.Font = New Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label8.ForeColor = Color.Maroon
+        Label8.Location = New Point(48, 359)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(91, 12)
+        Label8.TabIndex = 12
+        Label8.Text = "Password Error"
+        Label8.Visible = False
+        ' 
         ' add_account
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         BackgroundImageLayout = ImageLayout.Stretch
@@ -442,5 +458,6 @@ Partial Class add_account
     Friend WithEvents employee_id_textbox As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label8 As Label
 
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class payroll
+Partial Class reports
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class payroll
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(payroll))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(reports))
         Panel2 = New Panel()
         TableLayoutPanel1 = New TableLayoutPanel()
         Label31 = New Label()
@@ -38,30 +38,23 @@ Partial Class payroll
         Label8 = New Label()
         Label7 = New Label()
         PictureBox2 = New PictureBox()
-        PictureBox1 = New PictureBox()
-        Label2 = New Label()
-        PictureBox11 = New PictureBox()
-        PictureBox4 = New PictureBox()
-        PictureBox3 = New PictureBox()
         GroupBox4 = New GroupBox()
+        PictureBox3 = New PictureBox()
+        PictureBox4 = New PictureBox()
+        PictureBox11 = New PictureBox()
+        Label2 = New Label()
+        PictureBox1 = New PictureBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
-        Label1 = New Label()
         ComboBox1 = New ComboBox()
-        ComboBox3 = New ComboBox()
-        ComboBox2 = New ComboBox()
-        Label3 = New Label()
-        TextBox1 = New TextBox()
-        IconButton5 = New FontAwesome.Sharp.IconButton()
-        IconButton1 = New FontAwesome.Sharp.IconButton()
         DataGridView1 = New DataGridView()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox4.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         FlowLayoutPanel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -76,7 +69,7 @@ Partial Class payroll
         Panel2.Margin = New Padding(4, 3, 4, 3)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(254, 659)
-        Panel2.TabIndex = 28
+        Panel2.TabIndex = 29
         ' 
         ' TableLayoutPanel1
         ' 
@@ -288,71 +281,6 @@ Partial Class payroll
         PictureBox2.TabIndex = 18
         PictureBox2.TabStop = False
         ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        PictureBox1.BackColor = Color.Transparent
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(1898, 2)
-        PictureBox1.Margin = New Padding(4, 3, 4, 3)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(63, 60)
-        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox1.TabIndex = 19
-        PictureBox1.TabStop = False
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Cursor = Cursors.Hand
-        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(20, 18)
-        Label2.Margin = New Padding(4, 0, 4, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(246, 22)
-        Label2.TabIndex = 20
-        Label2.Text = "PAYROLL MANAGEMENT"
-        ' 
-        ' PictureBox11
-        ' 
-        PictureBox11.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        PictureBox11.BackColor = Color.Transparent
-        PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
-        PictureBox11.Location = New Point(1831, 3)
-        PictureBox11.Margin = New Padding(4, 3, 4, 3)
-        PictureBox11.Name = "PictureBox11"
-        PictureBox11.Size = New Size(63, 60)
-        PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox11.TabIndex = 21
-        PictureBox11.TabStop = False
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        PictureBox4.BackColor = Color.Transparent
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(1020, 2)
-        PictureBox4.Margin = New Padding(4, 3, 4, 3)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(63, 60)
-        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox4.TabIndex = 22
-        PictureBox4.TabStop = False
-        ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        PictureBox3.BackColor = Color.Transparent
-        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(953, 3)
-        PictureBox3.Margin = New Padding(4, 3, 4, 3)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(63, 60)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 23
-        PictureBox3.TabStop = False
-        ' 
         ' GroupBox4
         ' 
         GroupBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
@@ -362,158 +290,127 @@ Partial Class payroll
         GroupBox4.Controls.Add(PictureBox11)
         GroupBox4.Controls.Add(Label2)
         GroupBox4.Controls.Add(PictureBox1)
-        GroupBox4.Location = New Point(258, 3)
+        GroupBox4.Location = New Point(253, 1)
         GroupBox4.Margin = New Padding(4, 3, 4, 3)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(4, 3, 4, 3)
-        GroupBox4.Size = New Size(1088, 63)
-        GroupBox4.TabIndex = 29
+        GroupBox4.Size = New Size(1093, 63)
+        GroupBox4.TabIndex = 30
         GroupBox4.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        PictureBox3.BackColor = Color.Transparent
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(1854, 3)
+        PictureBox3.Margin = New Padding(4, 3, 4, 3)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(63, 60)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 23
+        PictureBox3.TabStop = False
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        PictureBox4.BackColor = Color.Transparent
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(1921, 2)
+        PictureBox4.Margin = New Padding(4, 3, 4, 3)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(63, 60)
+        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox4.TabIndex = 22
+        PictureBox4.TabStop = False
+        ' 
+        ' PictureBox11
+        ' 
+        PictureBox11.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        PictureBox11.BackColor = Color.Transparent
+        PictureBox11.Image = CType(resources.GetObject("PictureBox11.Image"), Image)
+        PictureBox11.Location = New Point(2728, 3)
+        PictureBox11.Margin = New Padding(4, 3, 4, 3)
+        PictureBox11.Name = "PictureBox11"
+        PictureBox11.Size = New Size(63, 60)
+        PictureBox11.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox11.TabIndex = 21
+        PictureBox11.TabStop = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Cursor = Cursors.Hand
+        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(21, 18)
+        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(150, 22)
+        Label2.TabIndex = 20
+        Label2.Text = "LOG REPORTS"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        PictureBox1.BackColor = Color.Transparent
+        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
+        PictureBox1.Location = New Point(2795, 2)
+        PictureBox1.Margin = New Padding(4, 3, 4, 3)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(63, 60)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 19
+        PictureBox1.TabStop = False
         ' 
         ' FlowLayoutPanel1
         ' 
-        FlowLayoutPanel1.BackColor = Color.White
-        FlowLayoutPanel1.Controls.Add(Label1)
         FlowLayoutPanel1.Controls.Add(ComboBox1)
-        FlowLayoutPanel1.Controls.Add(ComboBox3)
-        FlowLayoutPanel1.Controls.Add(ComboBox2)
-        FlowLayoutPanel1.Controls.Add(Label3)
-        FlowLayoutPanel1.Controls.Add(TextBox1)
-        FlowLayoutPanel1.Controls.Add(IconButton5)
-        FlowLayoutPanel1.Controls.Add(IconButton1)
-        FlowLayoutPanel1.Controls.Add(DataGridView1)
-        FlowLayoutPanel1.Location = New Point(261, 73)
+        FlowLayoutPanel1.Location = New Point(253, 70)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(1084, 576)
+        FlowLayoutPanel1.Size = New Size(1093, 33)
         FlowLayoutPanel1.TabIndex = 31
-        ' 
-        ' Label1
-        ' 
-        Label1.Anchor = AnchorStyles.None
-        Label1.AutoSize = True
-        Label1.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(3, 14)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(89, 19)
-        Label1.TabIndex = 32
-        Label1.Text = "Pay Period:"
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Anchor = AnchorStyles.None
-        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(98, 12)
+        ComboBox1.Location = New Point(3, 3)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(87, 23)
-        ComboBox1.TabIndex = 24
-        ' 
-        ' ComboBox3
-        ' 
-        ComboBox3.Anchor = AnchorStyles.None
-        ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox3.FormattingEnabled = True
-        ComboBox3.Location = New Point(191, 12)
-        ComboBox3.Name = "ComboBox3"
-        ComboBox3.Size = New Size(165, 23)
-        ComboBox3.TabIndex = 32
-        ' 
-        ' ComboBox2
-        ' 
-        ComboBox2.Anchor = AnchorStyles.None
-        ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
-        ComboBox2.FormattingEnabled = True
-        ComboBox2.Location = New Point(362, 12)
-        ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(74, 23)
-        ComboBox2.TabIndex = 33
-        ' 
-        ' Label3
-        ' 
-        Label3.Anchor = AnchorStyles.None
-        Label3.AutoSize = True
-        Label3.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(442, 14)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(135, 19)
-        Label3.TabIndex = 33
-        Label3.Text = "Search Employee:"
-        ' 
-        ' TextBox1
-        ' 
-        TextBox1.Anchor = AnchorStyles.None
-        TextBox1.Location = New Point(583, 12)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(204, 23)
-        TextBox1.TabIndex = 35
-        ' 
-        ' IconButton5
-        ' 
-        IconButton5.Anchor = AnchorStyles.None
-        IconButton5.BackColor = Color.DarkSeaGreen
-        IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
-        IconButton5.IconColor = Color.Black
-        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IconButton5.IconSize = 16
-        IconButton5.Location = New Point(793, 3)
-        IconButton5.Name = "IconButton5"
-        IconButton5.Size = New Size(75, 41)
-        IconButton5.TabIndex = 32
-        IconButton5.Text = "🔍"
-        IconButton5.UseVisualStyleBackColor = False
-        ' 
-        ' IconButton1
-        ' 
-        IconButton1.BackColor = Color.DarkSeaGreen
-        IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
-        IconButton1.IconColor = Color.Black
-        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IconButton1.IconSize = 20
-        IconButton1.Location = New Point(1001, 3)
-        IconButton1.Margin = New Padding(130, 3, 3, 3)
-        IconButton1.Name = "IconButton1"
-        IconButton1.Size = New Size(75, 41)
-        IconButton1.TabIndex = 32
-        IconButton1.UseVisualStyleBackColor = False
+        ComboBox1.Size = New Size(257, 23)
+        ComboBox1.TabIndex = 0
         ' 
         ' DataGridView1
         ' 
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(3, 50)
+        DataGridView1.Location = New Point(257, 109)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowTemplate.Height = 25
-        DataGridView1.Size = New Size(1085, 520)
-        DataGridView1.TabIndex = 34
+        DataGridView1.Size = New Size(1089, 551)
+        DataGridView1.TabIndex = 32
         ' 
-        ' payroll
+        ' reports
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        AutoValidate = AutoValidate.EnablePreventFocusChange
-        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
-        BackgroundImageLayout = ImageLayout.Stretch
+        BackColor = Color.White
         ClientSize = New Size(1350, 661)
+        Controls.Add(DataGridView1)
         Controls.Add(FlowLayoutPanel1)
         Controls.Add(GroupBox4)
         Controls.Add(Panel2)
-        DoubleBuffered = True
-        Name = "payroll"
-        StartPosition = FormStartPosition.CenterScreen
-        Text = "payroll"
+        Name = "reports"
+        Text = "reports"
         Panel2.ResumeLayout(False)
         TableLayoutPanel1.ResumeLayout(False)
         TableLayoutPanel1.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         FlowLayoutPanel1.ResumeLayout(False)
-        FlowLayoutPanel1.PerformLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
@@ -533,20 +430,13 @@ Partial Class payroll
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents PictureBox11 As PictureBox
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents PictureBox11 As PictureBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents IconButton5 As FontAwesome.Sharp.IconButton
-    Friend WithEvents ComboBox3 As ComboBox
-    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

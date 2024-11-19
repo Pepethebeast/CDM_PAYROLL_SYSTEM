@@ -11,7 +11,10 @@ Imports Firebase.Auth
 Imports FontAwesome.Sharp
 Imports System.Text
 Imports System.Security.Cryptography
-
+Imports Google.Apis.Auth.OAuth2
+Imports Google.Cloud.Storage.V1
+Imports Emgu.CV
+Imports Microsoft.DotNet.DesignTools.Protocol.Notifications
 Public Class add_employee
 
     Dim IMG_FileNameInput As String
@@ -119,52 +122,69 @@ Public Class add_employee
             Return
         End If
 
-
         Try
-
             Dim check_ID = client.Get("usersTbl/Employee_ID " + add_employee_id)
             If check_ID.Body <> "null" Then
                 MessageBox.Show("The same ID is found, please try again to generate new ID...", "Error")
-
             Else
-
+                ' Calculate age from Date of Birth
                 Dim dob = DateOfBirth.Text
                 Dim age = GetAge(dob)
                 Dim ImgData = ImageToBase64(PictureBox4.Image)
-                Dim PD As New PersonalData With
-           {
-           .name = TextBox1.Text,
-           .employeeID = add_employee_id,
-           .age = age,
-           .date_of_birth = dob,
-           .contact = Contact.Text,
-           .email = TextBox2.Text,
-           .position = Position.Text,
-           .date_hired = DateHired.Text,
-           .department = Department.Text,
-           .designation = Designation.Text,
-           .description = Description.Text,
-           .no_of_units = NoUnits.Text,
-           .image = ImgData
-           }
+                ' Prepare employee data object
+                Dim PD As New PersonalData With {
+            .name = TextBox1.Text,
+            .employeeID = add_employee_id,
+            .age = age,
+            .date_of_birth = dob,
+            .contact = Contact.Text,
+            .email = TextBox2.Text,
+            .position = Position.Text,
+            .date_hired = DateHired.Text,
+            .department = Department.Text,
+            .designation = Designation.Text,
+            .description = Description.Text,
+            .no_of_units = NoUnits.Text,
+            .image = ImgData
+        }
 
+                ' Initialize Firebase Storage client
+                Dim credentialPath As String = "C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json" ' Update with your JSON path
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+
+                Dim bucketName As String = "cdm-payroll-system.appspot.com"
+                Dim user_uid123 As String = user_uid ' Use Employee ID as unique identifier
+                Dim objectPath As String = $"profilePicture/{user_uid}/image.jpg"
+
+                ' Convert PictureBox image to byte array
+                Dim memoryStream As New MemoryStream()
+                PictureBox4.Image.Save(memoryStream, Imaging.ImageFormat.Jpeg)
+                Dim imageBytes As Byte() = memoryStream.ToArray()
+
+                ' Upload the image to Firebase Storage
+                Dim storageClient As StorageClient = StorageClient.Create()
+                Using uploadStream = New MemoryStream(imageBytes)
+                    storageClient.UploadObject(bucketName, objectPath, "image/jpeg", uploadStream)
+                End Using
+
+                ' Save data to Firebase Realtime Database
+                Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                 Dim save = client.Set("EmployeeDataTbl/" & user_uid, PD)
+                Dim save2 = client.Set("NotificationTbl/" & user_uid & "/", "Your information has been updated by admin.")
+                Dim reportTbl = client.Set("ReportTbl/account/" & numericGuid, "Information has been updated for employee ID: " + add_employee_id)
                 MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+                ' Close the form
                 Me.Close()
-
             End If
-
         Catch ex As Exception
-
-            If ex.Message = "One or more errors occured." Then
-                MessageBox.Show("Cannot connect to firebase, check your network!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-
+            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
-
+    Dim bucketName As String = "gs://cdm-payroll-system.appspot.com"
+    Dim fileName As String = "images/" & Guid.NewGuid().ToString() & ".jpg"
+    Dim objectPath As String = $"profilePicture/{user_uid}/image.jpg"
     Private Sub DateOfBirth_ValueChanged(sender As Object, e As EventArgs) Handles DateOfBirth.ValueChanged
 
     End Sub
@@ -202,7 +222,7 @@ Public Class add_employee
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        Me.Close()
+        Me.Hide()
     End Sub
 
     Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
@@ -265,44 +285,33 @@ Public Class add_employee
         End If
 
     End Sub
-
+    Public Sub InitializeFirebase()
+        Dim credentialPath As String = "C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json"
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+    End Sub
     Private Sub Department_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Department.SelectedIndexChanged
 
     End Sub
+    Public Sub UploadImageToFirebaseStorage(pictureBox As PictureBox, bucketName As String, fileName As String)
+        Try
+            ' Initialize Firebase
+            InitializeFirebase()
 
-    'Private Async Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-    '    Dim result = MessageBox.Show("Do you want to cancel the account creation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            ' Convert PictureBox image to byte array
+            Dim memoryStream As New MemoryStream()
+            pictureBox.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg)
+            Dim imageBytes As Byte() = memoryStream.ToArray()
 
-    '    If result = DialogResult.Yes Then
-    '        Try
-    '            ' Delete the user's data from Firebase Realtime Database
-    '            Dim deleteResponse As FirebaseResponse = client.Delete($"usersTbl/{UserUID}")
-    '            If deleteResponse.StatusCode = Net.HttpStatusCode.OK Then
-    '                ' Now, delete the user from Firebase Authentication
-    '                Dim authSecret = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs" ' Your Firebase Auth Secret
-    '                Dim userId = UserUID ' User ID of the user to delete
-    '                Dim firebaseAuthUrl = $"https://identitytoolkit.googleapis.com/v1/accounts:delete?key={authSecret}"
+            ' Create Firebase Storage Client
+            Dim storageClient As StorageClient = StorageClient.Create()
 
-    '                Using httpClient As New HttpClient()
-    '                    Dim jsonContent = $"{{""idToken"": ""{userId}""}}"
-    '                    Dim content = New StringContent(jsonContent, Encoding.UTF8, "application/json")
-    '                    Dim response = Await httpClient.PostAsync(firebaseAuthUrl, content) ' Await is valid now
-
-    '                    If response.IsSuccessStatusCode Then
-    '                        MessageBox.Show("Account Creation successfully cancelled and user information deleted!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '                    Else
-    '                        MessageBox.Show("Failed to delete user from Firebase Authentication.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '                    End If
-    '                End Using
-    '            Else
-    '                MessageBox.Show("Failed to delete user information: " & deleteResponse.Body, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '            End If
-    '        Catch ex As Exception
-    '            MessageBox.Show("Error occurred while deleting user information: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End Try
-
-    '        Me.Close()
-    '        Employee_Dashboard.Show()
-    '    End If
-    'End Sub
+            ' Upload the image
+            Using uploadStream = New MemoryStream(imageBytes)
+                storageClient.UploadObject(bucketName, fileName, "image/jpeg", uploadStream)
+                MessageBox.Show("Image uploaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Error uploading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

@@ -162,7 +162,7 @@ Public Class acc
     End Sub
 
     Private Sub label2_click(sender As Object, e As EventArgs) Handles Label2.Click
-        Employee_Dashboard.Show()
+        List_of_Employees.Show()
         Me.Hide()
     End Sub
 
@@ -198,7 +198,28 @@ Public Class acc
     End Sub
 
     Private Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
+        If DGVuserData.SelectedRows.Count = 1 Then
+            ' Ask for confirmation before deleting
+            Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
 
+            If result = DialogResult.Yes Then
+                ' Get the selected row
+                Dim selectedRow As DataGridViewRow = DGVuserData.SelectedRows(0)
+                Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
+
+                ' Delete the data from Firebase
+
+
+                ' Delete the data from Firebase (based on UID)
+                client.Delete("usersTbl/" & selectedUID)
+
+                ' Optionally, show a success message
+                MessageBox.Show("Record deleted from Firebase successfully!")
+            End If
+        Else
+            MessageBox.Show("Please select a row to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -275,5 +296,43 @@ Public Class acc
 
     Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
 
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub IconButton5_Click(sender As Object, e As EventArgs) Handles IconButton5.Click
+
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        ' Check if data is already loaded
+        If DGVuserData.DataSource Is Nothing Then Return
+
+        ' Get the search text and remove leading/trailing spaces
+        Dim searchText As String = TextBox5.Text.Trim().ToLower()
+
+        ' Cast the DataSource back to a list of PersonalData
+        Dim employeeList As List(Of PersonalData) = TryCast(DGVuserData.DataSource, List(Of PersonalData))
+        If employeeList Is Nothing Then Return
+
+        ' Check if searchText is empty
+        If String.IsNullOrEmpty(searchText) Then
+            ' If empty, show all records
+            DGVuserData.DataSource = Nothing
+            DGVuserData.DataSource = employeeList
+        Else
+            ' If not empty, filter the data based on search text
+            Dim filteredList = employeeList.Where(Function(emp) _
+            emp.employeeID.ToLower().Contains(searchText) OrElse
+            emp.name.ToLower().Contains(searchText) OrElse
+            emp.position.ToLower().Contains(searchText)
+        ).ToList()
+
+            ' Update the DataGridView with the filtered list
+            DGVuserData.DataSource = Nothing
+            DGVuserData.DataSource = filteredList
+        End If
     End Sub
 End Class

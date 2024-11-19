@@ -76,6 +76,7 @@ Public Class add_account
         End If
     End Sub
     Private Async Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim client444 As IFirebaseClient = FirebaseModule.GetFirebaseClient
         If String.IsNullOrWhiteSpace(nametextbox.Text) OrElse
        String.IsNullOrWhiteSpace(emailtextbox.Text) OrElse
        String.IsNullOrWhiteSpace(passwordtextbox.Text) OrElse
@@ -134,9 +135,11 @@ Public Class add_account
                     .employeeID = employee_id_textbox.Text
                 }
 
-                    ' Save the data to Firebase
+                    ' Save the data to Firebase 
+                    Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                     Dim save = firebaseclient.Set("usersTbl/" + uid, PD)
-
+                    Dim reportuser = client444.Set("ReportTbl/" & "account/" & numericGuid, "Account creation successfully for employee: " + employee_id_textbox.Text)
+                    Dim save2 = client444.Set("NotificationTbl/" & uid & "/", "Your account was succesfully created by admin.")
 
                     ' Send verification email
                     Dim verificationUri As String = $"https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key={ApiKey}"
@@ -159,10 +162,13 @@ Public Class add_account
                     End If
 
                     ' Proceed to RFID registration
-                    Dim rfidregisteruid As New register_rfid
-                    rfidregisteruid.UserUID = uid
-                    rfidregisteruid.Show()
-                    Me.Close()
+                    Dim account_info As New add_employee
+                    account_info.user_uid = uid
+                    account_info.received_name = nametextbox.Text + " " + TextBox1.Text
+                    account_info.received_email = email
+                    account_info.add_employee_id = employee_id_textbox.Text
+                    account_info.Show()
+                    Me.Hide()
                     ClearFields() ' Call a separate method to clear fields
 
                 Else
@@ -194,11 +200,11 @@ Public Class add_account
 
         ' Check if the input matches the required email pattern
         If System.Text.RegularExpressions.Regex.IsMatch(emailtextbox.Text, emailPattern) Then
-            Label9.Visible = False
+            Label8.Visible = False
         Else
-            Label9.Text = "Email must be in the format: username@pnm.edu.ph"
-            Label9.ForeColor = Color.Maroon
-            Label9.Visible = True
+            Label8.Text = "Email must be in the format: username@pnm.edu.ph"
+            Label8.ForeColor = Color.Maroon
+            Label8.Visible = True
         End If
     End Sub
 
@@ -232,5 +238,13 @@ Public Class add_account
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
         Me.Hide()
         Employee_Dashboard.Show()
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
     End Sub
 End Class

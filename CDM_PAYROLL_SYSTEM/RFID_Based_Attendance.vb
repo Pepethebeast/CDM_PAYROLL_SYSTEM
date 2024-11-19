@@ -402,7 +402,7 @@ Public Class RFID_Based_Attendance
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        Employee_Dashboard.Show()
+        List_of_Employees.Show()
         Me.Hide()
     End Sub
 
@@ -412,7 +412,7 @@ Public Class RFID_Based_Attendance
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-        acc.Show()
+        Employee_Dashboard.Show()
         Me.Hide()
     End Sub
 

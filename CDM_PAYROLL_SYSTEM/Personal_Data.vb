@@ -50,7 +50,7 @@ Public Class PersonalData
     End Class
     Public Class Payslip
         Public Property PayPeriod As String
-        Public Property PayOutPeriod As String
+        Public Property PayOutDate As String
         Public Property PayslipID As String
         Public Property TotalDeduction As String
         Public Property TotalHours As String

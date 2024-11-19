@@ -1,7 +1,7 @@
 ﻿Public Class Employee_Dashboard
     Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
         Me.Hide()
-        List_of_Employees.Show()
+        acc.Show()
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
@@ -10,9 +10,8 @@
 
     End Sub
 
-
     Private Sub Label3_Click(sender As Object, e As EventArgs)
-        payroll.Show()
+        acc.Show()
         Me.Hide()
     End Sub
 
@@ -40,7 +39,8 @@
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
+        List_of_Employees.Show()
+        Me.Hide()
     End Sub
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click

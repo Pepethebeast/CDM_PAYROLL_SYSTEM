@@ -28,7 +28,7 @@ Public Class payroll
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        Employee_Dashboard.Show()
+        List_of_Employees.Show()
         Me.Hide()
     End Sub
 
@@ -42,7 +42,7 @@ Public Class payroll
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-        acc.Show()
+        Employee_Dashboard.Show()
         Me.Hide()
     End Sub
     Sub LoadEmployeeData()
@@ -250,6 +250,40 @@ Public Class payroll
     End Sub
 
     Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        ' Check if data is already loaded
+        If DataGridView1.DataSource Is Nothing Then Return
+
+        ' Get the search text and remove leading/trailing spaces
+        Dim searchText As String = TextBox1.Text.Trim().ToLower()
+
+        ' Cast the DataSource back to a list of PersonalData
+        Dim employeeList As List(Of PersonalData) = TryCast(DataGridView1.DataSource, List(Of PersonalData))
+        If employeeList Is Nothing Then Return
+
+        ' Check if searchText is empty
+        If String.IsNullOrEmpty(searchText) Then
+            ' If empty, show all records
+            DataGridView1.DataSource = Nothing
+            DataGridView1.DataSource = employeeList
+        Else
+            ' If not empty, filter the data based on search text
+            Dim filteredList = employeeList.Where(Function(emp) _
+            emp.employeeID.ToLower().Contains(searchText) OrElse
+            emp.name.ToLower().Contains(searchText) OrElse
+            emp.position.ToLower().Contains(searchText)
+        ).ToList()
+
+            ' Update the DataGridView with the filtered list
+            DataGridView1.DataSource = Nothing
+            DataGridView1.DataSource = filteredList
+        End If
+    End Sub
+
+    Private Sub IconButton5_Click(sender As Object, e As EventArgs) Handles IconButton5.Click
 
     End Sub
 End Class

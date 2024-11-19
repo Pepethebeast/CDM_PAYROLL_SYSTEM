@@ -334,12 +334,12 @@ Partial Class Employee_Dashboard
         Label8.AutoSize = True
         Label8.Cursor = Cursors.Hand
         Label8.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label8.Location = New Point(80, 372)
+        Label8.Location = New Point(83, 372)
         Label8.Margin = New Padding(4, 0, 4, 0)
         Label8.Name = "Label8"
-        Label8.Size = New Size(178, 24)
+        Label8.Size = New Size(171, 24)
         Label8.TabIndex = 12
-        Label8.Text = "ADD EMPLOYEE"
+        Label8.Text = "ADD ACCOUNT"
         ' 
         ' PictureBox4
         ' 
@@ -359,12 +359,12 @@ Partial Class Employee_Dashboard
         Label4.AutoSize = True
         Label4.Cursor = Cursors.Hand
         Label4.Font = New Font("Arial Rounded MT Bold", 15.75F)
-        Label4.Location = New Point(55, 372)
+        Label4.Location = New Point(59, 372)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(227, 24)
+        Label4.Size = New Size(218, 24)
         Label4.TabIndex = 9
-        Label4.Text = "LIST OF EMPLOYEES"
+        Label4.Text = "MANAGE ACCOUNT"
         ' 
         ' Panel1
         ' 
