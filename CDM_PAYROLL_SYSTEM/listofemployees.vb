@@ -96,6 +96,7 @@ Public Class List_of_Employees
             DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
             DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
             DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
+            DGVUserData.ReadOnly = True
             ' Bind the filtered list to the DataGridView
             DGVUserData.DataSource = employeeList
             DGVUserData.AllowUserToAddRows = False

@@ -398,6 +398,7 @@ Partial Class reports
         DGVUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DGVUserData.Location = New Point(257, 109)
         DGVUserData.Name = "DGVUserData"
+        DGVUserData.ReadOnly = True
         DGVUserData.RowTemplate.Height = 25
         DGVUserData.Size = New Size(1089, 551)
         DGVUserData.TabIndex = 32

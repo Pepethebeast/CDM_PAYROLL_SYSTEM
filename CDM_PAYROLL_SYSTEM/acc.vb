@@ -20,6 +20,8 @@ Imports FirebaseAdmin
 Imports System.Reflection
 Imports FirebaseAdmin.Auth
 Imports Google.Apis.Auth.OAuth2
+Imports System.Net
+Imports System.Net.Mail
 
 Public Class acc
 
@@ -100,7 +102,9 @@ Public Class acc
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "password", .HeaderText = "Password", .Name = "password"})
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "rfidTag", .HeaderText = "RFID Tag", .Name = "rfidTag"})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Info", .Name = "editButton", .Text = "View", .UseColumnTextForButtonValue = True})
+            DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Password", .Name = "resetpassword", .Text = "Reset", .UseColumnTextForButtonValue = True})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "RFID", .Name = "rfid_register.dgv", .Text = "Register", .UseColumnTextForButtonValue = True})
+            DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Email", .Name = "verification", .Text = "Verify", .UseColumnTextForButtonValue = True})
 
 
             ' Set DataGridView styles
@@ -193,18 +197,30 @@ Public Class acc
                 client.Set("NotificationTbl/" & selectedUID + "/", "Your account has been deleted")
                 client.Set("ReportTbl/account/" & numericGuid + "/", "Account deletion for employee ID: " + employeeID)
 
-                ' Initialize FirebaseApp with your service account credentials
-                Dim app As FirebaseApp = FirebaseApp.Create(New AppOptions() With {
-            .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-        })
+                If String.IsNullOrEmpty(selectedUID) Then
+                    MessageBox.Show("No valid UID found for the selected user. Cannot delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
 
-                ' Get FirebaseAuth instance using the FirebaseApp
-                Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+                Try
+                    ' Delete the user from Firebase Database
+                    client.Delete("usersTbl/" & selectedUID)
 
-                ' Use Await for the async call
-                Await auth.DeleteUserAsync(selectedUID)
+                    ' Initialize Firebase Admin SDK
+                    Dim app As FirebaseApp = FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+                })
 
-                MessageBox.Show("User deleted successfully.")
+                    ' Get FirebaseAuth instance using the FirebaseApp
+                    Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+
+                    ' Use Await for the async call to delete the user
+                    Await auth.DeleteUserAsync(selectedUID)
+
+                    MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Exception
+                    MessageBox.Show($"An error occurred while deleting the user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
             End If
         Else
             MessageBox.Show("Please select a row to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -218,9 +234,38 @@ Public Class acc
     Private Sub Textbox4_Enter(sender As Object, e As EventArgs)
         'TextBox4.Text = ""
     End Sub
+    Private Sub InitializeFirebaseApp()
+        Try
+            If FirebaseApp.DefaultInstance Is Nothing Then
+                FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+                })
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub SendEmail(toEmail As String, subject As String, body As String)
+        Try
+            Dim smtpClient As New SmtpClient("smtp.gmail.com") ' Replace with your SMTP server
+            smtpClient.Port = 587 ' Replace with your SMTP port
+            smtpClient.Credentials = New NetworkCredential("payrollcdm504@gmail.com", "dursccvkavjmzrka")
+            smtpClient.EnableSsl = True
 
-    Private Sub DGVuserData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVuserData.CellContentClick
-        If e.RowIndex >= 0 AndAlso (e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("editButton").Index) Then
+            Dim mailMessage As New MailMessage()
+            mailMessage.From = New MailAddress("cdmpayroll@pnm.edu.ph")
+            mailMessage.To.Add(toEmail)
+            mailMessage.Subject = subject
+            mailMessage.Body = body
+            mailMessage.IsBodyHtml = True
+
+            smtpClient.Send(mailMessage)
+        Catch ex As Exception
+            MessageBox.Show($"Email sending error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Async Sub DGVuserData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVuserData.CellContentClick
+        If e.RowIndex >= 0 AndAlso (e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("editButton").Index OrElse e.ColumnIndex = DGVuserData.Columns("verification").Index OrElse e.ColumnIndex = DGVuserData.Columns("resetpassword").Index) Then
             ' Retrieve the data from the clicked row
             Dim uid As String = DGVuserData.Rows(e.RowIndex).Cells("UID").Value.ToString()
             Dim selectedRow As DataGridViewRow = DGVuserData.Rows(e.RowIndex)
@@ -243,12 +288,80 @@ Public Class acc
                 add_employee_info.received_email = email_received
                 add_employee_info.user_uid = selectedUID
                 add_employee_info.Show()
+
+            ElseIf e.ColumnIndex = DGVuserData.Columns("verification").Index Then
+                Try
+                    ' Initialize Firebase if not already done
+                    InitializeFirebaseApp()
+
+                    ' Fetch the user by UID
+                    Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+                    Dim userRecord As UserRecord = Await auth.GetUserAsync(uid)
+
+                    ' Check if user has an email
+                    If String.IsNullOrEmpty(userRecord.Email) Then
+                        MessageBox.Show("The user does not have an email address associated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return
+                    End If
+
+                    ' Generate verification link
+                    Dim emailVerificationLink As String = Await auth.GenerateEmailVerificationLinkAsync(userRecord.Email)
+
+                    ' Optional: Display the link (for debugging purposes)
+                    Console.WriteLine($"Verification link: {emailVerificationLink}")
+
+                    ' Send email using your SMTP setup
+                    SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {emailVerificationLink}")
+
+                    MessageBox.Show($"Verification email sent to {userRecord.Email}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Catch ex As Exception
+                    MessageBox.Show($"An error occurred while sending the verification email: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            ElseIf e.ColumnIndex = DGVuserData.Columns("resetpassword").Index Then
+                Dim userData As String = selectedRow.Cells("employeeID").Value.ToString() ' Replace "UserDataColumnName" with the actual column name
+                Dim email_received As String = selectedRow.Cells("email").Value.ToString()
+
+                Try
+                    Dim authProvider As New FirebaseAuthProvider(New Firebase.Auth.FirebaseConfig("AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"))
+                    Await authProvider.SendPasswordResetEmailAsync(email_received)
+
+                    MessageBox.Show($"A password reset email has been sent to {email_received}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Catch ex As Firebase.Auth.FirebaseAuthException
+                    MessageBox.Show($"Error: {ex.Reason}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Catch ex As Exception
+                    MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
             End If
-
-
         End If
-    End Sub
 
+
+
+    End Sub
+    Private Async Sub SendPasswordResetEmail(toEmail As String)
+        Try
+            ' Initialize Firebase App if not already initialized
+            InitializeFirebaseApp()
+
+            ' Generate the password reset link for the provided email
+            Dim resetLink As String = Await FirebaseAuth.DefaultInstance.GeneratePasswordResetLinkAsync(toEmail)
+
+            ' Send the reset link via SMTP email
+            Dim subject As String = "Password Reset Request"
+            Dim body As String = $"Hello,<br><br>Click the link below to reset your password:<br>" &
+                             $"<a href='{resetLink}'>{resetLink}</a><br><br>Thank you."
+
+            ' Call the SendEmail method to send the email
+            SendEmail(toEmail, subject, body)
+
+            MessageBox.Show("Password reset email sent successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As FirebaseAdmin.Auth.FirebaseAuthException When ex.AuthErrorCode = FirebaseAdmin.Auth.AuthErrorCode.UserNotFound
+            MessageBox.Show($"The email address '{toEmail}' is not associated with an account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub Label4_Click(sender As Object, e As EventArgs)
 
     End Sub

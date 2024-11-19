@@ -101,6 +101,8 @@ Public Class payroll
             DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
             DataGridView1.DataSource = employeeList
             DataGridView1.AllowUserToAddRows = False
+            DataGridView1.ReadOnly = True
+            DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
         Catch ex As Exception
             MessageBox.Show($"Error loading employee data: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

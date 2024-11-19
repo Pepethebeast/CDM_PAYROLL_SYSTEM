@@ -103,6 +103,7 @@ Public Class reports
         DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
         DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
         DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
+        DGVUserData.ReadOnly = True
 
         DGVUserData.AllowUserToAddRows = False
         DGVUserData.Columns.Add("Reportlogs", "report logs")

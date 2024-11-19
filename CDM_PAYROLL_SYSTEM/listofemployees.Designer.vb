@@ -132,6 +132,10 @@ Partial Class List_of_Employees
         ' 
         ' DGVUserData
         ' 
+        DGVUserData.AllowUserToAddRows = False
+        DGVUserData.AllowUserToDeleteRows = False
+        DGVUserData.AllowUserToResizeColumns = False
+        DGVUserData.AllowUserToResizeRows = False
         DGVUserData.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DGVUserData.BackgroundColor = Color.White
         DGVUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
