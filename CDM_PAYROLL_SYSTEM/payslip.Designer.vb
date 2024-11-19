@@ -811,7 +811,7 @@ Partial Class payslip
         PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
         PrintPreviewDialog1.ClientSize = New Size(400, 300)
         PrintPreviewDialog1.Enabled = True
-        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Icon)
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
         PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         PrintPreviewDialog1.Visible = False
         ' 

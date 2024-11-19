@@ -6,8 +6,8 @@
     <StartupObject>CDM_PAYROLL_SYSTEM.My.MyApplication</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ImportedNamespaces>http=False,System.Data=False,System.Drawing=False,System.Net.Http=False,System.Net.Http.Formatting=False,System.Net.Http.Handlers=False,System.Net.Http.Headers=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,CDM_PAYROLL_SYSTEM=True</ImportedNamespaces>
-    <ApplicationIcon>logo_e5C_icon.ico</ApplicationIcon>
+    <ImportedNamespaces>CDM_PAYROLL_SYSTEM.My=False,CDM_PAYROLL_SYSTEM.My.Resources=False,Firebase=False,Firebase.Auth=False,Firebase.Auth.Providers=False,Firebase.Auth.Repository=False,Firebase.Auth.Requests=False,Firebase.Auth.Requests.Converters=False,Firebase.Database=False,Firebase.Database.Client=False,Firebase.Database.Events=False,Firebase.Database.Events.Enums=False,Firebase.Database.Extensions=False,Firebase.Database.Http=False,Firebase.Database.Objects=False,Firebase.Database.Offline=False,Firebase.Database.Offline.Internals=False,Firebase.Database.Options=False,Firebase.Database.Queries.Abstract=False,Firebase.Database.Queries.Classes=False,Firebase.Database.Queries.Extensions=False,Firebase.Database.Queries.Interfaces=False,Firebase.Database.Query=False,Firebase.Database.Stream=False,Firebase.Database.Streaming=False,Firebase.Storage=False,Firebase.Utils.Enums=False,Firebase.Utils.Exceptions.Classes=False,FirebaseAdmin=False,FirebaseAdmin.Auth=False,FirebaseAdmin.Auth.Hash=False,FirebaseAdmin.Auth.Multitenancy=False,FirebaseAdmin.Auth.Providers=False,FirebaseAdmin.Messaging=False,FirebaseAuth=False,FireSharp=False,FireSharp.Config=False,FireSharp.EventStreaming=False,FireSharp.Exceptions=False,FireSharp.Extensions=False,FireSharp.Interfaces=False,FireSharp.Response=False,FireSharp.Serialization.JsonNet=False,FontAwesome.Sharp=False,Google=False,Google.Api=False,Google.Api.Gax=False,Google.Api.Gax.Grpc=False,Google.Api.Gax.Grpc.Gcp=False,Google.Api.Gax.Grpc.Rest=False,Google.Api.Gax.ResourceNames=False,Google.Api.Gax.Rest=False,Google.Apis=False,Google.Apis.Auth=False,Google.Apis.Auth.OAuth2=False,Google.Apis.Auth.OAuth2.Flows=False,Google.Apis.Auth.OAuth2.Requests=False,Google.Apis.Auth.OAuth2.Responses=False,Google.Apis.Auth.OAuth2.Web=False,Google.Apis.Discovery=False,Google.Apis.Download=False,Google.Apis.Http=False,Google.Apis.Json=False,Google.Apis.Logging=False,Google.Apis.Requests=False,Google.Apis.Requests.Parameters=False,Google.Apis.Services=False,Google.Apis.Storage.v1=False,Google.Apis.Storage.v1.Data=False,Google.Apis.Testing=False,Google.Apis.Upload=False,Google.Apis.Util=False,Google.Apis.Util.Store=False,Google.Cloud=False,Google.Cloud.Firestore=False,Google.Cloud.Firestore.V1=False,Google.Cloud.Location=False,Google.Cloud.Storage.V1=False,Google.LongRunning=False,Google.Protobuf=False,Google.Protobuf.Collections=False,Google.Protobuf.Compiler=False,Google.Protobuf.Reflection=False,Google.Protobuf.WellKnownTypes=False,Google.Rpc=False,Google.Rpc.Context=False,Grpc.Auth=False,Grpc.Core=False,Grpc.Core.Interceptors=False,Grpc.Core.Utils=False,Grpc.Net.Client=False,Grpc.Net.Client.Balancer=False,Grpc.Net.Client.Configuration=False,Grpc.Net.Compression=False,http=False,Jose=False,Jose.jwe=False,Jose.native=False,Jose.netstandard1_4=False,LiteDB=False,LiteDB.Shell=False,RestSharp=False,RestSharp.Authenticators=False,RestSharp.Authenticators.OAuth=False,RestSharp.Contrib=False,RestSharp.Deserializers=False,RestSharp.Extensions=False,RestSharp.Serializers=False,RestSharp.Validation=False,System.Data=False,System.Drawing=False,System.Net.Http=False,System.Net.Http.Formatting=False,System.Net.Http.Handlers=False,System.Net.Http.Headers=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,CDM_PAYROLL_SYSTEM=True</ImportedNamespaces>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,11 +21,139 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>9</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="logo_e5C_icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="CDM_PAYROLL_SYSTEM.My" />
+    <Import Include="CDM_PAYROLL_SYSTEM.My.Resources" />
+    <Import Include="Firebase" />
+    <Import Include="Firebase.Auth" />
+    <Import Include="Firebase.Auth.Providers" />
+    <Import Include="Firebase.Auth.Repository" />
+    <Import Include="Firebase.Auth.Requests" />
+    <Import Include="Firebase.Auth.Requests.Converters" />
+    <Import Include="Firebase.Database" />
+    <Import Include="Firebase.Database.Client" />
+    <Import Include="Firebase.Database.Events" />
+    <Import Include="Firebase.Database.Events.Enums" />
+    <Import Include="Firebase.Database.Extensions" />
+    <Import Include="Firebase.Database.Http" />
+    <Import Include="Firebase.Database.Objects" />
+    <Import Include="Firebase.Database.Offline" />
+    <Import Include="Firebase.Database.Offline.Internals" />
+    <Import Include="Firebase.Database.Options" />
+    <Import Include="Firebase.Database.Queries.Abstract" />
+    <Import Include="Firebase.Database.Queries.Classes" />
+    <Import Include="Firebase.Database.Queries.Extensions" />
+    <Import Include="Firebase.Database.Queries.Interfaces" />
+    <Import Include="Firebase.Database.Query" />
+    <Import Include="Firebase.Database.Stream" />
+    <Import Include="Firebase.Database.Streaming" />
+    <Import Include="Firebase.Storage" />
+    <Import Include="Firebase.Utils.Enums" />
+    <Import Include="Firebase.Utils.Exceptions.Classes" />
+    <Import Include="FirebaseAdmin" />
+    <Import Include="FirebaseAdmin.Auth" />
+    <Import Include="FirebaseAdmin.Auth.Hash" />
+    <Import Include="FirebaseAdmin.Auth.Multitenancy" />
+    <Import Include="FirebaseAdmin.Auth.Providers" />
+    <Import Include="FirebaseAdmin.Messaging" />
+    <Import Include="FirebaseAuth" />
+    <Import Include="FireSharp" />
+    <Import Include="FireSharp.Config" />
+    <Import Include="FireSharp.EventStreaming" />
+    <Import Include="FireSharp.Exceptions" />
+    <Import Include="FireSharp.Extensions" />
+    <Import Include="FireSharp.Interfaces" />
+    <Import Include="FireSharp.Response" />
+    <Import Include="FireSharp.Serialization.JsonNet" />
+    <Import Include="FontAwesome.Sharp" />
+    <Import Include="Google" />
+    <Import Include="Google.Api" />
+    <Import Include="Google.Api.Gax" />
+    <Import Include="Google.Api.Gax.Grpc" />
+    <Import Include="Google.Api.Gax.Grpc.Gcp" />
+    <Import Include="Google.Api.Gax.Grpc.Rest" />
+    <Import Include="Google.Api.Gax.ResourceNames" />
+    <Import Include="Google.Api.Gax.Rest" />
+    <Import Include="Google.Apis" />
+    <Import Include="Google.Apis.Auth" />
+    <Import Include="Google.Apis.Auth.OAuth2" />
+    <Import Include="Google.Apis.Auth.OAuth2.Flows" />
+    <Import Include="Google.Apis.Auth.OAuth2.Requests" />
+    <Import Include="Google.Apis.Auth.OAuth2.Responses" />
+    <Import Include="Google.Apis.Auth.OAuth2.Web" />
+    <Import Include="Google.Apis.Discovery" />
+    <Import Include="Google.Apis.Download" />
+    <Import Include="Google.Apis.Http" />
+    <Import Include="Google.Apis.Json" />
+    <Import Include="Google.Apis.Logging" />
+    <Import Include="Google.Apis.Requests" />
+    <Import Include="Google.Apis.Requests.Parameters" />
+    <Import Include="Google.Apis.Services" />
+    <Import Include="Google.Apis.Storage.v1" />
+    <Import Include="Google.Apis.Storage.v1.Data" />
+    <Import Include="Google.Apis.Testing" />
+    <Import Include="Google.Apis.Upload" />
+    <Import Include="Google.Apis.Util" />
+    <Import Include="Google.Apis.Util.Store" />
+    <Import Include="Google.Cloud" />
+    <Import Include="Google.Cloud.Firestore" />
+    <Import Include="Google.Cloud.Firestore.V1" />
+    <Import Include="Google.Cloud.Location" />
+    <Import Include="Google.Cloud.Storage.V1" />
+    <Import Include="Google.LongRunning" />
+    <Import Include="Google.Protobuf" />
+    <Import Include="Google.Protobuf.Collections" />
+    <Import Include="Google.Protobuf.Compiler" />
+    <Import Include="Google.Protobuf.Reflection" />
+    <Import Include="Google.Protobuf.WellKnownTypes" />
+    <Import Include="Google.Rpc" />
+    <Import Include="Google.Rpc.Context" />
+    <Import Include="Grpc.Auth" />
+    <Import Include="Grpc.Core" />
+    <Import Include="Grpc.Core.Interceptors" />
+    <Import Include="Grpc.Core.Utils" />
+    <Import Include="Grpc.Net.Client" />
+    <Import Include="Grpc.Net.Client.Balancer" />
+    <Import Include="Grpc.Net.Client.Configuration" />
+    <Import Include="Grpc.Net.Compression" />
     <Import Include="http" />
+    <Import Include="Jose" />
+    <Import Include="Jose.jwe" />
+    <Import Include="Jose.native" />
+    <Import Include="Jose.netstandard1_4" />
+    <Import Include="LiteDB" />
+    <Import Include="LiteDB.Shell" />
+    <Import Include="RestSharp" />
+    <Import Include="RestSharp.Authenticators" />
+    <Import Include="RestSharp.Authenticators.OAuth" />
+    <Import Include="RestSharp.Contrib" />
+    <Import Include="RestSharp.Deserializers" />
+    <Import Include="RestSharp.Extensions" />
+    <Import Include="RestSharp.Serializers" />
+    <Import Include="RestSharp.Validation" />
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Net.Http" />
@@ -34,37 +162,38 @@
     <Import Include="System.Net.Http.Headers" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
+	
 
   <ItemGroup>
-    <PackageReference Include="Emgu.CV" Version="4.9.0.5494" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="Emgu.CV.Bitmap" Version="4.9.0.5494" />
-    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.9.0.5494" />
     <PackageReference Include="Firebase.DotNet.Database" Version="1.0.3" />
     <PackageReference Include="FirebaseAdmin" Version="3.1.0" />
-    <PackageReference Include="FirebaseAuth" Version="2.0.6" />
     <PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="FireSharp.Serialization.JsonNet" Version="1.1.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
-    <PackageReference Include="Google.Apis" Version="1.68.0" />
     <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
     <PackageReference Include="Google.Apis.Core" Version="1.68.0" />
+    <PackageReference Include="Google.Apis.Storage.v1" Version="1.68.0.3604" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.9.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="4.10.0" />
-    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
     <PackageReference Include="Microsoft.NETCore.Jit" Version="2.0.8" />
     <PackageReference Include="Microsoft.WinForms.Designer.SDK" Version="1.6.0" />
     <PackageReference Include="MyFirebaseAuth" Version="1.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="PdfSharp" Version="6.1.1" />
-    <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="SerialPortStream" Version="2.4.2" />
-    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.IO.Ports" Version="8.0.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
-    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Visio.WorkflowAuthoring">
+      <HintPath>..\..\..\..\..\..\Program Files\Microsoft Office\root\Office16\Microsoft.Office.Interop.Visio.WorkflowAuthoring.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

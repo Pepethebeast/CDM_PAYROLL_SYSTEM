@@ -45,11 +45,11 @@ Partial Class List_of_Employees
         Label2 = New Label()
         Label7 = New Label()
         FlowLayoutPanel1 = New FlowLayoutPanel()
-        IconButton1 = New FontAwesome.Sharp.IconButton()
-        IconButton2 = New FontAwesome.Sharp.IconButton()
-        IconButton3 = New FontAwesome.Sharp.IconButton()
-        IconButton4 = New FontAwesome.Sharp.IconButton()
-        IconButton5 = New FontAwesome.Sharp.IconButton()
+        IconButton1 = New IconButton()
+        IconButton2 = New IconButton()
+        IconButton3 = New IconButton()
+        IconButton4 = New IconButton()
+        IconButton5 = New IconButton()
         TextBox1 = New TextBox()
         GroupBox4.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
@@ -383,9 +383,9 @@ Partial Class List_of_Employees
         ' 
         IconButton1.BackColor = Color.DarkSeaGreen
         IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
+        IconButton1.IconChar = IconChar.ArrowLeft
         IconButton1.IconColor = Color.Black
-        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton1.IconFont = IconFont.Auto
         IconButton1.IconSize = 20
         IconButton1.Location = New Point(663, 3)
         IconButton1.Name = "IconButton1"
@@ -397,9 +397,9 @@ Partial Class List_of_Employees
         ' 
         IconButton2.BackColor = Color.DarkSeaGreen
         IconButton2.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton2.IconChar = IconChar.None
         IconButton2.IconColor = Color.Black
-        IconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton2.IconFont = IconFont.Auto
         IconButton2.IconSize = 16
         IconButton2.Location = New Point(582, 3)
         IconButton2.Name = "IconButton2"
@@ -412,9 +412,9 @@ Partial Class List_of_Employees
         ' 
         IconButton3.BackColor = Color.DarkSeaGreen
         IconButton3.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton3.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton3.IconChar = IconChar.None
         IconButton3.IconColor = Color.Black
-        IconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton3.IconFont = IconFont.Auto
         IconButton3.IconSize = 16
         IconButton3.Location = New Point(501, 3)
         IconButton3.Name = "IconButton3"
@@ -427,9 +427,9 @@ Partial Class List_of_Employees
         ' 
         IconButton4.BackColor = Color.DarkSeaGreen
         IconButton4.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton4.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton4.IconChar = IconChar.None
         IconButton4.IconColor = Color.Black
-        IconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton4.IconFont = IconFont.Auto
         IconButton4.IconSize = 16
         IconButton4.Location = New Point(420, 3)
         IconButton4.Name = "IconButton4"
@@ -442,9 +442,9 @@ Partial Class List_of_Employees
         ' 
         IconButton5.BackColor = Color.DarkSeaGreen
         IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton5.IconChar = IconChar.None
         IconButton5.IconColor = Color.Black
-        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton5.IconFont = IconFont.Auto
         IconButton5.IconSize = 16
         IconButton5.Location = New Point(339, 3)
         IconButton5.Name = "IconButton5"

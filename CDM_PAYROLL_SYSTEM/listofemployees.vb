@@ -12,18 +12,7 @@ Imports FirebaseAdmin.Auth
 Imports System.Windows.Controls
 
 Public Class List_of_Employees
-    Private FirebaseURL As String = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/" ' Your Firebase Realtime Database URL
-    Private AuthToken As String = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw" ' Your authentication token if needed
-    Public connect As New FirebaseConfig() With
-        {
-        .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",
-        .BasePath = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        }
-
-    Private client As IFirebaseClient
-    Private Const RowHeight As Integer = 60 ' Increased row height
-    Private Const FontSize As Single = 8.0F ' Increased font size
-    Private previousRowIndex As Integer = -1
+    Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
     Public Function Base64ToImage(base64String As String) As System.Drawing.Image
         ' Convert Base64 String to byte[]  
         Dim imageBytes As Byte() = Convert.FromBase64String(base64String)
@@ -41,7 +30,7 @@ Public Class List_of_Employees
     Sub LoadEmployeeData(Optional keyword As String = "")
         Try
             ' Retrieve data from Firebase
-            Dim SRRecord = client.Get("EmployeeDataTbl/")
+            Dim SRRecord = Client.Get("EmployeeDataTbl/")
             Dim employees As Dictionary(Of String, PersonalData) = JsonConvert.DeserializeObject(Of Dictionary(Of String, PersonalData))(SRRecord.Body)
 
             If employees Is Nothing OrElse employees.Count = 0 Then
@@ -82,41 +71,45 @@ Public Class List_of_Employees
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "date_of_birth", .HeaderText = "Date Of Birth", .Name = "date_of_birth"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "position", .HeaderText = "Position", .Name = "position"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "contact", .HeaderText = "Contact", .Name = "contact"})
-            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email Address", .Name = "email"})
+            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email", .Name = "email"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "designation", .HeaderText = "Designation", .Name = "designation"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "description", .HeaderText = "Description", .Name = "description"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "no_of_units", .HeaderText = "No. of Units", .Name = "no_of_units"})
             DGVUserData.Columns.Add(New DataGridViewImageColumn With {.DataPropertyName = "image", .HeaderText = "Image", .Name = "image", .ImageLayout = DataGridViewImageCellLayout.Stretch})
 
+            DGVUserData.EnableHeadersVisualStyles = False
+            DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
+            DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DGVUserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVUserData.ColumnHeadersHeight = 40 ' Increase header height
+            DGVUserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVUserData.DefaultCellStyle.Font = New Font("Roboto", 12)
+            DGVUserData.ColumnHeadersDefaultCellStyle.Font = New Font("Roboto", 8, FontStyle.Regular)
+            DGVUserData.RowTemplate.Height = 55
+            DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            DGVUserData.BorderStyle = BorderStyle.None
+            DGVUserData.BackgroundColor = Color.White
+            DGVUserData.GridColor = Color.White
+            DGVUserData.RowHeadersVisible = False
+            DGVUserData.EnableHeadersVisualStyles = False
+            DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
+            DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
             ' Bind the filtered list to the DataGridView
             DGVUserData.DataSource = employeeList
             DGVUserData.AllowUserToAddRows = False
 
-            ApplyDataGridViewStyling()
         Catch ex As Exception
             MessageBox.Show($"Error loading employee data: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub CenterAlignDataGridViewHeaders(DGVUserData As DataGridView)
-        For Each column As DataGridViewColumn In DGVUserData.Columns
-            column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        Next
-    End Sub
-
     Private Sub List_of_Employees_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         DGVUserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        Try
-            client = New FireSharp.FirebaseClient(connect)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
 
         LoadEmployeeData()
-        ApplyDataGridViewStyling()
-        DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-
     End Sub
     Private Sub listofemployees_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ' Show a confirmation dialog (optional)
@@ -131,52 +124,7 @@ Public Class List_of_Employees
             End If
         End If
     End Sub
-    Private Sub ApplyDataGridViewStyling()
-        ' Set header style
-        DGVUserData.EnableHeadersVisualStyles = False
-        DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
-        DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-        DGVUserData.ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 10, FontStyle.Bold)
-        DGVUserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DGVUserData.ColumnHeadersHeight = 40 ' Increase header height
 
-        ' Set row style
-        DGVUserData.RowTemplate.Height = 70 ' Set row height to 70 pixels
-        DGVUserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-        ' Set border style and color
-        DGVUserData.BorderStyle = BorderStyle.Fixed3D
-        DGVUserData.CellBorderStyle = DataGridViewCellBorderStyle.Single
-        DGVUserData.GridColor = Color.Black ' This sets the color of the grid lines (borders between cells)
-
-        ' Other general styling
-        DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DGVUserData.BackgroundColor = Color.White
-        DGVUserData.DefaultCellStyle.SelectionBackColor = Color.DarkSeaGreen
-        DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
-
-        ' Alternating row colors for better readability
-        DGVUserData.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240)
-
-        ' Apply styling to all columns
-        For Each column As DataGridViewColumn In DGVUserData.Columns
-            column.DefaultCellStyle.Font = New Font("Arial", 9)
-        Next
-
-        ' Specific styling for the image column if it exists
-        If DGVUserData.Columns.Contains("image") Then
-            DGVUserData.Columns("image").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        End If
-
-        ' Ensure all rows are set to the new height
-        For Each row As DataGridViewRow In DGVUserData.Rows
-            row.Height = 50
-        Next
-
-        ' Refresh the DataGridView to apply changes
-        DGVUserData.Refresh()
-
-    End Sub
     Private Sub DGVUserData_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGVUserData.CellFormatting
         If e.ColumnIndex < 0 OrElse e.RowIndex < 0 Then Return
 
@@ -371,9 +319,9 @@ Public Class List_of_Employees
         Else
             ' If not empty, filter the data based on search text
             Dim filteredList = employeeList.Where(Function(emp) _
-            emp.employeeID.ToLower().Contains(searchText) OrElse
-            emp.name.ToLower().Contains(searchText) OrElse
-            emp.position.ToLower().Contains(searchText)
+            emp.employeeID.Contains(searchText) OrElse
+            emp.name.Contains(searchText) OrElse
+            emp.position.Contains(searchText)
         ).ToList()
 
             ' Update the DataGridView with the filtered list
@@ -391,5 +339,10 @@ Public Class List_of_Employees
                 End If
             Next
         Next
+    End Sub
+
+    Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
+        Me.Hide()
+        reports.Show()
     End Sub
 End Class

@@ -36,7 +36,6 @@ Public Class add_account
     Private Const ApiKey As String = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"
     Dim emailPattern As String = "^[A-Za-z0-9._%+-]+@pnm\.edu\.ph$"
     Dim inputPattern As String = "^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$"
-    Dim firebaseclient As IFirebaseClient = FirebaseModule.GetFirebaseClient()
     ' Corrected code to initialize FirebaseAuthProvider
     Dim authProvider As FirebaseAuthProvider
 
@@ -137,9 +136,9 @@ Public Class add_account
 
                     ' Save the data to Firebase 
                     Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
-                    Dim save = firebaseclient.Set("usersTbl/" + uid, PD)
+                    Dim save = client444.Set("usersTbl/" + uid, PD)
                     Dim reportuser = client444.Set("ReportTbl/" & "account/" & numericGuid, "Account creation successfully for employee: " + employee_id_textbox.Text)
-                    Dim save2 = client444.Set("NotificationTbl/" & uid & "/", "Your account was succesfully created by admin.")
+                    Dim save2 = client444.Set("NotificationTbl/" & uid + "/", "Your account was succesfully created by admin.")
 
                     ' Send verification email
                     Dim verificationUri As String = $"https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key={ApiKey}"

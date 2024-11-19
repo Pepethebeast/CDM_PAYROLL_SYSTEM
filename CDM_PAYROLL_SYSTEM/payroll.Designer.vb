@@ -51,8 +51,8 @@ Partial Class payroll
         ComboBox2 = New ComboBox()
         Label3 = New Label()
         TextBox1 = New TextBox()
-        IconButton5 = New FontAwesome.Sharp.IconButton()
-        IconButton1 = New FontAwesome.Sharp.IconButton()
+        IconButton5 = New IconButton()
+        IconButton1 = New IconButton()
         DataGridView1 = New DataGridView()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -452,9 +452,9 @@ Partial Class payroll
         IconButton5.Anchor = AnchorStyles.None
         IconButton5.BackColor = Color.DarkSeaGreen
         IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton5.IconChar = IconChar.None
         IconButton5.IconColor = Color.Black
-        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton5.IconFont = IconFont.Auto
         IconButton5.IconSize = 16
         IconButton5.Location = New Point(793, 3)
         IconButton5.Name = "IconButton5"
@@ -467,9 +467,9 @@ Partial Class payroll
         ' 
         IconButton1.BackColor = Color.DarkSeaGreen
         IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
+        IconButton1.IconChar = IconChar.ArrowLeft
         IconButton1.IconColor = Color.Black
-        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton1.IconFont = IconFont.Auto
         IconButton1.IconSize = 20
         IconButton1.Location = New Point(1001, 3)
         IconButton1.Margin = New Padding(130, 3, 3, 3)

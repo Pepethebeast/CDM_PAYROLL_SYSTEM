@@ -46,7 +46,8 @@ Partial Class reports
         PictureBox1 = New PictureBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
         ComboBox1 = New ComboBox()
-        DataGridView1 = New DataGridView()
+        Button1 = New Button()
+        DGVUserData = New DataGridView()
         Panel2.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
@@ -56,7 +57,7 @@ Partial Class reports
         CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         FlowLayoutPanel1.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DGVUserData, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel2
@@ -366,6 +367,7 @@ Partial Class reports
         ' FlowLayoutPanel1
         ' 
         FlowLayoutPanel1.Controls.Add(ComboBox1)
+        FlowLayoutPanel1.Controls.Add(Button1)
         FlowLayoutPanel1.Location = New Point(253, 70)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         FlowLayoutPanel1.Size = New Size(1093, 33)
@@ -373,20 +375,32 @@ Partial Class reports
         ' 
         ' ComboBox1
         ' 
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox1.FormattingEnabled = True
+        ComboBox1.Items.AddRange(New Object() {"Accounts", "Payslip", "Time Records"})
         ComboBox1.Location = New Point(3, 3)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(257, 23)
+        ComboBox1.Size = New Size(168, 23)
         ComboBox1.TabIndex = 0
         ' 
-        ' DataGridView1
+        ' Button1
         ' 
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(257, 109)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowTemplate.Height = 25
-        DataGridView1.Size = New Size(1089, 551)
-        DataGridView1.TabIndex = 32
+        Button1.BackColor = Color.DarkSeaGreen
+        Button1.Location = New Point(177, 3)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(114, 30)
+        Button1.TabIndex = 1
+        Button1.Text = "Export"
+        Button1.UseVisualStyleBackColor = False
+        ' 
+        ' DGVUserData
+        ' 
+        DGVUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DGVUserData.Location = New Point(257, 109)
+        DGVUserData.Name = "DGVUserData"
+        DGVUserData.RowTemplate.Height = 25
+        DGVUserData.Size = New Size(1089, 551)
+        DGVUserData.TabIndex = 32
         ' 
         ' reports
         ' 
@@ -394,11 +408,12 @@ Partial Class reports
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1350, 661)
-        Controls.Add(DataGridView1)
+        Controls.Add(DGVUserData)
         Controls.Add(FlowLayoutPanel1)
         Controls.Add(GroupBox4)
         Controls.Add(Panel2)
         Name = "reports"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "reports"
         Panel2.ResumeLayout(False)
         TableLayoutPanel1.ResumeLayout(False)
@@ -411,7 +426,7 @@ Partial Class reports
         CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         FlowLayoutPanel1.ResumeLayout(False)
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(DGVUserData, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -438,5 +453,6 @@ Partial Class reports
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGVUserData As DataGridView
+    Friend WithEvents Button1 As Button
 End Class

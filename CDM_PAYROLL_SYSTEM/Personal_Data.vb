@@ -20,7 +20,6 @@ Public Class PersonalData
     Public Property image As String
     Public Property password As String
     Public Property rfidTag As String
-    Public Property face_id As String
     Public Property UID As String
     Public Property time_stamp As String
     Public Property createdAt As CreatedAte
@@ -56,5 +55,9 @@ Public Class PersonalData
         Public Property TotalHours As String
         Public Property TotalSalary As String
         Public Property TotalYear As String
+    End Class
+    Public Class Report
+        Public Property account As String
+        Public Property payslip As String
     End Class
 End Class

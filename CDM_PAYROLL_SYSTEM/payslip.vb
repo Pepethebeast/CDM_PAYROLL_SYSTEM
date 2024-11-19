@@ -452,7 +452,7 @@ Public Class payslip
                     ' Save the PayslipID under the user_uid
                     Dim savePayslipID = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
                     Dim payoutperiod = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutDate)
-                    Dim payslipreports = client.Set("ReportTbl/payslip/" & numericGuid, "Sucessfully payslip distribution to employee id:" + add_employee_id)
+                    Dim payslipreports = client.Set("ReportTbl/payslip/" & numericGuid, "Sucessfully payslip distribution to employee ID: " + add_employee_id)
 
                     ' Save the other payroll data under the user_uid
                     Dim saveTotalDeduction = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)

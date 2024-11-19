@@ -45,7 +45,7 @@ Partial Class RFID_Based_Attendance
         PictureBox4 = New PictureBox()
         Label2 = New Label()
         DGVUserData = New DataGridView()
-        IconButton5 = New FontAwesome.Sharp.IconButton()
+        IconButton5 = New IconButton()
         TextBox5 = New TextBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
         Panel1 = New Panel()
@@ -404,9 +404,9 @@ Partial Class RFID_Based_Attendance
         ' 
         IconButton5.BackColor = Color.DarkSeaGreen
         IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton5.IconChar = IconChar.None
         IconButton5.IconColor = Color.Black
-        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton5.IconFont = IconFont.Auto
         IconButton5.IconSize = 16
         IconButton5.Location = New Point(330, 3)
         IconButton5.Name = "IconButton5"

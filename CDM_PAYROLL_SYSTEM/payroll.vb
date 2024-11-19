@@ -71,7 +71,7 @@ Public Class payroll
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "date_of_birth", .HeaderText = "Date Of Birth", .Name = "date_of_birth", .Visible = False})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "position", .HeaderText = "Position", .Name = "position"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "contact", .HeaderText = "Contact", .Name = "contact", .Visible = False})
-            DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email Address", .Name = "email"})
+            DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email", .Name = "email"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "designation", .HeaderText = "Designation", .Name = "designation"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "description", .HeaderText = "Description", .Name = "description"})
             DataGridView1.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "no_of_units", .HeaderText = "No. of Units", .Name = "no_of_units"})
@@ -79,7 +79,26 @@ Public Class payroll
             DataGridView1.Columns.Add(New DataGridViewImageColumn With {.DataPropertyName = "image", .HeaderText = "Image", .Name = "image", .Visible = False})
             DataGridView1.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Payroll", .Name = "payroll", .Text = "Process", .UseColumnTextForButtonValue = True})
 
-            ApplyDataGridViewStyling()
+
+            DataGridView1.EnableHeadersVisualStyles = False
+            DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
+            DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataGridView1.ColumnHeadersHeight = 40 ' Increase header height
+            DataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataGridView1.DefaultCellStyle.Font = New Font("Roboto", 12)
+            DataGridView1.ColumnHeadersDefaultCellStyle.Font = New Font("Roboto", 8, FontStyle.Regular)
+            DataGridView1.RowTemplate.Height = 50
+            DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            DataGridView1.BorderStyle = BorderStyle.None
+            DataGridView1.BackgroundColor = Color.White
+            DataGridView1.GridColor = Color.White
+            DataGridView1.RowHeadersVisible = False
+            DataGridView1.EnableHeadersVisualStyles = False
+            DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DataGridView1.DefaultCellStyle.SelectionBackColor = Color.LightBlue
+            DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
             DataGridView1.DataSource = employeeList
             DataGridView1.AllowUserToAddRows = False
 
@@ -87,47 +106,7 @@ Public Class payroll
             MessageBox.Show($"Error loading employee data: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub ApplyDataGridViewStyling()
-        ' Set header style
-        DataGridView1.EnableHeadersVisualStyles = False
-        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
-        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
 
-        DataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.ColumnHeadersHeight = 30 ' Increase header height
-
-        ' Set row style
-        DataGridView1.RowTemplate.Height = 40 ' Set row height to 70 pixels
-        DataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-        ' Set border style and color
-        DataGridView1.BorderStyle = BorderStyle.Fixed3D
-        DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single
-        DataGridView1.GridColor = Color.Black ' This sets the color of the grid lines (borders between cells)
-
-        ' Other general styling
-        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridView1.BackgroundColor = Color.White
-        DataGridView1.DefaultCellStyle.SelectionBackColor = Color.DarkSeaGreen
-        DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
-
-        ' Alternating row colors for better readability
-
-        ' Apply styling to all columns
-        For Each column As DataGridViewColumn In DataGridView1.Columns
-            column.DefaultCellStyle.Font = New Font("Arial", 10)
-        Next
-
-        ' Specific styling for the image column if it exists
-        If DataGridView1.Columns.Contains("image") Then
-            DataGridView1.Columns("image").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        End If
-
-
-        ' Refresh the DataGridView to apply changes
-        DataGridView1.Refresh()
-
-    End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         ' Handle the month change event
         UpdatePeriodComboBox()
@@ -285,5 +264,10 @@ Public Class payroll
 
     Private Sub IconButton5_Click(sender As Object, e As EventArgs) Handles IconButton5.Click
 
+    End Sub
+
+    Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
+        Me.Hide()
+        reports.Show()
     End Sub
 End Class

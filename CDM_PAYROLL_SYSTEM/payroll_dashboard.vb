@@ -42,4 +42,9 @@
             End If
         End If
     End Sub
+
+    Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
+        Me.Hide()
+        reports.Show()
+    End Sub
 End Class

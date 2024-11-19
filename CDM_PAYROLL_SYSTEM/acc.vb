@@ -16,10 +16,17 @@ Imports System.Threading.Tasks
 Imports System
 Imports System.Windows.Forms
 Imports System.Diagnostics
+Imports FirebaseAdmin
+Imports System.Reflection
+Imports FirebaseAdmin.Auth
+Imports Google.Apis.Auth.OAuth2
+
 Public Class acc
 
     Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
+
     Private Sub acc_load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         loademployeedata()
         'TextBox4.Text = "Scan your rfid_tag"
         DGVuserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -59,53 +66,8 @@ Public Class acc
         Return uids
     End Function
 
-    Private Sub ApplyDataGridViewStyling()
-        ' Set header style
-        DGVuserData.EnableHeadersVisualStyles = False
-        DGVuserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
-        DGVuserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-        DGVuserData.ColumnHeadersDefaultCellStyle.Font = New Font("Arial", 8, FontStyle.Regular)
-        DGVuserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DGVuserData.ColumnHeadersHeight = 30 ' Increase header height
 
-        ' Set row style
-        DGVuserData.RowTemplate.Height = 10 ' Set row height to 70 pixels
-        DGVuserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-        ' Set border style and color
-        DGVuserData.BorderStyle = BorderStyle.Fixed3D
-        DGVuserData.CellBorderStyle = DataGridViewCellBorderStyle.Single
-        DGVuserData.GridColor = Color.Black ' This sets the color of the grid lines (borders between cells)
-
-        ' Other general styling
-        DGVuserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DGVuserData.BackgroundColor = Color.White
-        DGVuserData.DefaultCellStyle.SelectionBackColor = Color.DarkSeaGreen
-        DGVuserData.DefaultCellStyle.SelectionForeColor = Color.Black
-
-        ' Alternating row colors for better readability
-        DGVuserData.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240)
-
-        ' Apply styling to all columns
-        For Each column As DataGridViewColumn In DGVuserData.Columns
-            column.DefaultCellStyle.Font = New Font("Arial", 10)
-        Next
-
-        ' Specific styling for the image column if it exists
-        If DGVuserData.Columns.Contains("image") Then
-            DGVuserData.Columns("image").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        End If
-
-        ' Ensure all rows are set to the new height
-        For Each row As DataGridViewRow In DGVuserData.Rows
-            row.Height = 30
-        Next
-
-        ' Refresh the DataGridView to apply changes
-        DGVuserData.Refresh()
-
-    End Sub
-    Sub loademployeedata()
+    Sub loademployeedata(Optional keyword As String = "")
 
         Try
             Dim srrecord = client.Get("usersTbl/")
@@ -131,8 +93,8 @@ Public Class acc
 
             ' Add columns to DataGridView, including UID
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "UID", .HeaderText = "UID", .Name = "UID", .Visible = False})
-            DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "employeeID", .HeaderText = "Employee ID", .Name = "employee_id"})
-            DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email Address", .Name = "email"})
+            DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "employeeID", .HeaderText = "Employee ID", .Name = "employeeID"})
+            DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "email", .HeaderText = "Email", .Name = "email"})
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "firstName", .HeaderText = "First Name", .Name = "firstName"})
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "lastName", .HeaderText = "Last Name", .Name = "lastName"})
             DGVuserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "password", .HeaderText = "Password", .Name = "password"})
@@ -142,14 +104,29 @@ Public Class acc
 
 
             ' Set DataGridView styles
-            DGVuserData.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64)
-            DGVuserData.DefaultCellStyle.BackColor = Color.White
-            DGVuserData.DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 230, 250)
+            DGVuserData.EnableHeadersVisualStyles = False
+            DGVuserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
+            DGVuserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DGVuserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVuserData.ColumnHeadersHeight = 40 ' Increase header height
+            DGVuserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVuserData.DefaultCellStyle.Font = New Font("Roboto", 12)
+            DGVuserData.ColumnHeadersDefaultCellStyle.Font = New Font("Roboto", 8, FontStyle.Regular)
+            DGVuserData.RowTemplate.Height = 40
+            DGVuserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            DGVuserData.BorderStyle = BorderStyle.None
+            DGVuserData.BackgroundColor = Color.White
+            DGVuserData.GridColor = Color.White
+            DGVuserData.RowHeadersVisible = False
+            DGVuserData.EnableHeadersVisualStyles = False
+            DGVuserData.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            DGVuserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DGVuserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
             DGVuserData.DefaultCellStyle.SelectionForeColor = Color.Black
             DGVuserData.DataSource = employeelist
             DGVuserData.AllowUserToAddRows = False
-            DGVuserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            ApplyDataGridViewStyling()
+
+
         Catch ex As Exception
             MessageBox.Show($"Error loading employee data: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -197,25 +174,37 @@ Public Class acc
 
     End Sub
 
-    Private Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
+    Private Async Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
         If DGVuserData.SelectedRows.Count = 1 Then
             ' Ask for confirmation before deleting
             Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient
             Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
 
             If result = DialogResult.Yes Then
-                ' Get the selected row
+                ' Get the selected row (index 0, since there is only one selected row)
                 Dim selectedRow As DataGridViewRow = DGVuserData.SelectedRows(0)
                 Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
-
-                ' Delete the data from Firebase
-
+                Dim employeeID As String = selectedRow.Cells("employeeID").Value.ToString()
 
                 ' Delete the data from Firebase (based on UID)
+                Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                 client.Delete("usersTbl/" & selectedUID)
+                client.Delete("employeeDataTbl/" & selectedUID)
+                client.Set("NotificationTbl/" & selectedUID + "/", "Your account has been deleted")
+                client.Set("ReportTbl/account/" & numericGuid + "/", "Account deletion for employee ID: " + employeeID)
 
-                ' Optionally, show a success message
-                MessageBox.Show("Record deleted from Firebase successfully!")
+                ' Initialize FirebaseApp with your service account credentials
+                Dim app As FirebaseApp = FirebaseApp.Create(New AppOptions() With {
+            .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+        })
+
+                ' Get FirebaseAuth instance using the FirebaseApp
+                Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+
+                ' Use Await for the async call
+                Await auth.DeleteUserAsync(selectedUID)
+
+                MessageBox.Show("User deleted successfully.")
             End If
         Else
             MessageBox.Show("Please select a row to delete.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -244,7 +233,7 @@ Public Class acc
 
             ElseIf e.ColumnIndex = DGVuserData.Columns("editButton").Index Then
 
-                Dim userData As String = selectedRow.Cells("employee_id").Value.ToString() ' Replace "UserDataColumnName" with the actual column name
+                Dim userData As String = selectedRow.Cells("employeeID").Value.ToString() ' Replace "UserDataColumnName" with the actual column name
                 Dim email_received As String = selectedRow.Cells("email").Value.ToString()
                 Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
                 Dim name_received As String = selectedRow.Cells("firstName").Value.ToString() + " " + selectedRow.Cells("lastName").Value.ToString()
@@ -303,7 +292,8 @@ Public Class acc
     End Sub
 
     Private Sub IconButton5_Click(sender As Object, e As EventArgs) Handles IconButton5.Click
-
+        Dim keyword As String = TextBox5.Text.Trim()
+        loademployeedata(keyword)
     End Sub
 
     Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
@@ -326,13 +316,18 @@ Public Class acc
             ' If not empty, filter the data based on search text
             Dim filteredList = employeeList.Where(Function(emp) _
             emp.employeeID.ToLower().Contains(searchText) OrElse
-            emp.name.ToLower().Contains(searchText) OrElse
-            emp.position.ToLower().Contains(searchText)
+            emp.email.ToLower().Contains(searchText) OrElse
+            emp.firstName.ToLower().Contains(searchText)
         ).ToList()
 
             ' Update the DataGridView with the filtered list
             DGVuserData.DataSource = Nothing
             DGVuserData.DataSource = filteredList
         End If
+    End Sub
+
+    Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
+        Me.Hide()
+        reports.Show()
     End Sub
 End Class

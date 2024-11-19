@@ -43,11 +43,11 @@ Partial Class acc
         PictureBox12 = New PictureBox()
         Label3 = New Label()
         FlowLayoutPanel1 = New FlowLayoutPanel()
-        IconButton1 = New FontAwesome.Sharp.IconButton()
-        IconButton2 = New FontAwesome.Sharp.IconButton()
-        IconButton3 = New FontAwesome.Sharp.IconButton()
-        IconButton4 = New FontAwesome.Sharp.IconButton()
-        IconButton5 = New FontAwesome.Sharp.IconButton()
+        IconButton1 = New IconButton()
+        IconButton2 = New IconButton()
+        IconButton3 = New IconButton()
+        IconButton4 = New IconButton()
+        IconButton5 = New IconButton()
         TextBox5 = New TextBox()
         DGVuserData = New DataGridView()
         Panel2.SuspendLayout()
@@ -191,7 +191,7 @@ Partial Class acc
         Label20.Anchor = AnchorStyles.None
         Label20.AutoSize = True
         Label20.Cursor = Cursors.Hand
-        Label20.Font = New Font("Roboto", 12F)
+        Label20.Font = New Font("Roboto", 12.0F)
         Label20.Location = New Point(130, 388)
         Label20.Margin = New Padding(0)
         Label20.Name = "Label20"
@@ -205,7 +205,7 @@ Partial Class acc
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Cursor = Cursors.Hand
-        Label5.Font = New Font("Roboto", 12F)
+        Label5.Font = New Font("Roboto", 12.0F)
         Label5.Location = New Point(133, 170)
         Label5.Margin = New Padding(0)
         Label5.Name = "Label5"
@@ -219,7 +219,7 @@ Partial Class acc
         Label1.Anchor = AnchorStyles.None
         Label1.AutoSize = True
         Label1.Cursor = Cursors.Hand
-        Label1.Font = New Font("Roboto", 12F)
+        Label1.Font = New Font("Roboto", 12.0F)
         Label1.Location = New Point(137, 26)
         Label1.Margin = New Padding(0)
         Label1.Name = "Label1"
@@ -233,7 +233,7 @@ Partial Class acc
         Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Cursor = Cursors.Hand
-        Label6.Font = New Font("Roboto", 12F)
+        Label6.Font = New Font("Roboto", 12.0F)
         Label6.Location = New Point(128, 314)
         Label6.Margin = New Padding(0)
         Label6.Name = "Label6"
@@ -247,7 +247,7 @@ Partial Class acc
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.Cursor = Cursors.Hand
-        Label2.Font = New Font("Roboto", 12F)
+        Label2.Font = New Font("Roboto", 12.0F)
         Label2.Location = New Point(123, 98)
         Label2.Margin = New Padding(0)
         Label2.Name = "Label2"
@@ -261,7 +261,7 @@ Partial Class acc
         Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Cursor = Cursors.Hand
-        Label7.Font = New Font("Roboto", 12F)
+        Label7.Font = New Font("Roboto", 12.0F)
         Label7.Location = New Point(109, 242)
         Label7.Margin = New Padding(0)
         Label7.Name = "Label7"
@@ -351,10 +351,10 @@ Partial Class acc
         ' IconButton1
         ' 
         IconButton1.BackColor = Color.DarkSeaGreen
-        IconButton1.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton1.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft
+        IconButton1.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton1.IconChar = IconChar.ArrowLeft
         IconButton1.IconColor = Color.Black
-        IconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid
+        IconButton1.IconFont = IconFont.Solid
         IconButton1.IconSize = 20
         IconButton1.Location = New Point(1003, 3)
         IconButton1.Name = "IconButton1"
@@ -365,10 +365,10 @@ Partial Class acc
         ' IconButton2
         ' 
         IconButton2.BackColor = Color.DarkSeaGreen
-        IconButton2.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton2.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton2.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton2.IconChar = IconChar.None
         IconButton2.IconColor = Color.Black
-        IconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton2.IconFont = IconFont.Auto
         IconButton2.IconSize = 16
         IconButton2.Location = New Point(922, 3)
         IconButton2.Name = "IconButton2"
@@ -380,10 +380,10 @@ Partial Class acc
         ' IconButton3
         ' 
         IconButton3.BackColor = Color.DarkSeaGreen
-        IconButton3.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton3.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton3.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton3.IconChar = IconChar.None
         IconButton3.IconColor = Color.Black
-        IconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton3.IconFont = IconFont.Auto
         IconButton3.IconSize = 16
         IconButton3.Location = New Point(841, 3)
         IconButton3.Name = "IconButton3"
@@ -395,10 +395,10 @@ Partial Class acc
         ' IconButton4
         ' 
         IconButton4.BackColor = Color.DarkSeaGreen
-        IconButton4.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton4.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton4.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton4.IconChar = IconChar.None
         IconButton4.IconColor = Color.Black
-        IconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton4.IconFont = IconFont.Auto
         IconButton4.IconSize = 16
         IconButton4.Location = New Point(760, 3)
         IconButton4.Name = "IconButton4"
@@ -410,10 +410,10 @@ Partial Class acc
         ' IconButton5
         ' 
         IconButton5.BackColor = Color.DarkSeaGreen
-        IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
-        IconButton5.IconChar = FontAwesome.Sharp.IconChar.None
+        IconButton5.Font = New Font("Arial Rounded MT Bold", 18.0F)
+        IconButton5.IconChar = IconChar.None
         IconButton5.IconColor = Color.Black
-        IconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IconButton5.IconFont = IconFont.Auto
         IconButton5.IconSize = 16
         IconButton5.Location = New Point(679, 3)
         IconButton5.Name = "IconButton5"
