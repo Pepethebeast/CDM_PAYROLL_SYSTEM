@@ -18,7 +18,6 @@ Imports System.Windows.Forms
 Imports System.Diagnostics
 Imports FirebaseAdmin
 Imports System.Reflection
-Imports FirebaseAdmin.Auth
 Imports Google.Apis.Auth.OAuth2
 Imports System.Net
 Imports System.Net.Mail
@@ -305,13 +304,14 @@ Public Class acc
                     End If
 
                     ' Generate verification link
-                    Dim emailVerificationLink As String = Await auth.GenerateEmailVerificationLinkAsync(userRecord.Email)
+                    Dim link As String = Await FirebaseAuth.DefaultInstance.GenerateEmailVerificationLinkAsync(userRecord.Email)
+
 
                     ' Optional: Display the link (for debugging purposes)
-                    Console.WriteLine($"Verification link: {emailVerificationLink}")
+                    Console.WriteLine($"Verification link: {link}")
 
                     ' Send email using your SMTP setup
-                    SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {emailVerificationLink}")
+                    SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {link}")
 
                     MessageBox.Show($"Verification email sent to {userRecord.Email}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -322,28 +322,44 @@ Public Class acc
                 Dim userData As String = selectedRow.Cells("employeeID").Value.ToString() ' Replace "UserDataColumnName" with the actual column name
                 Dim email_received As String = selectedRow.Cells("email").Value.ToString()
 
-                Try
-                    Dim authProvider As New FirebaseAuthProvider(New Firebase.Auth.FirebaseConfig("AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"))
-                    Await authProvider.SendPasswordResetEmailAsync(email_received)
+                SendPasswordResetEmail(email_received)
 
-                    MessageBox.Show($"A password reset email has been sent to {email_received}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Catch ex As Firebase.Auth.FirebaseAuthException
-                    MessageBox.Show($"Error: {ex.Reason}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Catch ex As Exception
-                    MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
             End If
         End If
-
-
-
     End Sub
+    Private Sub AddChangePasswordButton()
+        If Not DGVuserData.Columns.Contains("changePassword") Then
+            Dim changePasswordButton As New DataGridViewButtonColumn()
+            changePasswordButton.Name = "changePassword"
+            changePasswordButton.HeaderText = "Change Password"
+            changePasswordButton.Text = "Change"
+            changePasswordButton.UseColumnTextForButtonValue = True
+            DGVuserData.Columns.Add(changePasswordButton)
+        End If
+    End Sub
+    Public Async Function ChangeUserPassword(uid As String, newPassword As String) As Task
+        Try
+            ' Ensure Firebase is initialized
+            InitializeFirebaseApp()
+
+            ' Update user's password
+            Dim updatedUser = Await FirebaseAuth.DefaultInstance.UpdateUserAsync(New UserRecordArgs() With {
+                .Uid = uid,
+                .Password = newPassword
+            })
+
+            MessageBox.Show($"Password for user {updatedUser.Uid} updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show($"Error updating password: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
     Private Async Sub SendPasswordResetEmail(toEmail As String)
         Try
             ' Initialize Firebase App if not already initialized
             InitializeFirebaseApp()
 
             ' Generate the password reset link for the provided email
+
             Dim resetLink As String = Await FirebaseAuth.DefaultInstance.GeneratePasswordResetLinkAsync(toEmail)
 
             ' Send the reset link via SMTP email
