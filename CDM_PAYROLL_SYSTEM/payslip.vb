@@ -2,7 +2,6 @@
 Imports FireSharp.Interfaces
 Imports FireSharp.Response
 Imports Newtonsoft.Json
-Imports Org.BouncyCastle.Math.EC.Custom
 Imports System.IO
 Imports Firebase.Storage
 Imports FireSharp.Config

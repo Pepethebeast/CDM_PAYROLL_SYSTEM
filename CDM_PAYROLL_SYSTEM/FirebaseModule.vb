@@ -1,6 +1,5 @@
 ﻿Imports FireSharp.Config
 Imports FireSharp.Interfaces
-Imports FirebaseAuth
 Imports Firebase.Auth.Providers
 Imports Newtonsoft.Json
 Imports Firebase.Auth
@@ -24,4 +23,5 @@ Module FirebaseModule
     ' Function to get the Firebase Authentication Provider for authentication tasks
     Private Const ApiKey As String = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"
 
+    Public numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
 End Module

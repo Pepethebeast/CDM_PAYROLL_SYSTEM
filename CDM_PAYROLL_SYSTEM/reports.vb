@@ -108,7 +108,9 @@ Public Class reports
         DGVUserData.AllowUserToAddRows = False
         DGVUserData.Columns.Add("Reportlogs", "report logs")
         DGVUserData.Columns.Add("Message", "Message")
+        DGVUserData.Columns.Add("Date", "Date")
         DGVUserData.Columns("Reportlogs").Width = 200
+        DGVUserData.Columns("Date").Width = 200
     End Sub
     Private Sub reports_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ' Show a confirmation dialog (optional)
@@ -188,7 +190,7 @@ Public Class reports
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-        acc.Show()
+        Employee_Dashboard.Show()
         Me.Hide()
     End Sub
 

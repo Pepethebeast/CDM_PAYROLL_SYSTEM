@@ -69,7 +69,6 @@ Public Class acc
 
 
     Sub loademployeedata(Optional keyword As String = "")
-
         Try
             Dim srrecord = client.Get("usersTbl/")
             Dim employees As Dictionary(Of String, PersonalData) = JsonConvert.DeserializeObject(Of Dictionary(Of String, PersonalData))(srrecord.Body)
@@ -84,8 +83,10 @@ Public Class acc
                 kvp.Value.UID = kvp.Key
             Next
 
-            ' Create a list of employees with UID included
-            Dim employeelist As List(Of PersonalData) = employees.Values.Where(Function(emp) Not String.IsNullOrEmpty(emp.employeeID)).ToList()
+            ' Filter employees to exclude those with a null or empty UID
+            Dim employeelist As List(Of PersonalData) = employees.Values.
+            Where(Function(emp) Not String.IsNullOrEmpty(emp.UID) AndAlso Not String.IsNullOrEmpty(emp.employeeID)).
+            ToList()
 
             ' Clear and set up DataGridView columns
             DGVuserData.DataSource = Nothing
@@ -104,7 +105,6 @@ Public Class acc
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Password", .Name = "resetpassword", .Text = "Reset", .UseColumnTextForButtonValue = True})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "RFID", .Name = "rfid_register.dgv", .Text = "Register", .UseColumnTextForButtonValue = True})
             DGVuserData.Columns.Add(New DataGridViewButtonColumn With {.HeaderText = "Email", .Name = "verification", .Text = "Verify", .UseColumnTextForButtonValue = True})
-
 
             ' Set DataGridView styles
             DGVuserData.EnableHeadersVisualStyles = False
@@ -128,7 +128,6 @@ Public Class acc
             DGVuserData.DefaultCellStyle.SelectionForeColor = Color.Black
             DGVuserData.DataSource = employeelist
             DGVuserData.AllowUserToAddRows = False
-
 
         Catch ex As Exception
             MessageBox.Show($"Error loading employee data: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -174,7 +173,26 @@ Public Class acc
     End Function
 
     Private Sub iconbutton4_click(sender As Object, e As EventArgs) Handles IconButton4.Click
+        If DGVuserData.SelectedRows.Count = 1 Then
+            Dim result As DialogResult = MessageBox.Show("Do you want to force change email or password?", "BRUTE FORCE EDIT", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
 
+            If result = DialogResult.Yes Then
+                ' Get the selected row (index 0, since there is only one selected row)
+                Dim selectedRow As DataGridViewRow = DGVuserData.SelectedRows(0)
+                Dim selectedUID As String = selectedRow.Cells("UID").Value.ToString()
+                Dim password As String = selectedRow.Cells("password").Value.ToString()
+                Dim email As String = selectedRow.Cells("email").Value.ToString()
+
+                Dim force_change As New brute_foce_password
+                force_change.password = password
+                force_change.received_email = email
+                force_change.user_uid = selectedUID
+                force_change.Show()
+            Else
+            End If
+        Else
+            MessageBox.Show("No row selected", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
 
     Private Async Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
@@ -192,9 +210,9 @@ Public Class acc
                 ' Delete the data from Firebase (based on UID)
                 Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                 client.Delete("usersTbl/" & selectedUID)
-                client.Delete("employeeDataTbl/" & selectedUID)
-                client.Set("NotificationTbl/" & selectedUID + "/", "Your account has been deleted")
-                client.Set("ReportTbl/account/" & numericGuid + "/", "Account deletion for employee ID: " + employeeID)
+                client.Delete("EmployeeDataTbl/" & selectedUID)
+                client.Set("ReportTbl/account/" & numericGuid + "/" & "Message/", "Account deletion for employee ID: " + employeeID)
+                client.Set("ReportTbl/account/" & numericGuid + "/" & "Date/", DateTime.Now)
 
                 If String.IsNullOrEmpty(selectedUID) Then
                     MessageBox.Show("No valid UID found for the selected user. Cannot delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -205,10 +223,15 @@ Public Class acc
                     ' Delete the user from Firebase Database
                     client.Delete("usersTbl/" & selectedUID)
 
-                    ' Initialize Firebase Admin SDK
-                    Dim app As FirebaseApp = FirebaseApp.Create(New AppOptions() With {
-                    .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-                })
+                    ' Check if FirebaseApp instance exists; use DefaultInstance if available
+                    Dim app As FirebaseApp
+                    If FirebaseApp.DefaultInstance Is Nothing Then
+                        app = FirebaseApp.Create(New AppOptions() With {
+                        .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+                    })
+                    Else
+                        app = FirebaseApp.DefaultInstance
+                    End If
 
                     ' Get FirebaseAuth instance using the FirebaseApp
                     Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
@@ -235,10 +258,11 @@ Public Class acc
     End Sub
     Private Sub InitializeFirebaseApp()
         Try
+            ' Check if FirebaseApp instance already exists
             If FirebaseApp.DefaultInstance Is Nothing Then
                 FirebaseApp.Create(New AppOptions() With {
-                    .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-                })
+                .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+            })
             End If
         Catch ex As Exception
             MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -264,6 +288,7 @@ Public Class acc
         End Try
     End Sub
     Private Async Sub DGVuserData_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVuserData.CellContentClick
+
         If e.RowIndex >= 0 AndAlso (e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index OrElse e.ColumnIndex = DGVuserData.Columns("editButton").Index OrElse e.ColumnIndex = DGVuserData.Columns("verification").Index OrElse e.ColumnIndex = DGVuserData.Columns("resetpassword").Index) Then
             ' Retrieve the data from the clicked row
             Dim uid As String = DGVuserData.Rows(e.RowIndex).Cells("UID").Value.ToString()
@@ -312,18 +337,40 @@ Public Class acc
 
                     ' Send email using your SMTP setup
                     SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {link}")
-
+                    Dim reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid, "Email verification sent to " + userRecord.Email)
+                    Dim notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/id", FirebaseModule.numericGuid)
+                    notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/message", "Verification link has been sent to your email " + DateTime.Now)
+                    notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/title", "Email Verification")
                     MessageBox.Show($"Verification email sent to {userRecord.Email}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 Catch ex As Exception
                     MessageBox.Show($"An error occurred while sending the verification email: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
+
             ElseIf e.ColumnIndex = DGVuserData.Columns("resetpassword").Index Then
-                Dim userData As String = selectedRow.Cells("employeeID").Value.ToString() ' Replace "UserDataColumnName" with the actual column name
-                Dim email_received As String = selectedRow.Cells("email").Value.ToString()
+                Try
+                    ' Retrieve user data and email from the selected row
+                    Dim userData As String = selectedRow.Cells("employeeID").Value.ToString() ' Replace with actual column name
+                    Dim emailReceived As String = selectedRow.Cells("email").Value.ToString()
 
-                SendPasswordResetEmail(email_received)
+                    ' Initialize Firebase App
+                    InitializeFirebaseApp()
 
+                    ' Fetch user details from Firebase
+                    Dim userRecord As UserRecord = Await FirebaseAuth.DefaultInstance.GetUserByEmailAsync(emailReceived)
+
+                    ' Check if email is verified
+                    If userRecord.EmailVerified Then
+                        ' Proceed with password reset
+                        SendPasswordResetEmail(emailReceived)
+                    Else
+                        ' Show message box for unverified email
+                        MessageBox.Show($"The email '{emailReceived}' is not verified. Please verify the email before resetting the password.", "Email Not Verified", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
+
+                Catch ex As Exception
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
             End If
         End If
     End Sub
@@ -458,5 +505,22 @@ Public Class acc
     Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
         Me.Hide()
         reports.Show()
+    End Sub
+
+    Private Sub DGVuserData_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DGVuserData.CellFormatting
+        If DGVuserData.Columns(e.ColumnIndex).Name = "password" AndAlso e.Value IsNot Nothing Then
+            ' Replace the actual value with masked characters
+            e.Value = New String("•"c, e.Value.ToString().Length)
+            e.FormattingApplied = True
+        End If
+    End Sub
+
+
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

@@ -103,7 +103,7 @@ Partial Class RFID_Based_Attendance
         TableLayoutPanel1.Controls.Add(Label6, 1, 4)
         TableLayoutPanel1.Controls.Add(Label8, 1, 1)
         TableLayoutPanel1.Controls.Add(Label7, 1, 3)
-        TableLayoutPanel1.Location = New Point(8, 204)
+        TableLayoutPanel1.Location = New Point(3, 202)
         TableLayoutPanel1.Margin = New Padding(0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 6
@@ -121,7 +121,7 @@ Partial Class RFID_Based_Attendance
         Label31.Anchor = AnchorStyles.None
         Label31.AutoSize = True
         Label31.Cursor = Cursors.Hand
-        Label31.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label31.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label31.Location = New Point(2, 375)
         Label31.Margin = New Padding(0)
         Label31.Name = "Label31"
@@ -135,7 +135,7 @@ Partial Class RFID_Based_Attendance
         Label30.Anchor = AnchorStyles.None
         Label30.AutoSize = True
         Label30.Cursor = Cursors.Hand
-        Label30.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label30.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label30.Location = New Point(6, 302)
         Label30.Margin = New Padding(0)
         Label30.Name = "Label30"
@@ -149,7 +149,7 @@ Partial Class RFID_Based_Attendance
         Label29.Anchor = AnchorStyles.None
         Label29.AutoSize = True
         Label29.Cursor = Cursors.Hand
-        Label29.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label29.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label29.Location = New Point(2, 230)
         Label29.Margin = New Padding(0)
         Label29.Name = "Label29"
@@ -163,7 +163,7 @@ Partial Class RFID_Based_Attendance
         Label25.Anchor = AnchorStyles.None
         Label25.AutoSize = True
         Label25.Cursor = Cursors.Hand
-        Label25.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label25.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label25.Location = New Point(2, 158)
         Label25.Margin = New Padding(0)
         Label25.Name = "Label25"
@@ -177,7 +177,7 @@ Partial Class RFID_Based_Attendance
         Label24.Anchor = AnchorStyles.None
         Label24.AutoSize = True
         Label24.Cursor = Cursors.Hand
-        Label24.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label24.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label24.Location = New Point(2, 86)
         Label24.Margin = New Padding(0)
         Label24.Name = "Label24"
@@ -191,7 +191,7 @@ Partial Class RFID_Based_Attendance
         Label23.Anchor = AnchorStyles.None
         Label23.AutoSize = True
         Label23.Cursor = Cursors.Hand
-        Label23.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label23.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label23.Location = New Point(5, 14)
         Label23.Margin = New Padding(0)
         Label23.Name = "Label23"
@@ -205,7 +205,7 @@ Partial Class RFID_Based_Attendance
         Label20.Anchor = AnchorStyles.None
         Label20.AutoSize = True
         Label20.Cursor = Cursors.Hand
-        Label20.Font = New Font("Roboto", 12F)
+        Label20.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label20.Location = New Point(125, 388)
         Label20.Margin = New Padding(0)
         Label20.Name = "Label20"
@@ -219,7 +219,7 @@ Partial Class RFID_Based_Attendance
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Cursor = Cursors.Hand
-        Label5.Font = New Font("Roboto", 12F)
+        Label5.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.Location = New Point(127, 170)
         Label5.Margin = New Padding(0)
         Label5.Name = "Label5"
@@ -233,7 +233,7 @@ Partial Class RFID_Based_Attendance
         Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Cursor = Cursors.Hand
-        Label9.Font = New Font("Roboto", 12F)
+        Label9.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.Location = New Point(132, 26)
         Label9.Margin = New Padding(0)
         Label9.Name = "Label9"
@@ -247,7 +247,7 @@ Partial Class RFID_Based_Attendance
         Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Cursor = Cursors.Hand
-        Label6.Font = New Font("Roboto", 12F)
+        Label6.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(123, 314)
         Label6.Margin = New Padding(0)
         Label6.Name = "Label6"
@@ -261,7 +261,7 @@ Partial Class RFID_Based_Attendance
         Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Roboto", 12F)
+        Label8.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.Location = New Point(117, 98)
         Label8.Margin = New Padding(0)
         Label8.Name = "Label8"
@@ -275,7 +275,7 @@ Partial Class RFID_Based_Attendance
         Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Cursor = Cursors.Hand
-        Label7.Font = New Font("Roboto", 12F)
+        Label7.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(103, 242)
         Label7.Margin = New Padding(0)
         Label7.Name = "Label7"
@@ -305,7 +305,7 @@ Partial Class RFID_Based_Attendance
         Panel2.Location = New Point(0, 1)
         Panel2.Margin = New Padding(4, 3, 4, 3)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(254, 660)
+        Panel2.Size = New Size(254, 665)
         Panel2.TabIndex = 28
         ' 
         ' PictureBox11
@@ -382,7 +382,7 @@ Partial Class RFID_Based_Attendance
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Cursor = Cursors.Hand
-        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.Location = New Point(20, 18)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
@@ -403,7 +403,7 @@ Partial Class RFID_Based_Attendance
         ' IconButton5
         ' 
         IconButton5.BackColor = Color.DarkSeaGreen
-        IconButton5.Font = New Font("Arial Rounded MT Bold", 18F)
+        IconButton5.Font = New Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point)
         IconButton5.IconChar = IconChar.None
         IconButton5.IconColor = Color.Black
         IconButton5.IconFont = IconFont.Auto
@@ -559,7 +559,7 @@ Partial Class RFID_Based_Attendance
         Label17.AutoSize = True
         Label17.BackColor = Color.Transparent
         Label17.Cursor = Cursors.Hand
-        Label17.Font = New Font("Roboto", 12F)
+        Label17.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label17.Location = New Point(201, 185)
         Label17.Margin = New Padding(4, 0, 4, 0)
         Label17.Name = "Label17"
@@ -573,7 +573,7 @@ Partial Class RFID_Based_Attendance
         Label16.AutoSize = True
         Label16.BackColor = Color.Transparent
         Label16.Cursor = Cursors.Hand
-        Label16.Font = New Font("Roboto", 12F)
+        Label16.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label16.Location = New Point(21, 185)
         Label16.Margin = New Padding(4, 0, 4, 0)
         Label16.Name = "Label16"
@@ -587,7 +587,7 @@ Partial Class RFID_Based_Attendance
         Label15.AutoSize = True
         Label15.BackColor = Color.Transparent
         Label15.Cursor = Cursors.Hand
-        Label15.Font = New Font("Roboto", 12F)
+        Label15.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label15.Location = New Point(201, 141)
         Label15.Margin = New Padding(4, 0, 4, 0)
         Label15.Name = "Label15"
@@ -601,7 +601,7 @@ Partial Class RFID_Based_Attendance
         Label14.AutoSize = True
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
-        Label14.Font = New Font("Roboto", 12F)
+        Label14.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label14.Location = New Point(23, 141)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
@@ -615,7 +615,7 @@ Partial Class RFID_Based_Attendance
         Label13.AutoSize = True
         Label13.BackColor = Color.Transparent
         Label13.Cursor = Cursors.Hand
-        Label13.Font = New Font("Roboto", 12F)
+        Label13.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label13.Location = New Point(201, 98)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
@@ -629,7 +629,7 @@ Partial Class RFID_Based_Attendance
         Label12.AutoSize = True
         Label12.BackColor = Color.Transparent
         Label12.Cursor = Cursors.Hand
-        Label12.Font = New Font("Roboto", 12F)
+        Label12.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label12.Location = New Point(20, 98)
         Label12.Margin = New Padding(4, 0, 4, 0)
         Label12.Name = "Label12"
@@ -643,7 +643,7 @@ Partial Class RFID_Based_Attendance
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
         Label11.Cursor = Cursors.Hand
-        Label11.Font = New Font("Roboto", 12F)
+        Label11.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.Location = New Point(201, 55)
         Label11.Margin = New Padding(4, 0, 4, 0)
         Label11.Name = "Label11"
@@ -657,7 +657,7 @@ Partial Class RFID_Based_Attendance
         Label10.AutoSize = True
         Label10.BackColor = Color.Transparent
         Label10.Cursor = Cursors.Hand
-        Label10.Font = New Font("Roboto", 12F)
+        Label10.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label10.Location = New Point(42, 55)
         Label10.Margin = New Padding(4, 0, 4, 0)
         Label10.Name = "Label10"
@@ -671,7 +671,7 @@ Partial Class RFID_Based_Attendance
         Label4.AutoSize = True
         Label4.BackColor = Color.Transparent
         Label4.Cursor = Cursors.Hand
-        Label4.Font = New Font("Roboto", 12F)
+        Label4.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label4.Location = New Point(201, 12)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
@@ -685,7 +685,7 @@ Partial Class RFID_Based_Attendance
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
         Label3.Cursor = Cursors.Hand
-        Label3.Font = New Font("Roboto", 12F)
+        Label3.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label3.Location = New Point(19, 12)
         Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
@@ -698,7 +698,7 @@ Partial Class RFID_Based_Attendance
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Cursor = Cursors.Hand
-        Label1.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label1.Location = New Point(32, 22)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"

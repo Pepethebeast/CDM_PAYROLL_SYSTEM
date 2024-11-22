@@ -117,7 +117,7 @@ Partial Class Main_Dashboard
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Cursor = Cursors.Hand
-        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.Location = New Point(19, 18)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
@@ -188,7 +188,7 @@ Partial Class Main_Dashboard
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Cursor = Cursors.Hand
-        Label1.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label1.Location = New Point(47, 12)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
@@ -202,7 +202,7 @@ Partial Class Main_Dashboard
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
         Label3.Cursor = Cursors.Hand
-        Label3.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label3.ForeColor = Color.DarkRed
         Label3.Location = New Point(122, 61)
         Label3.Margin = New Padding(4, 0, 4, 0)
@@ -217,7 +217,7 @@ Partial Class Main_Dashboard
         Label4.AutoSize = True
         Label4.BackColor = Color.Transparent
         Label4.Cursor = Cursors.Hand
-        Label4.Font = New Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label4.Location = New Point(48, 113)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
@@ -268,7 +268,7 @@ Partial Class Main_Dashboard
         TableLayoutPanel1.Controls.Add(Label6, 1, 4)
         TableLayoutPanel1.Controls.Add(Label8, 1, 1)
         TableLayoutPanel1.Controls.Add(Label7, 1, 3)
-        TableLayoutPanel1.Location = New Point(8, 204)
+        TableLayoutPanel1.Location = New Point(3, 202)
         TableLayoutPanel1.Margin = New Padding(0)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 6
@@ -286,7 +286,7 @@ Partial Class Main_Dashboard
         Label31.Anchor = AnchorStyles.None
         Label31.AutoSize = True
         Label31.Cursor = Cursors.Hand
-        Label31.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label31.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label31.Location = New Point(2, 375)
         Label31.Margin = New Padding(0)
         Label31.Name = "Label31"
@@ -300,7 +300,7 @@ Partial Class Main_Dashboard
         Label30.Anchor = AnchorStyles.None
         Label30.AutoSize = True
         Label30.Cursor = Cursors.Hand
-        Label30.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label30.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label30.Location = New Point(6, 302)
         Label30.Margin = New Padding(0)
         Label30.Name = "Label30"
@@ -314,7 +314,7 @@ Partial Class Main_Dashboard
         Label29.Anchor = AnchorStyles.None
         Label29.AutoSize = True
         Label29.Cursor = Cursors.Hand
-        Label29.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label29.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label29.Location = New Point(2, 230)
         Label29.Margin = New Padding(0)
         Label29.Name = "Label29"
@@ -328,7 +328,7 @@ Partial Class Main_Dashboard
         Label25.Anchor = AnchorStyles.None
         Label25.AutoSize = True
         Label25.Cursor = Cursors.Hand
-        Label25.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label25.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label25.Location = New Point(2, 158)
         Label25.Margin = New Padding(0)
         Label25.Name = "Label25"
@@ -342,7 +342,7 @@ Partial Class Main_Dashboard
         Label24.Anchor = AnchorStyles.None
         Label24.AutoSize = True
         Label24.Cursor = Cursors.Hand
-        Label24.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label24.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label24.Location = New Point(2, 86)
         Label24.Margin = New Padding(0)
         Label24.Name = "Label24"
@@ -356,7 +356,7 @@ Partial Class Main_Dashboard
         Label23.Anchor = AnchorStyles.None
         Label23.AutoSize = True
         Label23.Cursor = Cursors.Hand
-        Label23.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label23.Font = New Font("Arial", 27.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label23.Location = New Point(5, 14)
         Label23.Margin = New Padding(0)
         Label23.Name = "Label23"
@@ -370,7 +370,7 @@ Partial Class Main_Dashboard
         Label20.Anchor = AnchorStyles.None
         Label20.AutoSize = True
         Label20.Cursor = Cursors.Hand
-        Label20.Font = New Font("Roboto", 12F)
+        Label20.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label20.Location = New Point(125, 388)
         Label20.Margin = New Padding(0)
         Label20.Name = "Label20"
@@ -384,7 +384,7 @@ Partial Class Main_Dashboard
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Cursor = Cursors.Hand
-        Label5.Font = New Font("Roboto", 12F)
+        Label5.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.Location = New Point(127, 170)
         Label5.Margin = New Padding(0)
         Label5.Name = "Label5"
@@ -398,7 +398,7 @@ Partial Class Main_Dashboard
         Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
         Label9.Cursor = Cursors.Hand
-        Label9.Font = New Font("Roboto", 12F)
+        Label9.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.Location = New Point(132, 26)
         Label9.Margin = New Padding(0)
         Label9.Name = "Label9"
@@ -412,7 +412,7 @@ Partial Class Main_Dashboard
         Label6.Anchor = AnchorStyles.None
         Label6.AutoSize = True
         Label6.Cursor = Cursors.Hand
-        Label6.Font = New Font("Roboto", 12F)
+        Label6.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(123, 314)
         Label6.Margin = New Padding(0)
         Label6.Name = "Label6"
@@ -426,7 +426,7 @@ Partial Class Main_Dashboard
         Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
         Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Roboto", 12F)
+        Label8.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.Location = New Point(117, 98)
         Label8.Margin = New Padding(0)
         Label8.Name = "Label8"
@@ -440,7 +440,7 @@ Partial Class Main_Dashboard
         Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
         Label7.Cursor = Cursors.Hand
-        Label7.Font = New Font("Roboto", 12F)
+        Label7.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(103, 242)
         Label7.Margin = New Padding(0)
         Label7.Name = "Label7"
@@ -496,7 +496,7 @@ Partial Class Main_Dashboard
         Label12.AutoSize = True
         Label12.BackColor = Color.Transparent
         Label12.Cursor = Cursors.Hand
-        Label12.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label12.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label12.Location = New Point(43, 10)
         Label12.Margin = New Padding(4, 0, 4, 0)
         Label12.Name = "Label12"
@@ -510,7 +510,7 @@ Partial Class Main_Dashboard
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
         Label11.Cursor = Cursors.Hand
-        Label11.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.ForeColor = Color.DarkRed
         Label11.Location = New Point(61, 55)
         Label11.Margin = New Padding(4, 0, 4, 0)
@@ -525,7 +525,7 @@ Partial Class Main_Dashboard
         Label10.AutoSize = True
         Label10.BackColor = Color.Transparent
         Label10.Cursor = Cursors.Hand
-        Label10.Font = New Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label10.Font = New Font("Arial Narrow", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label10.Location = New Point(45, 103)
         Label10.Margin = New Padding(4, 0, 4, 0)
         Label10.Name = "Label10"
@@ -583,7 +583,7 @@ Partial Class Main_Dashboard
         ' 
         Button1.Anchor = AnchorStyles.None
         Button1.BackColor = SystemColors.MenuText
-        Button1.Font = New Font("Roboto", 9F)
+        Button1.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Button1.ForeColor = SystemColors.ButtonHighlight
         Button1.Location = New Point(5, 7)
         Button1.Margin = New Padding(4, 3, 4, 3)
@@ -596,7 +596,7 @@ Partial Class Main_Dashboard
         ' Button4
         ' 
         Button4.Anchor = AnchorStyles.None
-        Button4.Font = New Font("Roboto", 9F)
+        Button4.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Button4.Location = New Point(5, 210)
         Button4.Margin = New Padding(4, 3, 4, 3)
         Button4.Name = "Button4"
@@ -608,7 +608,7 @@ Partial Class Main_Dashboard
         ' Button2
         ' 
         Button2.Anchor = AnchorStyles.None
-        Button2.Font = New Font("Roboto", 9F)
+        Button2.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Button2.Location = New Point(5, 74)
         Button2.Margin = New Padding(4, 3, 4, 3)
         Button2.Name = "Button2"
@@ -620,7 +620,7 @@ Partial Class Main_Dashboard
         ' Button3
         ' 
         Button3.Anchor = AnchorStyles.None
-        Button3.Font = New Font("Roboto", 9F)
+        Button3.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Button3.Location = New Point(5, 141)
         Button3.Margin = New Padding(4, 3, 4, 3)
         Button3.Name = "Button3"
@@ -634,7 +634,7 @@ Partial Class Main_Dashboard
         Label15.AutoSize = True
         Label15.BackColor = Color.Transparent
         Label15.Cursor = Cursors.Hand
-        Label15.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label15.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label15.Location = New Point(38, 28)
         Label15.Margin = New Padding(4, 0, 4, 0)
         Label15.Name = "Label15"
@@ -680,7 +680,7 @@ Partial Class Main_Dashboard
         Label13.AutoSize = True
         Label13.BackColor = Color.Transparent
         Label13.Cursor = Cursors.Hand
-        Label13.Font = New Font("Arial", 12F, FontStyle.Bold Or FontStyle.Italic)
+        Label13.Font = New Font("Arial", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label13.ForeColor = Color.Maroon
         Label13.Location = New Point(4, 8)
         Label13.Margin = New Padding(4, 0, 4, 0)
@@ -695,7 +695,7 @@ Partial Class Main_Dashboard
         Label21.AutoSize = True
         Label21.BackColor = Color.Transparent
         Label21.Cursor = Cursors.Hand
-        Label21.Font = New Font("Arial", 11.25F, FontStyle.Italic)
+        Label21.Font = New Font("Arial", 11.25F, FontStyle.Italic, GraphicsUnit.Point)
         Label21.Location = New Point(4, 146)
         Label21.Margin = New Padding(4, 0, 4, 0)
         Label21.Name = "Label21"
@@ -709,7 +709,7 @@ Partial Class Main_Dashboard
         Label18.AutoSize = True
         Label18.BackColor = Color.Transparent
         Label18.Cursor = Cursors.Hand
-        Label18.Font = New Font("Arial", 11.25F, FontStyle.Italic)
+        Label18.Font = New Font("Arial", 11.25F, FontStyle.Italic, GraphicsUnit.Point)
         Label18.Location = New Point(4, 42)
         Label18.Margin = New Padding(4, 0, 4, 0)
         Label18.Name = "Label18"
@@ -723,7 +723,7 @@ Partial Class Main_Dashboard
         Label22.AutoSize = True
         Label22.BackColor = Color.Transparent
         Label22.Cursor = Cursors.Hand
-        Label22.Font = New Font("Arial", 11.25F, FontStyle.Italic)
+        Label22.Font = New Font("Arial", 11.25F, FontStyle.Italic, GraphicsUnit.Point)
         Label22.Location = New Point(4, 110)
         Label22.Margin = New Padding(4, 0, 4, 0)
         Label22.Name = "Label22"
@@ -737,7 +737,7 @@ Partial Class Main_Dashboard
         Label19.AutoSize = True
         Label19.BackColor = Color.Transparent
         Label19.Cursor = Cursors.Hand
-        Label19.Font = New Font("Arial", 11.25F, FontStyle.Italic)
+        Label19.Font = New Font("Arial", 11.25F, FontStyle.Italic, GraphicsUnit.Point)
         Label19.Location = New Point(4, 76)
         Label19.Margin = New Padding(4, 0, 4, 0)
         Label19.Name = "Label19"
@@ -780,7 +780,7 @@ Partial Class Main_Dashboard
         Label14.AutoSize = True
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
-        Label14.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label14.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label14.Location = New Point(54, 6)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
@@ -794,7 +794,7 @@ Partial Class Main_Dashboard
         Label16.AutoSize = True
         Label16.BackColor = Color.Transparent
         Label16.Cursor = Cursors.Hand
-        Label16.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label16.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label16.ForeColor = Color.DarkRed
         Label16.Location = New Point(49, 43)
         Label16.Margin = New Padding(4, 0, 4, 0)
@@ -809,7 +809,7 @@ Partial Class Main_Dashboard
         Label17.AutoSize = True
         Label17.BackColor = Color.Transparent
         Label17.Cursor = Cursors.Hand
-        Label17.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label17.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Label17.Location = New Point(66, 83)
         Label17.Margin = New Padding(4, 0, 4, 0)
         Label17.Name = "Label17"

@@ -9,6 +9,8 @@ Imports System.Threading.Tasks
 Imports Firebase.Auth.Providers
 Imports FireSharp.Config
 Imports FireSharp.Interfaces
+Imports System.Net
+Imports System.Net.Mail
 
 Public Class add_account
 
@@ -74,6 +76,37 @@ Public Class add_account
             End If
         End If
     End Sub
+    Private Sub SendEmail(toEmail As String, subject As String, body As String)
+        Try
+            Dim smtpClient As New SmtpClient("smtp.gmail.com") ' Replace with your SMTP server
+            smtpClient.Port = 587 ' Replace with your SMTP port
+            smtpClient.Credentials = New NetworkCredential("payrollcdm504@gmail.com", "dursccvkavjmzrka")
+            smtpClient.EnableSsl = True
+
+            Dim mailMessage As New MailMessage()
+            mailMessage.From = New MailAddress("cdmpayroll@pnm.edu.ph")
+            mailMessage.To.Add(toEmail)
+            mailMessage.Subject = subject
+            mailMessage.Body = body
+            mailMessage.IsBodyHtml = True
+
+            smtpClient.Send(mailMessage)
+        Catch ex As Exception
+            MessageBox.Show($"Email sending error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub InitializeFirebaseApp()
+        Try
+            ' Check if FirebaseApp instance already exists
+            If FirebaseApp.DefaultInstance Is Nothing Then
+                FirebaseApp.Create(New AppOptions() With {
+                .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+            })
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Async Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim client444 As IFirebaseClient = FirebaseModule.GetFirebaseClient
         If String.IsNullOrWhiteSpace(nametextbox.Text) OrElse
@@ -107,8 +140,11 @@ Public Class add_account
             Dim content As New StringContent(jsonPayload, Encoding.UTF8, "application/json")
 
             Try
+                ' Send the request to create the account
                 Dim response = Await client.PostAsync(requestUri, content)
+
                 If response.IsSuccessStatusCode Then
+                    ' Parse the response
                     Dim resultJson = Await response.Content.ReadAsStringAsync()
                     Dim resultData = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(resultJson)
                     Dim uid = resultData("localId")
@@ -123,42 +159,54 @@ Public Class add_account
                     Dim nanoSeconds As Integer = now.Millisecond * 1000000  ' Convert milliseconds to nanoseconds
 
                     Dim PD As New PersonalData With {
-                    .firstName = nametextbox.Text,
-                    .lastName = TextBox1.Text,
-                    .email = email,
-                    .password = passwordhasher,
-                    .createdAt = New PersonalData.CreatedAte With {
-                        .nanoseconds = nanoSeconds,
-                        .seconds = unixTimestamp
-                    },
-                    .employeeID = employee_id_textbox.Text
-                }
+            .firstName = nametextbox.Text,
+            .lastName = TextBox1.Text,
+            .email = email,
+            .password = passwordhasher,
+            .createdAt = New PersonalData.CreatedAte With {
+                .nanoseconds = nanoSeconds,
+                .seconds = unixTimestamp
+            },
+            .employeeID = employee_id_textbox.Text
+        }
 
                     ' Save the data to Firebase 
                     Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                     Dim save = client444.Set("usersTbl/" + uid, PD)
                     Dim reportuser = client444.Set("ReportTbl/" & "account/" & numericGuid, "Account creation successfully for employee: " + employee_id_textbox.Text)
-                    Dim save2 = client444.Set("NotificationTbl/" & uid + "/", "Your account was succesfully created by admin.")
+                    Dim save2 = client444.Set("NotificationTbl/" & uid + "/", "Your account was successfully created by admin.")
 
-                    ' Send verification email
-                    Dim verificationUri As String = $"https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key={ApiKey}"
-                    Dim verificationPayload = JsonConvert.SerializeObject(New With {
-                    .requestType = "VERIFY_EMAIL",
-                    .idToken = resultData("idToken")
-                })
+                    Try
+                        ' Initialize Firebase if not already done
+                        InitializeFirebaseApp()
 
-                    Dim verificationContent As New StringContent(verificationPayload, Encoding.UTF8, "application/json")
-                    Dim verificationResponse = Await client.PostAsync(verificationUri, verificationContent)
+                        ' Fetch the user by UID
+                        Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+                        Dim userRecord As UserRecord = Await auth.GetUserAsync(uid)
 
-                    If verificationResponse.IsSuccessStatusCode Then
-                        MessageBox.Show("Verification email sent. Please check your inbox.")
-                    Else
-                        Dim verificationErrorJson = Await verificationResponse.Content.ReadAsStringAsync()
-                        Dim verificationErrorData = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(verificationErrorJson)
-                        Dim errorMessage As String = verificationErrorData("error")("message").ToString()
-                        MessageBox.Show("Error sending verification email: " & errorMessage)
-                        Debug.WriteLine("Verification email error: " & errorMessage) ' Log the error
-                    End If
+                        ' Check if user has an email
+                        If String.IsNullOrEmpty(userRecord.Email) Then
+                            MessageBox.Show("The user does not have an email address associated.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Return
+                        End If
+
+                        ' Generate verification link
+                        Dim link As String = Await FirebaseAuth.DefaultInstance.GenerateEmailVerificationLinkAsync(userRecord.Email)
+
+                        ' Optional: Display the link (for debugging purposes)
+                        Console.WriteLine($"Verification link: {link}")
+
+                        ' Send email using your SMTP setup
+                        SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {link}")
+                        Dim reportTbl = client444.Set("ReportTbl/account/" & FirebaseModule.numericGuid, "Email verification sent to " + userRecord.Email)
+                        Dim notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/id", FirebaseModule.numericGuid)
+                        notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/message", "Verification link has been sent to your email " + DateTime.Now)
+                        notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/title", "Email Verification")
+                        MessageBox.Show($"Verification email sent to {userRecord.Email}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    Catch ex As Exception
+                        MessageBox.Show($"An error occurred while sending the Firebase verification email: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
 
                     ' Proceed to RFID registration
                     Dim account_info As New add_employee
@@ -171,6 +219,7 @@ Public Class add_account
                     ClearFields() ' Call a separate method to clear fields
 
                 Else
+                    ' Handle account creation failure
                     Dim errorJson = Await response.Content.ReadAsStringAsync()
                     Dim errorData = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(errorJson)
                     MessageBox.Show("Error: " & errorData("error")("message").ToString())
@@ -178,6 +227,7 @@ Public Class add_account
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message)
             End Try
+
             Return
         End If
     End Sub
