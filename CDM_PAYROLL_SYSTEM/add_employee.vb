@@ -170,7 +170,8 @@ Public Class add_employee
                 Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                 Dim save = client.Set("EmployeeDataTbl/" & user_uid, PD)
                 Dim save2 = client.Set("NotificationTbl/" & user_uid & "/", "Your information has been updated by admin.")
-                Dim reportTbl = client.Set("ReportTbl/account/" & numericGuid, "Information has been updated for employee ID: " + add_employee_id)
+                Dim reportTbl = client.Set("ReportTbl/account/" & numericGuid & "/message", "Information has been updated for employee ID: " + add_employee_id)
+                reportTbl = client.Set("ReportTbl/" & "account/" & numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                 MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 ' Close the form

@@ -14,6 +14,7 @@ Public Class register_rfid
 
     Private client As IFirebaseClient
     Public Property UserUID As String
+    Public Property add_employee_id As String
     Private WithEvents serialPort As New SerialPort("COM3", 115200, Parity.None, 8, StopBits.One)
 
     ' Form Load - Firebase setup and serial port
@@ -129,6 +130,7 @@ Public Class register_rfid
     End Function
     ' Register RFID Tag to Firebase
     Private Async Sub RegisterRFIDTag(rfidTag As String)
+        Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient
         Debug.WriteLine("Attempting to register RFID: " & rfidTag)
         If client IsNot Nothing AndAlso Not String.IsNullOrEmpty(UserUID) Then
             Try
@@ -154,6 +156,8 @@ Public Class register_rfid
                                Label2.Text = "Registration successful"
                                Label2.ForeColor = Color.Green
                            End Sub)
+                    Dim reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/message", "RFID Registed to employee ID: " + add_employee_id)
+                    reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                     MessageBox.Show("RFID tag registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     Debug.WriteLine("Failed to register RFID. Status code: " & response.StatusCode)

@@ -1,33 +1,113 @@
 ﻿Imports Newtonsoft.Json
 Imports System.Runtime.InteropServices
 Imports ClosedXML.Excel
+Imports Newtonsoft.Json.Linq
 Public Class reports
+
     Private Sub LoadDataIntoDataGridView()
-        ' Initialize the Firebase client
         Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
+        Dim srrecord As FireSharp.Response.FirebaseResponse
 
-        If client IsNot Nothing Then
-            ' Retrieve data from Firebase
-            Dim response As FireSharp.Response.FirebaseResponse = client.Get("ReportTbl/account/")
-            If response.StatusCode = 200 Then
-                ' Deserialize the data
-                Dim accountData As Dictionary(Of String, String) = response.ResultAs(Of Dictionary(Of String, String))()
-
-                ' Clear any existing data in DataGridView
-                DGVUserData.Rows.Clear()
-
-                ' Loop through the dictionary and add data to the DataGridView
-                For Each kvp As KeyValuePair(Of String, String) In accountData
-                    ' Add the UID (key) and associated information (value) to DataGridView
-                    DGVUserData.Rows.Add(kvp.Key, kvp.Value)
-                Next
-            Else
-                MessageBox.Show("Failed to retrieve data from Firebase")
-            End If
+        ' Check the selected item in ComboBox1
+        If ComboBox1.Text = "Accounts" Then
+            ' Fetch data from the "ReportTbl/account" path
+            srrecord = client.Get("ReportTbl/account")
+        ElseIf ComboBox1.Text = "Payslip" Then
+            ' Fetch data from the "ReportTbl/payslip" path
+            srrecord = client.Get("ReportTbl/payslip")
+        ElseIf ComboBox1.Text = "TimeRecords" Then
+            ' Fetch data from the "ReportTbl/timerecords" path
+            srrecord = client.Get("ReportTbl/timerecords")
         Else
-            MessageBox.Show("Failed to connect to Firebase")
+            ' Handle case when none of the expected items are selected (optional)
+            MessageBox.Show("Invalid selection, please choose a valid report type.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
         End If
+
+        Try
+            Dim rawJson = srrecord.Body
+
+            ' Parse the JSON using JObject for dynamic handling
+            Dim reportData As JObject = JObject.Parse(rawJson)
+
+            If reportData Is Nothing OrElse reportData.Count = 0 Then
+                MessageBox.Show("No data found.", "Data Load", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End If
+
+            ' Prepare the DataGridView
+            DGVUserData.DataSource = Nothing
+            DGVUserData.Columns.Clear()
+            DGVUserData.Rows.Clear()
+            DGVUserData.AutoGenerateColumns = False
+
+            ' Add required columns
+            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {
+            .HeaderText = "Report Logs",
+            .Name = "ReportLogs",
+            .AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ' Disable auto-sizing
+            .Width = 200 ' Explicit width
+        })
+
+            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {
+            .HeaderText = "Message",
+            .Name = "Message",
+            .AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill ' Fill remaining space
+        })
+
+            DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {
+            .HeaderText = "Date",
+            .Name = "Date",
+            .AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+            .Width = 250' Fill remaining space
+        })
+
+            ' Iterate over the parsed JSON
+            For Each outerProperty As JProperty In reportData.Properties()
+                Dim reportLogs As String = outerProperty.Name ' Report ID
+                Dim innerData As JObject = TryCast(outerProperty.Value, JObject)
+
+                If innerData IsNot Nothing Then
+                    ' Get the Date value, ensure it's treated as a string
+                    Dim dateStr As String = If(innerData("Date")?.ToString(), "N/A")
+
+                    ' Iterate over the nested data (except "Date")
+                    For Each innerProperty As JProperty In innerData.Properties()
+                        If innerProperty.Name <> "Date" Then
+                            Dim message As String = innerProperty.Value.ToString()
+                            ' Add a row for each log
+                            DGVUserData.Rows.Add(reportLogs, message, dateStr)
+                        End If
+                    Next
+                Else
+                    ' If the inner data is not an object, treat it as a simple message
+                    Dim message As String = outerProperty.Value.ToString()
+                    DGVUserData.Rows.Add(reportLogs, message, "N/A")
+                End If
+            Next
+
+            ' Apply DataGridView styles (optional)
+            DGVUserData.EnableHeadersVisualStyles = False
+            DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
+            DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
+            DGVUserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVUserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DGVUserData.DefaultCellStyle.Font = New Font("Roboto", 12)
+            DGVUserData.ColumnHeadersDefaultCellStyle.Font = New Font("Roboto", 8, FontStyle.Regular)
+            DGVUserData.RowTemplate.Height = 30
+            DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            DGVUserData.BorderStyle = BorderStyle.None
+            DGVUserData.BackgroundColor = Color.White
+            DGVUserData.GridColor = Color.White
+            DGVUserData.RowHeadersVisible = False
+            DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
+            DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
+
+        Catch ex As Exception
+            MessageBox.Show($"Error loading report logs: {ex.Message}", "Data Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
     Private Sub ExportToExcel(dataGridView As DataGridView)
         Try
             ' Create a new Excel workbook using ClosedXML
@@ -80,38 +160,6 @@ Public Class reports
             GC.Collect()
         End Try
     End Sub
-
-    Private Sub InitializeDataGridView()
-        ' Prevent adding columns again if already initialized
-        If DGVUserData.Columns.Count > 0 Then Exit Sub
-
-        DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        ' Remove the border of the DataGridView
-        DGVUserData.BorderStyle = BorderStyle.None
-
-        ' Set the font to Roboto, size 12
-        Dim robotoFont As New System.Drawing.Font("Roboto", 12, FontStyle.Regular)
-        DGVUserData.DefaultCellStyle.Font = robotoFont
-        DGVUserData.ColumnHeadersDefaultCellStyle.Font = robotoFont
-
-        ' Optional: Adjust additional styles to match a modern look
-        DGVUserData.BackgroundColor = Color.White
-        DGVUserData.GridColor = Color.White
-        DGVUserData.RowHeadersVisible = False
-        DGVUserData.EnableHeadersVisualStyles = False
-        DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
-        DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-        DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
-        DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
-        DGVUserData.ReadOnly = True
-
-        DGVUserData.AllowUserToAddRows = False
-        DGVUserData.Columns.Add("Reportlogs", "report logs")
-        DGVUserData.Columns.Add("Message", "Message")
-        DGVUserData.Columns.Add("Date", "Date")
-        DGVUserData.Columns("Reportlogs").Width = 200
-        DGVUserData.Columns("Date").Width = 200
-    End Sub
     Private Sub reports_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         ' Show a confirmation dialog (optional)
         ' Only show the exit confirmation if isExiting is set to True
@@ -125,49 +173,22 @@ Public Class reports
             End If
         End If
     End Sub
-    Private Sub reports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Initialize the DataGridView only once when the form loads
-        InitializeDataGridView()
+    Private Sub reports_Load(sender As Object, e As EventArgs) Handles MyBase.Load ' Initialize the DataGridView only once when the form loads
+
         ComboBox1.Text = "Accounts"
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         ' Clear existing rows before loading new data
-        DGVUserData.Rows.Clear()
+
 
         If ComboBox1.Text = "Accounts" Then
             LoadDataIntoDataGridView()
         ElseIf ComboBox1.Text = "Payslip" Then
-            LoadPayslipReport()
+            LoadDataIntoDataGridView()
         End If
     End Sub
 
-    Private Sub LoadPayslipReport()
-        ' Initialize the Firebase client
-        Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
-
-        If client IsNot Nothing Then
-            ' Retrieve data from Firebase
-            Dim response As FireSharp.Response.FirebaseResponse = client.Get("ReportTbl/payslip/")
-            If response.StatusCode = 200 Then
-                ' Deserialize the data
-                Dim payslipData As Dictionary(Of String, String) = response.ResultAs(Of Dictionary(Of String, String))()
-
-                ' Clear any existing data in DataGridView
-                DGVUserData.Rows.Clear()
-
-                ' Loop through the dictionary and add data to the DataGridView
-                For Each kvp As KeyValuePair(Of String, String) In payslipData
-                    ' Add the UID (key) and associated information (value) to DataGridView
-                    DGVUserData.Rows.Add(kvp.Key, kvp.Value)
-                Next
-            Else
-                MessageBox.Show("Failed to retrieve data from Firebase")
-            End If
-        Else
-            MessageBox.Show("Failed to connect to Firebase")
-        End If
-    End Sub
 
     Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
         Main_Dashboard.Show()

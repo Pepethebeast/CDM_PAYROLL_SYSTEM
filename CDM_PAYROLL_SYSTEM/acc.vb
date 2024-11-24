@@ -21,6 +21,7 @@ Imports System.Reflection
 Imports Google.Apis.Auth.OAuth2
 Imports System.Net
 Imports System.Net.Mail
+Imports DocumentFormat.OpenXml.Bibliography
 
 Public Class acc
 
@@ -297,7 +298,9 @@ Public Class acc
             If e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index Then
                 ' RFID Register button clicked
                 Dim rfidForm As New register_rfid()
+                Dim userData As String = selectedRow.Cells("employeeID").Value.ToString
                 rfidForm.UserUID = uid ' Set the UID property
+                rfidForm.add_employee_id = userData
                 rfidForm.Show()
 
             ElseIf e.ColumnIndex = DGVuserData.Columns("editButton").Index Then
@@ -337,7 +340,8 @@ Public Class acc
 
                     ' Send email using your SMTP setup
                     SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {link}")
-                    Dim reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid, "Email verification sent to " + userRecord.Email)
+                    Dim reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/message", "Email verification sent to " + userRecord.Email)
+                    reportTbl = client.Set("ReportTbl/" & "account/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                     Dim notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/id", FirebaseModule.numericGuid)
                     notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/message", "Verification link has been sent to your email " + DateTime.Now)
                     notifiactionTbl = client.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/title", "Email Verification")
@@ -363,6 +367,8 @@ Public Class acc
                     If userRecord.EmailVerified Then
                         ' Proceed with password reset
                         SendPasswordResetEmail(emailReceived)
+                        Dim reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/message", "Reset password link has been sent to " + emailReceived)
+                        reportTbl = client.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                     Else
                         ' Show message box for unverified email
                         MessageBox.Show($"The email '{emailReceived}' is not verified. Please verify the email before resetting the password.", "Email Not Verified", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -430,7 +436,6 @@ Public Class acc
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs)
-
         Hide()
         register_rfid.Show()
     End Sub

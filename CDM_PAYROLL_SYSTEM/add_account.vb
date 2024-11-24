@@ -171,9 +171,9 @@ Public Class add_account
         }
 
                     ' Save the data to Firebase 
-                    Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
                     Dim save = client444.Set("usersTbl/" + uid, PD)
-                    Dim reportuser = client444.Set("ReportTbl/" & "account/" & numericGuid, "Account creation successfully for employee: " + employee_id_textbox.Text)
+                    Dim reportuser = client444.Set("ReportTbl/" & "account/" & FirebaseModule.numericGuid & "/" + "message", "Account creation successfully for employee: " + employee_id_textbox.Text)
+                    reportuser = client444.Set("ReportTbl/" & "account/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                     Dim save2 = client444.Set("NotificationTbl/" & uid + "/", "Your account was successfully created by admin.")
 
                     Try
@@ -199,6 +199,7 @@ Public Class add_account
                         ' Send email using your SMTP setup
                         SendEmail(userRecord.Email, "Verify Your Email", $"Please verify your email using this link: {link}")
                         Dim reportTbl = client444.Set("ReportTbl/account/" & FirebaseModule.numericGuid, "Email verification sent to " + userRecord.Email)
+                        reportTbl = client444.Set("ReportTbl/account/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
                         Dim notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/id", FirebaseModule.numericGuid)
                         notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/message", "Verification link has been sent to your email " + DateTime.Now)
                         notifiactionTbl = client444.Set($"NotificationTbl/{uid}/" & FirebaseModule.numericGuid & "/title", "Email Verification")

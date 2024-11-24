@@ -24,4 +24,6 @@ Module FirebaseModule
     Private Const ApiKey As String = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"
 
     Public numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
+    Public today As String = DateTime.Now.ToString("yyyy-MM-dd")
+    Public nowTime As String = DateTime.Now.ToString("HH:mm:ss")
 End Module

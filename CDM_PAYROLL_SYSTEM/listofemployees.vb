@@ -54,8 +54,7 @@ Public Class List_of_Employees
 
             ' Display a message if no data matches the search criteria
             If employeeList.Count = 0 Then
-                MessageBox.Show("No matching records found!", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                DGVUserData.DataSource = Nothing
+
                 Return
             End If
 

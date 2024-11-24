@@ -49,7 +49,6 @@ Partial Class payslip
         TextBox4 = New TextBox()
         Label23 = New Label()
         Label22 = New Label()
-        ProgressBar1 = New ProgressBar()
         Panel4 = New Panel()
         TableLayoutPanel5 = New TableLayoutPanel()
         Label7 = New Label()
@@ -118,7 +117,7 @@ Partial Class payslip
         TableLayoutPanel7.Location = New Point(522, 194)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 1
-        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
         TableLayoutPanel7.Size = New Size(267, 50)
         TableLayoutPanel7.TabIndex = 50
         ' 
@@ -184,8 +183,8 @@ Partial Class payslip
         ' TableLayoutPanel6
         ' 
         TableLayoutPanel6.ColumnCount = 2
-        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
-        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
         TableLayoutPanel6.Controls.Add(TextBox1, 1, 2)
         TableLayoutPanel6.Controls.Add(Label28, 0, 2)
         TableLayoutPanel6.Controls.Add(Label24, 0, 0)
@@ -217,7 +216,7 @@ Partial Class payslip
         Label28.AutoSize = True
         Label28.BackColor = Color.Transparent
         Label28.Cursor = Cursors.Hand
-        Label28.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label28.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label28.ForeColor = SystemColors.ActiveCaptionText
         Label28.Location = New Point(23, 89)
         Label28.Margin = New Padding(4, 0, 4, 0)
@@ -232,7 +231,7 @@ Partial Class payslip
         Label24.AutoSize = True
         Label24.BackColor = Color.Transparent
         Label24.Cursor = Cursors.Hand
-        Label24.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label24.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label24.ForeColor = SystemColors.ActiveCaptionText
         Label24.Location = New Point(26, 10)
         Label24.Margin = New Padding(4, 0, 4, 0)
@@ -257,7 +256,7 @@ Partial Class payslip
         Label36.AutoSize = True
         Label36.BackColor = Color.Transparent
         Label36.Cursor = Cursors.Hand
-        Label36.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label36.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label36.ForeColor = SystemColors.ActiveCaptionText
         Label36.Location = New Point(33, 49)
         Label36.Margin = New Padding(4, 0, 4, 0)
@@ -279,8 +278,8 @@ Partial Class payslip
         ' TableLayoutPanel1
         ' 
         TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
         TableLayoutPanel1.Controls.Add(TextBox7, 1, 0)
         TableLayoutPanel1.Controls.Add(Label2, 0, 0)
         TableLayoutPanel1.Controls.Add(Label25, 0, 1)
@@ -317,7 +316,7 @@ Partial Class payslip
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Cursor = Cursors.Hand
-        Label2.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.ForeColor = SystemColors.ActiveCaptionText
         Label2.Location = New Point(35, 16)
         Label2.Margin = New Padding(4, 0, 4, 0)
@@ -332,7 +331,7 @@ Partial Class payslip
         Label25.AutoSize = True
         Label25.BackColor = Color.Transparent
         Label25.Cursor = Cursors.Hand
-        Label25.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label25.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label25.ForeColor = SystemColors.ActiveCaptionText
         Label25.Location = New Point(31, 67)
         Label25.Margin = New Padding(4, 0, 4, 0)
@@ -365,7 +364,7 @@ Partial Class payslip
         Label26.AutoSize = True
         Label26.BackColor = Color.Transparent
         Label26.Cursor = Cursors.Hand
-        Label26.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label26.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label26.ForeColor = SystemColors.ActiveCaptionText
         Label26.Location = New Point(20, 118)
         Label26.Margin = New Padding(4, 0, 4, 0)
@@ -380,7 +379,7 @@ Partial Class payslip
         Label30.AutoSize = True
         Label30.BackColor = Color.Transparent
         Label30.Cursor = Cursors.Hand
-        Label30.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label30.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label30.ForeColor = SystemColors.ActiveCaptionText
         Label30.Location = New Point(29, 222)
         Label30.Margin = New Padding(4, 0, 4, 0)
@@ -404,7 +403,7 @@ Partial Class payslip
         Label32.AutoSize = True
         Label32.BackColor = Color.Transparent
         Label32.Cursor = Cursors.Hand
-        Label32.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label32.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label32.ForeColor = SystemColors.ActiveCaptionText
         Label32.Location = New Point(18, 169)
         Label32.Margin = New Padding(4, 0, 4, 0)
@@ -427,7 +426,7 @@ Partial Class payslip
         Label23.AutoSize = True
         Label23.BackColor = Color.Transparent
         Label23.Cursor = Cursors.Hand
-        Label23.Font = New Font("Arial", 9.75F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label23.Font = New Font("Arial", 9.75F, FontStyle.Italic, GraphicsUnit.Point)
         Label23.ForeColor = Color.Maroon
         Label23.Location = New Point(33, 47)
         Label23.Margin = New Padding(4, 0, 4, 0)
@@ -441,21 +440,13 @@ Partial Class payslip
         Label22.AutoSize = True
         Label22.BackColor = Color.Transparent
         Label22.Cursor = Cursors.Hand
-        Label22.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label22.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label22.Location = New Point(33, 19)
         Label22.Margin = New Padding(4, 0, 4, 0)
         Label22.Name = "Label22"
         Label22.Size = New Size(207, 23)
         Label22.TabIndex = 28
         Label22.Text = "Earnings Calculation"
-        ' 
-        ' ProgressBar1
-        ' 
-        ProgressBar1.Location = New Point(430, 0)
-        ProgressBar1.Name = "ProgressBar1"
-        ProgressBar1.Size = New Size(267, 40)
-        ProgressBar1.TabIndex = 53
-        ProgressBar1.Visible = False
         ' 
         ' Panel4
         ' 
@@ -472,14 +463,14 @@ Partial Class payslip
         ' TableLayoutPanel5
         ' 
         TableLayoutPanel5.ColumnCount = 1
-        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel5.Controls.Add(Label7, 0, 0)
         TableLayoutPanel5.Controls.Add(PictureBox9, 0, 1)
         TableLayoutPanel5.Location = New Point(3, 3)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 2
-        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 20.0F))
-        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 80.0F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 80F))
         TableLayoutPanel5.Size = New Size(291, 201)
         TableLayoutPanel5.TabIndex = 51
         ' 
@@ -489,7 +480,7 @@ Partial Class payslip
         Label7.AutoSize = True
         Label7.BackColor = Color.Transparent
         Label7.Cursor = Cursors.Hand
-        Label7.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label7.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(67, 8)
         Label7.Margin = New Padding(4, 0, 4, 0)
         Label7.Name = "Label7"
@@ -512,8 +503,8 @@ Partial Class payslip
         ' 
         TableLayoutPanel2.BackColor = Color.White
         TableLayoutPanel2.ColumnCount = 2
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
         TableLayoutPanel2.Controls.Add(position_to_textbox, 1, 2)
         TableLayoutPanel2.Controls.Add(Label29, 0, 2)
         TableLayoutPanel2.Controls.Add(Label40, 1, 6)
@@ -547,7 +538,7 @@ Partial Class payslip
         position_to_textbox.AutoSize = True
         position_to_textbox.BackColor = Color.Transparent
         position_to_textbox.Cursor = Cursors.Hand
-        position_to_textbox.Font = New Font("Arial", 11.25F)
+        position_to_textbox.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         position_to_textbox.ForeColor = SystemColors.ActiveCaptionText
         position_to_textbox.Location = New Point(168, 89)
         position_to_textbox.Margin = New Padding(4, 0, 4, 0)
@@ -562,7 +553,7 @@ Partial Class payslip
         Label29.AutoSize = True
         Label29.BackColor = Color.Transparent
         Label29.Cursor = Cursors.Hand
-        Label29.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label29.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label29.ForeColor = SystemColors.ActiveCaptionText
         Label29.Location = New Point(22, 88)
         Label29.Margin = New Padding(4, 0, 4, 0)
@@ -577,7 +568,7 @@ Partial Class payslip
         Label40.AutoSize = True
         Label40.BackColor = Color.Transparent
         Label40.Cursor = Cursors.Hand
-        Label40.Font = New Font("Arial", 11.25F)
+        Label40.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label40.ForeColor = SystemColors.ActiveCaptionText
         Label40.Location = New Point(157, 247)
         Label40.Margin = New Padding(4, 0, 4, 0)
@@ -592,7 +583,7 @@ Partial Class payslip
         Label41.AutoSize = True
         Label41.BackColor = Color.Transparent
         Label41.Cursor = Cursors.Hand
-        Label41.Font = New Font("Arial", 11.25F)
+        Label41.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label41.ForeColor = SystemColors.ActiveCaptionText
         Label41.Location = New Point(157, 206)
         Label41.Margin = New Padding(4, 0, 4, 0)
@@ -607,7 +598,7 @@ Partial Class payslip
         Label10.AutoSize = True
         Label10.BackColor = Color.Transparent
         Label10.Cursor = Cursors.Hand
-        Label10.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label10.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label10.ForeColor = SystemColors.ActiveCaptionText
         Label10.Location = New Point(7, 10)
         Label10.Margin = New Padding(4, 0, 4, 0)
@@ -622,7 +613,7 @@ Partial Class payslip
         Label13.AutoSize = True
         Label13.BackColor = Color.Transparent
         Label13.Cursor = Cursors.Hand
-        Label13.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label13.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label13.ForeColor = SystemColors.ActiveCaptionText
         Label13.Location = New Point(31, 49)
         Label13.Margin = New Padding(4, 0, 4, 0)
@@ -637,7 +628,7 @@ Partial Class payslip
         designation_to_textbox.AutoSize = True
         designation_to_textbox.BackColor = Color.Transparent
         designation_to_textbox.Cursor = Cursors.Hand
-        designation_to_textbox.Font = New Font("Arial", 11.25F)
+        designation_to_textbox.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         designation_to_textbox.ForeColor = SystemColors.ActiveCaptionText
         designation_to_textbox.Location = New Point(157, 167)
         designation_to_textbox.Margin = New Padding(4, 0, 4, 0)
@@ -652,7 +643,7 @@ Partial Class payslip
         noUnits.AutoSize = True
         noUnits.BackColor = Color.Transparent
         noUnits.Cursor = Cursors.Hand
-        noUnits.Font = New Font("Arial", 11.25F)
+        noUnits.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         noUnits.ForeColor = SystemColors.ActiveCaptionText
         noUnits.Location = New Point(157, 128)
         noUnits.Margin = New Padding(4, 0, 4, 0)
@@ -667,7 +658,7 @@ Partial Class payslip
         Label14.AutoSize = True
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
-        Label14.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label14.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label14.ForeColor = SystemColors.ActiveCaptionText
         Label14.Location = New Point(9, 127)
         Label14.Margin = New Padding(4, 0, 4, 0)
@@ -682,7 +673,7 @@ Partial Class payslip
         Label15.AutoSize = True
         Label15.BackColor = Color.Transparent
         Label15.Cursor = Cursors.Hand
-        Label15.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label15.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label15.ForeColor = SystemColors.ActiveCaptionText
         Label15.Location = New Point(8, 166)
         Label15.Margin = New Padding(4, 0, 4, 0)
@@ -697,7 +688,7 @@ Partial Class payslip
         Label34.AutoSize = True
         Label34.BackColor = Color.Transparent
         Label34.Cursor = Cursors.Hand
-        Label34.Font = New Font("Arial", 11.25F)
+        Label34.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label34.ForeColor = SystemColors.ActiveCaptionText
         Label34.Location = New Point(188, 50)
         Label34.Margin = New Padding(4, 0, 4, 0)
@@ -712,7 +703,7 @@ Partial Class payslip
         Label12.AutoSize = True
         Label12.BackColor = Color.Transparent
         Label12.Cursor = Cursors.Hand
-        Label12.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label12.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label12.ForeColor = SystemColors.ActiveCaptionText
         Label12.Location = New Point(10, 205)
         Label12.Margin = New Padding(4, 0, 4, 0)
@@ -727,7 +718,7 @@ Partial Class payslip
         Label33.AutoSize = True
         Label33.BackColor = Color.Transparent
         Label33.Cursor = Cursors.Hand
-        Label33.Font = New Font("Arial", 11.25F)
+        Label33.Font = New Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label33.ForeColor = SystemColors.ActiveCaptionText
         Label33.Location = New Point(157, 11)
         Label33.Margin = New Padding(4, 0, 4, 0)
@@ -742,7 +733,7 @@ Partial Class payslip
         Label16.AutoSize = True
         Label16.BackColor = Color.Transparent
         Label16.Cursor = Cursors.Hand
-        Label16.Font = New Font("Arial", 11.25F, FontStyle.Bold)
+        Label16.Font = New Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label16.ForeColor = SystemColors.ActiveCaptionText
         Label16.Location = New Point(13, 246)
         Label16.Margin = New Padding(4, 0, 4, 0)
@@ -782,7 +773,7 @@ Partial Class payslip
         Label4.AutoSize = True
         Label4.BackColor = Color.Transparent
         Label4.Cursor = Cursors.Hand
-        Label4.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label4.Location = New Point(19, 19)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
@@ -811,14 +802,13 @@ Partial Class payslip
         PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
         PrintPreviewDialog1.ClientSize = New Size(400, 300)
         PrintPreviewDialog1.Enabled = True
-        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
+        PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), Drawing.Icon)
         PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         PrintPreviewDialog1.Visible = False
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.White
-        Panel1.Controls.Add(ProgressBar1)
         Panel1.Controls.Add(TableLayoutPanel4)
         Panel1.Controls.Add(TableLayoutPanel3)
         Panel1.Controls.Add(Label3)
@@ -831,8 +821,8 @@ Partial Class payslip
         ' 
         TableLayoutPanel4.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
         TableLayoutPanel4.ColumnCount = 2
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
         TableLayoutPanel4.Controls.Add(Label1, 1, 2)
         TableLayoutPanel4.Controls.Add(Label5, 1, 1)
         TableLayoutPanel4.Controls.Add(Label19, 1, 0)
@@ -854,7 +844,7 @@ Partial Class payslip
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
         Label1.Cursor = Cursors.Hand
-        Label1.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label1.ForeColor = SystemColors.ActiveCaptionText
         Label1.Location = New Point(231, 107)
         Label1.Margin = New Padding(4, 0, 4, 0)
@@ -869,7 +859,7 @@ Partial Class payslip
         Label5.AutoSize = True
         Label5.BackColor = Color.Transparent
         Label5.Cursor = Cursors.Hand
-        Label5.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.ForeColor = SystemColors.ActiveCaptionText
         Label5.Location = New Point(231, 60)
         Label5.Margin = New Padding(4, 0, 4, 0)
@@ -884,7 +874,7 @@ Partial Class payslip
         Label19.AutoSize = True
         Label19.BackColor = Color.Transparent
         Label19.Cursor = Cursors.Hand
-        Label19.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label19.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label19.ForeColor = SystemColors.ActiveCaptionText
         Label19.Location = New Point(231, 14)
         Label19.Margin = New Padding(4, 0, 4, 0)
@@ -899,7 +889,7 @@ Partial Class payslip
         Label20.AutoSize = True
         Label20.BackColor = Color.Transparent
         Label20.Cursor = Cursors.Hand
-        Label20.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label20.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label20.ForeColor = SystemColors.ActiveCaptionText
         Label20.Location = New Point(35, 14)
         Label20.Margin = New Padding(4, 0, 4, 0)
@@ -914,7 +904,7 @@ Partial Class payslip
         Label21.AutoSize = True
         Label21.BackColor = Color.Transparent
         Label21.Cursor = Cursors.Hand
-        Label21.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label21.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label21.ForeColor = SystemColors.ActiveCaptionText
         Label21.Location = New Point(32, 60)
         Label21.Margin = New Padding(4, 0, 4, 0)
@@ -929,7 +919,7 @@ Partial Class payslip
         Label27.AutoSize = True
         Label27.BackColor = Color.Transparent
         Label27.Cursor = Cursors.Hand
-        Label27.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label27.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label27.ForeColor = SystemColors.ActiveCaptionText
         Label27.Location = New Point(24, 107)
         Label27.Margin = New Padding(4, 0, 4, 0)
@@ -942,8 +932,8 @@ Partial Class payslip
         ' 
         TableLayoutPanel3.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
         TableLayoutPanel3.ColumnCount = 2
-        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.0F))
-        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60.0F))
+        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40F))
+        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 60F))
         TableLayoutPanel3.Controls.Add(Label18, 1, 2)
         TableLayoutPanel3.Controls.Add(Label17, 1, 1)
         TableLayoutPanel3.Controls.Add(Label11, 1, 0)
@@ -965,7 +955,7 @@ Partial Class payslip
         Label18.AutoSize = True
         Label18.BackColor = Color.Transparent
         Label18.Cursor = Cursors.Hand
-        Label18.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label18.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label18.ForeColor = SystemColors.ActiveCaptionText
         Label18.Location = New Point(231, 107)
         Label18.Margin = New Padding(4, 0, 4, 0)
@@ -980,7 +970,7 @@ Partial Class payslip
         Label17.AutoSize = True
         Label17.BackColor = Color.Transparent
         Label17.Cursor = Cursors.Hand
-        Label17.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label17.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label17.ForeColor = SystemColors.ActiveCaptionText
         Label17.Location = New Point(231, 60)
         Label17.Margin = New Padding(4, 0, 4, 0)
@@ -995,7 +985,7 @@ Partial Class payslip
         Label11.AutoSize = True
         Label11.BackColor = Color.Transparent
         Label11.Cursor = Cursors.Hand
-        Label11.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label11.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.ForeColor = SystemColors.ActiveCaptionText
         Label11.Location = New Point(231, 14)
         Label11.Margin = New Padding(4, 0, 4, 0)
@@ -1010,7 +1000,7 @@ Partial Class payslip
         Label6.AutoSize = True
         Label6.BackColor = Color.Transparent
         Label6.Cursor = Cursors.Hand
-        Label6.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label6.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.ForeColor = SystemColors.ActiveCaptionText
         Label6.Location = New Point(35, 14)
         Label6.Margin = New Padding(4, 0, 4, 0)
@@ -1025,7 +1015,7 @@ Partial Class payslip
         Label8.AutoSize = True
         Label8.BackColor = Color.Transparent
         Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label8.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.ForeColor = SystemColors.ActiveCaptionText
         Label8.Location = New Point(32, 60)
         Label8.Margin = New Padding(4, 0, 4, 0)
@@ -1040,7 +1030,7 @@ Partial Class payslip
         Label9.AutoSize = True
         Label9.BackColor = Color.Transparent
         Label9.Cursor = Cursors.Hand
-        Label9.Font = New Font("Arial", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label9.Font = New Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.ForeColor = SystemColors.ActiveCaptionText
         Label9.Location = New Point(24, 107)
         Label9.Margin = New Padding(4, 0, 4, 0)
@@ -1054,7 +1044,7 @@ Partial Class payslip
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
         Label3.Cursor = Cursors.Hand
-        Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Arial", 9.75F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
         Label3.Location = New Point(34, 24)
         Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
@@ -1172,5 +1162,4 @@ Partial Class payslip
     Friend WithEvents Label20 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label27 As Label
-    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

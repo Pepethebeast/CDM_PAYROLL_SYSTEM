@@ -60,4 +60,10 @@ Public Class PersonalData
         Public Property account As String
         Public Property payslip As String
     End Class
+
+    Public Class account_report
+        Public Property date_account As String
+        Public Property message_account As String
+        Public Property report_account_id As String
+    End Class
 End Class
