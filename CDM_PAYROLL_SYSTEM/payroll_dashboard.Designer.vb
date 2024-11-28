@@ -285,7 +285,7 @@ Partial Class payroll_dashboard
         PictureBox13.Location = New Point(0, 0)
         PictureBox13.Margin = New Padding(4, 3, 4, 3)
         PictureBox13.Name = "PictureBox13"
-        PictureBox13.Size = New Size(258, 174)
+        PictureBox13.Size = New Size(254, 174)
         PictureBox13.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox13.TabIndex = 18
         PictureBox13.TabStop = False

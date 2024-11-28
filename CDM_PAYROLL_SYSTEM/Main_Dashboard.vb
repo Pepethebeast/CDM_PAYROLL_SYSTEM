@@ -5,8 +5,8 @@ Imports System.Globalization
 Public Class Main_Dashboard
 
     Dim former As New Form
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-        Me.Hide()
+    Private Sub Label8_Click(sender As Object, e As EventArgs)
+        Hide()
         List_of_Employees.Show()
 
     End Sub
@@ -14,36 +14,36 @@ Public Class Main_Dashboard
         GetEmployeesLastMonth()
     End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+    Private Sub Label6_Click(sender As Object, e As EventArgs)
         Employee_Dashboard.Show()
-        Me.Hide()
+        Hide()
 
     End Sub
 
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-        Me.Hide()
+    Private Sub Label5_Click(sender As Object, e As EventArgs)
+        Hide()
         payroll_dashboard.Show()
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+    Private Sub Label7_Click(sender As Object, e As EventArgs)
         RFID_Based_Attendance.Show()
-        Me.Hide()
+        Hide()
 
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Employee_Dashboard.Show()
+        List_of_Employees.Show()
         Me.Hide()
 
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        acc.Show()
+        Employee_Dashboard.Show()
         Me.Hide()
     End Sub
 
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
-        Me.Hide()
+    Private Sub Label9_Click(sender As Object, e As EventArgs)
+        Hide()
         Employee_Dashboard.Show()
 
     End Sub
@@ -89,11 +89,17 @@ Public Class Main_Dashboard
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+        reports.Show()
+        Me.Hide()
     End Sub
 
-    Private Sub Label20_Click(sender As Object, e As EventArgs) Handles Label20.Click
-        Me.Hide()
+    Private Sub Label20_Click(sender As Object, e As EventArgs)
+        Hide()
         reports.Show()
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        RFID_Based_Attendance.Show()
+        Me.Hide()
     End Sub
 End Class

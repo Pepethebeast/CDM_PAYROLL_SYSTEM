@@ -287,6 +287,7 @@ Partial Class RFID_Based_Attendance
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.White
+        PictureBox2.BorderStyle = BorderStyle.FixedSingle
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(6, 0)
         PictureBox2.Margin = New Padding(4, 3, 4, 3)

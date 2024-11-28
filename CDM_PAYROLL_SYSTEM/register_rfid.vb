@@ -105,7 +105,7 @@ Public Class register_rfid
     Private Async Function CheckRFIDExistsInDatabase(rfidTag As String) As Task(Of Boolean)
         Try
             ' Get reference to usersTbl
-            Dim response = Await client.GetAsync("usersTbl")
+            Dim response = Await client.GetAsync("usersTbl/")
 
             If response.StatusCode = HttpStatusCode.OK Then
                 ' Convert response to dictionary

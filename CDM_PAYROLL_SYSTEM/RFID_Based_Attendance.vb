@@ -426,7 +426,6 @@ Public Class RFID_Based_Attendance
 
             If employees Is Nothing OrElse employees.Count = 0 Then
 
-
             End If
 
             ' Update each PersonalData object to include the UID
