@@ -22,15 +22,17 @@ Partial Class ADMIN_LOGIN
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ADMIN_LOGIN))
         TableLayoutPanel1 = New TableLayoutPanel()
         Panel1 = New Panel()
-        Button1 = New Button()
         Label2 = New Label()
         Label1 = New Label()
         PictureBox3 = New PictureBox()
         PictureBox2 = New PictureBox()
         PictureBox1 = New PictureBox()
+        Timer1 = New Timer(components)
+        ProgressBar1 = New ProgressBar()
         TableLayoutPanel1.SuspendLayout()
         Panel1.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -60,7 +62,7 @@ Partial Class ADMIN_LOGIN
         Panel1.BackColor = Color.DarkSeaGreen
         Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
         Panel1.BackgroundImageLayout = ImageLayout.Stretch
-        Panel1.Controls.Add(Button1)
+        Panel1.Controls.Add(ProgressBar1)
         Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(PictureBox3)
@@ -71,24 +73,12 @@ Partial Class ADMIN_LOGIN
         Panel1.Size = New Size(420, 546)
         Panel1.TabIndex = 0
         ' 
-        ' Button1
-        ' 
-        Button1.Anchor = AnchorStyles.None
-        Button1.BackColor = Color.DarkCyan
-        Button1.Font = New Font("Roboto Medium", 9.75F, FontStyle.Bold)
-        Button1.Location = New Point(118, 426)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(178, 36)
-        Button1.TabIndex = 3
-        Button1.Text = "LOG-IN"
-        Button1.UseVisualStyleBackColor = False
-        ' 
         ' Label2
         ' 
         Label2.Anchor = AnchorStyles.None
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label2.ForeColor = Color.Maroon
         Label2.Location = New Point(94, 198)
         Label2.Name = "Label2"
@@ -100,7 +90,7 @@ Partial Class ADMIN_LOGIN
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label1.ForeColor = SystemColors.InfoText
         Label1.Location = New Point(149, 162)
         Label1.Name = "Label1"
@@ -143,6 +133,16 @@ Partial Class ADMIN_LOGIN
         PictureBox1.TabIndex = 1
         PictureBox1.TabStop = False
         ' 
+        ' Timer1
+        ' 
+        ' 
+        ' ProgressBar1
+        ' 
+        ProgressBar1.Location = New Point(94, 428)
+        ProgressBar1.Name = "ProgressBar1"
+        ProgressBar1.Size = New Size(220, 37)
+        ProgressBar1.TabIndex = 6
+        ' 
         ' ADMIN_LOGIN
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -172,7 +172,8 @@ Partial Class ADMIN_LOGIN
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Button1 As Button
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Timer1 As Timer
 End Class

@@ -3,7 +3,12 @@ Imports Newtonsoft.Json
 Imports System.Globalization
 
 Public Class Main_Dashboard
-
+    Public adminID As String
+    Public Fingerprint As String
+    Public getName As String
+    Public Permissions As String
+    Public Role As String
+    Public RoleID As String
     Dim former As New Form
     Private Sub Label8_Click(sender As Object, e As EventArgs)
         Hide()
@@ -12,6 +17,10 @@ Public Class Main_Dashboard
     End Sub
     Private Sub Main_Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GetEmployeesLastMonth()
+        Label5.Text = "Admin ID: " + adminID
+        Label9.Text = "Fingerprint: " + Fingerprint
+        Label7.Text = "Role: " + Role
+        Label6.Text = "Name: " + getName
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs)
@@ -100,6 +109,11 @@ Public Class Main_Dashboard
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         RFID_Based_Attendance.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Label8_Click_1(sender As Object, e As EventArgs) Handles Label8.Click
+        Admin_Info.Show()
         Me.Hide()
     End Sub
 End Class

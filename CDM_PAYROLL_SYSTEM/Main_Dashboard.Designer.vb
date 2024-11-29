@@ -35,9 +35,10 @@ Partial Class Main_Dashboard
         PictureBox9 = New PictureBox()
         Panel2 = New Panel()
         TableLayoutPanel1 = New TableLayoutPanel()
-        Label6 = New Label()
+        Label7 = New Label()
         Label5 = New Label()
         Label8 = New Label()
+        Label6 = New Label()
         Label9 = New Label()
         PictureBox2 = New PictureBox()
         Panel4 = New Panel()
@@ -69,7 +70,6 @@ Partial Class Main_Dashboard
         PictureBox12 = New PictureBox()
         TableLayoutPanel2 = New TableLayoutPanel()
         TableLayoutPanel3 = New TableLayoutPanel()
-        Label7 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox4.SuspendLayout()
         CType(PictureBox11, ComponentModel.ISupportInitialize).BeginInit()
@@ -268,25 +268,25 @@ Partial Class Main_Dashboard
         TableLayoutPanel1.Size = New Size(246, 416)
         TableLayoutPanel1.TabIndex = 19
         ' 
-        ' Label6
+        ' Label7
         ' 
-        Label6.Anchor = AnchorStyles.None
-        Label6.AutoSize = True
-        Label6.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        Label6.Location = New Point(86, 279)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(74, 24)
-        Label6.TabIndex = 1
-        Label6.Text = "Name:"
+        Label7.Anchor = AnchorStyles.None
+        Label7.AutoSize = True
+        Label7.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label7.Location = New Point(98, 198)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(50, 19)
+        Label7.TabIndex = 5
+        Label7.Text = "Role:"
         ' 
         ' Label5
         ' 
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
-        Label5.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        Label5.Location = New Point(69, 30)
+        Label5.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label5.Location = New Point(81, 32)
         Label5.Name = "Label5"
-        Label5.Size = New Size(108, 24)
+        Label5.Size = New Size(84, 19)
         Label5.TabIndex = 0
         Label5.Text = "Admin ID:"
         ' 
@@ -294,23 +294,34 @@ Partial Class Main_Dashboard
         ' 
         Label8.Anchor = AnchorStyles.None
         Label8.AutoSize = True
-        Label8.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        Label8.Location = New Point(63, 362)
+        Label8.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label8.Location = New Point(74, 364)
         Label8.Name = "Label8"
-        Label8.Size = New Size(119, 24)
+        Label8.Size = New Size(97, 19)
         Label8.TabIndex = 3
-        Label8.Text = "Admin Info"
+        Label8.Text = "Update Info"
+        ' 
+        ' Label6
+        ' 
+        Label6.Anchor = AnchorStyles.None
+        Label6.AutoSize = True
+        Label6.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label6.Location = New Point(93, 281)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(59, 19)
+        Label6.TabIndex = 1
+        Label6.Text = "Name:"
         ' 
         ' Label9
         ' 
         Label9.Anchor = AnchorStyles.None
         Label9.AutoSize = True
-        Label9.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        Label9.Location = New Point(43, 113)
+        Label9.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Label9.Location = New Point(73, 115)
         Label9.Name = "Label9"
-        Label9.Size = New Size(159, 24)
+        Label9.Size = New Size(99, 19)
         Label9.TabIndex = 4
-        Label9.Text = "Fingerprint ID: "
+        Label9.Text = "Fingerprint:"
         ' 
         ' PictureBox2
         ' 
@@ -739,17 +750,6 @@ Partial Class Main_Dashboard
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 58.139534F))
         TableLayoutPanel3.Size = New Size(494, 374)
         TableLayoutPanel3.TabIndex = 22
-        ' 
-        ' Label7
-        ' 
-        Label7.Anchor = AnchorStyles.None
-        Label7.AutoSize = True
-        Label7.Font = New Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        Label7.Location = New Point(92, 196)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(62, 24)
-        Label7.TabIndex = 5
-        Label7.Text = "Role:"
         ' 
         ' Main_Dashboard
         ' 
