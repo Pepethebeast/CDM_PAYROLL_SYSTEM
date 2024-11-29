@@ -50,7 +50,7 @@ Partial Class register_rfid
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point)
         Label1.Location = New Point(64, 242)
         Label1.Name = "Label1"
         Label1.Size = New Size(199, 28)
@@ -62,7 +62,7 @@ Partial Class register_rfid
         Label2.AutoSize = True
         Label2.BackColor = Color.Transparent
         Label2.Dock = DockStyle.Fill
-        Label2.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.ForeColor = Color.Maroon
         Label2.Location = New Point(3, 0)
         Label2.Name = "Label2"
@@ -75,7 +75,7 @@ Partial Class register_rfid
         ' 
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Roboto Medium", 26.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Roboto Medium", 26.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label3.Location = New Point(275, 0)
         Label3.Name = "Label3"
         Label3.Size = New Size(48, 46)

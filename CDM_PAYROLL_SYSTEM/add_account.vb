@@ -11,6 +11,7 @@ Imports FireSharp.Config
 Imports FireSharp.Interfaces
 Imports System.Net
 Imports System.Net.Mail
+Imports System.IO
 
 Public Class add_account
 
@@ -97,16 +98,30 @@ Public Class add_account
     End Sub
     Private Sub InitializeFirebaseApp()
         Try
+            ' Get the path to the user's AppData folder
+            Dim appDataPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+
+            ' Combine the AppData path with your app's folder and the credential file name
+            Dim credentialPath As String = Path.Combine(appDataPath, "CDM_PAYROLL_SYSTEM", "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+
             ' Check if FirebaseApp instance already exists
             If FirebaseApp.DefaultInstance Is Nothing Then
-                FirebaseApp.Create(New AppOptions() With {
-                .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-            })
+                ' Check if the credential file exists
+                If File.Exists(credentialPath) Then
+                    ' Create FirebaseApp using the credential file
+                    FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile(credentialPath)
+                })
+                Else
+                    ' Handle the case where the credential file is not found
+                    MessageBox.Show("Credential file not found. Please check the file path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             End If
         Catch ex As Exception
             MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
     Private Async Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim client444 As IFirebaseClient = FirebaseModule.GetFirebaseClient
         If String.IsNullOrWhiteSpace(nametextbox.Text) OrElse

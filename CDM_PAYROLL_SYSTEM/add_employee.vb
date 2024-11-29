@@ -146,10 +146,32 @@ Public Class add_employee
             .no_of_units = NoUnits.Text,
             .image = ImgData
         }
+                Try
+                    ' Get the directory where the executable is located (the application directory)
+                    Dim appDirectory As String = Application.StartupPath
 
-                ' Initialize Firebase Storage client
-                Dim credentialPath As String = "C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json" ' Update with your JSON path
-                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+                    ' Combine it with the relative path to the credential file
+                    Dim credentialPath As String = Path.Combine(appDirectory, "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+
+                    ' Check if the credential file exists
+                    If File.Exists(credentialPath) Then
+                        ' Set the environment variable for Firebase credentials
+                        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+
+                        ' Initialize Firebase using the credentials file
+                        If FirebaseApp.DefaultInstance Is Nothing Then
+                            FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile(credentialPath)
+                })
+                        End If
+                    Else
+                        ' Show an error message if the file is not found
+                        MessageBox.Show("Credential file not found at the specified path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                Catch ex As Exception
+                    ' Handle any errors during initialization
+                    MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
 
                 Dim bucketName As String = "cdm-payroll-system.appspot.com"
                 Dim user_uid123 As String = user_uid ' Use Employee ID as unique identifier
@@ -286,8 +308,26 @@ Public Class add_employee
 
     End Sub
     Public Sub InitializeFirebase()
-        Dim credentialPath As String = "C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json"
+        ' Get the path to the user's AppData folder
+        Dim appDataPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+
+        ' Combine the AppData path with your app's folder and the credential file name
+        Dim credentialPath As String = Path.Combine(appDataPath, "CDM_PAYROLL_SYSTEM", "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+
+        ' Set the environment variable for Firebase credentials
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+
+        ' Now the environment variable is set, and you can initialize Firebase
+        Try
+            ' Check if FirebaseApp instance already exists
+            If FirebaseApp.DefaultInstance Is Nothing Then
+                FirebaseApp.Create(New AppOptions() With {
+            .Credential = GoogleCredential.FromFile(credentialPath)
+        })
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub Department_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Department.SelectedIndexChanged
 

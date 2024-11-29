@@ -221,26 +221,43 @@ Public Class acc
                 End If
 
                 Try
-                    ' Delete the user from Firebase Database
+                    ' Delete the user from Firebase Database (assuming you have a client to do this)
                     client.Delete("usersTbl/" & selectedUID)
+
+                    ' Get the path to the user's AppData folder
+                    Dim appDataPath As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+
+                    ' Combine the AppData path with your app's folder and the credential file name
+                    Dim credentialPath As String = Path.Combine(appDataPath, "CDM_PAYROLL_SYSTEM", "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
 
                     ' Check if FirebaseApp instance exists; use DefaultInstance if available
                     Dim app As FirebaseApp
                     If FirebaseApp.DefaultInstance Is Nothing Then
-                        app = FirebaseApp.Create(New AppOptions() With {
-                        .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-                    })
+                        ' Check if the credential file exists
+                        If File.Exists(credentialPath) Then
+                            ' Create FirebaseApp using the credential file
+                            app = FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile(credentialPath)
+                })
+                        Else
+                            ' Handle the case where the file doesn't exist
+                            MessageBox.Show("Credential file not found at: " & credentialPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Return
+                        End If
                     Else
+                        ' Use the existing FirebaseApp instance
                         app = FirebaseApp.DefaultInstance
                     End If
 
-                    ' Get FirebaseAuth instance using the FirebaseApp
-                    Dim auth As FirebaseAuth = FirebaseAuth.DefaultInstance
+                    ' Get FirebaseAuth instance using the specific FirebaseApp
+                    Dim auth As FirebaseAuth = FirebaseAuth.GetAuth(app)
 
                     ' Use Await for the async call to delete the user
                     Await auth.DeleteUserAsync(selectedUID)
 
+                    ' Inform the user that the deletion was successful
                     MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Catch ex As Exception
                     MessageBox.Show($"An error occurred while deleting the user: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
@@ -259,16 +276,32 @@ Public Class acc
     End Sub
     Private Sub InitializeFirebaseApp()
         Try
-            ' Check if FirebaseApp instance already exists
-            If FirebaseApp.DefaultInstance Is Nothing Then
-                FirebaseApp.Create(New AppOptions() With {
-                .Credential = GoogleCredential.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
-            })
+            ' Get the directory where the executable is located (the application directory)
+            Dim appDirectory As String = Application.StartupPath
+
+            ' Combine it with the relative path to the credential file
+            Dim credentialPath As String = Path.Combine(appDirectory, "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+
+            ' Check if the credential file exists
+            If File.Exists(credentialPath) Then
+                ' Set the environment variable
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+
+                ' Initialize Firebase using the credentials file
+                If FirebaseApp.DefaultInstance Is Nothing Then
+                    FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile(credentialPath)
+                })
+                End If
+            Else
+                ' Show an error message if the file is not found
+                MessageBox.Show("Credential file not found at the specified path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
     Private Sub SendEmail(toEmail As String, subject As String, body As String)
         Try
             Dim smtpClient As New SmtpClient("smtp.gmail.com") ' Replace with your SMTP server

@@ -41,7 +41,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json" />
+    <EmbeddedResource Include="cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
