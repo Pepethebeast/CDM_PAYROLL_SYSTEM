@@ -1,18 +1,16 @@
 ﻿Imports System.IO.Ports
-
 Public Class register_fingerprint
-    Dim WithEvents SerialPort As New SerialPort
+    Private WithEvents SerialPort As New SerialPort
 
     Private Sub register_fingerprint_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Configure the serial port
-        SerialPort.PortName = "COM3" ' Change to your ESP32 COM port
-        SerialPort.BaudRate = 115200
-        SerialPort.Parity = Parity.None
-        SerialPort.DataBits = 8
-        SerialPort.StopBits = StopBits.One
-        SerialPort.Open()
-        Timer2.Interval = 1000 ' Check every 1 second
-        Timer2.Start()
+        Try
+
+            ' Attempt to initialize the serial port
+            FirebaseModule.InitializeSerialPort()
+        Catch ex As Exception
+
+            MessageBox.Show("Initialization error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 
@@ -48,7 +46,7 @@ Public Class register_fingerprint
     End Sub
 
     Private Sub register_fingerprint_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If SerialPort.IsOpen Then SerialPort.Close()
+        FirebaseModule.CloseSerialPort()
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click

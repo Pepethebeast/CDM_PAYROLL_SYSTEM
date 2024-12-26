@@ -115,9 +115,9 @@ Partial Class Main_Dashboard
         Label2.Location = New Point(19, 18)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(191, 22)
+        Label2.Size = New Size(110, 22)
         Label2.TabIndex = 20
-        Label2.Text = "MAIN DASHBOARD"
+        Label2.Text = "Dashboard"
         ' 
         ' GroupBox4
         ' 
@@ -249,7 +249,6 @@ Partial Class Main_Dashboard
         ' TableLayoutPanel1
         ' 
         TableLayoutPanel1.BackColor = Color.Transparent
-        TableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
         TableLayoutPanel1.ColumnCount = 1
         TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel1.Controls.Add(Label7, 0, 2)
@@ -326,7 +325,6 @@ Partial Class Main_Dashboard
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.Transparent
-        PictureBox2.BorderStyle = BorderStyle.FixedSingle
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
         PictureBox2.Location = New Point(-1, -1)
         PictureBox2.Margin = New Padding(4, 3, 4, 3)

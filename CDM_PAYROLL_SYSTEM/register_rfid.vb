@@ -11,62 +11,35 @@ Imports System.Net
 Imports FireSharp.Response
 
 Public Class register_rfid
-
-    Private client As IFirebaseClient
+    Private WithEvents serialPort As New SerialPort()
     Public Property UserUID As String
     Public Property add_employee_id As String
-    Private WithEvents serialPort As New SerialPort("COM3", 115200, Parity.None, 8, StopBits.One)
+
+    Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
 
     ' Form Load - Firebase setup and serial port
     Private Sub register_rfid_load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             ' Check if COM3 is available
-            If Not IsComPortAvailable("COM3") Then
-                MessageBox.Show("Error: Device not found.", "Port Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Me.Close() ' Close the form if COM3 is not found
+            If Not FirebaseModule.IsSerialPortAvailable() Then
+                MessageBox.Show("Error: Device not found. Please connect the device and try again.", "Port Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.Close() ' Close the form immediately if COM3 is not available
                 Exit Sub
             End If
 
-            ' Initialize Firebase connection
-            Dim config As New FirebaseConfig() With {
-            .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",
-            .BasePath = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/"
-        }
-            client = New FireSharp.FirebaseClient(config)
-            Debug.WriteLine("Firebase client initialized successfully")
-
-            ' Initialize progress bar
-            ProgressBar1.Value = 0
-            ProgressBar1.Visible = False
-            Timer1.Interval = 50
-
-            ' Open COM3 for RFID data
-            If Not serialPort.IsOpen Then
-                serialPort.Open()
-                Debug.WriteLine("Serial port opened successfully")
-            End If
+            ' Proceed with other initialization if the port is available
+            ' (Add other initialization code here if needed)
 
         Catch ex As Exception
             Debug.WriteLine("Error in form load: " & ex.Message)
             MessageBox.Show("Error initializing: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close() ' Close the form in case of any unexpected errors
         End Try
     End Sub
-    Private Function IsComPortAvailable(portName As String) As Boolean
-        Try
-            ' Try to open the port
-            Using sp As New IO.Ports.SerialPort(portName)
-                sp.Open()
-                sp.Close()
-            End Using
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
+
     ' Data received from serial port
     Private Sub serialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles serialPort.DataReceived
         Try
-            ' Read the scanned RFID and normalize it
             Dim scannedRFID As String = serialPort.ReadLine().Trim().ToLower()
             Debug.WriteLine("Scanned RFID: " & scannedRFID)
 
@@ -75,7 +48,6 @@ Public Class register_rfid
                 Invoke(Sub()
                            Label2.Text = scannedRFID
                            Debug.WriteLine("Valid RFID detected: " & scannedRFID)
-                           ' Start the progress bar and save to Firebase
                            StartProgressBarAndSave(scannedRFID)
                        End Sub)
             End If
@@ -187,106 +159,12 @@ Public Class register_rfid
 
     ' Form closing - release serial port
     Private Sub rfidRegisterForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If serialPort.IsOpen Then
-            serialPort.Close()
-            Debug.WriteLine("Serial port closed")
-        End If
+        FirebaseModule.CloseSerialPort()
+
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
         Me.Hide()
     End Sub
 End Class
-
-
-
-'Private connect1 As New FireSharp.Config.FirebaseConfig() With {
-'    .AuthSecret = "iGGHOybA7ysmBiZFfNe8jFuKIE2ljaIjKHkKyCaw",
-'    .BasePath = "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/"
-'}
-
-'Private client As IFirebaseClient
-'Private rfidData As String = String.Empty
-'Public Property NameforCamera As String
-'Public Property UserUID As String
-'Public Property EMAILFOR_FaceRecog As String
-
-'Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-'    Me.Close()
-'    acc.Show()
-'End Sub
-
-'Private WithEvents scanTimer As New Timer()
-'Private scanProgress As Integer = 0
-
-'Private Sub register_rfid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-'    Try
-'        client = New FireSharp.FirebaseClient(connect1)
-'    Catch ex As Exception
-'        MessageBox.Show("There was a problem connecting to Firebase: " & ex.Message)
-'    End Try
-
-'    ProgressBar1.Maximum = 100
-'    scanTimer.Interval = 50
-'    Me.KeyPreview = True
-'End Sub
-
-'Private Sub register_rfid_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
-'    If e.KeyChar = ChrW(Keys.Enter) Then
-'        If Not String.IsNullOrEmpty(rfidData) Then
-'            scanProgress = 0
-'            ProgressBar1.Value = scanProgress
-'            scanTimer.Start()
-'        End If
-'    Else
-'        rfidData &= e.KeyChar
-'    End If
-'End Sub
-
-'Private Async Sub scanTimer_Tick(sender As Object, e As EventArgs) Handles scanTimer.Tick
-'    If scanProgress < 100 Then
-'        scanProgress += 20
-'        ProgressBar1.Value = scanProgress
-'    Else
-'        scanTimer.Stop()
-'        Button4.Visible = True
-'        ProgressBar1.Visible = False
-'        Label2.Text = "RFID Scanned Successfully"
-
-'        ' Check if the RFID tag is already registered
-'        Dim existingTag = Await client.GetAsync("usersTbl")
-'        Dim usersDict As JObject = existingTag.ResultAs(Of JObject)
-
-'        Dim isTagInUse As Boolean = False
-
-'        If usersDict IsNot Nothing Then
-'            For Each user In usersDict.Properties()
-'                Dim userDetails As JObject = CType(user.Value, JObject)
-
-'                If userDetails.ContainsKey("rfidTag") AndAlso userDetails("rfidTag").ToString() = rfidData Then
-'                    isTagInUse = True
-'                    Label2.Text = "RFID TAG IS ALREADY USED"
-'                    Button4.Visible = False
-'                    Exit For
-'                End If
-'            Next
-'        End If
-
-'        ' If the tag is not in use, save it
-'        If Not isTagInUse Then
-'            Try
-'                Dim save = Await client.SetAsync($"usersTbl/{UserUID}/rfidTag", rfidData)
-'                Label2.Text = "RFID TAG REGISTERED SUCCESSFULLY"
-'                rfidData = String.Empty ' Clear RFID data for the next scan
-'            Catch ex As Exception
-'                MessageBox.Show("Error registering RFID tag: " & ex.Message)
-'            End Try
-'        End If
-'    End If
-'End Sub
-
-'Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-'    ' Navigation or further actions can be implemented here\
-'    Me.Close()
-'End Sub
 

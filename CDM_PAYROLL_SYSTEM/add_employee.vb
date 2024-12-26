@@ -217,7 +217,7 @@ Public Class add_employee
 
     Private Sub Label5_Click(sender As Object, e As EventArgs)
         Close()
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
     End Sub
 
     Private Sub Label6_Click(sender As Object, e As EventArgs)

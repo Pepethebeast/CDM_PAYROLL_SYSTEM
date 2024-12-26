@@ -206,7 +206,7 @@ Public Class reports
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
         Me.Hide()
     End Sub
 

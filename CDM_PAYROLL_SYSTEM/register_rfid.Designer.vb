@@ -31,6 +31,7 @@ Partial Class register_rfid
         ProgressBar1 = New ProgressBar()
         Timer1 = New Timer(components)
         TableLayoutPanel1 = New TableLayoutPanel()
+        checkPortTimer = New Timer(components)
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         TableLayoutPanel1.SuspendLayout()
         SuspendLayout()
@@ -75,12 +76,12 @@ Partial Class register_rfid
         ' 
         Label3.AutoSize = True
         Label3.BackColor = Color.Transparent
-        Label3.Font = New Font("Roboto Medium", 26.25F, FontStyle.Bold, GraphicsUnit.Point)
-        Label3.Location = New Point(275, 0)
+        Label3.Font = New Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point)
+        Label3.Location = New Point(285, 2)
         Label3.Name = "Label3"
-        Label3.Size = New Size(48, 46)
+        Label3.Size = New Size(34, 37)
         Label3.TabIndex = 5
-        Label3.Text = "↩"
+        Label3.Text = "x"
         ' 
         ' ProgressBar1
         ' 
@@ -138,4 +139,5 @@ Partial Class register_rfid
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents checkPortTimer As Timer
 End Class

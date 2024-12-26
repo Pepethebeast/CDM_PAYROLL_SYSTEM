@@ -66,4 +66,13 @@ Public Class PersonalData
         Public Property message_account As String
         Public Property report_account_id As String
     End Class
+    Public Class payroll_data
+        Public Property UID As String
+        Public Property PayOutPeriod As String
+        Public Property PayslipID As String
+        Public Property TotalDeduction As String
+        Public Property TotalHours As String
+        Public Property TotalSalary As String
+        Public Property TotalYear As String
+    End Class
 End Class

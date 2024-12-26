@@ -32,6 +32,9 @@ Public Class acc
         loademployeedata()
         'TextBox4.Text = "Scan your rfid_tag"
         DGVuserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        If Not FirebaseModule.IsSerialPortAvailable() Then
+
+        End If
 
     End Sub
     Private Sub acc_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -329,7 +332,8 @@ Public Class acc
             Dim selectedRow As DataGridViewRow = DGVuserData.Rows(e.RowIndex)
 
             If e.ColumnIndex = DGVuserData.Columns("rfid_register.dgv").Index Then
-                ' RFID Register button clicked
+
+                ' Proceed to open the form if the port is available
                 Dim rfidForm As New register_rfid()
                 Dim userData As String = selectedRow.Cells("employeeID").Value.ToString
                 rfidForm.UserUID = uid ' Set the UID property
@@ -493,7 +497,7 @@ Public Class acc
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
         Me.Hide()
     End Sub
 

@@ -7,9 +7,6 @@ Imports Firebase.Storage
 Imports FireSharp.Config
 Imports PdfSharp.Drawing
 Imports PdfSharp.Pdf
-
-
-
 Public Class payslip
     Public Property received_email As String
     Public Property user_uid As String
@@ -18,12 +15,13 @@ Public Class payslip
     Public Property description As String
     Public Property designation As String
     Public Property no_ofUnits As String
-    Public Property pag_ibig_no As String
-    Public Property tax_code As String
-    Public Property sss_no As String
-    Public Property phil_health_no As String
     Public Property position123 As String
     Public Property date_hired As String
+    Public Property getDateForTbl As String
+    Public Property get_pey_period_hehe As String
+    Public Property no As String
+    Public Property agaga As String
+    Public Property pogiako As String
     Public Sub SetImage(image As Image)
         PictureBox9.Image = image
     End Sub
@@ -155,7 +153,7 @@ Public Class payslip
         startY += lineHeight ' Adding some space after the title
 
         ' Second text: "Payslip for the Period..."
-        Dim payslipText As String = "Payslip for the Period October 20, 2024 - November 2, 2024 (Pay-out: " + DateTime.Now + ")"
+        Dim payslipText As String = $"Payslip for the Period: {get_pey_period_hehe} (Pay-out: " + DateTime.Now + ")"
         e.Graphics.DrawString(payslipText, fontsmall, brush, (e.PageBounds.Width - e.Graphics.MeasureString(payslipText, fontContent).Width) / 1.8, startY)
 
         ' Measure the size of the "Payslip" text to calculate the line position
@@ -303,18 +301,6 @@ Public Class payslip
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        'TextBox1.Enabled = Not TextBox1.Enabled
-        'TextBox2.Enabled = Not TextBox2.Enabled
-        'TextBox3.Enabled = Not TextBox3.Enabled
-        'TextBox4.Enabled = Not TextBox4.Enabled
-        'TextBox5.Enabled = Not TextBox5.Enabled
-        'TextBox6.Enabled = Not TextBox6.Enabled
-        'TextBox7.Enabled = Not TextBox7.Enabled
-        'TextBox8.Enabled = Not TextBox8.Enabled
-        'Button4.Enabled = Not Button4.Enabled
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
             String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
@@ -383,95 +369,55 @@ Public Class payslip
         End If
 
     End Sub
-    Public Property get_pey_period_hehe As String
-    Public Property no As String
-    Public Property agaga As String
-    Public Property pogiako As String
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
 
-        Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
-        ' Validate the input fields to ensure they are not empty or whitespace
-        If String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox7.Text) Then
-            MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Else
-            ' Assuming get_pey_period_hehe contains the pay period string, e.g., "November 16-30 2024"
-            Dim get_pey_period_hehe As String = "November 16-30 2024" ' Replace with your actual value
+            ' Validate the input fields to ensure they are not empty or whitespace
+            If String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
+               String.IsNullOrWhiteSpace(TextBox7.Text) Then
 
-            ' Split the get_pey_period_hehe string into parts
-            Dim parts As String() = get_pey_period_hehe.Split(" "c)
-
-            If parts.Length = 3 Then
-                ' Extract month, day range, and year from the split string
-                Dim monthName As String = parts(0) ' "November"
-                Dim daysRange As String = parts(1) ' "16-30"
-                Dim year As Integer = Integer.Parse(parts(2)) ' "2024"
-
-                ' Get the numeric month from the month name (e.g., "November" -> 11)
-                Dim month As Integer = DateTime.ParseExact(monthName, "MMMM", Globalization.CultureInfo.InvariantCulture).Month
-
-                ' Extract the start and end days from the day range
-                Dim dayParts As String() = daysRange.Split("-"c)
-                If dayParts.Length = 2 Then
-                    Dim startDay As Integer = Integer.Parse(dayParts(0)) ' 16
-                    Dim endDay As Integer = Integer.Parse(dayParts(1)) ' 30
-
-                    ' Generate the start and end dates in the desired format (yyyy-MM-dd)
-                    Dim startDate As New DateTime(year, month, startDay)
-                    Dim endDate As New DateTime(year, month, endDay)
-
-                    ' Now, generate the mapping of unique IDs to dates
-                    Dim payPeriod As New Dictionary(Of String, String)()
-
-                    ' Loop through the date range using a While loop (since DateTime doesn't support direct For loop)
-                    Dim currentDate As DateTime = startDate
-                    While currentDate <= endDate
-                        Dim uniqueId As String = New Random().Next(1000000, 9999999).ToString() ' Generate a random 7-digit unique ID
-                        payPeriod(uniqueId) = currentDate.ToString("yyyy-MM-dd")
-                        currentDate = currentDate.AddDays(1) ' Increment the date by one day
-                    End While
-
-                    Dim PD As New PersonalData.Payslip With {
-                        .PayslipID = numericGuid123,
-                        .TotalDeduction = TextBox8.Text,
-                        .TotalHours = TextBox4.Text,
-                        .TotalSalary = TextBox1.Text,
-                        .TotalYear = "1",
-                    .PayOutDate = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
-            }
-                    ' Now save the result to Firebase
-
-                    Dim script_for_payslip = "Your payslip for " + get_pey_period_hehe + " is now available"
-                    Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
-                    ' Save the PayslipID under the user_uid
-                    Dim savePayslipID = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
-                    Dim payoutperiod = client.Set("EmployeePayrollDataTbl/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutDate)
-                    Dim reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/message", "Payslip has been sent to employee ID: " + add_employee_id)
-                    reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
-
-                    ' Save the other payroll data under the user_uid
-                    Dim saveTotalDeduction = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)
-                    Dim saveTotalHours = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalHours/total_hours", PD.TotalHours)
-                    Dim saveTotalSalary = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalSalary/total_salary", PD.TotalSalary)
-                    Dim saveTotalYear = client.Set("EmployeePayrollDataTbl/" & user_uid & "/TotalYear/total_year", PD.TotalYear)
-
-                    Dim save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/id", numericGuid)
-                    save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/message", script_for_payslip)
-                    save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/title", "Payslip")
-
-                    MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Invalid day range format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End If
+                MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-                MessageBox.Show("Invalid pay period format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Dim PD As New PersonalData.Payslip With {
+                    .PayslipID = numericGuid123,
+                    .TotalDeduction = TextBox8.Text,
+                    .TotalHours = TextBox4.Text,
+                    .TotalSalary = TextBox1.Text,
+                    .TotalYear = "1",
+                    .PayOutDate = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                }
+
+                ' Save the payslip data to Firebase
+                Dim script_for_payslip = "Your payslip for " + get_pey_period_hehe + " is now available"
+                Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
+
+                Dim savePayslipID = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
+                Dim payoutperiod = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutDate)
+                Dim reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/message", "Payslip has been sent to employee ID: " + add_employee_id)
+                reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
+
+                Dim saveTotalDeduction = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)
+                Dim saveTotalHours = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalHours/total_hours", PD.TotalHours)
+                Dim saveTotalSalary = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalSalary/total_salary", PD.TotalSalary)
+                Dim saveTotalYear = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalYear/total_year", PD.TotalYear)
+
+                Dim save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/id", numericGuid)
+                save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/message", script_for_payslip)
+                save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/title", "Payslip")
+
+                MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
-        End If
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
 
     End Sub
 

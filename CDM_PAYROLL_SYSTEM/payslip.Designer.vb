@@ -114,7 +114,7 @@ Partial Class payslip
         TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 33.33362F))
         TableLayoutPanel7.Controls.Add(Button4, 1, 0)
         TableLayoutPanel7.Controls.Add(Button3, 0, 0)
-        TableLayoutPanel7.Location = New Point(522, 194)
+        TableLayoutPanel7.Location = New Point(522, 195)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 1
         TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
@@ -162,7 +162,7 @@ Partial Class payslip
         ' 
         Button2.BackColor = Color.Gray
         Button2.Enabled = False
-        Button2.Location = New Point(522, 293)
+        Button2.Location = New Point(522, 290)
         Button2.Name = "Button2"
         Button2.Size = New Size(267, 42)
         Button2.TabIndex = 52
@@ -173,7 +173,7 @@ Partial Class payslip
         ' 
         Button1.BackColor = Color.Gray
         Button1.Enabled = False
-        Button1.Location = New Point(522, 248)
+        Button1.Location = New Point(522, 249)
         Button1.Name = "Button1"
         Button1.Size = New Size(267, 42)
         Button1.TabIndex = 51
@@ -191,7 +191,7 @@ Partial Class payslip
         TableLayoutPanel6.Controls.Add(TextBox6, 1, 0)
         TableLayoutPanel6.Controls.Add(Label36, 0, 1)
         TableLayoutPanel6.Controls.Add(TextBox8, 1, 1)
-        TableLayoutPanel6.Location = New Point(451, 73)
+        TableLayoutPanel6.Location = New Point(451, 70)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
         TableLayoutPanel6.RowCount = 3
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 33.33361F))
@@ -290,7 +290,7 @@ Partial Class payslip
         TableLayoutPanel1.Controls.Add(TextBox3, 1, 2)
         TableLayoutPanel1.Controls.Add(Label32, 0, 3)
         TableLayoutPanel1.Controls.Add(TextBox4, 1, 3)
-        TableLayoutPanel1.Location = New Point(33, 73)
+        TableLayoutPanel1.Location = New Point(33, 70)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 5
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
@@ -428,7 +428,7 @@ Partial Class payslip
         Label23.Cursor = Cursors.Hand
         Label23.Font = New Font("Arial", 9.75F, FontStyle.Italic, GraphicsUnit.Point)
         Label23.ForeColor = Color.Maroon
-        Label23.Location = New Point(33, 47)
+        Label23.Location = New Point(33, 44)
         Label23.Margin = New Padding(4, 0, 4, 0)
         Label23.Name = "Label23"
         Label23.Size = New Size(231, 16)
@@ -441,7 +441,7 @@ Partial Class payslip
         Label22.BackColor = Color.Transparent
         Label22.Cursor = Cursors.Hand
         Label22.Font = New Font("Arial", 14.25F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
-        Label22.Location = New Point(33, 19)
+        Label22.Location = New Point(33, 16)
         Label22.Margin = New Padding(4, 0, 4, 0)
         Label22.Name = "Label22"
         Label22.Size = New Size(207, 23)

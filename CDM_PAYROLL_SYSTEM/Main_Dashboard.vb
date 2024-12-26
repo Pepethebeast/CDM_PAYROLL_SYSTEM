@@ -35,7 +35,7 @@ Public Class Main_Dashboard
     End Sub
 
     Private Sub Label7_Click(sender As Object, e As EventArgs)
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
         Hide()
 
     End Sub
@@ -94,7 +94,7 @@ Public Class Main_Dashboard
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.Hide()
-        payroll.Show()
+        payroll_dashboard.Show()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -108,12 +108,11 @@ Public Class Main_Dashboard
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
         Me.Hide()
     End Sub
 
     Private Sub Label8_Click_1(sender As Object, e As EventArgs) Handles Label8.Click
         Admin_Info.Show()
-        Me.Hide()
     End Sub
 End Class

@@ -205,7 +205,7 @@ Public Class List_of_Employees
 
     Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
         Me.Hide()
-        RFID_Based_Attendance.Show()
+        time_records_dashboard.Show()
 
     End Sub
 

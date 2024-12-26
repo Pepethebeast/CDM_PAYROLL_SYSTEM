@@ -9,17 +9,8 @@ Public Class RFID_Based_Attendance
 
     Private client As IFirebaseClient
     Private Sub RFID_Based_Attendance_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ' Show a confirmation dialog (optional)
-        ' Only show the exit confirmation if isExiting is set to True
-        If Not IsExiting Then
-            Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result = DialogResult.No Then
-                e.Cancel = True
-            Else
-                IsExiting = True ' Set the flag to prevent further prompts
-                Application.Exit() ' Exit the entire application
-            End If
-        End If
+        time_records_dashboard.Show()
+
     End Sub
     Private Sub RFID_Based_Attendance_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVUserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
