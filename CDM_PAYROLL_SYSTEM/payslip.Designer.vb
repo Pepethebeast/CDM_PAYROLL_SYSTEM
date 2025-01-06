@@ -138,7 +138,7 @@ Partial Class payslip
         Button3.Name = "Button3"
         Button3.Size = New Size(125, 42)
         Button3.TabIndex = 48
-        Button3.Text = "Verify Time Records"
+        Button3.Text = "Download Payslip"
         Button3.UseVisualStyleBackColor = False
         ' 
         ' Panel7
@@ -177,7 +177,7 @@ Partial Class payslip
         Button1.Name = "Button1"
         Button1.Size = New Size(267, 42)
         Button1.TabIndex = 51
-        Button1.Text = "PRINT PAY SLIP"
+        Button1.Text = "View Paysllip"
         Button1.UseVisualStyleBackColor = False
         ' 
         ' TableLayoutPanel6

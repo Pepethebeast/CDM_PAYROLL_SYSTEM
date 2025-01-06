@@ -44,11 +44,11 @@ Partial Class payroll_dashboard
         PictureBox11 = New PictureBox()
         Label42 = New Label()
         TableLayoutPanel5 = New TableLayoutPanel()
-        Label8 = New Label()
         PictureBox2 = New PictureBox()
+        Label8 = New Label()
         TableLayoutPanel6 = New TableLayoutPanel()
-        Label4 = New Label()
         PictureBox1 = New PictureBox()
+        Label4 = New Label()
         TableLayoutPanel4 = New TableLayoutPanel()
         Panel1.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
@@ -369,19 +369,6 @@ Partial Class payroll_dashboard
         TableLayoutPanel5.Size = New Size(314, 396)
         TableLayoutPanel5.TabIndex = 30
         ' 
-        ' Label8
-        ' 
-        Label8.Anchor = AnchorStyles.None
-        Label8.AutoSize = True
-        Label8.Cursor = Cursors.Hand
-        Label8.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point)
-        Label8.Location = New Point(76, 354)
-        Label8.Margin = New Padding(4, 0, 4, 0)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(162, 24)
-        Label8.TabIndex = 12
-        Label8.Text = "RUN PAYROLL"
-        ' 
         ' PictureBox2
         ' 
         PictureBox2.BackColor = SystemColors.Window
@@ -396,6 +383,19 @@ Partial Class payroll_dashboard
         PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox2.TabIndex = 16
         PictureBox2.TabStop = False
+        ' 
+        ' Label8
+        ' 
+        Label8.Anchor = AnchorStyles.None
+        Label8.AutoSize = True
+        Label8.Cursor = Cursors.Hand
+        Label8.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Label8.Location = New Point(76, 354)
+        Label8.Margin = New Padding(4, 0, 4, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(162, 24)
+        Label8.TabIndex = 12
+        Label8.Text = "RUN PAYROLL"
         ' 
         ' TableLayoutPanel6
         ' 
@@ -413,19 +413,6 @@ Partial Class payroll_dashboard
         TableLayoutPanel6.Size = New Size(315, 396)
         TableLayoutPanel6.TabIndex = 29
         ' 
-        ' Label4
-        ' 
-        Label4.Anchor = AnchorStyles.None
-        Label4.AutoSize = True
-        Label4.Cursor = Cursors.Hand
-        Label4.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(107, 354)
-        Label4.Margin = New Padding(4, 0, 4, 0)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(100, 24)
-        Label4.TabIndex = 12
-        Label4.Text = "PAYSLIP"
-        ' 
         ' PictureBox1
         ' 
         PictureBox1.BackColor = SystemColors.Window
@@ -440,6 +427,19 @@ Partial Class payroll_dashboard
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 17
         PictureBox1.TabStop = False
+        ' 
+        ' Label4
+        ' 
+        Label4.Anchor = AnchorStyles.None
+        Label4.AutoSize = True
+        Label4.Cursor = Cursors.Hand
+        Label4.Font = New Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Label4.Location = New Point(107, 354)
+        Label4.Margin = New Padding(4, 0, 4, 0)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(100, 24)
+        Label4.TabIndex = 12
+        Label4.Text = "PAYSLIP"
         ' 
         ' TableLayoutPanel4
         ' 

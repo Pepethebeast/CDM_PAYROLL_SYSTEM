@@ -5,131 +5,34 @@ Imports Firebase.Auth
 Imports Firebase.Database
 Imports Firebase.Database.Query
 Imports System.IO.Ports
-Imports DocumentFormat.OpenXml.Wordprocessing
+Imports System.Drawing.Drawing2D
+Imports FireSharp.Config
+Imports FireSharp.Interfaces
+Imports FireSharp.Response
+Imports DocumentFormat.OpenXml.Bibliography
 
 Public Class ADMIN_LOGIN
-    Dim WithEvents serialPort As New SerialPort("COM3", 115200)
-    Private Const ApiKey As String = "AIzaSyCo7k9JfcuPnIheEF36U-rgtiOMYNtSCZs"
-    Private Const AdminUID As String = "bGosQ0qr21OVzucmywytS5eMxDy2" ' The admin UID
+    Public Property email As String
+    Public Property password As String
+    Public username As String
 
-    ' Define Firebase connection variables
     Dim fbClient As IFirebaseClient
-
-    ' Define the fingerprint scanner object
-    Dim fingerprintScanner As New FingerprintScanner() ' Assuming you have a custom class to interact with the fingerprint scanner
 
     ' Variable to store the registered fingerprint from Firebase
     Dim registeredFingerprint As String
 
     ' Flag for exiting the application
     Private isExiting As Boolean = False
-    Private Sub FetchAdminData()
-        Try
-            ' Fetch data from Firebase using the admin ID path
-            Dim response As FireSharp.Response.FirebaseResponse = fbClient.Get("AdminTbl/Admin1/")
-
-            If response.StatusCode = Net.HttpStatusCode.OK Then
-                ' Deserialize the response into a dictionary
-                Dim adminData As Dictionary(Of String, Object) = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(response.Body)
-
-                If adminData IsNot Nothing Then
-                    ' Pass the data to the Main Dashboard form
-                    Dim dashboard As New Main_Dashboard()
-                    dashboard.adminID = adminData("AdminID").ToString()
-                    dashboard.Fingerprint = adminData("Fingerprint").ToString()
-                    dashboard.getName = adminData("Name").ToString()
-                    dashboard.Permissions = adminData("Permissions").ToString()
-                    dashboard.Role = adminData("Role").ToString()
-                    dashboard.RoleID = adminData("RoleID").ToString()
-
-                    ' Show the Main Dashboard form and hide the login form
-                    dashboard.Show()
-                    Me.Hide()
-                Else
-                    MessageBox.Show("No data found in AdminTbl/Admin1/")
-                End If
-            Else
-                MessageBox.Show("Failed to fetch data from Firebase.")
-            End If
-        Catch ex As Exception
-            MessageBox.Show($"Error: {ex.Message}")
-        End Try
-    End Sub
-
-    ' When form loads, initialize Firebase and get the registered fingerprint from Firebase
-    Private Sub serialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles serialPort.DataReceived
-        Dim incomingData As String = serialPort.ReadLine().Trim()
-
-        If incomingData = "LOGIN_SUCCESS" Then
-            Invoke(New System.Action(Sub() HandleLoginSuccess()))
-        ElseIf incomingData = "LOGIN_FAILED" Then
-            Invoke(New System.Action(Sub() HandleLoginFailed()))
-        End If
-    End Sub
-    Private Sub HandleLoginFailed()
-        MessageBox.Show("Login Failed. Please try again.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    End Sub
 
     Private Sub LoginForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If serialPort.IsOpen Then
-            serialPort.Close()
+        If SerialPort.IsOpen Then
+            SerialPort.Close()
         End If
     End Sub
     Private Sub HandleLoginSuccess()
         Timer1.Enabled = True
     End Sub
-    Private Async Sub Admin_Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ProgressBar1.Value = 0
-        ProgressBar1.Maximum = 100
-        Try
-            If Not serialPort.IsOpen Then
-                serialPort.Open()
-            End If
-            ' Send command to initialize the fingerprint sensor and turn on LED (if applicable)
-            serialPort.WriteLine("INIT_SENSOR")
-        Catch ex As Exception
-            MessageBox.Show("Error initializing serial port: " & ex.Message)
-        End Try
-        ' Initialize Firebase client
-        fbClient = FirebaseModule.GetFirebaseClient()
 
-        ' Retrieve the registered fingerprint from Firebase
-        Await GetRegisteredFingerprint()
-    End Sub
-
-    ' Function to get the registered fingerprint from Firebase
-    Private Async Function GetRegisteredFingerprint() As Task
-        Try
-            ' Get the registered fingerprint from the path AdminTbl/Admin1/Fingerprint
-            Dim snapshot As String = Await Task.Run(Function()
-                                                        ' Ensure you're using FirebaseClient and the correct method to query Firebase
-                                                        Dim fbDatabase As New FirebaseClient("https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                                                        ' The correct method for querying data
-                                                        Return fbDatabase.Child("AdminTbl").Child("Admin1").Child("Fingerprint").OnceSingleAsync(Of String)()
-                                                    End Function)
-
-            registeredFingerprint = snapshot ' This holds the fingerprint ID stored in Firebase
-        Catch ex As Exception
-            MessageBox.Show("Error retrieving fingerprint data: " & ex.Message)
-        End Try
-    End Function
-
-    ' Button click event for scanning fingerprint
-    Private Sub btnScanFingerprint_Click(sender As Object, e As EventArgs)
-        ' Start scanning the fingerprint
-        Dim scannedFingerprint = fingerprintScanner.Scan
-
-        ' Compare the scanned fingerprint with the registered fingerprint from Firebase
-        If scannedFingerprint = registeredFingerprint Then
-            ' If fingerprint matches, open the Main Dashboard
-            MessageBox.Show("Fingerprint recognized. Access granted.")
-            Main_Dashboard.Show()
-            Hide() ' Hide the login form
-        Else
-            ' If fingerprint does not match, show an error message
-            MessageBox.Show("Fingerprint not recognized. Access denied.")
-        End If
-    End Sub
 
     ' Confirmation for exiting the application
     Private Sub ADMIN_LOGIN_Closing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -147,28 +50,178 @@ Public Class ADMIN_LOGIN
     End Sub
 
     ' Panel paint event handler
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-        ' Custom painting code can go here, if necessary
-    End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        ' Increment the progress bar
-        ProgressBar1.Value += 20
-        If ProgressBar1.Value >= ProgressBar1.Maximum Then
-            Timer1.Enabled = False ' Stop the timer when progress is complete
-            ProgressBar1.Value = 0
-            serialPort.Close()
-            MessageBox.Show("LOG IN SUCCESS!") ' Reset progress bar
-            FetchAdminData()
+
+    Private Sub ADMIN_LOGIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox1.Clear()
+        TextBox2.Clear()
+    End Sub
+    ' Declare placeholder text and shadow color for both TextBoxes
+    Private placeholderTextUsername As String = "Enter username"
+    Private placeholderTextPassword As String = "Enter password"
+    Private shadowColor As Color = Color.Gray
+
+    Private Sub TextBox1_Enter(sender As Object, e As EventArgs) Handles TextBox1.Enter
+        ' Clear placeholder text when the TextBox is focused
+        If TextBox1.Text = placeholderTextUsername Then
+            TextBox1.Text = ""
+            TextBox1.ForeColor = Color.Black
         End If
     End Sub
-End Class
-' FingerprintScanner class definition
-Public Class FingerprintScanner
+
+    Private Sub TextBox1_Leave(sender As Object, e As EventArgs) Handles TextBox1.Leave
+        ' Show placeholder text if the TextBox is empty
+        If String.IsNullOrWhiteSpace(TextBox1.Text) Then
+            TextBox1.Text = placeholderTextUsername
+            TextBox1.ForeColor = shadowColor
+        End If
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        ' Make sure placeholder text is only shown when the box is empty
+        If String.IsNullOrWhiteSpace(TextBox1.Text) Then
+            TextBox1.ForeColor = shadowColor
+        Else
+            TextBox1.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub TextBox1_Paint(sender As Object, e As PaintEventArgs) Handles TextBox1.Paint
+        ' If TextBox1 is empty, draw shadow placeholder text
+        If String.IsNullOrWhiteSpace(TextBox1.Text) AndAlso TextBox1.ForeColor = shadowColor Then
+            ' Set the shadow effect
+            Dim shadowBrush As New SolidBrush(shadowColor)
+            Dim shadowFont As New Font(TextBox1.Font.FontFamily, TextBox1.Font.Size, FontStyle.Italic)
+            e.Graphics.DrawString(placeholderTextUsername, shadowFont, shadowBrush, 2, 2) ' Draw shadow slightly off (2,2)
+
+            ' Draw the original placeholder text
+            Dim textBrush As New SolidBrush(TextBox1.ForeColor)
+            e.Graphics.DrawString(placeholderTextUsername, TextBox1.Font, textBrush, 0, 0) ' Draw original text (0,0)
+        End If
+    End Sub
+
+    ' Similar code for TextBox2 (Password)
+
+    Private Sub TextBox2_Enter(sender As Object, e As EventArgs) Handles TextBox2.Enter
+        ' Clear placeholder text when the TextBox is focused
+        If TextBox2.Text = placeholderTextPassword Then
+            TextBox2.Text = ""
+            TextBox2.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub TextBox2_Leave(sender As Object, e As EventArgs) Handles TextBox2.Leave
+        ' Show placeholder text if the TextBox is empty
+        If String.IsNullOrWhiteSpace(TextBox2.Text) Then
+            TextBox2.Text = placeholderTextPassword
+            TextBox2.ForeColor = shadowColor
+        End If
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+        ' Make sure placeholder text is only shown when the box is empty
+        If String.IsNullOrWhiteSpace(TextBox2.Text) Then
+            TextBox2.ForeColor = shadowColor
+        Else
+            TextBox2.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub TextBox2_Paint(sender As Object, e As PaintEventArgs) Handles TextBox2.Paint
+        ' If TextBox2 is empty, draw shadow placeholder text
+        If String.IsNullOrWhiteSpace(TextBox2.Text) AndAlso TextBox2.ForeColor = shadowColor Then
+            ' Set the shadow effect
+            Dim shadowBrush As New SolidBrush(shadowColor)
+            Dim shadowFont As New Font(TextBox2.Font.FontFamily, TextBox2.Font.Size, FontStyle.Italic)
+            e.Graphics.DrawString(placeholderTextPassword, shadowFont, shadowBrush, 2, 2) ' Draw shadow slightly off (2,2)
+
+            ' Draw the original placeholder text
+            Dim textBrush As New SolidBrush(TextBox2.ForeColor)
+            e.Graphics.DrawString(placeholderTextPassword, TextBox2.Font, textBrush, 0, 0) ' Draw original text (0,0)
+        End If
+    End Sub
+
+    ' FingerprintScanner class definition
+
     ' Simulated method for scanning a fingerprint
     Public Function Scan() As String
         ' Code to interact with your fingerprint scanner and return the scanned fingerprint ID as a string
         ' Replace this with the actual fingerprint scanning code
         Return "sample_fingerprint_id" ' This is just a placeholder for demonstration
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Declare variables for tracking login attempts and cooldown
+        Dim failedAttempts As Integer = 0
+        Dim lastFailedAttempt As DateTime = DateTime.MinValue
+
+        ' Get the Firebase client
+        Dim ref As IFirebaseClient = FirebaseModule.GetFirebaseClient()
+
+        ' Retrieve the data from Firebase
+        Dim accountData As FirebaseResponse = ref.Get("AdminTbl/Account")
+
+        ' Check if accountData is not null and contains data
+        If accountData IsNot Nothing AndAlso Not String.IsNullOrEmpty(accountData.Body) Then
+            ' Deserialize the JSON data into a Dictionary
+            Dim accountDict As Dictionary(Of String, Object) = accountData.ResultAs(Of Dictionary(Of String, Object))()
+
+            ' Check if password exists in the data
+            If accountDict.ContainsKey("password") Then
+                Dim storedPassword As String = accountDict("password").ToString()
+
+                ' Check if either email or username matches and password matches
+                If (accountDict.ContainsKey("email") AndAlso TextBox1.Text = accountDict("email").ToString()) OrElse
+           (accountDict.ContainsKey("username") AndAlso TextBox1.Text = accountDict("username").ToString()) Then
+
+                    If TextBox2.Text = storedPassword Then
+                        ' Reset failed attempts after successful login
+                        failedAttempts = 0
+                        ' Success, login is successful
+                        MessageBox.Show("Login successful!")
+                        Dim former As New Main_Dashboard
+                        former.username = TextBox1.Text
+                        former.Show()
+                    Else
+                        ' Increment failed attempts if password is incorrect
+                        failedAttempts += 1
+
+                        ' Check if failed attempts exceed 5
+                        If failedAttempts >= 5 Then
+                            ' Check the cooldown time
+                            If DateTime.Now.Subtract(lastFailedAttempt).TotalMinutes >= 5 Then
+                                ' Allow login after cooldown period
+                                failedAttempts = 0 ' Reset attempts
+                                MessageBox.Show("You can try logging in again.")
+                            Else
+                                ' Deny login and show cooldown message
+                                MessageBox.Show("Too many failed attempts. Please wait 5 minutes before trying again.")
+                            End If
+                        Else
+                            ' Error, wrong password
+                            MessageBox.Show("Invalid password.")
+                        End If
+                    End If
+
+                Else
+                    ' Error, wrong username or email
+                    MessageBox.Show("Invalid username or email.")
+                End If
+
+            Else
+                ' Error, account data is incomplete (missing password)
+                MessageBox.Show("Account data is incomplete.")
+            End If
+
+        Else
+            ' Error, account data not found or is empty
+            MessageBox.Show("Account data not found.")
+        End If
+
+        ' Store the timestamp of the last failed attempt
+        If failedAttempts >= 5 Then
+            lastFailedAttempt = DateTime.Now
+        End If
+
+    End Sub
 End Class

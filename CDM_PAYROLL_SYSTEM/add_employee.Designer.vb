@@ -97,7 +97,7 @@ Partial Class add_employee
         ' 
         Label1.AutoSize = True
         Label1.BackColor = Color.Transparent
-        Label1.Font = New Font("Roboto Light", 26.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Roboto Light", 26.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label1.ForeColor = Color.Black
         Label1.Location = New Point(1028, 11)
         Label1.Name = "Label1"
@@ -109,7 +109,7 @@ Partial Class add_employee
         ' 
         Label9.AutoSize = True
         Label9.BorderStyle = BorderStyle.FixedSingle
-        Label9.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label9.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.Location = New Point(21, 58)
         Label9.Margin = New Padding(4, 0, 4, 0)
         Label9.Name = "Label9"
@@ -120,7 +120,7 @@ Partial Class add_employee
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Font = New Font("Roboto", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label8.Font = New Font("Roboto", 15.75F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.Location = New Point(21, 19)
         Label8.Margin = New Padding(4, 0, 4, 0)
         Label8.Name = "Label8"
@@ -137,7 +137,7 @@ Partial Class add_employee
         GroupBox3.Controls.Add(Button1)
         GroupBox3.Controls.Add(TableLayoutPanel1)
         GroupBox3.Controls.Add(GroupBox4)
-        GroupBox3.Font = New Font("Roboto", 12F)
+        GroupBox3.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         GroupBox3.Location = New Point(3, 103)
         GroupBox3.Margin = New Padding(4, 3, 4, 3)
         GroupBox3.Name = "GroupBox3"
@@ -178,7 +178,7 @@ Partial Class add_employee
         ' 
         Description.Anchor = AnchorStyles.None
         Description.AutoSize = True
-        Description.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Description.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Description.Location = New Point(647, 71)
         Description.Margin = New Padding(4, 0, 4, 0)
         Description.Name = "Description"
@@ -190,7 +190,6 @@ Partial Class add_employee
         ' 
         Designation.Anchor = AnchorStyles.None
         Designation.FormattingEnabled = True
-        Designation.Items.AddRange(New Object() {"Instructor non-Licensed", "Instructor Licensed", "Assistant Professor I", "Assistant Professor II", "Professor"})
         Designation.Location = New Point(556, 15)
         Designation.Margin = New Padding(4, 3, 4, 3)
         Designation.Name = "Designation"
@@ -201,7 +200,6 @@ Partial Class add_employee
         ' 
         Position.Anchor = AnchorStyles.None
         Position.FormattingEnabled = True
-        Position.Items.AddRange(New Object() {"Instructor (Full-Time)", "Instructor (Part-Time)", "Head", "Assistant Head", "Admin"})
         Position.Location = New Point(175, 15)
         Position.Margin = New Padding(4, 3, 4, 3)
         Position.Name = "Position"
@@ -212,7 +210,7 @@ Partial Class add_employee
         ' 
         Label25.Anchor = AnchorStyles.None
         Label25.AutoSize = True
-        Label25.Font = New Font("Roboto", 12F)
+        Label25.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label25.Location = New Point(42, 17)
         Label25.Margin = New Padding(4, 0, 4, 0)
         Label25.Name = "Label25"
@@ -225,7 +223,7 @@ Partial Class add_employee
         ' 
         Label28.Anchor = AnchorStyles.None
         Label28.AutoSize = True
-        Label28.Font = New Font("Roboto", 12F)
+        Label28.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label28.Location = New Point(409, 17)
         Label28.Margin = New Padding(4, 0, 4, 0)
         Label28.Name = "Label28"
@@ -238,7 +236,7 @@ Partial Class add_employee
         ' 
         Label24.Anchor = AnchorStyles.None
         Label24.AutoSize = True
-        Label24.Font = New Font("Roboto", 12F)
+        Label24.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label24.Location = New Point(34, 71)
         Label24.Margin = New Padding(4, 0, 4, 0)
         Label24.Name = "Label24"
@@ -271,7 +269,7 @@ Partial Class add_employee
         ' 
         Label27.Anchor = AnchorStyles.None
         Label27.AutoSize = True
-        Label27.Font = New Font("Roboto", 12F)
+        Label27.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label27.Location = New Point(410, 126)
         Label27.Margin = New Padding(4, 0, 4, 0)
         Label27.Name = "Label27"
@@ -296,7 +294,7 @@ Partial Class add_employee
         ' 
         Label4.Anchor = AnchorStyles.None
         Label4.AutoSize = True
-        Label4.Font = New Font("Roboto", 12F)
+        Label4.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label4.Location = New Point(411, 71)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
@@ -309,7 +307,7 @@ Partial Class add_employee
         ' 
         Label26.Anchor = AnchorStyles.None
         Label26.AutoSize = True
-        Label26.Font = New Font("Roboto", 12F)
+        Label26.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label26.Location = New Point(30, 126)
         Label26.Margin = New Padding(4, 0, 4, 0)
         Label26.Name = "Label26"
@@ -363,7 +361,7 @@ Partial Class add_employee
         ' 
         Label11.Anchor = AnchorStyles.None
         Label11.AutoSize = True
-        Label11.Font = New Font("Roboto", 12F)
+        Label11.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.Location = New Point(42, 17)
         Label11.Margin = New Padding(4, 0, 4, 0)
         Label11.Name = "Label11"
@@ -376,7 +374,7 @@ Partial Class add_employee
         ' 
         Label14.Anchor = AnchorStyles.None
         Label14.AutoSize = True
-        Label14.Font = New Font("Roboto", 12F)
+        Label14.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label14.Location = New Point(12, 71)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
@@ -389,7 +387,7 @@ Partial Class add_employee
         ' 
         Label18.Anchor = AnchorStyles.None
         Label18.AutoSize = True
-        Label18.Font = New Font("Roboto", 12F)
+        Label18.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label18.Location = New Point(5, 125)
         Label18.Margin = New Padding(4, 0, 4, 0)
         Label18.Name = "Label18"
@@ -411,7 +409,7 @@ Partial Class add_employee
         ' 
         Label19.Anchor = AnchorStyles.None
         Label19.AutoSize = True
-        Label19.Font = New Font("Roboto", 12F)
+        Label19.Font = New Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label19.Location = New Point(18, 179)
         Label19.Margin = New Padding(4, 0, 4, 0)
         Label19.Name = "Label19"
@@ -425,7 +423,7 @@ Partial Class add_employee
         DateOfBirth.Anchor = AnchorStyles.None
         DateOfBirth.CalendarTrailingForeColor = Color.Green
         DateOfBirth.CustomFormat = ""
-        DateOfBirth.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DateOfBirth.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         DateOfBirth.Format = DateTimePickerFormat.Short
         DateOfBirth.Location = New Point(169, 177)
         DateOfBirth.Margin = New Padding(4, 3, 4, 3)
@@ -438,7 +436,7 @@ Partial Class add_employee
         ' 
         Button1.Anchor = AnchorStyles.None
         Button1.BackColor = Color.Gold
-        Button1.Font = New Font("Roboto", 9F)
+        Button1.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Button1.ForeColor = SystemColors.ControlText
         Button1.Location = New Point(225, 490)
         Button1.Margin = New Padding(4, 3, 4, 3)
@@ -466,7 +464,7 @@ Partial Class add_employee
         ' 
         Label7.Anchor = AnchorStyles.None
         Label7.AutoSize = True
-        Label7.Font = New Font("Microsoft Uighur", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label7.Font = New Font("Microsoft Uighur", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(57, 181)
         Label7.Margin = New Padding(4, 0, 4, 0)
         Label7.Name = "Label7"
@@ -501,7 +499,7 @@ Partial Class add_employee
         ' 
         Label23.AutoSize = True
         Label23.BorderStyle = BorderStyle.FixedSingle
-        Label23.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label23.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label23.Location = New Point(26, 18)
         Label23.Margin = New Padding(4, 0, 4, 0)
         Label23.Name = "Label23"

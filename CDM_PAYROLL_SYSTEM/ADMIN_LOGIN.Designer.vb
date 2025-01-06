@@ -26,17 +26,20 @@ Partial Class ADMIN_LOGIN
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ADMIN_LOGIN))
         TableLayoutPanel1 = New TableLayoutPanel()
         Panel1 = New Panel()
-        Label2 = New Label()
+        TableLayoutPanel2 = New TableLayoutPanel()
+        TextBox1 = New TextBox()
+        TextBox2 = New TextBox()
+        Button1 = New Button()
         Label1 = New Label()
-        PictureBox3 = New PictureBox()
         PictureBox2 = New PictureBox()
+        PictureBox3 = New PictureBox()
         PictureBox1 = New PictureBox()
         Timer1 = New Timer(components)
-        ProgressBar1 = New ProgressBar()
         TableLayoutPanel1.SuspendLayout()
         Panel1.SuspendLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        TableLayoutPanel2.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -59,32 +62,68 @@ Partial Class ADMIN_LOGIN
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = Color.DarkSeaGreen
+        Panel1.BackColor = Color.Transparent
         Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
         Panel1.BackgroundImageLayout = ImageLayout.Stretch
-        Panel1.Controls.Add(ProgressBar1)
-        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(TableLayoutPanel2)
         Panel1.Controls.Add(Label1)
-        Panel1.Controls.Add(PictureBox3)
         Panel1.Controls.Add(PictureBox2)
+        Panel1.Controls.Add(PictureBox3)
         Panel1.ForeColor = SystemColors.Window
         Panel1.Location = New Point(428, 3)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(420, 546)
         Panel1.TabIndex = 0
         ' 
-        ' Label2
+        ' TableLayoutPanel2
         ' 
-        Label2.Anchor = AnchorStyles.None
-        Label2.AutoSize = True
-        Label2.BackColor = Color.Transparent
-        Label2.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label2.ForeColor = Color.Maroon
-        Label2.Location = New Point(94, 198)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(220, 21)
-        Label2.TabIndex = 5
-        Label2.Text = "Scan fingerprint to Log In"
+        TableLayoutPanel2.BackColor = Color.Transparent
+        TableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
+        TableLayoutPanel2.ColumnCount = 1
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 80F))
+        TableLayoutPanel2.Controls.Add(TextBox1, 0, 0)
+        TableLayoutPanel2.Controls.Add(TextBox2, 0, 1)
+        TableLayoutPanel2.Controls.Add(Button1, 0, 2)
+        TableLayoutPanel2.Location = New Point(26, 211)
+        TableLayoutPanel2.Name = "TableLayoutPanel2"
+        TableLayoutPanel2.RowCount = 3
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.Size = New Size(367, 195)
+        TableLayoutPanel2.TabIndex = 7
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Anchor = AnchorStyles.None
+        TextBox1.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox1.Location = New Point(54, 17)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(259, 30)
+        TextBox1.TabIndex = 5
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Anchor = AnchorStyles.None
+        TextBox2.Font = New Font("Roboto", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox2.Location = New Point(53, 81)
+        TextBox2.Name = "TextBox2"
+        TextBox2.PasswordChar = "*"c
+        TextBox2.Size = New Size(261, 30)
+        TextBox2.TabIndex = 6
+        ' 
+        ' Button1
+        ' 
+        Button1.Anchor = AnchorStyles.None
+        Button1.BackColor = Color.DarkSeaGreen
+        Button1.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point)
+        Button1.ForeColor = Color.Black
+        Button1.Location = New Point(65, 140)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(237, 43)
+        Button1.TabIndex = 8
+        Button1.Text = "LOG-IN"
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' Label1
         ' 
@@ -92,33 +131,33 @@ Partial Class ADMIN_LOGIN
         Label1.BackColor = Color.Transparent
         Label1.Font = New Font("Roboto Medium", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label1.ForeColor = SystemColors.InfoText
-        Label1.Location = New Point(149, 162)
+        Label1.Location = New Point(106, 170)
         Label1.Name = "Label1"
-        Label1.Size = New Size(129, 21)
+        Label1.Size = New Size(210, 21)
         Label1.TabIndex = 2
-        Label1.Text = "ADMIN LOG-IN"
-        ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.BackColor = Color.Transparent
-        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(119, 241)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(177, 151)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 4
-        PictureBox3.TabStop = False
+        Label1.Text = "PAYROLL ADMIN LOG-IN"
         ' 
         ' PictureBox2
         ' 
         PictureBox2.BackColor = Color.Transparent
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(132, 27)
+        PictureBox2.Location = New Point(127, 9)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(146, 113)
+        PictureBox2.Size = New Size(175, 135)
         PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox2.TabIndex = 0
         PictureBox2.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Anchor = AnchorStyles.None
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(167, 421)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(104, 94)
+        PictureBox3.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox3.TabIndex = 9
+        PictureBox3.TabStop = False
         ' 
         ' PictureBox1
         ' 
@@ -132,16 +171,6 @@ Partial Class ADMIN_LOGIN
         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 1
         PictureBox1.TabStop = False
-        ' 
-        ' Timer1
-        ' 
-        ' 
-        ' ProgressBar1
-        ' 
-        ProgressBar1.Location = New Point(94, 428)
-        ProgressBar1.Name = "ProgressBar1"
-        ProgressBar1.Size = New Size(220, 37)
-        ProgressBar1.TabIndex = 6
         ' 
         ' ADMIN_LOGIN
         ' 
@@ -160,8 +189,10 @@ Partial Class ADMIN_LOGIN
         TableLayoutPanel1.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        TableLayoutPanel2.ResumeLayout(False)
+        TableLayoutPanel2.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
 
@@ -172,8 +203,10 @@ Partial Class ADMIN_LOGIN
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents PictureBox3 As PictureBox
 End Class

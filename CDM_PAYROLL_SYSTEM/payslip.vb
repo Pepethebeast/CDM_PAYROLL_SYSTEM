@@ -7,6 +7,13 @@ Imports Firebase.Storage
 Imports FireSharp.Config
 Imports PdfSharp.Drawing
 Imports PdfSharp.Pdf
+Imports FirebaseAdmin
+Imports Google.Apis.Auth.OAuth2
+Imports Google.Cloud.Storage.V1
+Imports FirebaseAdmin.Auth
+Imports System.Threading
+Imports System.Web
+
 Public Class payslip
     Public Property received_email As String
     Public Property user_uid As String
@@ -27,19 +34,16 @@ Public Class payslip
     End Sub
 
     Private Sub payroll_dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ' Show a confirmation dialog (optional)
-        ' Only show the exit confirmation if isExiting is set to True
-        If Not IsExiting Then
-            Dim result As DialogResult = MessageBox.Show("Do you want to back?", "Cancel Payroll", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result = DialogResult.No Then
-                e.Cancel = True
-            Else
-                payroll.Show()
-                Me.Hide()
-            End If
+
+        payroll.Show()
+    End Sub
+    Public Sub InitializeFirebaseAdmin()
+        If FirebaseApp.DefaultInstance Is Nothing Then
+            FirebaseApp.Create(New AppOptions() With {
+            .Credential = GoogleCredential.FromFile("path/to/your-service-account.json")
+        })
         End If
     End Sub
-
     Private Sub payslip_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'If TextBox1.Text = Nothing OrElse TextBox2.Text = Nothing OrElse TextBox3.Text = Nothing OrElse TextBox4.Text = Nothing Then
         '    Button4.Enabled = False
@@ -55,40 +59,39 @@ Public Class payslip
         Label41.Text = description
         Label40.Text = date_hired
 
-        If position_to_textbox.Text = "Head" Then
-            TextBox7.Text = "650"
-        ElseIf position_to_textbox.Text = "Assistant Head" Then
-            TextBox7.Text = "550"
-        ElseIf position_to_textbox.Text = "Admin" Then
-            TextBox7.Text = "400"
-        Else
-            TextBox7.Text = "0"
-        End If
+        Try
+            ' Retrieve data from Firebase
+            Dim Json As IFirebaseClient = FirebaseModule.GetFirebaseClient
+            Dim jsonData = Json.Get("AdminTbl/Calculations/Position")
+            Dim instructorData = Json.Get("AdminTbl/Calculations/Designation")
 
-        If designation_to_textbox.Text = "Instructor non-Licensed" Then
-            TextBox2.Text = "260"
-        ElseIf designation_to_textbox.Text = "Instructor Licensed" Then
-            TextBox2.Text = "310"
-        ElseIf designation_to_textbox.Text = "Assistant Professor I" Then
-            TextBox2.Text = "360"
-        ElseIf designation_to_textbox.Text = "Assistant Professor II" Then
-            TextBox2.Text = "410"
-        ElseIf designation_to_textbox.Text = "Professor" Then
-            TextBox2.Text = "885"
-        End If
+            ' Parse the JSON data into a dictionary
+            Dim ETL As Dictionary(Of String, Object) =
+            Newtonsoft.Json.JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(jsonData.Body)
+
+            Dim Instructor As Dictionary(Of String, Object) =
+            Newtonsoft.Json.JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(instructorData.Body)
+
+            ' Check and populate TextBox7 based on position
+            If ETL.ContainsKey(position_to_textbox.Text) Then
+                TextBox7.Text = ETL(position_to_textbox.Text).ToString()
+            Else
+                TextBox7.Text = "0"
+            End If
+
+            ' Check and populate TextBox2 based on designation
+            If Instructor.ContainsKey(designation_to_textbox.Text) Then
+                TextBox2.Text = Instructor(designation_to_textbox.Text).ToString()
+            Else
+                TextBox2.Text = "0"
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show($"An error occurred while fetching data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
-    Private Async Function UploadPdfToFirebase(filePath As String, fileName As String) As Task(Of String)
-        Try
-            Dim storage = New FirebaseStorage("gs://cdm-payroll-system.appspot.com")
-            Dim fileStream As FileStream = New FileStream(filePath, FileMode.Open)
-            Dim uploadTask = Await storage.Child("payslips").Child(fileName).PutAsync(fileStream)
-            Return Await storage.Child("payslips").Child(fileName).GetDownloadUrlAsync()
-        Catch ex As Exception
-            MessageBox.Show($"Error uploading PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return Nothing
-        End Try
-    End Function
+
     Private Sub PrintDoc_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles printDoc.PrintPage
         Dim logo As Image = Image.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\images\logo.jpg")
         Dim logo2 As Image = Image.FromFile("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\images\bayan_logo.jpg")
@@ -370,56 +373,115 @@ Public Class payslip
 
     End Sub
 
+
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Dim client As IFirebaseClient = FirebaseModule.GetFirebaseClient()
 
             ' Validate the input fields to ensure they are not empty or whitespace
             If String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
-               String.IsNullOrWhiteSpace(TextBox7.Text) Then
+           String.IsNullOrWhiteSpace(TextBox3.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox5.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox6.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox8.Text) OrElse
+           String.IsNullOrWhiteSpace(TextBox7.Text) Then
 
                 MessageBox.Show("Complete the payroll process to save!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Else
-                Dim PD As New PersonalData.Payslip With {
-                    .PayslipID = numericGuid123,
-                    .TotalDeduction = TextBox8.Text,
-                    .TotalHours = TextBox4.Text,
-                    .TotalSalary = TextBox1.Text,
-                    .TotalYear = "1",
-                    .PayOutDate = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                }
-
-                ' Save the payslip data to Firebase
-                Dim script_for_payslip = "Your payslip for " + get_pey_period_hehe + " is now available"
-                Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
-
-                Dim savePayslipID = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/PayslipID/PayslipID", PD.PayslipID)
-                Dim payoutperiod = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/PayOutPeriod/PayOutPeriod", PD.PayOutDate)
-                Dim reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/message", "Payslip has been sent to employee ID: " + add_employee_id)
-                reportTbl = client.Set("ReportTbl/payslip/" & FirebaseModule.numericGuid & "/Date", FirebaseModule.today + " " + FirebaseModule.nowTime)
-
-                Dim saveTotalDeduction = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalDeduction/total_deduction", PD.TotalDeduction)
-                Dim saveTotalHours = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalHours/total_hours", PD.TotalHours)
-                Dim saveTotalSalary = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalSalary/total_salary", PD.TotalSalary)
-                Dim saveTotalYear = client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/" & user_uid & "/TotalYear/total_year", PD.TotalYear)
-
-                Dim save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/id", numericGuid)
-                save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/message", script_for_payslip)
-                save2 = client.Set("NotificationTbl/" & user_uid & "/" & numericGuid & "/title", "Payslip")
-
-                MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
             End If
+
+            Try
+                ' Get the directory where the executable is located (the application directory)
+                Dim appDirectory As String = Application.StartupPath
+
+                ' Combine it with the relative path to the credential file
+                Dim credentialPath As String = Path.Combine("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+
+                ' Check if the credential file exists
+                If File.Exists(credentialPath) Then
+                    ' Set the environment variable for Firebase credentials
+                    Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath)
+
+                    ' Initialize Firebase using the credentials file
+                    If FirebaseApp.DefaultInstance Is Nothing Then
+                        FirebaseApp.Create(New AppOptions() With {
+                    .Credential = GoogleCredential.FromFile(credentialPath)
+                })
+                    End If
+                Else
+                    ' Show an error message if the file is not found
+                    MessageBox.Show("Credential file not found at the specified path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+            Catch ex As Exception
+                ' Handle any errors during initialization
+                MessageBox.Show($"Firebase initialization error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+
+            ' Save the payslip data to Firebase Storage
+            Dim bucketName As String = "cdm-payroll-system.appspot.com"
+            Dim folderPath As String = $"payslip/{user_uid}/"
+
+            Using openFileDialog As New OpenFileDialog()
+                openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf"
+                openFileDialog.Title = "Select PDF to Upload"
+
+                If openFileDialog.ShowDialog() <> DialogResult.OK Then
+                    MessageBox.Show("No file selected. Data will not be saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return
+                End If
+
+                Dim selectedFilePath As String = openFileDialog.FileName
+                If Path.GetExtension(selectedFilePath).ToLower() <> ".pdf" Then
+                    MessageBox.Show("Only PDF files are allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return
+                End If
+
+                Dim fileName As String = Path.GetFileName(selectedFilePath)
+                Dim objectPath As String = folderPath & fileName
+                Dim pdfBytes As Byte() = File.ReadAllBytes(selectedFilePath)
+
+                Dim storageClient As StorageClient = StorageClient.Create()
+
+                ' Upload the PDF to Firebase Storage
+                Using uploadStream = New MemoryStream(pdfBytes)
+                    storageClient.UploadObject(bucketName, objectPath, "application/pdf", uploadStream, New UploadObjectOptions() With {
+            .PredefinedAcl = PredefinedObjectAcl.PublicRead
+        })
+                End Using
+            End Using
+
+
+            Dim PD As New PersonalData.Payslip With {
+            .EmployeeID = add_employee_id,
+            .PayslipID = numericGuid123,
+            .TotalDeduction = TextBox8.Text,
+            .TotalHours = TextBox4.Text,
+            .TotalSalary = TextBox1.Text,
+            .PayOutDate = Date.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        }
+
+            ' Save data to Firebase
+            Dim numericGuid As String = New String(Guid.NewGuid().ToString().Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 8)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/PayslipID", PD.PayslipID)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/EmployeeID", PD.EmployeeID)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/PayOutPeriod", PD.PayOutDate)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/TotalDeduction", PD.TotalDeduction)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/TotalHours", PD.TotalHours)
+            client.Set($"EmployeePayrollDataTbl/PayPeriod/{getDateForTbl}/{user_uid}/TotalSalary", PD.TotalSalary)
+            client.Set($"NotificationTbl/{user_uid}/{numericGuid}/id", numericGuid)
+            client.Set($"NotificationTbl/{user_uid}/{numericGuid}/message", "Your payslip is now available")
+            client.Set($"NotificationTbl/{user_uid}/{numericGuid}/title", "Payslip")
+
+            MessageBox.Show("Data Saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
-
     End Sub
+
+
 
     ' Helper function to generate a unique ID
     Dim numericGuid123 As String = New String(Guid.NewGuid().ToString("N").Where(AddressOf Char.IsDigit).ToArray()).Substring(0, 9)
@@ -434,6 +496,45 @@ Public Class payslip
         jsonOutput = jsonOutput.TrimEnd(New Char() {","c}) & "}"
         Return jsonOutput
     End Function
+    Private Sub CreatePDF(filePath As String)
+        ' Custom code for creating PDF (instead of iText)
+        ' For example, you can use a library like PdfSharp or similar if needed
+        ' This is a placeholder code, you can adapt it according to your method for PDF generation
 
+        ' Example: Saving text to a file as a placeholder for PDF generation
+        System.IO.File.WriteAllText(filePath, "This is a generated payslip.")
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Try
+            ' Use SaveFileDialog to specify the save location
+            Using saveDialog As New SaveFileDialog()
+                saveDialog.Filter = "PDF Files (*.pdf)|*.pdf"
+                saveDialog.Title = "Save Payslip"
+                saveDialog.FileName = received_name & " " & getDateForTbl & ".pdf"
+
+                If saveDialog.ShowDialog() = DialogResult.OK Then
+                    Dim pdfFilePath As String = saveDialog.FileName
+
+                    ' Configure the PrintDocument to save to a PDF file
+                    Dim printerSettings As New Printing.PrinterSettings() With {
+                    .PrinterName = "Microsoft Print to PDF",
+                    .PrintToFile = True,
+                    .PrintFileName = pdfFilePath
+                }
+
+                    ' Assign the printer settings to your print document
+                    printDoc.PrinterSettings = printerSettings
+
+                    ' Print the document using your existing PrintPage event
+                    printDoc.Print()
+
+                    MessageBox.Show("PDF saved successfully at " & pdfFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Failed to save PDF: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 End Class

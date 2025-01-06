@@ -14,45 +14,41 @@ Public Class register_fingerprint
     End Sub
 
 
-    Private Sub btnRegisterFingerprint_Click(sender As Object, e As EventArgs) Handles btnRegisterFingerprint.Click
-        If SerialPort.IsOpen Then
-            Label2.Text = "Connecting..."
-            SerialPort.WriteLine("REGISTER") ' Send command to ESP32
-        Else
-            Label2.Text = "Serial port not open!"
-        End If
-    End Sub
+    'Private Sub btnRegisterFingerprint_Click(sender As Object, e As EventArgs)
+    '    If SerialPort.IsOpen Then
+    '        Label2.Text = "Connecting..."
+    '        SerialPort.WriteLine("REGISTER") ' Send command to ESP32
+    '    Else
+    '        Label2.Text = "Serial port not open!"
+    '    End If
+    'End Sub
 
-    Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
-        Dim response As String = SerialPort.ReadLine()
+    'Private Sub SerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
+    '    Dim response As String = SerialPort.ReadLine()
 
-        ' Handle ESP32 responses
-        Invoke(Sub()
-                   Select Case response.Trim()
-                       Case "REGISTRATION_SUCCESS"
-                           ProgressBar1.Increment(5)
+    '    Handle ESP32 responses
+    '    Invoke(Sub()
+    '               Select Case response.Trim()
+    '                   Case "REGISTRATION_SUCCESS"
+    '                       ProgressBar1.Increment(5)
 
-                           If ProgressBar1.Value >= 100 Then
-                               Label2.Text = "Fingerprint registered successfully!"
-                               Timer1.Stop() ' Stop the progress timer
-                           End If
-                           Me.Close() ' Close the form after successful registration
-                       Case "REGISTRATION_FAILED"
-                           Label2.Text = "Hold your finger!"
-                       Case Else
-                           Label2.Text = response
-                   End Select
-               End Sub)
-    End Sub
+    '                       If ProgressBar1.Value >= 100 Then
+    '                           Label2.Text = "Fingerprint registered successfully!"
+    '                           Timer1.Stop() ' Stop the progress timer
+    '                       End If
+    '                       Me.Close() ' Close the form after successful registration
+    '                   Case "REGISTRATION_FAILED"
+    '                       Label2.Text = "Hold your finger!"
+    '                   Case Else
+    '                       Label2.Text = response
+    '               End Select
+    '           End Sub)
+    'End Sub
 
-    Private Sub register_fingerprint_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        FirebaseModule.CloseSerialPort()
-    End Sub
+    'Private Sub register_fingerprint_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    '    FirebaseModule.CloseSerialPort()
+    'End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        Me.Close()
-        Main_Dashboard.Show()
-    End Sub
     Dim previousPorts As New List(Of String)
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
         Dim availablePorts As String() = SerialPort.GetPortNames()

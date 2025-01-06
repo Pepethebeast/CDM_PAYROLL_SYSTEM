@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 Imports ClosedXML.Excel
 Imports Newtonsoft.Json.Linq
+Imports System.Windows.Controls.Primitives
 Public Class reports
 
     Private Sub LoadDataIntoDataGridView()
@@ -108,42 +109,43 @@ Public Class reports
         End Try
     End Sub
 
-    Private Sub ExportToExcel(dataGridView As DataGridView)
+    Private Sub ExportToExcelClosedXML()
         Try
-            ' Create a new Excel workbook using ClosedXML
             Using workbook As New XLWorkbook()
-                ' Add a worksheet to the workbook
-                Dim worksheet = workbook.Worksheets.Add("Report")
+                Dim worksheet = workbook.Worksheets.Add("Sheet1")
 
-                ' Export column headers
-                For col As Integer = 0 To dataGridView.Columns.Count - 1
-                    worksheet.Cell(1, col + 1).Value = dataGridView.Columns(col).HeaderText
+                ' Export headers
+                For j As Integer = 0 To DGVUserData.ColumnCount - 1
+                    worksheet.Cell(1, j + 1).Value = DGVUserData.Columns(j).HeaderText
                 Next
 
-                ' Export rows
-                For row As Integer = 0 To dataGridView.Rows.Count - 1
-                    For col As Integer = 0 To dataGridView.Columns.Count - 1
-                        worksheet.Cell(row + 2, col + 1).Value = dataGridView.Rows(row).Cells(col).Value
+                ' Export data
+                For i As Integer = 0 To DGVUserData.RowCount - 1
+                    For j As Integer = 0 To DGVUserData.ColumnCount - 1
+                        worksheet.Cell(i + 2, j + 1).Value = If(DGVUserData.Rows(i).Cells(j).Value IsNot Nothing,
+                                                              DGVUserData.Rows(i).Cells(j).Value.ToString(),
+                                                              "")
                     Next
                 Next
 
-                ' Auto-fit the columns
+                ' Auto-fit columns
                 worksheet.Columns().AdjustToContents()
 
                 ' Show save dialog
-                Dim saveFileDialog As New SaveFileDialog With {
-                    .Filter = "Excel Files (*.xlsx)|*.xlsx",
-                    .Title = "Save as Excel File"
-                }
+                Dim saveDialog As New SaveFileDialog()
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+                saveDialog.FilterIndex = 1
+                saveDialog.RestoreDirectory = True
+                saveDialog.FileName = ComboBox1.Text + " Logs " + DateTime.Now.ToString("MMMM, d, yyyy")
 
-                If saveFileDialog.ShowDialog() = DialogResult.OK Then
-                    ' Save the workbook to the selected file
-                    workbook.SaveAs(saveFileDialog.FileName)
-                    MessageBox.Show("Data exported successfully!", "Export to Excel", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If saveDialog.ShowDialog() = DialogResult.OK Then
+                    workbook.SaveAs(saveDialog.FileName)
+                    MessageBox.Show("Export successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
             End Using
+
         Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -216,6 +218,6 @@ Public Class reports
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ExportToExcel(DGVUserData)
+        ExportToExcelClosedXML()
     End Sub
 End Class

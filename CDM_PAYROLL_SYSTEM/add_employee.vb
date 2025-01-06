@@ -14,6 +14,7 @@ Imports System.Security.Cryptography
 Imports Google.Apis.Auth.OAuth2
 Imports Google.Cloud.Storage.V1
 Imports Microsoft.DotNet.DesignTools.Protocol.Notifications
+Imports Newtonsoft.Json
 Public Class add_employee
 
     Dim IMG_FileNameInput As String
@@ -34,6 +35,7 @@ Public Class add_employee
         TextBox2.Text = received_email
         Try
             client = New FireSharp.FirebaseClient(connect)
+            LoadETLValues()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -151,7 +153,7 @@ Public Class add_employee
                     Dim appDirectory As String = Application.StartupPath
 
                     ' Combine it with the relative path to the credential file
-                    Dim credentialPath As String = Path.Combine(appDirectory, "cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
+                    Dim credentialPath As String = Path.Combine("C:\Users\Zedrick\Documents\Visual Basic\CDM_PAYROLL_SYSTEM\CDM_PAYROLL_SYSTEM\cdm-payroll-system-firebase-adminsdk-9mm0e-ccf4eb02cc.json")
 
                     ' Check if the credential file exists
                     If File.Exists(credentialPath) Then
@@ -182,7 +184,7 @@ Public Class add_employee
                 PictureBox4.Image.Save(memoryStream, Imaging.ImageFormat.Jpeg)
                 Dim imageBytes As Byte() = memoryStream.ToArray()
 
-                ' Upload the image to Firebase Storage
+                ' Upload the image to Firebase Storage (This will overwrite any existing file at this path)
                 Dim storageClient As StorageClient = StorageClient.Create()
                 Using uploadStream = New MemoryStream(imageBytes)
                     storageClient.UploadObject(bucketName, objectPath, "image/jpeg", uploadStream)
@@ -262,9 +264,54 @@ Public Class add_employee
     Private Sub Description_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
+    Private Sub LoadETLValues()
+        Try
+            ' Fetch the ETL data from Firebase
+            Dim ETLComboBox = client.Get("AdminTbl/Calculations/Position")
 
+            ' Deserialize the JSON response into a dictionary
+            Dim calculationsComboBox = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(ETLComboBox.Body)
+
+            Dim InstructorComboBox = client.Get("AdminTbl/Calculations/Designation")
+
+            ' Deserialize the JSON response into a dictionary
+            Dim instructorCalcu = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(InstructorComboBox.Body)
+
+            ' Populate the ComboBox with the ETL roles (keys)
+            If calculationsComboBox IsNot Nothing Then
+                Position.Items.Clear()
+
+                ' Add the roles (keys) to the ComboBox
+                For Each role As KeyValuePair(Of String, Object) In calculationsComboBox
+                    Position.Items.Add(role.Key)
+                Next
+
+                ' Optionally, select the first item as default (if you want a default value selected)
+                If Position.Items.Count > 0 Then
+                    Position.SelectedIndex = 0
+                End If
+            End If
+
+            If instructorCalcu IsNot Nothing Then
+                Designation.Items.Clear()
+
+                ' Add the roles (keys) to the ComboBox
+                For Each role As KeyValuePair(Of String, Object) In instructorCalcu
+                    Designation.Items.Add(role.Key)
+                Next
+
+                ' Optionally, select the first item as default (if you want a default value selected)
+                If Designation.Items.Count > 0 Then
+                    Designation.SelectedIndex = 0
+                End If
+            End If
+        Catch ex As Exception
+            ' Handle any errors that occur during the Firebase operation.
+            MessageBox.Show("Error loading data: " & ex.Message)
+        End Try
+    End Sub
     Private Sub Position_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Position.SelectedIndexChanged
-        If Position.Text = "Instructor (Full-Time)" OrElse Position.Text = "Instructor (Part-Time)" Then
+        If Position.Text = "Instructor" Then
             Description.Text = ""
         Else
             Description.Text = "ETL"
@@ -294,9 +341,7 @@ Public Class add_employee
             End Try
         Else
             Try
-                If Integer.Parse(NoUnits.Text) > 24 AndAlso Position.Text = "Instructor (Full-Time)" Then
-                    Description.Text = "OL"
-                ElseIf Integer.Parse(NoUnits.Text) > 24 AndAlso Position.Text = "Instructor (Part-Time)" Then
+                If Integer.Parse(NoUnits.Text) > 24 AndAlso Position.Text = "Instructor" Then
                     Description.Text = "OL"
                 Else
                     Description.Text = ""
@@ -353,5 +398,9 @@ Public Class add_employee
         Catch ex As Exception
             MessageBox.Show($"Error uploading image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub TableLayoutPanel2_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel2.Paint
+
     End Sub
 End Class

@@ -35,11 +35,12 @@ Partial Class Main_Dashboard
         PictureBox9 = New PictureBox()
         Panel2 = New Panel()
         TableLayoutPanel1 = New TableLayoutPanel()
-        Label7 = New Label()
+        Button10 = New Button()
+        Button9 = New Button()
         Label5 = New Label()
-        Label8 = New Label()
-        Label6 = New Label()
-        Label9 = New Label()
+        Button7 = New Button()
+        Button8 = New Button()
+        Button6 = New Button()
         PictureBox2 = New PictureBox()
         Panel4 = New Panel()
         TableLayoutPanel6 = New TableLayoutPanel()
@@ -251,76 +252,94 @@ Partial Class Main_Dashboard
         TableLayoutPanel1.BackColor = Color.Transparent
         TableLayoutPanel1.ColumnCount = 1
         TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
-        TableLayoutPanel1.Controls.Add(Label7, 0, 2)
+        TableLayoutPanel1.Controls.Add(Button10, 0, 5)
+        TableLayoutPanel1.Controls.Add(Button9, 0, 4)
         TableLayoutPanel1.Controls.Add(Label5, 0, 0)
-        TableLayoutPanel1.Controls.Add(Label8, 0, 4)
-        TableLayoutPanel1.Controls.Add(Label6, 0, 3)
-        TableLayoutPanel1.Controls.Add(Label9, 0, 1)
+        TableLayoutPanel1.Controls.Add(Button7, 0, 3)
+        TableLayoutPanel1.Controls.Add(Button8, 0, 1)
+        TableLayoutPanel1.Controls.Add(Button6, 0, 2)
         TableLayoutPanel1.Location = New Point(3, 234)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 5
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 20F))
-        TableLayoutPanel1.Size = New Size(246, 416)
+        TableLayoutPanel1.RowCount = 6
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.2857141F))
+        TableLayoutPanel1.Size = New Size(246, 328)
         TableLayoutPanel1.TabIndex = 19
         ' 
-        ' Label7
+        ' Button10
         ' 
-        Label7.Anchor = AnchorStyles.None
-        Label7.AutoSize = True
-        Label7.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label7.Location = New Point(98, 198)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(50, 19)
-        Label7.TabIndex = 5
-        Label7.Text = "Role:"
+        Button10.Anchor = AnchorStyles.None
+        Button10.BackColor = Color.DarkSeaGreen
+        Button10.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Button10.Location = New Point(23, 279)
+        Button10.Name = "Button10"
+        Button10.Size = New Size(200, 39)
+        Button10.TabIndex = 10
+        Button10.Text = "Log Out"
+        Button10.UseVisualStyleBackColor = False
+        ' 
+        ' Button9
+        ' 
+        Button9.Anchor = AnchorStyles.None
+        Button9.BackColor = Color.DarkSeaGreen
+        Button9.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Button9.Location = New Point(23, 223)
+        Button9.Name = "Button9"
+        Button9.Size = New Size(200, 39)
+        Button9.TabIndex = 9
+        Button9.Text = "Change Password"
+        Button9.UseVisualStyleBackColor = False
         ' 
         ' Label5
         ' 
         Label5.Anchor = AnchorStyles.None
         Label5.AutoSize = True
         Label5.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label5.Location = New Point(81, 32)
+        Label5.Location = New Point(94, 17)
         Label5.Name = "Label5"
-        Label5.Size = New Size(84, 19)
+        Label5.Size = New Size(58, 19)
         Label5.TabIndex = 0
-        Label5.Text = "Admin ID:"
+        Label5.Text = "Admin"
         ' 
-        ' Label8
+        ' Button7
         ' 
-        Label8.Anchor = AnchorStyles.None
-        Label8.AutoSize = True
-        Label8.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label8.Location = New Point(74, 364)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(97, 19)
-        Label8.TabIndex = 3
-        Label8.Text = "Update Info"
+        Button7.Anchor = AnchorStyles.None
+        Button7.BackColor = Color.DarkSeaGreen
+        Button7.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Button7.Location = New Point(23, 169)
+        Button7.Name = "Button7"
+        Button7.Size = New Size(200, 39)
+        Button7.TabIndex = 7
+        Button7.Text = "Fingeprint"
+        Button7.UseVisualStyleBackColor = False
         ' 
-        ' Label6
+        ' Button8
         ' 
-        Label6.Anchor = AnchorStyles.None
-        Label6.AutoSize = True
-        Label6.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label6.Location = New Point(93, 281)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(59, 19)
-        Label6.TabIndex = 1
-        Label6.Text = "Name:"
+        Button8.Anchor = AnchorStyles.None
+        Button8.BackColor = Color.DarkSeaGreen
+        Button8.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Button8.Location = New Point(23, 61)
+        Button8.Name = "Button8"
+        Button8.Size = New Size(200, 39)
+        Button8.TabIndex = 8
+        Button8.Text = "Edit Info"
+        Button8.UseVisualStyleBackColor = False
         ' 
-        ' Label9
+        ' Button6
         ' 
-        Label9.Anchor = AnchorStyles.None
-        Label9.AutoSize = True
-        Label9.Font = New Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        Label9.Location = New Point(73, 115)
-        Label9.Name = "Label9"
-        Label9.Size = New Size(99, 19)
-        Label9.TabIndex = 4
-        Label9.Text = "Fingerprint:"
+        Button6.Anchor = AnchorStyles.None
+        Button6.BackColor = Color.DarkSeaGreen
+        Button6.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Button6.Location = New Point(23, 115)
+        Button6.Name = "Button6"
+        Button6.Size = New Size(200, 39)
+        Button6.TabIndex = 6
+        Button6.Text = "Edit Instructor Rates"
+        Button6.UseVisualStyleBackColor = False
         ' 
         ' PictureBox2
         ' 
@@ -329,7 +348,7 @@ Partial Class Main_Dashboard
         PictureBox2.Location = New Point(-1, -1)
         PictureBox2.Margin = New Padding(4, 3, 4, 3)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(254, 221)
+        PictureBox2.Size = New Size(255, 207)
         PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox2.TabIndex = 18
         PictureBox2.TabStop = False
@@ -443,6 +462,7 @@ Partial Class Main_Dashboard
         TableLayoutPanel4.Controls.Add(Button3, 0, 2)
         TableLayoutPanel4.Controls.Add(Button2, 0, 4)
         TableLayoutPanel4.Controls.Add(Button5, 0, 3)
+        TableLayoutPanel4.Font = New Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         TableLayoutPanel4.Location = New Point(46, 66)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 5
@@ -458,7 +478,7 @@ Partial Class Main_Dashboard
         ' 
         Button1.Anchor = AnchorStyles.None
         Button1.BackColor = SystemColors.MenuText
-        Button1.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Button1.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         Button1.ForeColor = SystemColors.ButtonHighlight
         Button1.Location = New Point(5, 4)
         Button1.Margin = New Padding(4, 3, 4, 3)
@@ -471,50 +491,54 @@ Partial Class Main_Dashboard
         ' Button4
         ' 
         Button4.Anchor = AnchorStyles.None
-        Button4.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Button4.BackColor = SystemColors.ControlLight
+        Button4.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         Button4.Location = New Point(5, 58)
         Button4.Margin = New Padding(4, 3, 4, 3)
         Button4.Name = "Button4"
         Button4.Size = New Size(474, 47)
         Button4.TabIndex = 31
         Button4.Text = "ACCOUNT"
-        Button4.UseVisualStyleBackColor = True
+        Button4.UseVisualStyleBackColor = False
         ' 
         ' Button3
         ' 
         Button3.Anchor = AnchorStyles.None
-        Button3.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Button3.BackColor = SystemColors.ControlLight
+        Button3.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         Button3.Location = New Point(5, 112)
         Button3.Margin = New Padding(4, 3, 4, 3)
         Button3.Name = "Button3"
         Button3.Size = New Size(474, 47)
         Button3.TabIndex = 30
         Button3.Text = "LIST OF EMPLOYEES"
-        Button3.UseVisualStyleBackColor = True
+        Button3.UseVisualStyleBackColor = False
         ' 
         ' Button2
         ' 
         Button2.Anchor = AnchorStyles.None
-        Button2.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Button2.BackColor = SystemColors.ControlLight
+        Button2.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         Button2.Location = New Point(5, 220)
         Button2.Margin = New Padding(4, 3, 4, 3)
         Button2.Name = "Button2"
         Button2.Size = New Size(474, 48)
         Button2.TabIndex = 29
         Button2.Text = "REPORT LOGS"
-        Button2.UseVisualStyleBackColor = True
+        Button2.UseVisualStyleBackColor = False
         ' 
         ' Button5
         ' 
         Button5.Anchor = AnchorStyles.None
-        Button5.Font = New Font("Roboto", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Button5.BackColor = SystemColors.ControlLight
+        Button5.Font = New Font("Roboto", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         Button5.Location = New Point(5, 166)
         Button5.Margin = New Padding(4, 3, 4, 3)
         Button5.Name = "Button5"
         Button5.Size = New Size(474, 47)
         Button5.TabIndex = 32
         Button5.Text = "TIME RECORDS"
-        Button5.UseVisualStyleBackColor = True
+        Button5.UseVisualStyleBackColor = False
         ' 
         ' Label15
         ' 
@@ -572,9 +596,9 @@ Partial Class Main_Dashboard
         Label13.Location = New Point(4, 8)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
-        Label13.Size = New Size(133, 18)
+        Label13.Size = New Size(127, 18)
         Label13.TabIndex = 28
-        Label13.Text = "Recent Activities"
+        Label13.Text = "Recent payslips"
         ' 
         ' Label21
         ' 
@@ -668,12 +692,12 @@ Partial Class Main_Dashboard
         Label14.BackColor = Color.Transparent
         Label14.Cursor = Cursors.Hand
         Label14.Font = New Font("Arial", 12F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
-        Label14.Location = New Point(66, 9)
+        Label14.Location = New Point(85, 9)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
-        Label14.Size = New Size(103, 18)
+        Label14.Size = New Size(64, 18)
         Label14.TabIndex = 28
-        Label14.Text = "Next Payday"
+        Label14.Text = "Payday"
         ' 
         ' Label16
         ' 
@@ -762,6 +786,7 @@ Partial Class Main_Dashboard
         Controls.Add(TableLayoutPanel2)
         Controls.Add(Panel2)
         Controls.Add(GroupBox4)
+        Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point)
         Margin = New Padding(4, 3, 4, 3)
         Name = "Main_Dashboard"
         StartPosition = FormStartPosition.CenterScreen
@@ -840,9 +865,10 @@ Partial Class Main_Dashboard
     Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
     Friend WithEvents Button5 As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button10 As Button
 End Class

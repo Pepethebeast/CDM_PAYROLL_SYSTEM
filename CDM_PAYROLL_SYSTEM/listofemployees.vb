@@ -75,27 +75,8 @@ Public Class List_of_Employees
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "description", .HeaderText = "Description", .Name = "description"})
             DGVUserData.Columns.Add(New DataGridViewTextBoxColumn With {.DataPropertyName = "no_of_units", .HeaderText = "No. of Units", .Name = "no_of_units"})
             DGVUserData.Columns.Add(New DataGridViewImageColumn With {.DataPropertyName = "image", .HeaderText = "Image", .Name = "image", .ImageLayout = DataGridViewImageCellLayout.Stretch})
+            ApplyDGVUserDataStyling()
 
-            DGVUserData.EnableHeadersVisualStyles = False
-            DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSeaGreen
-            DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGVUserData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            DGVUserData.ColumnHeadersHeight = 40 ' Increase header height
-            DGVUserData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            DGVUserData.DefaultCellStyle.Font = New Font("Roboto", 12)
-            DGVUserData.ColumnHeadersDefaultCellStyle.Font = New Font("Roboto", 8, FontStyle.Regular)
-            DGVUserData.RowTemplate.Height = 55
-            DGVUserData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            DGVUserData.BorderStyle = BorderStyle.None
-            DGVUserData.BackgroundColor = Color.White
-            DGVUserData.GridColor = Color.White
-            DGVUserData.RowHeadersVisible = False
-            DGVUserData.EnableHeadersVisualStyles = False
-            DGVUserData.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
-            DGVUserData.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGVUserData.DefaultCellStyle.SelectionBackColor = Color.LightBlue
-            DGVUserData.DefaultCellStyle.SelectionForeColor = Color.Black
-            DGVUserData.ReadOnly = True
             ' Bind the filtered list to the DataGridView
             DGVUserData.DataSource = employeeList
             DGVUserData.AllowUserToAddRows = False
@@ -105,6 +86,51 @@ Public Class List_of_Employees
         End Try
     End Sub
 
+    Private Sub ApplyDGVUserDataStyling()
+        ' Set overall grid appearance
+        With DGVUserData
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .AllowUserToAddRows = False
+            .AllowUserToDeleteRows = False
+            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            .DefaultCellStyle.Font = New Font("Arial", 10)
+            .RowTemplate.Height = 50
+            .ColumnHeadersHeight = 40
+            .BackgroundColor = Color.White
+            .BorderStyle = BorderStyle.None
+        End With
+
+        ' Style headers
+        With DGVUserData.ColumnHeadersDefaultCellStyle
+            .BackColor = Color.DarkSlateGray
+            .ForeColor = Color.White
+            .Font = New Font("Roboto", 10, FontStyle.Regular)
+            .Alignment = DataGridViewContentAlignment.MiddleCenter
+        End With
+
+        ' Style rows
+        With DGVUserData.RowsDefaultCellStyle
+            .BackColor = Color.LightGray
+            .ForeColor = Color.Black
+        End With
+
+        ' Style alternating rows
+        With DGVUserData.AlternatingRowsDefaultCellStyle
+            .BackColor = Color.WhiteSmoke
+        End With
+
+        ' Style specific columns if necessary
+        With DGVUserData.Columns("UID")
+            .Visible = False
+        End With
+
+        ' Style the image column (Stretch the image)
+        With DGVUserData.Columns("image")
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Width = 120
+        End With
+
+    End Sub
     Private Sub List_of_Employees_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         DGVUserData.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -215,11 +241,6 @@ Public Class List_of_Employees
     End Sub
 
 
-
-    Private Sub IconButton1_Click(sender As Object, e As EventArgs) Handles IconButton1.Click
-        Hide()
-        Employee_Dashboard.Show()
-    End Sub
 
     Private Sub IconButton2_Click(sender As Object, e As EventArgs) Handles IconButton2.Click
         LoadEmployeeData()

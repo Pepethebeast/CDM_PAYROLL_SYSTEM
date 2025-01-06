@@ -45,7 +45,6 @@ Partial Class List_of_Employees
         Label2 = New Label()
         Label7 = New Label()
         FlowLayoutPanel1 = New FlowLayoutPanel()
-        IconButton1 = New IconButton()
         IconButton2 = New IconButton()
         IconButton3 = New IconButton()
         IconButton4 = New IconButton()
@@ -371,7 +370,6 @@ Partial Class List_of_Employees
         ' 
         FlowLayoutPanel1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         FlowLayoutPanel1.BackColor = Color.Transparent
-        FlowLayoutPanel1.Controls.Add(IconButton1)
         FlowLayoutPanel1.Controls.Add(IconButton2)
         FlowLayoutPanel1.Controls.Add(IconButton3)
         FlowLayoutPanel1.Controls.Add(IconButton4)
@@ -383,20 +381,6 @@ Partial Class List_of_Employees
         FlowLayoutPanel1.Size = New Size(741, 44)
         FlowLayoutPanel1.TabIndex = 33
         ' 
-        ' IconButton1
-        ' 
-        IconButton1.BackColor = Color.DarkSeaGreen
-        IconButton1.Font = New Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point)
-        IconButton1.IconChar = IconChar.ArrowLeft
-        IconButton1.IconColor = Color.Black
-        IconButton1.IconFont = IconFont.Auto
-        IconButton1.IconSize = 20
-        IconButton1.Location = New Point(663, 3)
-        IconButton1.Name = "IconButton1"
-        IconButton1.Size = New Size(75, 41)
-        IconButton1.TabIndex = 0
-        IconButton1.UseVisualStyleBackColor = False
-        ' 
         ' IconButton2
         ' 
         IconButton2.BackColor = Color.DarkSeaGreen
@@ -405,7 +389,7 @@ Partial Class List_of_Employees
         IconButton2.IconColor = Color.Black
         IconButton2.IconFont = IconFont.Auto
         IconButton2.IconSize = 16
-        IconButton2.Location = New Point(582, 3)
+        IconButton2.Location = New Point(663, 3)
         IconButton2.Name = "IconButton2"
         IconButton2.Size = New Size(75, 41)
         IconButton2.TabIndex = 1
@@ -420,7 +404,7 @@ Partial Class List_of_Employees
         IconButton3.IconColor = Color.Black
         IconButton3.IconFont = IconFont.Auto
         IconButton3.IconSize = 16
-        IconButton3.Location = New Point(501, 3)
+        IconButton3.Location = New Point(582, 3)
         IconButton3.Name = "IconButton3"
         IconButton3.Size = New Size(75, 41)
         IconButton3.TabIndex = 2
@@ -435,7 +419,7 @@ Partial Class List_of_Employees
         IconButton4.IconColor = Color.Black
         IconButton4.IconFont = IconFont.Auto
         IconButton4.IconSize = 16
-        IconButton4.Location = New Point(420, 3)
+        IconButton4.Location = New Point(501, 3)
         IconButton4.Name = "IconButton4"
         IconButton4.Size = New Size(75, 41)
         IconButton4.TabIndex = 3
@@ -450,7 +434,7 @@ Partial Class List_of_Employees
         IconButton5.IconColor = Color.Black
         IconButton5.IconFont = IconFont.Auto
         IconButton5.IconSize = 16
-        IconButton5.Location = New Point(339, 3)
+        IconButton5.Location = New Point(420, 3)
         IconButton5.Name = "IconButton5"
         IconButton5.Size = New Size(75, 41)
         IconButton5.TabIndex = 4
@@ -460,7 +444,7 @@ Partial Class List_of_Employees
         ' TextBox1
         ' 
         TextBox1.Anchor = AnchorStyles.None
-        TextBox1.Location = New Point(27, 12)
+        TextBox1.Location = New Point(108, 12)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(306, 23)
         TextBox1.TabIndex = 36
@@ -517,7 +501,6 @@ Partial Class List_of_Employees
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton3 As FontAwesome.Sharp.IconButton
     Friend WithEvents IconButton4 As FontAwesome.Sharp.IconButton
